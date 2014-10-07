@@ -9,5 +9,9 @@ class FrancisCMS < Sinatra::Base
 
       "<a href=\"#{url}\" #{attributes.sort * ' '}>#{body}</a>"
     end
+
+    def root_path
+      '/'
+    end
   end
 end
