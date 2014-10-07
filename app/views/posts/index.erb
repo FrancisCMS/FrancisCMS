@@ -4,7 +4,7 @@
 	<ol>
 		<% @posts.each do |post| %>
 			<li>
-				<a href="/posts/<%= post.slug %>"><%= post.title %></a>
+				<%= link_to post.title, "/posts/#{post.slug}" %>
 				<% if post.excerpt? %>
 					<p><%= post.excerpt %></p>
 				<% end %>
