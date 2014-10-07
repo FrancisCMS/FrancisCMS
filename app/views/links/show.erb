@@ -1,0 +1,10 @@
+<article>
+	<header>
+		<h1><%= @link.title %></h1>
+		<time datetime="<%= @link.published_at.to_s(:iso8601) %>"><%= @link.published_at.to_s(:display) %></time>
+	</header>
+
+	<% if @link.body? %>
+		<%= @link.to_html %>
+	<% end %>
+</article>

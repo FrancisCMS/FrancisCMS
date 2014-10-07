@@ -1,3 +1,11 @@
+# Links
+
+Link.create(url: 'http://google.com/', title: 'Google', published_at: Time.now)
+Link.create(url: 'http://sixtwothree.org/', title: 'sixtwothree.org', published_at: Time.now)
+Link.create(url: 'http://cnn.com/', title: 'CNN', body: 'They call themselves a "news organization."', published_at: Time.now)
+
+# Posts
+
 body = <<-EOS
 This is an example of a post, written in Markdown.
 
