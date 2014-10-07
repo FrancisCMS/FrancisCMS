@@ -1,3 +1,4 @@
 .bundle
 .DS_Store
 .ruby-version
+config/database.yml
