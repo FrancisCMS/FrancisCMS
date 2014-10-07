@@ -1,0 +1,14 @@
+<% if @posts.empty? %>
+	<p>No posts found!</p>
+<% else %>
+	<ol>
+		<% @posts.each do |post| %>
+			<li>
+				<a href="/posts/<%= post.slug %>"><%= post.title %></a>
+				<% if post.excerpt? %>
+					<p><%= post.excerpt %></p>
+				<% end %>
+			</li>
+		<% end %>
+	</ol>
+<% end %>
