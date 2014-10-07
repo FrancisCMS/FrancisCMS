@@ -7,4 +7,15 @@
 	<% if @link.body? %>
 		<%= @link.to_html %>
 	<% end %>
+
+	<footer>
+		<ul>
+			<li>
+				<%= link_to 'Edit', edit_link_path(@link.id) %>
+			</li>
+			<li>
+				<%= partial 'shared/delete_form', locals: { action: link_path(@link.id) } %>
+			</li>
+		</ul>
+	</footer>
 </article>

@@ -1,0 +1,17 @@
+<ul>
+	<li>
+		<label for="link_url">URL</label>
+		<input type="url" id="link_url" name="link[url]"  value="<%= @link.url %>">
+	</li>
+	<li>
+		<label for="link_title">Title</label>
+		<input type="text" id="link_title" name="link[title]"  value="<%= @link.title %>">
+	</li>
+	<li>
+		<label for="link_body">Body</label>
+		<textarea id="link_body" name="link[body]"><%= @link.body %></textarea>
+	</li>
+	<li>
+		<button type="submit">Submit</button>
+	</li>
+</ul>

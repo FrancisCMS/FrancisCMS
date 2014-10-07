@@ -1,0 +1,7 @@
+<h1>Edit an existing link</h1>
+
+<form action="<%= link_path(@link.id) %>" method="post">
+	<input type="hidden" name="_method" value="put">
+
+	<%= partial :'links/form' %>
+</form>

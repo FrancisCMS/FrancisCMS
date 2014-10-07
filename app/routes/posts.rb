@@ -7,11 +7,11 @@ class FrancisCMS < Sinatra::Base
     end
 
     get '/:slug' do
-      @post = Post.friendly.find(params[:slug])
+      begin
+        @post = Post.friendly.find(params[:slug])
 
-      if @post
         erb :'posts/show'
-      else
+      rescue ActiveRecord::RecordNotFound => e
         404
       end
     end
