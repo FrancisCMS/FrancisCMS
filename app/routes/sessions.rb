@@ -25,7 +25,7 @@ class FrancisCMS < Sinatra::Base
 
         response = CGI::parse(page.content)
 
-        if response.key? 'me'
+        if response.key?('me') && response['me'].first == settings.user['url']
           session[:user_id] = response['me'].first
 
           redirect root_path

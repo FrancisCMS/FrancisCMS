@@ -1,0 +1,6 @@
+development:
+  session_secret: maintain_a_constant_session_secret_for_shotgun
+  user:
+    name: Jane Doe
+    email: jane@example.com
+    url: http://example.com
