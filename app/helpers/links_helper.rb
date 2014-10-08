@@ -8,6 +8,10 @@ class FrancisCMS < Sinatra::Base
       "#{links_path}/#{id}"
     end
 
+    def new_link_path
+      "#{links_path}/new"
+    end
+
     def edit_link_path(id)
       "#{link_path(id)}/edit"
     end

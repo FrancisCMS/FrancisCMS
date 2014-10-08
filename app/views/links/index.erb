@@ -3,13 +3,17 @@
 <% else %>
 	<ol>
 		<% @links.each do |link| %>
-			<li><%= link_to link.title, link_path(link.id) %></li>
+			<li>
+				<%= link_to link.title, link.url %>
+
+				<% if link.body? %>
+					<%= link.to_html %>
+				<% end %>
+
+				<%= link_to '∞', link_path(link.id) %>
+			</li>
 		<% end %>
 	</ol>
 <% end %>
 
-<h1>Add a new link</h1>
-
-<form action="<%= links_path %>" method="post">
-	<%= partial :'links/form' %>
-</form>
+<%= link_to 'Add a new link', new_link_path %>

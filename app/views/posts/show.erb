@@ -5,4 +5,15 @@
 	</header>
 
 	<%= @post.to_html %>
+
+	<footer>
+		<ul>
+			<li>
+				<%= link_to 'Edit', edit_post_path(@post.slug) %>
+			</li>
+			<li>
+				<%= partial 'shared/delete_form', locals: { action: post_path(@post.id) } %>
+			</li>
+		</ul>
+	</footer>
 </article>

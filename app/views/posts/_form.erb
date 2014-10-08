@@ -1,0 +1,17 @@
+<ul>
+	<li>
+		<label for="post_title">Title</label>
+		<input type="text" id="post_title" name="post[title]" required value="<%= @post.title %>">
+	</li>
+	<li>
+		<label for="post_body">Body</label>
+		<textarea id="post_body" name="post[body]" required><%= @post.body %></textarea>
+	</li>
+	<li>
+		<label for="post_excerpt">Excerpt</label>
+		<input type="text" id="post_excerpt" name="post[excerpt]" value="<%= @post.excerpt %>">
+	</li>
+	<li>
+		<button type="submit">Submit</button>
+	</li>
+</ul>

@@ -2,7 +2,6 @@ class FrancisCMS < Sinatra::Base
   namespace '/links' do
     get '' do
       @links = Link.all
-      @link = Link.new
 
       erb :'links/index'
     end
@@ -13,8 +12,14 @@ class FrancisCMS < Sinatra::Base
       if @link.save
         redirect link_path(@link.id)
       else
-        redirect links_path
+        erb :'links/new'
       end
+    end
+
+    get '/new' do
+      @link = Link.new
+
+      erb :'links/new'
     end
 
     namespace '/:id' do
