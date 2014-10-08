@@ -13,4 +13,6 @@
 	</ol>
 <% end %>
 
-<%= link_to 'Create a new post', new_post_path %>
+<% if logged_in? %>
+	<%= link_to 'Create a new post', new_post_path %>
+<% end %>

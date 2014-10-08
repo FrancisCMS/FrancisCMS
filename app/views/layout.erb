@@ -14,6 +14,15 @@
 			<li><%= link_to 'Home', root_path, rel: 'home' %></li>
 			<li><%= link_to 'Posts', posts_path %></li>
 			<li><%= link_to 'Links', links_path %></li>
+			<li>
+				<% if logged_in? %>
+					<form action="<%= logout_path %>" method="post">
+						<button type="submit">Log Out</button>
+					</form>
+				<% else %>
+					<%= link_to 'Log In', login_path %>
+				<% end %>
+			</li>
 		</ul>
 	</nav>
 

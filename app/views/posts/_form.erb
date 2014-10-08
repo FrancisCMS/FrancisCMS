@@ -9,7 +9,7 @@
 	</li>
 	<li>
 		<label for="post_excerpt">Excerpt</label>
-		<input type="text" id="post_excerpt" name="post[excerpt]" value="<%= @post.excerpt %>">
+		<input type="text" id="post_excerpt" maxlength="255" name="post[excerpt]" value="<%= @post.excerpt %>">
 	</li>
 	<li>
 		<button type="submit">Submit</button>

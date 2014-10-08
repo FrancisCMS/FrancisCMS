@@ -7,6 +7,8 @@ class FrancisCMS < Sinatra::Base
     end
 
     post '' do
+      require_login
+
       @post = Post.new(params[:post].merge(published_at: Time.now))
 
       if @post.save
@@ -17,6 +19,8 @@ class FrancisCMS < Sinatra::Base
     end
 
     get '/new' do
+      require_login
+
       @post = Post.new
 
       erb :'posts/new'
@@ -29,6 +33,38 @@ class FrancisCMS < Sinatra::Base
 
           erb :'posts/show'
         rescue ActiveRecord::RecordNotFound => e
+          404
+        end
+      end
+
+      put '' do
+        require_login
+
+        @post = Post.friendly.find(params[:slug])
+
+        if @post.update_attributes(params[:post])
+          redirect post_path(@post.slug)
+        else
+          erb :'posts/edit'
+        end
+      end
+
+      delete '' do
+        require_login
+
+        Post.friendly.find(params[:slug]).destroy
+
+        redirect posts_path
+      end
+
+      get '/edit' do
+        require_login
+
+        @post = Post.friendly.find(params[:slug])
+
+        if @post
+          erb :'posts/edit'
+        else
           404
         end
       end

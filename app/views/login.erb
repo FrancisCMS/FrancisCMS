@@ -1,0 +1,14 @@
+<form action="https://indieauth.com/auth" method="get">
+	<input type="hidden" name="client_id" value="<%= base_url %>">
+	<input type="hidden" name="redirect_uri" value="<%= auth_url %>">
+
+	<ul>
+		<li>
+			<label for="auth_url">URL</label>
+			<input type="auth_url" name="me" id="url">
+		</li>
+		<li>
+			<button type="submit">Submit</button>
+		</li>
+	</ul>
+</form>

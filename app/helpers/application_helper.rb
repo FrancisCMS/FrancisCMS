@@ -1,5 +1,9 @@
 class FrancisCMS < Sinatra::Base
   helpers do
+    def base_url
+      @base_url ||= request.base_url
+    end
+
     def link_to(body, url, html_options = {})
       attributes = []
 

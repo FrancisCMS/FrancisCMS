@@ -16,4 +16,6 @@
 	</ol>
 <% end %>
 
-<%= link_to 'Add a new link', new_link_path %>
+<% if logged_in? %>
+	<%= link_to 'Add a new link', new_link_path %>
+<% end %>

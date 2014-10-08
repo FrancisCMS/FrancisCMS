@@ -7,6 +7,8 @@ class FrancisCMS < Sinatra::Base
     end
 
     post '' do
+      require_login
+
       @link = Link.new(params[:link].merge(published_at: Time.now))
 
       if @link.save
@@ -17,6 +19,8 @@ class FrancisCMS < Sinatra::Base
     end
 
     get '/new' do
+      require_login
+
       @link = Link.new
 
       erb :'links/new'
@@ -34,6 +38,8 @@ class FrancisCMS < Sinatra::Base
       end
 
       put '' do
+        require_login
+
         @link = Link.find(params[:id])
 
         if @link.update_attributes(params[:link])
@@ -44,12 +50,16 @@ class FrancisCMS < Sinatra::Base
       end
 
       delete '' do
+        require_login
+
         Link.find(params[:id]).destroy
 
         redirect links_path
       end
 
       get '/edit' do
+        require_login
+
         @link = Link.find_by_id(params[:id])
 
         if @link
