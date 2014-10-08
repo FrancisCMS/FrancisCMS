@@ -10,14 +10,12 @@
 
 	<% if logged_in? %>
 		<footer>
-			<ul>
-				<li>
-					<%= link_to 'Edit', edit_link_path(@link.id) %>
-				</li>
+			<menu>
+				<li><%= link_to 'Edit', edit_link_path(@link.id) %></li>
 				<li>
 					<%= partial 'shared/delete_form', locals: { action: link_path(@link.id) } %>
 				</li>
-			</ul>
+			</menu>
 		</footer>
 	<% end %>
 </article>

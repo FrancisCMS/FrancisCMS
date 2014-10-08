@@ -30,5 +30,12 @@
 		<%= yield %>
 	</main>
 
+	<% if logged_in? %>
+		<menu>
+			<li><%= link_to 'New post', new_post_path %></li>
+			<li><%= link_to 'New link', new_link_path %></li>
+		</menu>
+	<% end %>
+
 </body>
 </html>
