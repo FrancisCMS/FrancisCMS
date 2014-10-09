@@ -1,20 +1,20 @@
-development:
-  license:
-    title: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
-    url: http://creativecommons.org/licenses/by-nc-sa/4.0/
+license:
+  title: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+  url: http://creativecommons.org/licenses/by-nc-sa/4.0/
 
-  session_secret: maintain_a_constant_session_secret_for_shotgun
+session_secret:
+  development: this_is_a_constant_session_secret_for_shotgun
 
-  site:
-    title: 'Your Site’s Name'
-    description: 'This is the online home to Jane Doe.'
-    url: http://example.com
+site:
+  title: 'Your Site’s Name'
+  description: 'This is the online home to Jane Doe.'
+  url: http://example.com
 
-  source:
-    title: GitHub
-    url: https://github.com/janedoe/example.com
+source:
+  title: GitHub
+  url: https://github.com/janedoe/example.com
 
-  user:
-    name: Jane Doe
-    email: jane@example.com
-    url: http://example.com
+user:
+  name: Jane Doe
+  email: jane@example.com
+  url: http://example.com
