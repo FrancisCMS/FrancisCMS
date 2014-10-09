@@ -1,5 +1,11 @@
 class FrancisCMS < Sinatra::Base
   helpers do
+    def post
+      @post ||= Post.friendly.find(params[:slug])
+    rescue ActiveRecord::RecordNotFound
+      halt 404
+    end
+
     def posts_path
       '/posts'
     end

@@ -1,5 +1,11 @@
 class FrancisCMS < Sinatra::Base
   helpers do
+    def link
+      @link ||= Link.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      halt 404
+    end
+
     def links_path
       '/links'
     end
