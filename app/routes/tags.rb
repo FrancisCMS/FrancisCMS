@@ -6,7 +6,7 @@ class FrancisCMS < Sinatra::Base
       erb :'tags/index'
     end
 
-    get '/:name' do
+    get '/:slug' do
       tag
 
       @posts = Post.tagged_with(@tag.name)

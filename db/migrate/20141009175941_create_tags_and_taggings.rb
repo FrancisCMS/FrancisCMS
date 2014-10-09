@@ -1,11 +1,12 @@
 class CreateTagsAndTaggings < ActiveRecord::Migration
   def up
     create_table :tags do |t|
-      t.string  :name
+      t.string  :name, null: false
+      t.string  :slug, null: false
       t.integer :taggings_count, default: 0
     end
 
-    add_index :tags, :name, unique: true
+    add_index :tags, [:name, :slug], unique: true
 
     create_table :taggings do |t|
       t.references :tag

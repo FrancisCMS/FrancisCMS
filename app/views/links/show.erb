@@ -17,7 +17,7 @@
 			<dl>
 				<dt>Tags</dt>
 				<% @link.tags.each do |tag| %>
-					<dd><%= link_to tag.name, tag_path(tag.name), class: 'p-category' %></dd>
+					<dd><%= link_to tag.name, tag_path(tag.slug), class: 'p-category' %></dd>
 				<% end %>
 			</dl>
 		<% end %>

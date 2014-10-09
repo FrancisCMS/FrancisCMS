@@ -1,7 +1,7 @@
 class FrancisCMS < Sinatra::Base
   helpers do
     def tag
-      @tag ||= Tag.where(name: params[:name]).first
+      @tag ||= Tag.friendly.find(params[:slug])
     rescue ActiveRecord::RecordNotFound
       halt 404
     end
@@ -11,8 +11,8 @@ class FrancisCMS < Sinatra::Base
       '/tags'
     end
 
-    def tag_path(name)
-      "#{tags_path}/#{name}"
+    def tag_path(slug)
+      "#{tags_path}/#{slug}"
     end
   end
 end

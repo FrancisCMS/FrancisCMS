@@ -5,7 +5,7 @@
 <% if @tags.any? %>
 	<ol>
 		<% @tags.each do |tag| %>
-			<li><%= link_to tag.name, tag_path(tag.name) %></li>
+			<li><%= link_to tag.name, tag_path(tag.slug) %></li>
 		<% end %>
 	</ol>
 <% else %>

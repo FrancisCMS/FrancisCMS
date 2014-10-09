@@ -48,10 +48,11 @@ ActiveRecord::Schema.define(version: 20141009175941) do
   add_index "taggings", ["tagger_id", "tagger_type", "context"], name: "index_taggings_on_tagger_id_and_tagger_type_and_context", unique: true, using: :btree
 
   create_table "tags", force: true do |t|
-    t.string  "name"
+    t.string  "name",                       null: false
+    t.string  "slug",                       null: false
     t.integer "taggings_count", default: 0
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+  add_index "tags", ["name", "slug"], name: "index_tags_on_name_and_slug", unique: true, using: :btree
 
 end
