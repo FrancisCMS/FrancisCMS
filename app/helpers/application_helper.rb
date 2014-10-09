@@ -14,6 +14,7 @@ class FrancisCMS < Sinatra::Base
       %Q{<a #{attrs.sort * ' '}>#{body}</a>}
     end
 
+    # ----- Routes ---------- #
     def root_path
       '/'
     end

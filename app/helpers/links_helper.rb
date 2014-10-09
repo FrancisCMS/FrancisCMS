@@ -6,6 +6,7 @@ class FrancisCMS < Sinatra::Base
       halt 404
     end
 
+    # ----- Routes ---------- #
     def links_path
       '/links'
     end
