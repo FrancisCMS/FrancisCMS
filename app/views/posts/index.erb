@@ -7,7 +7,7 @@
 <% if @posts.empty? %>
 	<p>No posts found!</p>
 <% else %>
-	<ol>
+	<ol reversed>
 		<% @posts.each do |post| %>
 			<li>
 				<article class="h-entry">

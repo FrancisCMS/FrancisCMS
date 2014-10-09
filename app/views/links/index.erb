@@ -7,7 +7,7 @@
 <% if @links.empty? %>
 	<p>No links found!</p>
 <% else %>
-	<ol>
+	<ol reversed>
 		<% @links.each do |link| %>
 			<li>
 				<article class="h-entry">

@@ -1,7 +1,7 @@
 class FrancisCMS < Sinatra::Base
   namespace '/posts' do
     get '' do
-      @posts = Post.all
+      @posts = Post.all.order('published_at DESC')
 
       erb :'posts/index'
     end
