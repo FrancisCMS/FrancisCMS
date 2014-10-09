@@ -5,36 +5,26 @@ class FrancisCMS < Sinatra::Base
 
   post '/logout' do
     session.clear
+
     redirect root_path
   end
 
   get '/auth' do
-    code = params[:code]
+    auth_code
+    next_page = login_path
 
-    if code.nil?
-      400
-    else
-      begin
-        agent = Mechanize.new
+    url = auth_code_is_valid?({
+      client_id: base_url,
+      code: auth_code,
+      redirect_uri: auth_url
+    })
 
-        page = agent.post('https://indieauth.com/auth', {
-          client_id: base_url,
-          code: code,
-          redirect_uri: auth_url
-        })
+    if url && url == settings.user['url']
+      session[:user_id] = url
 
-        response = CGI::parse(page.content)
-
-        if response.key?('me') && response['me'].first == settings.user['url']
-          session[:user_id] = response['me'].first
-
-          redirect root_path
-        else
-          redirect login_path
-        end
-      rescue Mechanize::ResponseCodeError => e
-        redirect login_path
-      end
+      next_page = root_path
     end
+
+    redirect next_page
   end
 end
