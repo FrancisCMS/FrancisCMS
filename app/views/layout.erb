@@ -1,39 +1,47 @@
 <!doctype html>
-<html lang="en-US">
+<html id="<%= settings.site['url'].gsub(/^https?:\/\//, '').gsub('.', '-') %>" lang="en-US">
 <head>
 	<meta charset="utf-8">
 
-	<title>FrancisCMS</title>
+	<title><%= settings.site['title'] %> — <%= settings.site['description'] %></title>
 
+	<meta name="description" content="<%= settings.site['description'] %>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
-	<nav role="navigation">
-		<ul>
-			<li><%= link_to 'Home', root_path, rel: 'home' %></li>
-			<li><%= link_to 'Posts', posts_path %></li>
-			<li><%= link_to 'Links', links_path %></li>
-			<li>
-				<% if logged_in? %>
-					<form action="<%= logout_path %>" method="post">
-						<button type="submit">Log Out</button>
-					</form>
-				<% else %>
-					<%= link_to 'Log In', login_path %>
-				<% end %>
-			</li>
-		</ul>
-	</nav>
+	<header role="banner">
+		<h1><%= link_to settings.site['title'], root_path, rel: 'home' %></h1>
 
-	<main role="main">
+		<nav role="navigation">
+			<ul>
+				<li><%= link_to 'Posts', posts_path %></li>
+				<li><%= link_to 'Links', links_path %></li>
+				<li>
+					<% if logged_in? %>
+						<form action="<%= logout_path %>" method="post">
+							<button type="submit">Log Out</button>
+						</form>
+					<% else %>
+						<%= link_to 'Log In', login_path %>
+					<% end %>
+				</li>
+			</ul>
+		</nav>
+	</header>
+
+	<main class="<%= yield_content :main_classes %>" role="main">
 		<%= yield %>
 	</main>
 
+	<footer role="contentinfo">
+		<p>Some rights reserved. This site’s content is licensed under a <%= link_to "#{settings.license['title']} license", settings.license['url'], rel: 'license' %>. Source code available on <%= link_to settings.source['title'], settings.source['url'], rel: 'source' %>.</p>
+	</footer>
+
 	<% if logged_in? %>
-		<menu>
-			<li><%= link_to 'New post', new_post_path %></li>
-			<li><%= link_to 'New link', new_link_path %></li>
+		<menu role="menu">
+			<li role="menuitem"><%= link_to 'New post', new_post_path %></li>
+			<li role="menuitem"><%= link_to 'New link', new_link_path %></li>
 		</menu>
 	<% end %>
 

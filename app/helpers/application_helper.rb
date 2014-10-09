@@ -5,13 +5,13 @@ class FrancisCMS < Sinatra::Base
     end
 
     def link_to(body, url, html_options = {})
-      attributes = []
+      attrs = [%Q{href="#{url}"}]
 
       html_options.each_pair do |key, value|
-        attributes << %(#{key}="#{value}")
+        attrs << %Q{#{key}="#{value}"}
       end
 
-      "<a href=\"#{url}\" #{attributes.sort * ' '}>#{body}</a>"
+      %Q{<a #{attrs.sort * ' '}>#{body}</a>}
     end
 
     def root_path

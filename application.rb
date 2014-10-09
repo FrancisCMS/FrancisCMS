@@ -2,6 +2,7 @@ require 'active_support/all'
 require 'sinatra/activerecord'
 require 'sinatra/base'
 require 'sinatra/config_file'
+require 'sinatra/content_for'
 require 'sinatra/namespace'
 require 'sinatra/partial'
 require 'mechanize'
@@ -12,6 +13,8 @@ Dir.glob('./config/initializers/*.rb', &method(:require))
 
 class FrancisCMS < Sinatra::Base
   I18n.enforce_available_locales = false
+
+  helpers Sinatra::ContentFor
 
   register Sinatra::ConfigFile
   register Sinatra::Namespace

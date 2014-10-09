@@ -1,19 +1,23 @@
-<article>
+<article class="h-entry h-as-article">
 	<header>
-		<h1><%= @post.title %></h1>
-		<time datetime="<%= @post.published_at.to_s(:iso8601) %>"><%= @post.published_at.to_s(:display) %></time>
+		<h1 class="p-name"><%= link_to @post.title, post_path(@post.slug), class: 'u-url' %></h1>
+		<p>Published on <time class="dt-published" datetime="<%= @post.published_at.to_s(:iso8601) %>"><%= @post.published_at.to_s(:display) %></time>.</p>
 	</header>
 
-	<%= @post.to_html %>
+	<div class="e-content">
+		<%= @post.to_html %>
+	</div>
+
+	<footer role="complementary">
+		<%= partial 'shared/author_hcard' %>
+	</footer>
 
 	<% if logged_in? %>
-		<footer>
-			<menu>
-				<li><%= link_to 'Edit', edit_post_path(@post.slug) %></li>
-				<li>
-					<%= partial 'shared/delete_form', locals: { action: post_path(@post.slug) } %>
-				</li>
-			</menu>
-		</footer>
+		<menu role="menu">
+			<li role="menuitem"><%= link_to 'Edit', edit_post_path(@post.slug) %></li>
+			<li role="menuitem">
+				<%= partial 'shared/delete_form', locals: { action: post_path(@post.slug) } %>
+			</li>
+		</menu>
 	<% end %>
 </article>

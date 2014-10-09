@@ -1,21 +1,25 @@
-<article>
+<article class="h-entry h-as-article">
 	<header>
-		<h1><%= @link.title %></h1>
-		<time datetime="<%= @link.published_at.to_s(:iso8601) %>"><%= @link.published_at.to_s(:display) %></time>
+		<h1 class="p-name"><%= link_to @link.title, @link.url %></h1>
+		<p>Saved on <%= link_to %Q{<time class="dt-published" datetime="#{@link.published_at.to_s(:iso8601)}">#{@link.published_at.to_s(:display)}</time>}, link_path(@link.id), class: 'u-url' %>.</p>
 	</header>
 
 	<% if @link.body? %>
-		<%= @link.to_html %>
+		<div class="e-content">
+			<%= @link.to_html %>
+		</div>
 	<% end %>
 
+	<footer role="complementary">
+		<%= partial 'shared/author_hcard' %>
+	</footer>
+
 	<% if logged_in? %>
-		<footer>
-			<menu>
-				<li><%= link_to 'Edit', edit_link_path(@link.id) %></li>
-				<li>
-					<%= partial 'shared/delete_form', locals: { action: link_path(@link.id) } %>
-				</li>
-			</menu>
-		</footer>
+		<menu role="menu">
+			<li role="menuitem"><%= link_to 'Edit', edit_link_path(@link.id) %></li>
+			<li role="menuitem">
+				<%= partial 'shared/delete_form', locals: { action: link_path(@link.id) } %>
+			</li>
+		</menu>
 	<% end %>
 </article>
