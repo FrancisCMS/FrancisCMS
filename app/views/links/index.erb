@@ -4,28 +4,14 @@
 	<h1 class="p-name">Links</h1>
 </header>
 
-<% if @links.empty? %>
-	<p>No links found!</p>
-<% else %>
+<% if @links.any? %>
 	<ol reversed>
 		<% @links.each do |link| %>
 			<li>
-				<article class="h-entry">
-					<header>
-						<h1 class="p-name"><%= link_to link.title, link.url %></h1>
-					</header>
-
-					<% if link.body? %>
-						<div class="e-content">
-							<%= link.to_html %>
-						</div>
-					<% end %>
-
-					<footer>
-						<p>Saved on <%= link_to %Q{<time class="dt-published" datetime="#{link.published_at.to_s(:iso8601)}">#{link.published_at.to_s(:display)}</time>}, link_path(link.id), class: 'u-url' %>.</p>
-					</footer>
-				</article>
+				<%= partial 'shared/link_hentry', locals: { link: link } %>
 			</li>
 		<% end %>
 	</ol>
+<% else %>
+	<p>No links found!</p>
 <% end %>

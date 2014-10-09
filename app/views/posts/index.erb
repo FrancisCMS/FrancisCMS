@@ -4,28 +4,14 @@
 	<h1 class="p-name">Posts</h1>
 </header>
 
-<% if @posts.empty? %>
-	<p>No posts found!</p>
-<% else %>
+<% if @posts.any? %>
 	<ol reversed>
 		<% @posts.each do |post| %>
 			<li>
-				<article class="h-entry">
-					<header>
-						<h1 class="p-name"><%= link_to post.title, post_path(post.slug), class: 'u-url' %></h1>
-					</header>
-
-					<% if post.excerpt? %>
-						<div class="p-summary">
-							<p><%= post.excerpt %></p>
-						</div>
-					<% end %>
-
-					<footer>
-						<p>Published on <time class="dt-published" datetime="<%= post.published_at.to_s(:iso8601) %>"><%= post.published_at.to_s(:display) %></time>.</p>
-					</footer>
-				</article>
+				<%= partial 'shared/post_hentry', locals: { post: post } %>
 			</li>
 		<% end %>
 	</ol>
+<% else %>
+	<p>No posts found!</p>
 <% end %>

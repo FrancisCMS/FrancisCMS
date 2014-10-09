@@ -17,6 +17,7 @@
 			<ul>
 				<li><%= link_to 'Posts', posts_path %></li>
 				<li><%= link_to 'Links', links_path %></li>
+				<li><%= link_to 'Tags', tags_path %></li>
 				<li>
 					<% if logged_in? %>
 						<form action="<%= logout_path %>" method="post">
