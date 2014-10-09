@@ -10,6 +10,8 @@
 </head>
 <body>
 
+	<%= link_to 'Skip to main content', '#main' %>
+
 	<header role="banner">
 		<h1><%= link_to settings.site['title'], root_path, rel: 'home' %></h1>
 
@@ -31,7 +33,7 @@
 		</nav>
 	</header>
 
-	<main class="<%= yield_content :main_classes %>" role="main">
+	<main id="main" class="<%= yield_content :main_classes %>" role="main">
 		<%= yield %>
 	</main>
 
