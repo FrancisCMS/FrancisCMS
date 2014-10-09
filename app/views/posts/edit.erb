@@ -1,6 +1,6 @@
 <h1>Edit an existing post</h1>
 
-<form action="<%= post_path(@post.id) %>" method="post">
+<form action="<%= post_path(@post.slug) %>" method="post">
 	<input type="hidden" name="_method" value="put">
 
 	<%= partial :'posts/form' %>

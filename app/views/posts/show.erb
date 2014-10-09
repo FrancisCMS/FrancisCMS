@@ -10,6 +10,15 @@
 
 	<footer role="complementary">
 		<%= partial 'shared/author_hcard' %>
+
+		<% if @post.tags.any? %>
+			<dl>
+				<dt>Tags</dt>
+				<% @post.tags.each do |tag| %>
+					<dd><%= link_to tag.name, tag_path(tag.name), class: 'p-category' %></dd>
+				<% end %>
+			</dl>
+		<% end %>
 	</footer>
 
 	<% if logged_in? %>

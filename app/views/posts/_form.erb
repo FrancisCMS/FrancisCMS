@@ -12,6 +12,10 @@
 		<input type="text" id="post_excerpt" maxlength="255" name="post[excerpt]" value="<%= @post.excerpt %>">
 	</li>
 	<li>
+		<label for="post_tag_list">Tags</label>
+		<input id="post_tag_list" name="post[tag_list]" value="<%= @post.tag_list %>">
+	</li>
+	<li>
 		<button type="submit">Submit</button>
 	</li>
 </ul>

@@ -5,8 +5,9 @@ require 'sinatra/config_file'
 require 'sinatra/content_for'
 require 'sinatra/namespace'
 require 'sinatra/partial'
-require 'mechanize'
+require 'acts-as-taggable-on'
 require 'friendly_id'
+require 'mechanize'
 require 'redcarpet'
 
 Dir.glob('./config/initializers/*.rb', &method(:require))
