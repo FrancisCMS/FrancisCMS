@@ -14,6 +14,18 @@ class FrancisCMS < Sinatra::Base
       %Q{<a #{attrs.sort * ' '}>#{body}</a>}
     end
 
+    def page_description
+      @page_description || settings.site['description']
+    end
+
+    def page_title
+      if @page_title
+        "#{@page_title} — #{settings.site['title']}"
+      else
+        "#{settings.site['title']} — #{settings.site['description']}"
+      end
+    end
+
     # ----- Routes ---------- #
     def root_path
       '/'

@@ -24,3 +24,4 @@ user:
   name: Jane Doe
   email: jane@example.com
   url: http://example.com
+  twitter: '@janedoe'

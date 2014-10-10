@@ -1,11 +1,15 @@
 <!doctype html>
-<html id="<%= settings.site['url'].gsub(/^https?:\/\//, '').gsub('.', '-') %>" lang="en-US">
+<html id="<%= settings.site['url'].gsub(/^https?:\/\//, '').gsub('.', '-') %>" itemscope itemtype="http://schema.org/WebPage" lang="en-US">
 <head>
 	<meta charset="utf-8">
 
-	<title><%= settings.site['title'] %> — <%= settings.site['description'] %></title>
+	<title><%= page_title %></title>
 
-	<meta name="description" content="<%= settings.site['description'] %>">
+	<meta name="description" content="<%= page_description %>">
+	<meta name="og:description" itemprop="description" content="<%= page_description %>">
+	<meta name="og:title" itemprop="name" content="<%= page_title %>">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="<%= settings.user['twitter'] %>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
