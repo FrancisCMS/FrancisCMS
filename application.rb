@@ -23,10 +23,10 @@ class FrancisCMS < Sinatra::Base
 
   config_file 'config/settings.yml'
 
-  enable :partial_underscores
-  enable :sessions
-
+  set :method_override, true
   set :partial_template_engine, :erb
+  set :partial_underscores, true
+  set :sessions, true
   set :views, Proc.new { File.join(root, 'app/views') }
 end
 
