@@ -1,6 +1,10 @@
 class FrancisCMS < Sinatra::Base
   get '/login' do
-    erb :login
+    if logged_in?
+      redirect root_path
+    else
+      erb :login
+    end
   end
 
   post '/logout' do
