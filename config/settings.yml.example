@@ -2,6 +2,12 @@ license:
   title: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
   url: http://creativecommons.org/licenses/by-nc-sa/4.0/
 
+profiles:
+  - title: Facebook
+    url: https://facebook.com/janedoe
+  - title: Twitter
+    url: https://twitter.com/janedoe
+
 session_secret:
   development: this_is_a_constant_session_secret_for_shotgun
 
