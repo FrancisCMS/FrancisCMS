@@ -1,3 +1,3 @@
-require './application'
+require './app'
 
 run FrancisCMS
