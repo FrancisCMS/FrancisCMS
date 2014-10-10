@@ -3,6 +3,8 @@ class FrancisCMS < Sinatra::Base
     if logged_in?
       redirect root_path
     else
+      @page_title = 'Log In'
+
       erb :login
     end
   end

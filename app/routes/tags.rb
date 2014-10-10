@@ -2,6 +2,7 @@ class FrancisCMS < Sinatra::Base
   namespace '/tags' do
     get '' do
       @tags = Tag.all.order('name ASC')
+      @page_title = 'Tags'
 
       erb :'tags/index'
     end
@@ -11,6 +12,7 @@ class FrancisCMS < Sinatra::Base
 
       @posts = Post.tagged_with(@tag.name)
       @links = Link.tagged_with(@tag.name)
+      @page_title = "Content tagged “#{@tag.name}”"
 
       erb :'tags/show'
     end

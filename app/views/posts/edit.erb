@@ -1,4 +1,4 @@
-<h1>Edit an existing post</h1>
+<h1>Editing “<%= @post.title %>”</h1>
 
 <form action="<%= post_path(@post.slug) %>" method="post">
 	<input type="hidden" name="_method" value="put">

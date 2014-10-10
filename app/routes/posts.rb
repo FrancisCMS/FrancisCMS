@@ -2,6 +2,7 @@ class FrancisCMS < Sinatra::Base
   namespace '/posts' do
     get '' do
       @posts = Post.all.order('published_at DESC')
+      @page_title = 'Posts'
 
       erb :'posts/index'
     end
@@ -13,6 +14,8 @@ class FrancisCMS < Sinatra::Base
       if @post.save
         redirect post_path(@post.slug)
       else
+        @page_title = 'Add a new post'
+
         erb :'posts/new'
       end
     end
@@ -20,6 +23,7 @@ class FrancisCMS < Sinatra::Base
     get '/new' do
       require_login
       @post = Post.new
+      @page_title = 'Add a new post'
 
       erb :'posts/new'
     end
@@ -27,6 +31,11 @@ class FrancisCMS < Sinatra::Base
     namespace '/:slug' do
       get '' do
         post
+        @page_title = @post.title
+
+        unless @post.excerpt.empty?
+          @page_description = @post.excerpt
+        end
 
         erb :'posts/show'
       end
@@ -38,6 +47,8 @@ class FrancisCMS < Sinatra::Base
         if @post.update_attributes(params[:post])
           redirect post_path(@post.slug)
         else
+          @page_title = "Editing “#{@post.title}”"
+
           erb :'posts/edit'
         end
       end
@@ -52,6 +63,7 @@ class FrancisCMS < Sinatra::Base
       get '/edit' do
         require_login
         post
+        @page_title = "Editing “#{@post.title}”"
 
         erb :'posts/edit'
       end

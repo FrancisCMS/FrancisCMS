@@ -2,6 +2,7 @@ class FrancisCMS < Sinatra::Base
   namespace '/links' do
     get '' do
       @links = Link.all.order('published_at DESC')
+      @page_title = 'Links'
 
       erb :'links/index'
     end
@@ -13,6 +14,8 @@ class FrancisCMS < Sinatra::Base
       if @link.save
         redirect link_path(@link.id)
       else
+        @page_title = 'Add a new link'
+
         erb :'links/new'
       end
     end
@@ -20,6 +23,7 @@ class FrancisCMS < Sinatra::Base
     get '/new' do
       require_login
       @link = Link.new
+      @page_title = 'Add a new link'
 
       erb :'links/new'
     end
@@ -27,6 +31,7 @@ class FrancisCMS < Sinatra::Base
     namespace '/:id' do
       get '' do
         link
+        @page_title = "#{@link.title} — Links"
 
         erb :'links/show'
       end
@@ -38,6 +43,8 @@ class FrancisCMS < Sinatra::Base
         if @link.update_attributes(params[:link])
           redirect link_path(@link.id)
         else
+          @page_title = "Editing “#{@link.title}”"
+
           erb :'links/edit'
         end
       end
@@ -52,6 +59,7 @@ class FrancisCMS < Sinatra::Base
       get '/edit' do
         require_login
         link
+        @page_title = "Editing “#{@link.title}”"
 
         erb :'links/edit'
       end
