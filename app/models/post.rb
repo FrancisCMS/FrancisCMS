@@ -1,7 +1,7 @@
 module FrancisCMS
   module Models
     class Post < ActiveRecord::Base
-      include HTMLable
+      include Htmlable
       include Feedable
       include FriendlyId
 

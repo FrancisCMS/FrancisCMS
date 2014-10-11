@@ -1,6 +1,7 @@
 module FrancisCMS
   module Concerns
-    autoload :Feedable, 'app/models/concerns/feedable'
-    autoload :HTMLable, 'app/models/concerns/htmlable'
+    Dir.glob('app/models/concerns/*.rb').each do |f|
+      autoload File.basename(f, '.*').capitalize.to_sym, f
+    end
   end
 end

@@ -1,6 +1,6 @@
 module FrancisCMS
   module Concerns
-    module HTMLable
+    module Htmlable
       extend ActiveSupport::Concern
 
       class HTMLRenderer < Redcarpet::Render::HTML
