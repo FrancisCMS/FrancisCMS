@@ -1,3 +1,3 @@
 require './app'
 
-run FrancisCMS
+run FrancisCMS::App

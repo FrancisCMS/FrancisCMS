@@ -1,33 +1,29 @@
+require 'rubygems'
+require 'bundler'
 require 'active_support/all'
-require 'sinatra/activerecord'
-require 'sinatra/base'
-require 'sinatra/config_file'
-require 'sinatra/content_for'
-require 'sinatra/namespace'
-require 'sinatra/partial'
-require 'acts-as-taggable-on'
-require 'friendly_id'
-require 'mechanize'
-require 'redcarpet'
 
-Dir.glob('./config/initializers/*.rb', &method(:require))
+Bundler.require
+$: << File.expand_path('../', __FILE__)
 
-class FrancisCMS < Sinatra::Base
-  I18n.enforce_available_locales = false
+Dir.glob('config/initializers/*.rb', &method(:require))
+Dir.glob('app/*.rb', &method(:require))
 
-  helpers Sinatra::ContentFor
+module FrancisCMS
+  class App < Sinatra::Application
+    configure do
+      set :root, File.dirname(__FILE__)
+      set :views, Proc.new { File.join(root, 'app/views') }
+    end
 
-  register Sinatra::ConfigFile
-  register Sinatra::Namespace
-  register Sinatra::Partial
+    use Rack::Deflater
 
-  config_file 'config/settings.yml'
-
-  set :method_override, true
-  set :partial_template_engine, :erb
-  set :partial_underscores, true
-  set :sessions, true
-  set :views, Proc.new { File.join(root, 'app/views') }
+    use Routes::Links
+    use Routes::Main
+    use Routes::Posts
+    use Routes::Sessions
+    use Routes::Tags
+  end
 end
 
-Dir.glob('./app/**/*.rb', &method(:require))
+include FrancisCMS::Concerns
+include FrancisCMS::Models
