@@ -1,7 +1,9 @@
 <article class="h-entry h-as-article">
 	<header>
 		<h1 class="p-name"><%= link_to @post.title, post_path(@post.slug), class: 'u-url' %></h1>
-		<p>Published on <time class="dt-published" datetime="<%= @post.published_at.to_s(:iso8601) %>"><%= @post.published_at.to_s(:display) %></time>.</p>
+		<% if post.published_at? %>
+			<p>Published on <time class="dt-published" datetime="<%= @post.published_at.to_s(:iso8601) %>"><%= @post.published_at.to_s(:display) %></time>.</p>
+		<% end %>
 	</header>
 
 	<div class="e-content">

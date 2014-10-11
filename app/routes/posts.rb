@@ -3,7 +3,7 @@ module FrancisCMS
     class Posts < Base
       namespace '/posts' do
         get '' do
-          @posts = Post.all.order('published_at DESC')
+          @posts = Post.where('published_at IS NOT NULL').order('published_at DESC')
           @page_title = 'Posts'
 
           erb :'posts/index'
@@ -11,7 +11,7 @@ module FrancisCMS
 
         post '' do
           require_login
-          @post = Post.new(params[:post].merge(published_at: Time.now))
+          @post = Post.new(params[:post])
 
           if @post.save
             redirect post_path(@post.slug)

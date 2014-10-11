@@ -4,6 +4,7 @@ module FrancisCMS
       include Htmlable
       include Feedable
       include FriendlyId
+      include Publishable
 
       acts_as_ordered_taggable
 

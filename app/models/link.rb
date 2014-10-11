@@ -3,6 +3,7 @@ module FrancisCMS
     class Link < ActiveRecord::Base
       include Feedable
       include Htmlable
+      include Publishable
 
       acts_as_ordered_taggable
 
