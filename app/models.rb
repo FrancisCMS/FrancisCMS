@@ -1,7 +1,7 @@
 module FrancisCMS
   module Models
-    autoload :Link, 'app/models/link'
-    autoload :Post, 'app/models/post'
-    autoload :Tag,  'app/models/tag'
+    Dir.glob('app/models/*.rb').each do |f|
+      autoload File.basename(f, '.*').capitalize.to_sym, f
+    end
   end
 end

@@ -1,9 +1,7 @@
 module FrancisCMS
   module Helpers
-    autoload :ApplicationHelper, 'app/helpers/application_helper'
-    autoload :LinksHelper,       'app/helpers/links_helper'
-    autoload :PostsHelper,       'app/helpers/posts_helper'
-    autoload :SessionsHelper,    'app/helpers/sessions_helper'
-    autoload :TagsHelper,        'app/helpers/tags_helper'
+    Dir.glob('app/helpers/*.rb').each do |f|
+      autoload File.basename(f, '.*').titleize.gsub(/\s+/, '').to_sym, f
+    end
   end
 end

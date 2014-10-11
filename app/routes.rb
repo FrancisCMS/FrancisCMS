@@ -1,10 +1,7 @@
 module FrancisCMS
   module Routes
-    autoload :Base,     'app/routes/base'
-    autoload :Links,    'app/routes/links'
-    autoload :Main,     'app/routes/main'
-    autoload :Posts,    'app/routes/posts'
-    autoload :Sessions, 'app/routes/sessions'
-    autoload :Tags,     'app/routes/tags'
+    Dir.glob('app/routes/*.rb').each do |f|
+      autoload File.basename(f, '.*').capitalize.to_sym, f
+    end
   end
 end
