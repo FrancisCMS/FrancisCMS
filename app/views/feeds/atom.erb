@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<id><%= base_url %></id>
+	<title><%= @feed_title %></title>
+	<subtitle><%= @feed_subtitle %></subtitle>
+	<link rel="self" href="<%= @feed_url %>" />
+	<link href="<%= @url %>" />
+	<updated><%= @feed_items.first.published_at.to_s(:iso8601) %></updated>
+	<author>
+		<name><%= settings.user['name'] %></name>
+		<email><%= settings.user['email'] %></email>
+	</author>
+	<rights><%= settings.license['title'] %></rights>
+
+	<% @feed_items.each do |feed_item| %>
+		<entry>
+			<id><%= feed_item_url(feed_item) %></id>
+			<title><%= feed_item.title %></title>
+			<link href="<%= feed_item_url(feed_item) %>" />
+			<updated><%= feed_item.published_at.to_s(:iso8601) %></updated>
+			<% if feed_item.excerpt? %>
+				<summary><%= feed_item.excerpt %></summary>
+			<% end %>
+			<content type="html"><%= HTMLEntities.new.encode feed_item.to_html %></content>
+			<% if feed_item.tags.any? %>
+				<% feed_item.tags.each do |tag| %>
+					<category term="<%= tag.name %>" />
+				<% end %>
+			<% end %>
+		</entry>
+	<% end %>
+</feed>

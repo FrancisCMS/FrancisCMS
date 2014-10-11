@@ -16,6 +16,7 @@ module FrancisCMS
       config_file 'config/settings.yml'
 
       helpers Helpers::ApplicationHelper
+      helpers Helpers::FeedsHelper
       helpers Helpers::LinksHelper
       helpers Helpers::PostsHelper
       helpers Helpers::SessionsHelper

@@ -12,7 +12,7 @@ module FrancisCMS
           attrs << %Q{#{key}="#{value}"}
         end
 
-        %Q{<a #{attrs.sort * ' '}>#{body}</a>}
+        "<a #{attrs.sort * ' '}>#{body}</a>"
       end
 
       def page_description

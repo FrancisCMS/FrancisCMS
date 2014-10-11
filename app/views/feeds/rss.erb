@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title><%= @feed_title %></title>
+		<atom:link rel="self" href="<%= @feed_url %>" />
+		<link><%= @url %></link>
+		<description><%= @feed_description %></description>
+		<pubDate><%= @feed_items.first.published_at.to_s(:rss) %></pubDate>
+		<managingEditor><%= settings.user['email'] %> (<%= settings.user['name'] %>)</managingEditor>
+		<webMaster><%= settings.user['email'] %> (<%= settings.user['name'] %>)</webMaster>
+		<language><%= settings.site['language'] %></language>
+		<copyright><%= settings.license['title'] %></copyright>
+
+		<% @feed_items.each do |feed_item| %>
+			<item>
+				<guid><%= feed_item_url(feed_item) %></guid>
+				<title><%= feed_item.title %></title>
+				<link><%= feed_item_url(feed_item) %></link>
+				<pubDate><%= feed_item.published_at.to_s(:rss) %></pubDate>
+				<description>
+					<![CDATA[
+						<%= feed_item.to_html %>
+					]]>
+				</description>
+				<% if feed_item.tags.any? %>
+					<% feed_item.tags.each do |tag| %>
+						<category><%= tag.name %></category>
+					<% end %>
+				<% end %>
+			</item>
+		<% end %>
+	</channel>
+</rss>

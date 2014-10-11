@@ -15,6 +15,7 @@ site:
   title: 'Your Site’s Name'
   description: 'This is the online home to Jane Doe.'
   url: http://example.com
+  language: en-US
 
 source:
   title: GitHub

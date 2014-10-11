@@ -13,6 +13,10 @@ module FrancisCMS
       def excerpt?
         excerpt.present?
       end
+
+      def self.recent_posts_for_feed
+        limit(10).order('published_at DESC')
+      end
     end
   end
 end

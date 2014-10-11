@@ -17,6 +17,7 @@ module FrancisCMS
 
     use Rack::Deflater
 
+    use Routes::Feeds
     use Routes::Links
     use Routes::Posts
     use Routes::Root
