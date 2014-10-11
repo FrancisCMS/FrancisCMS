@@ -5,7 +5,7 @@
 		<atom:link rel="self" href="<%= @feed_url %>" />
 		<link><%= @url %></link>
 		<description><%= @feed_description %></description>
-		<pubDate><%= @feed_items.first.published_at.to_s(:rss) %></pubDate>
+		<pubDate><%= @feed_items.first.published_at.to_s(:rfc822) %></pubDate>
 		<managingEditor><%= settings.user['email'] %> (<%= settings.user['name'] %>)</managingEditor>
 		<webMaster><%= settings.user['email'] %> (<%= settings.user['name'] %>)</webMaster>
 		<language><%= settings.site['language'] %></language>
@@ -16,7 +16,7 @@
 				<guid><%= feed_item_url(feed_item) %></guid>
 				<title><%= feed_item.title %></title>
 				<link><%= feed_item_url(feed_item) %></link>
-				<pubDate><%= feed_item.published_at.to_s(:rss) %></pubDate>
+				<pubDate><%= feed_item.published_at.to_s(:rfc822) %></pubDate>
 				<% if feed_item.body? %>
 					<description>
 						<![CDATA[
