@@ -1,6 +1,6 @@
 module FrancisCMS
   module Routes
-    class Main < Base
+    class Root < Base
       get '/' do
         erb :index
       end

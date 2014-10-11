@@ -18,8 +18,8 @@ module FrancisCMS
     use Rack::Deflater
 
     use Routes::Links
-    use Routes::Main
     use Routes::Posts
+    use Routes::Root
     use Routes::Sessions
     use Routes::Tags
   end
