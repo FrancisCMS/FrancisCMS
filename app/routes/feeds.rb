@@ -10,8 +10,8 @@ module FrancisCMS
 
         @feed_title = "#{settings.site['title']}: #{param.capitalize}"
         @feed_description = "Recent #{param} from #{settings.site['title']} — #{settings.site['description']}"
-        @feed_url = feed_url(param)
-        @url = send("#{param}_url")
+        @feed_url = url_for feed_path(param)
+        @url = url_for send("#{param}_path")
 
         erb :rss, layout: false
       end

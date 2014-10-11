@@ -36,10 +36,6 @@ module FrancisCMS
         '/auth'
       end
 
-      def auth_url
-        base_url + auth_path
-      end
-
       def login_path
         '/login'
       end

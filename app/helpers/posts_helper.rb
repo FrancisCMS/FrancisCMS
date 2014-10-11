@@ -12,16 +12,8 @@ module FrancisCMS
         '/posts'
       end
 
-      def posts_url
-        base_url + posts_path
-      end
-
       def post_path(slug)
         "#{posts_path}/#{slug}"
-      end
-
-      def post_url(slug)
-        base_url + post_path(slug)
       end
 
       def new_post_path

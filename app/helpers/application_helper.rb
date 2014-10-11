@@ -45,6 +45,10 @@ module FrancisCMS
       def root_path
         '/'
       end
+
+      def url_for(path)
+        base_url + path
+      end
     end
   end
 end

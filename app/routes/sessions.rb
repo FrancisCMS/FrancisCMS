@@ -24,7 +24,7 @@ module FrancisCMS
         url = auth_code_is_valid?({
           client_id: base_url,
           code: auth_code,
-          redirect_uri: auth_url
+          redirect_uri: url_for(auth_path)
         })
 
         if url && url == settings.user['url']
