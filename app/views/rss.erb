@@ -17,11 +17,13 @@
 				<title><%= feed_item.title %></title>
 				<link><%= feed_item_url(feed_item) %></link>
 				<pubDate><%= feed_item.published_at.to_s(:rss) %></pubDate>
-				<description>
-					<![CDATA[
-						<%= feed_item.to_html %>
-					]]>
-				</description>
+				<% if feed_item.body? %>
+					<description>
+						<![CDATA[
+							<%= feed_item.to_html %>
+						]]>
+					</description>
+				<% end %>
 				<% if feed_item.tags.any? %>
 					<% feed_item.tags.each do |tag| %>
 						<category><%= tag.name %></category>

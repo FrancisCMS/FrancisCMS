@@ -1,30 +1,19 @@
 module FrancisCMS
   module Routes
     class Feeds < Base
-      get '/posts/atom', provides: 'application/atom+xml' do
+      get %r{(links|posts)/rss}, provides: 'application/rss+xml' do |param|
         content_type :xml
 
-        @feed_items = Post.recent_posts_for_feed
+        klass = param.capitalize.singularize.constantize
 
-        @feed_title = "#{settings.site['title']}: Posts"
-        @feed_subtitle = "All posts from #{settings.site['title']} — #{settings.site['description']}"
-        @feed_url = posts_atom_url
-        @url = posts_url
+        @feed_items = klass.send("recent_#{param}_for_feed")
 
-        erb :'feeds/atom', layout: false
-      end
+        @feed_title = "#{settings.site['title']}: #{param.capitalize}"
+        @feed_description = "Recent #{param} from #{settings.site['title']} — #{settings.site['description']}"
+        @feed_url = feed_url(param)
+        @url = send("#{param}_url")
 
-      get '/posts/rss', provides: 'application/rss+xml' do
-        content_type :xml
-
-        @feed_items = Post.recent_posts_for_feed
-
-        @feed_title = "#{settings.site['title']}: Posts"
-        @feed_description = "All posts from #{settings.site['title']} — #{settings.site['description']}"
-        @feed_url = posts_rss_url
-        @url = posts_url
-
-        erb :'feeds/rss', layout: false
+        erb :rss, layout: false
       end
     end
   end

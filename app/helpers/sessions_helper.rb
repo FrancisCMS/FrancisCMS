@@ -31,6 +31,7 @@ module FrancisCMS
         redirect login_path unless logged_in?
       end
 
+      # ----- URL Helpers ---------- #
       def auth_path
         '/auth'
       end

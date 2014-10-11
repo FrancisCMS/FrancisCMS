@@ -7,12 +7,21 @@ module FrancisCMS
         halt 404
       end
 
+      # ----- URL Helpers ---------- #
       def links_path
         '/links'
       end
 
+      def links_url
+        base_url + links_path
+      end
+
       def link_path(id)
         "#{links_path}/#{id}"
+      end
+
+      def link_url(id)
+        base_url + link_path(id)
       end
 
       def new_link_path

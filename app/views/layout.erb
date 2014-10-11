@@ -12,8 +12,8 @@
 	<meta name="twitter:site" content="<%= settings.user['twitter'] %>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="alternate" href="<%= posts_atom_path %>" title="<%= settings.site['title'] %>: Posts (Atom 1.0)" type="application/atom+xml">
-	<link rel="alternate" href="<%= posts_rss_path %>" title="<%= settings.site['title'] %>: Posts (RSS 2.0)" type="application/rss+xml">
+	<%= alternate_link_tag feed_path('links'), title: "#{settings.site['title']}: Links" %>
+	<%= alternate_link_tag feed_path('posts'), title: "#{settings.site['title']}: Posts" %>
 </head>
 <body>
 

@@ -1,8 +1,18 @@
 module FrancisCMS
   module Helpers
     module ApplicationHelper
-      def base_url
-        @base_url ||= request.base_url
+      def alternate_link_tag(url, html_options = {})
+        attrs = [%Q{href="#{url}"}, 'rel="alternate"']
+
+        html_options.each_pair do |key, value|
+          attrs << %Q{#{key}="#{value}"}
+        end
+
+        unless html_options.has_key? :type
+          attrs << 'type="application/rss+xml"'
+        end
+
+        "<link #{attrs.sort * ' '}>"
       end
 
       def link_to(body, url, html_options = {})
@@ -25,6 +35,11 @@ module FrancisCMS
         else
           "#{settings.site['title']} — #{settings.site['description']}"
         end
+      end
+
+      # ----- URL Helpers ---------- #
+      def base_url
+        @base_url ||= request.base_url
       end
 
       def root_path

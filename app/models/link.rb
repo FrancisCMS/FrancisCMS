@@ -7,8 +7,8 @@ module FrancisCMS
 
       validates :url, :title, presence: true
 
-      def body?
-        body.present?
+      def self.recent_links_for_feed
+        limit(10).order('published_at DESC')
       end
     end
   end

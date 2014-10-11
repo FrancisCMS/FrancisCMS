@@ -7,6 +7,7 @@ module FrancisCMS
         halt 404
       end
 
+      # ----- URL Helpers ---------- #
       def posts_path
         '/posts'
       end

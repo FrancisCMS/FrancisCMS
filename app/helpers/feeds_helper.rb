@@ -9,20 +9,12 @@ module FrancisCMS
         send("#{klass_string}_url", param)
       end
 
-      def posts_atom_path
-        "#{posts_path}/atom"
+      def feed_path(content_type)
+        send("#{content_type}_path") + '/rss'
       end
 
-      def posts_atom_url
-        base_url + posts_atom_path
-      end
-
-      def posts_rss_path
-        "#{posts_path}/rss"
-      end
-
-      def posts_rss_url
-        base_url + posts_rss_path
+      def feed_url(content_type)
+        base_url + feed_path(content_type)
       end
     end
   end
