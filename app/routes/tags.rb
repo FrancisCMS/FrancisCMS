@@ -12,8 +12,14 @@ module FrancisCMS
         get '/:slug' do
           tag
 
-          @posts = Post.tagged_with(@tag.name)
-          @links = Link.tagged_with(@tag.name)
+          if logged_in?
+            @posts = Post.tagged_with(@tag.name)
+            @links = Link.tagged_with(@tag.name)
+          else
+            @posts = Post.tagged_with(@tag.name).exclude_drafts
+            @links = Link.tagged_with(@tag.name).exclude_drafts
+          end
+
           @page_title = "Content tagged “#{@tag.name}”"
 
           erb :'tags/show'

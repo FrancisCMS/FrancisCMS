@@ -2,11 +2,8 @@ module FrancisCMS
   module Models
     class Post < ActiveRecord::Base
       include Htmlable
-      include Feedable
       include FriendlyId
       include Publishable
-
-      acts_as_ordered_taggable
 
       validates :title, :slug, :body, presence: true
 

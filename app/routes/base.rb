@@ -24,3 +24,15 @@ module FrancisCMS
     end
   end
 end
+
+module Sinatra
+  module Foo
+    module Helpers
+      def bar
+        'bar!'
+      end
+    end
+  end
+
+  register Foo
+end

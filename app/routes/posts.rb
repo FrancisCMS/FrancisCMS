@@ -3,7 +3,7 @@ module FrancisCMS
     class Posts < Base
       namespace '/posts' do
         get '' do
-          @posts = Post.where('published_at IS NOT NULL').order('published_at DESC')
+          @posts = Post.recent_items(include_drafts: logged_in?)
           @page_title = 'Posts'
 
           erb :'posts/index'

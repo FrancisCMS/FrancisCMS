@@ -4,9 +4,25 @@ module FrancisCMS
       extend ActiveSupport::Concern
 
       included do
+        acts_as_ordered_taggable
+
         attr_accessor :published
 
         before_save :set_published_at
+
+        scope :exclude_drafts, lambda { where('published_at IS NOT NULL') }
+      end
+
+      module ClassMethods
+        def recent_items(options = {})
+          opts = { include_drafts: false, limit: nil }.merge(options)
+
+          if opts[:include_drafts]
+            limit(opts[:limit]).order('created_at DESC')
+          else
+            exclude_drafts.limit(opts[:limit]).order('published_at DESC')
+          end
+        end
       end
 
       private

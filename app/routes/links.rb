@@ -3,7 +3,7 @@ module FrancisCMS
     class Links < Base
       namespace '/links' do
         get '' do
-          @links = Link.where('published_at IS NOT NULL').order('published_at DESC')
+          @links = Link.recent_items(include_drafts: logged_in?)
           @page_title = 'Links'
 
           erb :'links/index'
@@ -11,7 +11,7 @@ module FrancisCMS
 
         post '' do
           require_login
-          @link = Link.new(params[:link]
+          @link = Link.new(params[:link])
 
           if @link.save
             redirect link_path(@link.id)

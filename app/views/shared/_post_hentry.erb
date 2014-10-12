@@ -1,6 +1,9 @@
 <article class="h-entry">
 	<header>
-		<h1 class="p-name"><%= link_to post.title, post_path(post.slug), class: 'u-url' %></h1>
+		<h1 class="p-name">
+			<%= link_to post.title, post_path(post.slug), class: 'u-url' %>
+			<%= '(Draft)' unless post.published_at? %>
+		</h1>
 	</header>
 
 	<% if post.excerpt? %>
@@ -9,7 +12,9 @@
 		</div>
 	<% end %>
 
-	<footer>
-		<p>Published on <time class="dt-published" datetime="<%= post.published_at.to_s(:iso8601) %>"><%= post.published_at.to_s(:display) %></time>.</p>
-	</footer>
+	<% if post.published_at? %>
+		<footer>
+			<p>Published on <time class="dt-published" datetime="<%= post.published_at.to_s(:iso8601) %>"><%= post.published_at.to_s(:display) %></time>.</p>
+		</footer>
+	<% end %>
 </article>
