@@ -4,6 +4,11 @@
 		<input type="text" id="post_title" name="post[title]" required value="<%= @post.title %>">
 	</li>
 	<li>
+		<label for="post_slug">URL</label>
+		<%= url_for posts_path %>/
+		<input type="text" id="post_slug" name="post[slug]" value="<%= @post.slug %>">
+	</li>
+	<li>
 		<label for="post_body">Body</label>
 		<textarea id="post_body" name="post[body]" required><%= @post.body %></textarea>
 	</li>

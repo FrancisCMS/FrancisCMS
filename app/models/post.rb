@@ -7,7 +7,11 @@ module FrancisCMS
 
       validates :title, :slug, :body, presence: true
 
-      friendly_id :title, use: :slugged
+      friendly_id :title
+
+      def should_generate_new_friendly_id?
+        slug? ? false : title_changed?
+      end
     end
   end
 end

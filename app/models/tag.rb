@@ -5,7 +5,7 @@ module FrancisCMS
 
       validates :name, :slug, presence: true
 
-      friendly_id :name, use: :slugged
+      friendly_id :name
     end
   end
 end
