@@ -6,3 +6,5 @@ ActsAsTaggableOn::Tag.class_eval do
               slug_column: :slug,
               reserved_words: ['atom', 'create', 'destroy', 'edit', 'rss', 'show', 'update']
 end
+
+ActsAsTaggableOn.remove_unused_tags = true
