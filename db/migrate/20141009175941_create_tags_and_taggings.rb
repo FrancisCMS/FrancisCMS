@@ -11,13 +11,12 @@ class CreateTagsAndTaggings < ActiveRecord::Migration
     create_table :taggings do |t|
       t.references :tag
       t.references :taggable, polymorphic: true
-      t.references :tagger, polymorphic: true
       t.string     :context, limit: 128
       t.datetime   :created_at
     end
 
-    add_index :taggings, [:tag_id, :taggable_id, :taggable_type], unique: true
-    add_index :taggings, [:tagger_id, :tagger_type, :context], unique: true
+    add_index :taggings, [:tag_id, :context], unique: true
+    add_index :taggings, [:taggable_type, :taggable_id], unique: true
   end
 
   def down
