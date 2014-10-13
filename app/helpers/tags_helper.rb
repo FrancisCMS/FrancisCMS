@@ -2,7 +2,7 @@ module FrancisCMS
   module Helpers
     module TagsHelper
       def tag
-        @tag ||= Tag.friendly.find(params[:slug])
+        @tag ||= Tag.find(params[:slug])
       rescue ActiveRecord::RecordNotFound
         halt 404
       end

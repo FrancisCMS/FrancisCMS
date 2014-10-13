@@ -1,4 +1,5 @@
 FriendlyId.defaults do |config|
+  config.use :finders
   config.use :reserved
   config.use :slugged
 
