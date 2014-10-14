@@ -12,7 +12,6 @@ gem 'activerecord'
 gem 'sinatra-activerecord'
 
 # Utilities
-gem 'acts-as-taggable-on'
 gem 'friendly_id'
 gem 'mechanize'
 gem 'redcarpet'

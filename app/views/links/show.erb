@@ -17,15 +17,6 @@
 
 	<footer role="complementary">
 		<%= partial 'shared/author_hcard' %>
-
-		<% if @link.tags.any? %>
-			<dl>
-				<dt>Tags</dt>
-				<% @link.tags.each do |tag| %>
-					<dd><%= link_to tag.name, tag_path(tag.slug), class: 'p-category' %></dd>
-				<% end %>
-			</dl>
-		<% end %>
 	</footer>
 
 	<% if logged_in? %>

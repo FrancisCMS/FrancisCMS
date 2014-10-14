@@ -4,8 +4,6 @@ module FrancisCMS
       extend ActiveSupport::Concern
 
       included do
-        acts_as_ordered_taggable
-
         attr_accessor :published
 
         before_save :set_published_at

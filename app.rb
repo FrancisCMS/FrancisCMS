@@ -22,7 +22,6 @@ module FrancisCMS
     use Routes::Posts
     use Routes::Root
     use Routes::Sessions
-    use Routes::Tags
   end
 end
 

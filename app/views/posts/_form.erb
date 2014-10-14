@@ -17,10 +17,6 @@
 		<input type="text" id="post_excerpt" maxlength="255" name="post[excerpt]" value="<%= @post.excerpt %>">
 	</li>
 	<li>
-		<label for="post_tag_list">Tags</label>
-		<input type="text" id="post_tag_list" name="post[tag_list]" value="<%= @post.tag_list %>">
-	</li>
-	<li>
 		<label for="post_published">
 			<input type="hidden" name="post[published]" value="0">
 			<input type="checkbox" id="post_published" name="post[published]" value="1"<%= ' checked' if @post.published_at? %>>
