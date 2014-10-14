@@ -4,6 +4,7 @@ module FrancisCMS
       include Htmlable
       include FriendlyId
       include Publishable
+      include Taggable
 
       validates :title, :slug, :body, presence: true
 
