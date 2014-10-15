@@ -1,11 +1,13 @@
 module FrancisCMS
   module Models
     class Link < ActiveRecord::Base
-      include Htmlable
       include Publishable
+      include Redcarpeted
       include Taggable
 
       validates :url, :title, presence: true
+
+      redcarpet :body
     end
   end
 end
