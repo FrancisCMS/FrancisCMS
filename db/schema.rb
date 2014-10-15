@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20141014223447) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id", "taggable_type", "taggable_id"], name: "index_taggings_on_tag_id_and_taggable_type_and_taggable_id", unique: true, using: :btree
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type"], name: "index_taggings_on_tag_id_and_taggable_id_and_taggable_type", unique: true, using: :btree
 
   create_table "tags", force: true do |t|
     t.string "name", null: false

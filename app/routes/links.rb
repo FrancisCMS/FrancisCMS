@@ -11,7 +11,7 @@ module FrancisCMS
 
         post '' do
           require_login
-          @link = Link.new(params[:link])
+          @link = Link.new(generate_taggable_params(params[:link]))
 
           if @link.save
             redirect link_path(@link.id)
@@ -42,7 +42,7 @@ module FrancisCMS
             require_login
             link
 
-            if @link.update_attributes(params[:link])
+            if @link.update_attributes(generate_taggable_params(params[:link]))
               redirect link_path(@link.id)
             else
               @page_title = "Editing “#{@link.title}”"

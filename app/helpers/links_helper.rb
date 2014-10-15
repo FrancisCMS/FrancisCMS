@@ -13,7 +13,7 @@ module FrancisCMS
       end
 
       def link_path(id)
-        File.join links_path, id
+        File.join links_path, id.to_s
       end
 
       def new_link_path
