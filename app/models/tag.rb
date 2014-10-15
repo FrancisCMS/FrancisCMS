@@ -10,6 +10,10 @@ module FrancisCMS
       validates :name, :slug, presence: true
 
       friendly_id :name
+
+      def self.destroy_unused
+        joins('LEFT OUTER JOIN taggings ON taggings.tag_id = tags.id').where('tag_id IS NULL').destroy_all
+      end
     end
   end
 end
