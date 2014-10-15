@@ -12,7 +12,13 @@ module FrancisCMS
         get '/:slug' do
           tag
 
-          # Get @posts and @links tagged with @tag.name
+          @posts = @tag.posts
+          @links = @tag.links
+
+          unless logged_in?
+            @posts = @posts.exclude_drafts
+            @links = @links.exclude_drafts
+          end
 
           @page_title = "Content tagged “#{tag.name}”"
 
