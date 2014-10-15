@@ -35,7 +35,7 @@ module FrancisCMS
             post
             @page_title = @post.title
 
-            unless @post.excerpt.empty?
+            unless @post.excerpt.blank?
               @page_description = @post.excerpt
             end
 
