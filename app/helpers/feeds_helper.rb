@@ -10,7 +10,7 @@ module FrancisCMS
       end
 
       def feed_path(content_type)
-        send("#{content_type}_path") + '/rss'
+        File.join send("#{content_type}_path"), 'rss'
       end
     end
   end

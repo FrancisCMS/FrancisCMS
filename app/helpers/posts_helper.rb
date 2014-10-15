@@ -13,15 +13,15 @@ module FrancisCMS
       end
 
       def post_path(slug)
-        "#{posts_path}/#{slug}"
+        File.join posts_path, slug
       end
 
       def new_post_path
-        "#{posts_path}/new"
+        File.join posts_path, 'new'
       end
 
       def edit_post_path(slug)
-        "#{post_path(slug)}/edit"
+        File.join post_path(slug), 'edit'
       end
     end
   end

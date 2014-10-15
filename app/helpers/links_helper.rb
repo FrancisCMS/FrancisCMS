@@ -13,15 +13,15 @@ module FrancisCMS
       end
 
       def link_path(id)
-        "#{links_path}/#{id}"
+        File.join links_path, id
       end
 
       def new_link_path
-        "#{links_path}/new"
+        File.join links_path, 'new'
       end
 
       def edit_link_path(id)
-        "#{link_path(id)}/edit"
+        File.join link_path(id), 'edit'
       end
     end
   end

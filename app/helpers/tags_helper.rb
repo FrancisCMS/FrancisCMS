@@ -13,7 +13,7 @@ module FrancisCMS
       end
 
       def tag_path(slug)
-        File.join(tags_path, slug)
+        File.join tags_path, slug
       end
     end
   end
