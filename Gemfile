@@ -17,6 +17,7 @@ gem 'mechanize'
 gem 'redcarpet'
 
 group :development do
+  gem 'pry'
   gem 'shotgun'
   gem 'tux'
 end
