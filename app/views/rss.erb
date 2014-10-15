@@ -24,6 +24,11 @@
 						]]>
 					</description>
 				<% end %>
+				<% if feed_item.tags.any? %>
+					<% feed_item.tags.each do |tag| %>
+						<category><%= tag.name %></category>
+					<% end %>
+				<% end %>
 			</item>
 		<% end %>
 	</channel>
