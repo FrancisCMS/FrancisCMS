@@ -1,7 +1,7 @@
 <article class="h-entry h-as-article">
 	<header>
 		<h1 class="p-name">
-			<%= link_to @post.title, post_path(@post.slug), class: 'u-url' %>
+			<%= link_to @post.title, post_path(@post), class: 'u-url' %>
 			<%= '(Draft)' unless @post.published_at? %>
 		</h1>
 		<% if @post.published_at? %>
@@ -20,7 +20,7 @@
 			<dl>
 				<dt>Tags</dt>
 				<% @post.tags.each do |tag| %>
-					<dd><%= link_to tag.name, tag_path(tag.slug), class: 'p-category' %></dd>
+					<dd><%= link_to tag.name, tag_path(tag), class: 'p-category' %></dd>
 				<% end %>
 			</dl>
 		<% end %>
@@ -28,9 +28,9 @@
 
 	<% if logged_in? %>
 		<menu role="menu">
-			<li role="menuitem"><%= link_to 'Edit', edit_post_path(@post.slug) %></li>
+			<li role="menuitem"><%= link_to 'Edit', edit_post_path(@post) %></li>
 			<li role="menuitem">
-				<%= partial 'shared/delete_form', locals: { action: post_path(@post.slug) } %>
+				<%= partial 'shared/delete_form', locals: { action: post_path(@post) } %>
 			</li>
 		</menu>
 	<% end %>

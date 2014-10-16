@@ -23,6 +23,10 @@ module FrancisCMS
         end
       end
 
+      def parameterize
+        self.class.method_defined?(:slug) ? slug : id.to_s
+      end
+
       private
 
       def set_published_at

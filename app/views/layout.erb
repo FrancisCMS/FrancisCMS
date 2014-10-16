@@ -12,8 +12,8 @@
 	<meta name="twitter:site" content="<%= settings.user['twitter'] %>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<%= alternate_link_tag feed_path('links'), title: "#{settings.site['title']}: Links" %>
-	<%= alternate_link_tag feed_path('posts'), title: "#{settings.site['title']}: Posts" %>
+	<%= alternate_link_tag links_feed_path, title: "#{settings.site['title']}: Links" %>
+	<%= alternate_link_tag posts_feed_path, title: "#{settings.site['title']}: Posts" %>
 </head>
 <body>
 

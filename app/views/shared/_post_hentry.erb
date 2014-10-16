@@ -1,7 +1,7 @@
 <article class="h-entry">
 	<header>
 		<h1 class="p-name">
-			<%= link_to post.title, post_path(post.slug), class: 'u-url' %>
+			<%= link_to post.title, post_path(post), class: 'u-url' %>
 			<%= '(Draft)' unless post.published_at? %>
 		</h1>
 	</header>

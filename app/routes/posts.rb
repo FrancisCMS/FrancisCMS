@@ -18,7 +18,7 @@ module FrancisCMS
           @post = Post.new(generate_taggable_params(params[:post]))
 
           if @post.save
-            redirect post_path(@post.slug)
+            redirect post_path(@post)
           else
             @page_title = 'Add a new post'
 
@@ -51,7 +51,7 @@ module FrancisCMS
             post
 
             if @post.update_attributes(generate_taggable_params(params[:post]))
-              redirect post_path(@post.slug)
+              redirect post_path(@post)
             else
               @page_title = "Editing “#{@post.title}”"
 

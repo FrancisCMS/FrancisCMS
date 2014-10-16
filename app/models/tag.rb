@@ -11,6 +11,10 @@ module FrancisCMS
 
       friendly_id :name
 
+      def parameterize
+        slug
+      end
+
       def self.destroy_unused
         joins('LEFT OUTER JOIN taggings ON taggings.tag_id = tags.id').where('tag_id IS NULL').destroy_all
       end

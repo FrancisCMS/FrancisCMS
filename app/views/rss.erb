@@ -5,7 +5,7 @@
 		<atom:link rel="self" href="<%= @feed_url %>" />
 		<link><%= @url %></link>
 		<description><%= @feed_description %></description>
-		<pubDate><%= @feed_items.first.published_at.to_s(:rfc822) %></pubDate>
+		<pubDate><%= @feed_items.first.published_at.to_s(:rfc822) if @feed_items.any? %></pubDate>
 		<managingEditor><%= settings.user['email'] %> (<%= settings.user['name'] %>)</managingEditor>
 		<webMaster><%= settings.user['email'] %> (<%= settings.user['name'] %>)</webMaster>
 		<language><%= settings.site['language'] %></language>

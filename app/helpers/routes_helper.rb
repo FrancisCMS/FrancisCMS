@@ -2,10 +2,6 @@ module FrancisCMS
   module Helpers
     module RoutesHelper
       # ----- Base ---------- #
-      def url_for(path)
-        base_url + path
-      end
-
       def base_url
         @base_url ||= request.base_url
       end
@@ -14,60 +10,56 @@ module FrancisCMS
         '/'
       end
 
-      # ----- Links ---------- #
-      def links_path
-        '/links'
-      end
-
-      def link_path(id)
-        File.join links_path, id.to_s
-      end
-
-      def new_link_path
-        File.join links_path, 'new'
-      end
-
-      def edit_link_path(id)
-        File.join link_path(id), 'edit'
-      end
-
-      # ----- Posts ---------- #
-      def posts_path
-        '/posts'
-      end
-
-      def post_path(slug)
-        File.join posts_path, slug
-      end
-
-      def new_post_path
-        File.join posts_path, 'new'
-      end
-
-      def edit_post_path(slug)
-        File.join post_path(slug), 'edit'
-      end
-
       # ----- Sessions ---------- #
-      def auth_path
-        '/auth'
+      ['auth', 'login', 'logout'].each do |route|
+        define_method "#{route}_path" do
+          root_path + route
+        end
+
+        define_method "#{route}_url" do
+          base_url + send("#{route}_path")
+        end
       end
 
-      def login_path
-        '/login'
+      # ----- Content ---------- #
+      ['links', 'posts', 'tags'].each do |route|
+        define_method "#{route}_path" do
+          root_path + route
+        end
+
+        define_method "#{route}_url" do
+          base_url + send("#{route}_path")
+        end
+
+        define_method "#{route.singularize}_path" do |item|
+          File.join send("#{route}_path"), item.parameterize
+        end
+
+        define_method "#{route.singularize}_url" do |item|
+          base_url + send("#{route.singularize}_path", item.parameterize)
+        end
       end
 
-      def logout_path
-        '/logout'
+      # ----- Create/Edit content ---------- #
+      ['link', 'post'].each do |route|
+        define_method "new_#{route}_path" do
+          File.join send("#{route.pluralize}_path"), 'new'
+        end
+
+        define_method "edit_#{route}_path" do |item|
+          File.join send("#{route}_path", item.parameterize), 'edit'
+        end
       end
 
-      # ----- Tags ---------- #
-      def tags_path
-        '/tags'
-      end
+      # ----- Feeds ---------- #
+      ['links', 'posts'].each do |route|
+        define_method "#{route}_feed_path" do
+          root_path + File.join(route, 'rss')
+        end
 
-      def tag_path(slug)
-        File.join tags_path, slug
+        define_method "#{route}_feed_url" do
+          base_url + send("#{route}_feed_path")
+        end
       end
     end
   end

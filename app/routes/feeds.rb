@@ -6,12 +6,12 @@ module FrancisCMS
 
         klass = param.capitalize.singularize.constantize
 
-        @feed_items = klass.send('recent_items')
+        @feed_items = klass.send 'recent_items'
 
         @feed_title = "#{settings.site['title']}: #{param.capitalize}"
         @feed_description = "Recent #{param} from #{settings.site['title']} — #{settings.site['description']}"
-        @feed_url = url_for feed_path(param)
-        @url = url_for send("#{param}_path")
+        @feed_url = send "#{param}_feed_url"
+        @url = send "#{param}_url"
 
         erb :rss, layout: false
       end

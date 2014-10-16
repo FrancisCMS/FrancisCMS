@@ -17,7 +17,7 @@ module FrancisCMS
           @link = Link.new(generate_taggable_params(params[:link]))
 
           if @link.save
-            redirect link_path(@link.id)
+            redirect link_path(@link)
           else
             @page_title = 'Add a new link'
 
@@ -46,7 +46,7 @@ module FrancisCMS
             link
 
             if @link.update_attributes(generate_taggable_params(params[:link]))
-              redirect link_path(@link.id)
+              redirect link_path(@link)
             else
               @page_title = "Editing “#{@link.title}”"
 
