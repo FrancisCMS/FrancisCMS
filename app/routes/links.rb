@@ -1,6 +1,9 @@
 module FrancisCMS
   module Routes
     class Links < Base
+      helpers Helpers::LinksHelper
+      helpers Helpers::TaggablesHelper
+
       namespace '/links' do
         get '' do
           @links = Link.recent_items(include_drafts: logged_in?)

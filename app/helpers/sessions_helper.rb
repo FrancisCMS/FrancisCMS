@@ -22,27 +22,6 @@ module FrancisCMS
 
         is_valid
       end
-
-      def logged_in?
-        return !!session[:user_id]
-      end
-
-      def require_login
-        redirect login_path unless logged_in?
-      end
-
-      # ----- URL Helpers ---------- #
-      def auth_path
-        '/auth'
-      end
-
-      def login_path
-        '/login'
-      end
-
-      def logout_path
-        '/logout'
-      end
     end
   end
 end

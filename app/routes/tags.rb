@@ -1,6 +1,8 @@
 module FrancisCMS
   module Routes
     class Tags < Base
+      helpers Helpers::TagsHelper
+
       namespace '/tags' do
         get '' do
           @tags = Tag.all.order('name ASC')

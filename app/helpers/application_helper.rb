@@ -25,6 +25,10 @@ module FrancisCMS
         "<a #{attrs.sort * ' '}>#{body}</a>"
       end
 
+      def logged_in?
+        return !!session[:user_id]
+      end
+
       def page_description
         @page_description || settings.site['description']
       end
@@ -37,17 +41,8 @@ module FrancisCMS
         end
       end
 
-      # ----- URL Helpers ---------- #
-      def base_url
-        @base_url ||= request.base_url
-      end
-
-      def root_path
-        '/'
-      end
-
-      def url_for(path)
-        base_url + path
+      def require_login
+        redirect login_path unless logged_in?
       end
     end
   end

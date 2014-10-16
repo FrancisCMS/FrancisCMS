@@ -17,11 +17,7 @@ module FrancisCMS
 
       helpers Helpers::ApplicationHelper
       helpers Helpers::FeedsHelper
-      helpers Helpers::LinksHelper
-      helpers Helpers::PostsHelper
-      helpers Helpers::SessionsHelper
-      helpers Helpers::TaggablesHelper
-      helpers Helpers::TagsHelper
+      helpers Helpers::RoutesHelper
     end
   end
 end

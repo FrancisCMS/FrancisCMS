@@ -1,6 +1,9 @@
 module FrancisCMS
   module Routes
     class Posts < Base
+      helpers Helpers::PostsHelper
+      helpers Helpers::TaggablesHelper
+
       namespace '/posts' do
         get '' do
           @posts = Post.recent_items(include_drafts: logged_in?)

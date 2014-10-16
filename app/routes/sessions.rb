@@ -1,6 +1,8 @@
 module FrancisCMS
   module Routes
     class Sessions < Base
+      helpers Helpers::SessionsHelper
+
       get '/login' do
         if logged_in?
           redirect root_path
