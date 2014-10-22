@@ -28,7 +28,7 @@ module FrancisCMS
       def set_published_at
         if self.published.to_bool
           if !published_at?
-            self.published_at = Time.now
+            self.published_at = Time.now.utc
           end
         else
           self.published_at = nil

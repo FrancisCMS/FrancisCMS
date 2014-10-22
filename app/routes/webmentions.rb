@@ -44,7 +44,8 @@ module FrancisCMS
             require_login
             webmention.verify
 
-            # redirect webmention_path(@webmention)
+            # TODO: if @webmention exists, redirect to it; otherwise, redirect to webmentions_path
+            redirect webmention_path(@webmention)
           end
 
           delete '' do
