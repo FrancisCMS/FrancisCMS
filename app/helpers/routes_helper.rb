@@ -32,11 +32,11 @@ module FrancisCMS
         end
 
         define_method "#{route.singularize}_path" do |item|
-          File.join send("#{route}_path"), item.parameterize
+          File.join send("#{route}_path"), item.to_param
         end
 
         define_method "#{route.singularize}_url" do |item|
-          base_url + send("#{route.singularize}_path", item.parameterize)
+          base_url + send("#{route.singularize}_path", item.to_param)
         end
       end
 
@@ -47,7 +47,7 @@ module FrancisCMS
         end
 
         define_method "edit_#{route}_path" do |item|
-          File.join send("#{route}_path", item.parameterize), 'edit'
+          File.join send("#{route}_path", item.to_param), 'edit'
         end
       end
 
