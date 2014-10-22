@@ -13,6 +13,8 @@ module FrancisCMS
     configure do
       set :root, File.dirname(__FILE__)
       set :views, Proc.new { File.join(root, 'app/views') }
+
+      set :site_url, YAML.load_file('config/settings.yml')['site']['url']
     end
 
     use Rack::Deflater
@@ -23,6 +25,7 @@ module FrancisCMS
     use Routes::Root
     use Routes::Sessions
     use Routes::Tags
+    use Routes::Webmentions
   end
 end
 

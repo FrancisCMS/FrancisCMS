@@ -22,7 +22,7 @@ module FrancisCMS
       end
 
       # ----- Content ---------- #
-      ['links', 'posts', 'tags'].each do |route|
+      ['links', 'posts', 'tags', 'webmentions'].each do |route|
         define_method "#{route}_path" do
           root_path + route
         end
@@ -40,7 +40,7 @@ module FrancisCMS
         end
       end
 
-      # ----- Create/Edit content ---------- #
+      # ----- New/Edit ---------- #
       ['link', 'post'].each do |route|
         define_method "new_#{route}_path" do
           File.join send("#{route.pluralize}_path"), 'new'
