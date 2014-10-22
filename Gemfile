@@ -14,6 +14,7 @@ gem 'sinatra-activerecord'
 # Utilities
 gem 'friendly_id'
 gem 'mechanize'
+gem 'microformats2'
 gem 'redcarpet'
 
 group :development do
