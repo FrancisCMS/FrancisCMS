@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141014223447) do
+ActiveRecord::Schema.define(version: 20141022184758) do
 
   create_table "links", force: true do |t|
     t.string   "url",          null: false
@@ -49,5 +49,16 @@ ActiveRecord::Schema.define(version: 20141014223447) do
   end
 
   add_index "tags", ["name", "slug"], name: "index_tags_on_name_and_slug", unique: true, using: :btree
+
+  create_table "webmentions", force: true do |t|
+    t.string   "source",          null: false
+    t.string   "target",          null: false
+    t.string   "webmention_type"
+    t.text     "html"
+    t.text     "json"
+    t.datetime "verified_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
