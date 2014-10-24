@@ -1,0 +1,37 @@
+<% if resource.responses.any? %>
+	<header>
+		<h1>Responses</h1>
+	</header>
+
+	<ol>
+		<% resource.responses.each do |response| %>
+			<li>
+				<%= partial "shared/#{response.webmention_type}", locals: { webmention: response } %>
+			</li>
+		<% end %>
+	</ol>
+<% end %>
+
+<% if resource.likes.any? %>
+	<h2>Likes</h2>
+
+	<ol>
+		<% resource.likes.each do |like| %>
+			<li class="h-card">
+				<a class="u-url"><img class="p-name u-photo"></a>
+			</li>
+		<% end %>
+	</ol>
+<% end %>
+
+<% if resource.reposts.any? %>
+	<h2>Shares</h2>
+
+	<ol>
+		<% resource.reposts.each do |repost| %>
+			<li class="h-card">
+				<a class="u-url"><img class="p-name u-photo"></a>
+			</li>
+		<% end %>
+	</ol>
+<% end %>

@@ -16,7 +16,7 @@ module FrancisCMS
 
         if target_accepts_webmentions?(agent.get(target)) && source_links_to_target?(source_page)
           collection = Microformats2.parse(source_page.body)
-          entry_properties = collection.entries.first.to_hash[:properties]
+          entry_properties = collection.entry.to_hash[:properties]
 
           update_attributes(
             webmentionable: get_webmentionable,

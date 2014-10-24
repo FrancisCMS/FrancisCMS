@@ -15,6 +15,14 @@
 		</div>
 	<% end %>
 
+	<aside role="complementary">
+		<%= partial 'shared/webmention_form', locals: { target: link_url(@link) } %>
+
+		<% if @link.webmentions.any? %>
+			<%= partial 'shared/webmentions', locals: { resource: @link } %>
+		<% end %>
+	</aside>
+
 	<footer role="complementary">
 		<%= partial 'shared/author_hcard' %>
 

@@ -13,6 +13,14 @@
 		<%= @post.to_html %>
 	</div>
 
+	<aside role="complementary">
+		<%= partial 'shared/webmention_form', locals: { target: post_url(@post) } %>
+
+		<% if @post.webmentions.any? %>
+			<%= partial 'shared/webmentions', locals: { resource: @post } %>
+		<% end %>
+	</aside>
+
 	<footer role="complementary">
 		<%= partial 'shared/author_hcard' %>
 
