@@ -18,10 +18,18 @@ module FrancisCMS
           collection = Microformats2.parse(source_page.body)
           entry_properties = collection.entries.first.to_hash[:properties]
 
-          update_attributes(webmention_type: get_type(entry_properties), html: source_page.body, json: collection.to_json, verified_at: Time.now.utc)
+          update_attributes(
+            webmentionable: get_webmentionable,
+            webmention_type: get_type(entry_properties),
+            html: source_page.body,
+            json: collection.to_json,
+            verified_at: Time.now.utc
+          )
         else
           delete
         end
+      rescue ActiveRecord::RecordNotFound
+        delete
       rescue Mechanize::ResponseCodeError => err
         case err.response_code
           when '404', '410'; delete
@@ -44,6 +52,17 @@ module FrancisCMS
         else
           'reference'
         end
+      end
+
+      def get_webmentionable
+        webmentionable = nil
+        matches = target.match(%r{\A#{App.settings.site_url}/?(?<path>[links|posts])?/?(?<params>[A-Za-z0-9\-]+)?$})
+
+        if matches && matches[:path] && matches[:params]
+          webmentionable = matches[:path].singularize.capitalize.constantize.find(matches[:params])
+        end
+
+        webmentionable
       end
 
       def source_links_to_target?(page)
