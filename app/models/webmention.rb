@@ -1,6 +1,8 @@
 module FrancisCMS
   module Models
     class Webmention < ActiveRecord::Base
+      belongs_to :webmentionable, polymorphic: true
+
       validates :source, :target, presence: true
       validates :source, format: { :with => URI::regexp(%w(http https)) }
       validates :target, format: { :with => %r{\A#{App.settings.site_url}/?} }

@@ -4,6 +4,7 @@ module FrancisCMS
       include Publishable
       include Redcarpeted
       include Taggable
+      include Webmentionable
 
       validates :url, :title, presence: true
 

@@ -51,8 +51,10 @@ ActiveRecord::Schema.define(version: 20141022184758) do
   add_index "tags", ["name", "slug"], name: "index_tags_on_name_and_slug", unique: true, using: :btree
 
   create_table "webmentions", force: true do |t|
-    t.string   "source",          null: false
-    t.string   "target",          null: false
+    t.string   "source",              null: false
+    t.string   "target",              null: false
+    t.integer  "webmentionable_id"
+    t.string   "webmentionable_type"
     t.string   "webmention_type"
     t.text     "html"
     t.text     "json"
