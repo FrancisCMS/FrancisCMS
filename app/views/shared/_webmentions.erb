@@ -6,7 +6,7 @@
 	<ol>
 		<% resource.responses.each do |response| %>
 			<li>
-				<%= partial "shared/#{response.webmention_type}", locals: { webmention: response } %>
+				<%= partial "shared/#{response.webmention_type}_hcite", locals: { webmention: response } %>
 			</li>
 		<% end %>
 	</ol>
@@ -18,7 +18,7 @@
 	<ol>
 		<% resource.likes.each do |like| %>
 			<li class="h-card">
-				<a class="u-url"><img class="p-name u-photo"></a>
+				<%= link_to image_tag(like.author_photo, alt: like.author_name, class: 'p-name u-photo'), like.author_url, class: 'u-url' %>
 			</li>
 		<% end %>
 	</ol>
@@ -30,7 +30,7 @@
 	<ol>
 		<% resource.reposts.each do |repost| %>
 			<li class="h-card">
-				<a class="u-url"><img class="p-name u-photo"></a>
+				<%= link_to image_tag(repost.author_photo, alt: repost.author_name, class: 'p-name u-photo'), repost.author_url, class: 'u-url' %>
 			</li>
 		<% end %>
 	</ol>

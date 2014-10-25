@@ -15,6 +15,16 @@ module FrancisCMS
         "<link #{attrs.sort * ' '}>"
       end
 
+      def image_tag(source, html_options = {})
+        attrs = [%Q{src="#{source}"}]
+
+        html_options.each_pair do |key, value|
+          attrs << %Q{#{key}="#{value}"}
+        end
+
+        "<img #{attrs.sort * ' '}>"
+      end
+
       def link_to(body, url, html_options = {})
         attrs = [%Q{href="#{url}"}]
 
