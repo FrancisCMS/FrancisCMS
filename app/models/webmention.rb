@@ -8,29 +8,29 @@ module FrancisCMS
       validates :target, format: { :with => %r{\A#{App.settings.site_url}/?} }
 
       def author_name
-        name = URI.parse(source).host
-        name = card.name.to_s if card && card.respond_to?('name')
-        name = entry.author.format.name.to_s if entry.respond_to?('author') && entry.author.format.respond_to?('name')
+        name = entry.try(:author).try(:format).try(:name)
+        name ||= card.try(:name)
+        name ||= URI.parse(source).host
 
-        name
+        name.to_s
       end
 
       def author_photo
-        photo = 'http://www.placecage.com/150/150'
-        photo = card.photo.to_s if card && card.respond_to?('photo')
-        photo = entry.author.format.photo.to_s if entry.respond_to?('author') && entry.author.format.respond_to?('photo')
+        photo = entry.try(:author).try(:format).try(:photo)
+        photo ||= card.try(:photo)
+        photo ||= 'http://www.placecage.com/150/150'
 
-        absolutize photo
+        absolutize photo.to_s
       end
 
       def author_url
         url_parts = URI.parse(source)
 
-        url = "#{url_parts.scheme}://#{url_parts.host}"
-        url = card.url.to_s if card && card.respond_to?('url')
-        url = entry.author.format.url.to_s if entry.respond_to?('author') && entry.author.format.respond_to?('url')
+        url = entry.try(:author).try(:format).try(:url)
+        url ||= card.try(:url)
+        url ||= "#{url_parts.scheme}://#{url_parts.host}"
 
-        absolutize url
+        absolutize url.to_s
       end
 
       def entry_content
@@ -42,17 +42,17 @@ module FrancisCMS
       end
 
       def entry_url
-        url = source
-        url = entry.url.to_s if entry.respond_to?('url')
+        url = entry.try(:url)
+        url ||= source
 
-        absolutize url
+        absolutize url.to_s
       end
 
       def published_at
-        date = created_at
-        date = entry.published.to_s.to_datetime if entry.respond_to?('published')
+        date = entry.try(:published)
+        date ||= created_at
 
-        date
+        date.to_s.to_datetime
       end
 
       def verify
@@ -121,14 +121,13 @@ module FrancisCMS
       end
 
       def get_webmentionable
-        webmentionable = nil
         matches = target.match(%r{\A#{App.settings.site_url}/?(?<path>[links|posts])?/?(?<params>[A-Za-z0-9\-]+)?$})
 
         if matches && matches[:path] && matches[:params]
           webmentionable = matches[:path].singularize.capitalize.constantize.find(matches[:params])
         end
 
-        webmentionable
+        webmentionable ||= nil
       end
 
       def parsed_html
