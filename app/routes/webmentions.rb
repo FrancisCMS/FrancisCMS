@@ -12,24 +12,20 @@ module FrancisCMS
           source = params[:source]
           target = params[:target]
 
-          if source.nil? || target.nil?
-            status 400
-          else
-            webmention = Webmention.where(source: source, target: target).first_or_create(source: source, target: target)
+          webmention = Webmention.where(source: source, target: target).first_or_create(source: source, target: target)
 
-            webmention.verified_at = nil
+          webmention.verified_at = nil
 
-            if webmention.save
-              status 202
+          if webmention.save
+            status 202
 
-              if params[:referer] == settings.site['url']
-                redirect_to webmention_url(webmention)
-              else
-                erb webmention_url(webmention), layout: false
-              end
+            if params[:referer] == settings.site['url']
+              redirect_to webmention_url(webmention)
             else
-              status 400
+              erb webmention_url(webmention), layout: false
             end
+          else
+            status 400
           end
         end
 

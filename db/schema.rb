@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141022184758) do
+ActiveRecord::Schema.define(version: 20141029221400) do
 
   create_table "links", force: true do |t|
     t.string   "url",          null: false
@@ -62,5 +62,7 @@ ActiveRecord::Schema.define(version: 20141022184758) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "webmentions", ["webmention_type"], name: "index_webmentions_on_webmention_type", using: :btree
 
 end
