@@ -127,7 +127,7 @@ module FrancisCMS
           webmentionable = matches[:path].singularize.capitalize.constantize.find(matches[:params])
         end
 
-        webmentionable ||= nil
+        webmentionable
       end
 
       def parsed_html
