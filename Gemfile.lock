@@ -1,5 +1,6 @@
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     activemodel (4.1.6)
       activesupport (= 4.1.6)
@@ -17,6 +18,9 @@ GEM
     arel (5.0.1.20140414130214)
     backports (3.6.3)
     bond (0.5.1)
+    breakpoint (2.5.0)
+      sass (~> 3.3)
+      sassy-maps (< 1.0.0)
     builder (3.2.2)
     coderay (1.1.0)
     coffee-script (2.3.0)
@@ -66,6 +70,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    rails-assets-normalize.css (3.0.2)
     rake (10.3.2)
     redcarpet (3.2.0)
     ripl (0.7.1)
@@ -77,6 +82,8 @@ GEM
       rack-test (~> 0.6.2)
       ripl (>= 0.7.0)
     sass (3.4.6)
+    sassy-maps (0.4.0)
+      sass (~> 3.3)
     shotgun (0.9)
       rack (>= 1.0)
     sinatra (1.4.5)
@@ -134,11 +141,13 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   activesupport
+  breakpoint
   friendly_id
   mechanize
   microformats2
   mysql2
   pry
+  rails-assets-normalize.css
   redcarpet
   shotgun
   sinatra

@@ -1,5 +1,6 @@
 ruby '2.1.3'
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
 # Sinatra
 gem 'sinatra'
@@ -12,7 +13,9 @@ gem 'activerecord'
 gem 'sinatra-activerecord'
 
 # Assets
+gem 'breakpoint'
 gem 'sinatra-asset-pipeline', require: 'sinatra/asset_pipeline'
+gem 'rails-assets-normalize.css'
 
 # Utilities
 gem 'activesupport', require: 'active_support/all'
