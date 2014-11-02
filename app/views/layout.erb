@@ -14,6 +14,7 @@
 
 	<%= alternate_link_tag links_feed_path, title: "#{settings.site['title']}: Links" %>
 	<%= alternate_link_tag posts_feed_path, title: "#{settings.site['title']}: Posts" %>
+	<link rel="stylesheet" href="<%= stylesheet_path 'application' %>">
 	<link rel="webmention" href="<%= webmentions_url %>">
 </head>
 <body>

@@ -11,7 +11,11 @@ gem 'mysql2'
 gem 'activerecord'
 gem 'sinatra-activerecord'
 
+# Assets
+gem 'sinatra-asset-pipeline', require: 'sinatra/asset_pipeline'
+
 # Utilities
+gem 'activesupport', require: 'active_support/all'
 gem 'friendly_id'
 gem 'mechanize'
 gem 'microformats2'

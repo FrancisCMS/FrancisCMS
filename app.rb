@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'bundler'
-require 'active_support/all'
 
 Bundler.require
 $: << File.expand_path('../', __FILE__)
