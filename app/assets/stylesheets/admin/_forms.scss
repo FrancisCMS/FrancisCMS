@@ -1,7 +1,7 @@
 /* @group General form styles */
 
 	input[type="checkbox"] {
-		margin-right: nth($spacing, 1);
+		margin-right: $spacing-1;
 	}
 
 	textarea {
@@ -26,7 +26,7 @@
 	.url-prefix {
 		@include color($grey, light);
 		display: block;
-		margin-bottom: nth($spacing, 1);
+		margin-bottom: $spacing-1;
 
 		@include breakpoint($bp-narrow) {
 			@include table-cell;

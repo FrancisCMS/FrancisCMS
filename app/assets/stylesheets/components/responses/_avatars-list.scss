@@ -4,7 +4,7 @@
 
 	li {
 		float: left;
-		margin: 0 nth($spacing, 1) nth($spacing, 1) 0;
+		margin: 0 $spacing-1 $spacing-1 0;
 	}
 
 	img {

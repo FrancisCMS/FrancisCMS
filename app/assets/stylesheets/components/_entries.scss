@@ -3,6 +3,6 @@
 	@include thick-border;
 
 	> li {
-		margin-bottom: nth($spacing, 4);
+		margin-bottom: $spacing-4;
 	}
 }

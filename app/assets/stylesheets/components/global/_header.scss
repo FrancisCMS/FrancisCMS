@@ -1,5 +1,5 @@
 .global-header {
-	background-color: nth($darken, 1);
+	background-color: $darken-1;
 	@include padding-y;
 
 	@include breakpoint($tp-medium) {

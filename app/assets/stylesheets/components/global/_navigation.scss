@@ -19,7 +19,7 @@
 			display: inline-block;
 
 			+ li {
-				margin-left: nth($spacing, 3);
+				margin-left: $spacing-3;
 			}
 		}
 	}
@@ -34,7 +34,7 @@
 
 		&:focus,
 		&:hover {
-			background: nth($darken, 1);
+			background: $darken-1;
 		}
 	}
 

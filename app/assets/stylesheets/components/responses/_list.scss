@@ -1,8 +1,8 @@
 .responses-list {
 	@extend %reset-list;
-	margin-bottom: nth($spacing, 4);
+	margin-bottom: $spacing-4;
 
 	li {
-		margin-bottom: nth($spacing, 3);
+		margin-bottom: $spacing-3;
 	}
 }

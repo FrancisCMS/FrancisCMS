@@ -3,7 +3,7 @@
 }
 
 .response-content {
-	margin-bottom: nth($spacing, 1);
+	margin-bottom: $spacing-1;
 
 	@include breakpoint($bp-narrow) {
 		@include font-size(4);
@@ -29,10 +29,10 @@
 	.avatar {
 		@extend %avatar;
 		float: left;
-		margin-right: nth($spacing, 1);
+		margin-right: $spacing-1;
 
 		@include breakpoint($tp-wide) {
-			margin-right: nth($spacing, 2);
+			margin-right: $spacing-2;
 			position: absolute;
 			right: 100%;
 			top: 0.25rem;

@@ -23,3 +23,8 @@ $darken: (
 	rgba(#000, 0.25),
 	rgba(#000, 0.5)
 );
+
+$darken-1: nth($darken, 1);
+$darken-2: nth($darken, 2);
+$darken-3: nth($darken, 3);
+$darken-4: nth($darken, 4);

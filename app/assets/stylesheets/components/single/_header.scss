@@ -1,5 +1,5 @@
 .single-header {
-	margin-bottom: nth($spacing, 4);
+	margin-bottom: $spacing-4;
 	text-align: center;
 
 	@include breakpoint($tp-ultra) {

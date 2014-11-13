@@ -16,7 +16,7 @@
 		@extend %reset-list;
 
 		+ menu {
-			margin-top: nth($spacing, 2);
+			margin-top: $spacing-2;
 
 			@include breakpoint($bp-narrow) {
 				margin-top: 0;

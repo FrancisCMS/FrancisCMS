@@ -1,6 +1,6 @@
 .responses {
 	@extend %clearfix;
-	margin-bottom: nth($spacing, 2);
+	margin-bottom: $spacing-2;
 	@include thick-border;
 }
 

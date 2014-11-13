@@ -1,5 +1,5 @@
 .entry-header {
-	margin-bottom: nth($spacing, 2);
+	margin-bottom: $spacing-2;
 }
 
 .entry-title {
@@ -14,7 +14,7 @@
 .entry-content,
 .entry-excerpt {
 	p {
-		margin-bottom: nth($spacing, 2);
+		margin-bottom: $spacing-2;
 	}
 }
 

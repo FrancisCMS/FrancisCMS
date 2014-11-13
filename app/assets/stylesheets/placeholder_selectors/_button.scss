@@ -6,7 +6,7 @@
 	display: inline-block;
 	height: auto;
 	line-height: 1.125;
-	padding: nth($spacing, 1) nth($spacing, 2);
+	padding: $spacing-1 $spacing-2;
 	text-decoration: none;
 	white-space: nowrap;
 }
@@ -24,11 +24,11 @@
 
 %button--grey {
 	@extend %button;
-	background: nth($darken, 1);
+	background: $darken-1;
 
 	&:focus,
 	&:hover {
-		background: nth($darken, 2);
+		background: $darken-2;
 	}
 }
 

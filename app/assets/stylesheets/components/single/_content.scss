@@ -1,11 +1,11 @@
 .single-content {
 	@include thick-border;
-	margin-bottom: nth($spacing, 4);
-	padding-bottom: nth($spacing, 3);
+	margin-bottom: $spacing-4;
+	padding-bottom: $spacing-3;
 
 	h2,
 	h3 {
-		margin-top: nth($spacing, 3);
+		margin-top: $spacing-3;
 	}
 
 	@include breakpoint($bp-narrow) {
@@ -29,7 +29,7 @@
 	}
 
 	li {
-		margin-bottom: nth($spacing, 1);
+		margin-bottom: $spacing-1;
 	}
 
 	blockquote {
@@ -52,7 +52,7 @@
 	figcaption {
 		@include color($grey, light);
 		@include font-size(5);
-		margin-top: nth($spacing, 1);
+		margin-top: $spacing-1;
 
 		a {
 			@extend %anchor--grey;
@@ -61,21 +61,21 @@
 
 	img {
 		display: block;
-		border: 0.25rem solid nth($darken, 1);
+		border: 0.25rem solid $darken-1;
 		@include margin-x(auto);
 		padding: 0.25rem;
 	}
 
 	code {
-		background-color: nth($darken, 1);
+		background-color: $darken-1;
 		display: inline-block;
 		@include font-size(6);
-		padding: nth($spacing, 1);
+		padding: $spacing-1;
 	}
 
 	pre {
-		background-color: nth($darken, 1);
-		padding: nth($spacing, 2);
+		background-color: $darken-1;
+		padding: $spacing-2;
 
 		code {
 			background: none;
@@ -94,11 +94,11 @@
 	}
 
 	hr {
-		background-color: nth($darken, 1);
+		background-color: $darken-1;
 		height: 0.5rem;
 		border: 0;
 		display: block;
-		margin: nth($spacing, 3) auto;
+		margin: $spacing-3 auto;
 		width: 66%;
 	}
 }
