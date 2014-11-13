@@ -18,6 +18,13 @@
 		}
 	}
 
+	@include breakpoint($bp-wide) {
+		ol,
+		ul {
+			padding-left: 0;
+		}
+	}
+
 	p,
 	li {
 		@include font-size(4);
