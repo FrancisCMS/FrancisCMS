@@ -35,6 +35,21 @@ module FrancisCMS
         end
 
         namespace '/:slug' do
+          get '.json', provides: 'application/json' do
+            post
+
+            out = {
+              title:     @post.title,
+              permalink: post_url(@post),
+              date:      @post.published_at,
+              excerpt:   @post.excerpt,
+              tags:      @post.tags.collect { |tag| tag.name },
+              content:   @post.to_html
+            }
+
+            json out
+          end
+
           get '' do
             post
             @page_title = @post.title

@@ -40,6 +40,13 @@ module FrancisCMS
         end
       end
 
+      # ----- Alternate content formats ----------#
+      ['link', 'post'].each do |route|
+        define_method "#{route}_json_path" do |item|
+          send("#{route}_path", item.to_param) + '.json'
+        end
+      end
+
       # ----- New/Edit ---------- #
       ['link', 'post'].each do |route|
         define_method "new_#{route}_path" do

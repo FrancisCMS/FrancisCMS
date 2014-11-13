@@ -34,6 +34,21 @@ module FrancisCMS
         end
 
         namespace '/:id' do
+          get '.json', provides: 'application/json' do
+            link
+
+            out = {
+              title:     @link.title,
+              url:       @link.url,
+              permalink: link_url(@link),
+              date:      @link.published_at,
+              tags:      @link.tags.collect { |tag| tag.name },
+              content:   @link.to_html
+            }
+
+            json out
+          end
+
           get '' do
             link
             @page_title = "#{@link.title} — Links"

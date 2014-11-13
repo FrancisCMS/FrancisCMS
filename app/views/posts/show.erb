@@ -12,8 +12,8 @@
 <article class="single h-entry h-as-article">
 	<header class="single-header">
 		<h1 class="single-title p-name">
-			<%= link_to @post.title, post_path(@post), class: 'u-url' %>
-			<%= '(Draft)' unless @post.published_at? %>
+			<%= @post.title %>
+			<%= '<small class="draft">Draft</small>' unless @post.published_at? %>
 		</h1>
 
 		<% if @post.published_at? %>
@@ -35,6 +35,7 @@
 
 	<footer role="complementary">
 		<ul class="single-meta">
+			<li>“<%= link_to @post.title, post_path(@post), class: 'u-url' %>” is also available as <%= link_to 'JSON', post_json_path(@post), rel: 'alternate', type: 'application/json' %>.</li>
 			<li>
 				<%= partial 'shared/tags', locals: { resource: @post } %>
 			</li>

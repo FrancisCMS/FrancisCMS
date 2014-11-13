@@ -6,6 +6,10 @@
 		@extend %reset-list;
 	}
 
+	li {
+		margin-bottom: $spacing-1;
+	}
+
 	dt,
 	dd {
 		display: inline-block;

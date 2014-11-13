@@ -15,7 +15,7 @@
 	<%= alternate_link_tag links_feed_path, title: "#{settings.site['title']}: Links" %>
 	<%= alternate_link_tag posts_feed_path, title: "#{settings.site['title']}: Posts" %>
 	<link rel="stylesheet" href="<%= stylesheet_path 'application' %>">
-	<%= %Q{<link rel="stylesheet" href="#{stylesheet_path 'admin'}"} if logged_in? %>
+	<%= %Q{<link rel="stylesheet" href="#{stylesheet_path 'admin'}">} if logged_in? %>
 	<link rel="webmention" href="<%= webmentions_url %>">
 </head>
 <body>
