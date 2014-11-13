@@ -52,7 +52,7 @@ module FrancisCMS
         date = entry.try(:published)
         date ||= created_at
 
-        date.to_s.to_datetime
+        Time.parse(date.to_s)
       end
 
       def verify
@@ -71,7 +71,7 @@ module FrancisCMS
             webmention_type: get_type(entry_properties),
             html: source_page.body,
             json: collection.to_json,
-            verified_at: Time.now.utc
+            verified_at: Time.now
           )
         else
           delete
