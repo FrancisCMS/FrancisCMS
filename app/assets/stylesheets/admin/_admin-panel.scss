@@ -1,0 +1,54 @@
+.admin-panel {
+	@extend %clearfix;
+	background-color: rgba(#000, 0.85);
+	@include padding-x(1);
+	@include padding-y(2);
+
+	@include breakpoint($bp-narrow) {
+		bottom: 0;
+		left: 0;
+		position: fixed;
+		right: 0;
+	}
+
+	menu {
+		@extend %clearfix;
+		@extend %reset-list;
+
+		+ menu {
+			margin-top: nth($spacing, 2);
+
+			@include breakpoint($bp-narrow) {
+				margin-top: 0;
+			}
+		}
+
+		li {
+			float: left;
+			@include margin-x(1);
+		}
+
+		a {
+			@extend %button--blue;
+
+			&:focus,
+			&:hover {
+				color: #fff;
+			}
+		}
+
+		button {
+			height: auto;
+		}
+
+		.destroy {
+			@extend %button--red;
+		}
+	}
+
+	@include breakpoint($bp-narrow) {
+		.local {
+			float: right;
+		}
+	}
+}

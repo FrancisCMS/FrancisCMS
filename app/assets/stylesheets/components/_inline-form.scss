@@ -1,0 +1,17 @@
+.inline-form-fields {
+	@extend %clearfix;
+
+	input {
+		border-right: 0;
+		float: left;
+		max-width: 26em;
+		width: 70%
+	}
+
+	button {
+		border-radius: 0 0.25rem 0.25rem 0;
+		float: left;
+		max-width: 6em;
+		width: 30%;
+	}
+}

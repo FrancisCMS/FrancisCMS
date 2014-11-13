@@ -5,8 +5,12 @@
 	</li>
 	<li>
 		<label for="post_slug">URL</label>
-		<%= posts_url %>/
-		<input type="text" id="post_slug" name="post[slug]" value="<%= @post.slug %>">
+		<div class="url-field">
+			<div class="url-prefix"><%= posts_url %>/</div>
+			<div class="url-input">
+				<input type="text" id="post_slug" name="post[slug]" placeholder="an-example-post-url" value="<%= @post.slug %>">
+			</div>
+		</div>
 	</li>
 	<li>
 		<label for="post_body">Body</label>

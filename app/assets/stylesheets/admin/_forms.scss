@@ -1,0 +1,36 @@
+/* @group General form styles */
+
+	input[type="checkbox"] {
+		margin-right: nth($spacing, 1);
+	}
+
+	textarea {
+		height: 16rem;
+		resize: vertical;
+	}
+
+/* @end */
+
+/* @group Specific form styles */
+
+	@include breakpoint($bp-narrow) {
+		.url-field {
+			@include table;
+		}
+
+		.url-input {
+			@include table-cell;
+		}
+	}
+
+	.url-prefix {
+		@include color($grey, light);
+		display: block;
+		margin-bottom: nth($spacing, 1);
+
+		@include breakpoint($bp-narrow) {
+			@include table-cell;
+		}
+	}
+
+/* @end */

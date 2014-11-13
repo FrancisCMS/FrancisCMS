@@ -1,0 +1,8 @@
+.entries {
+	@extend %reset-list;
+	@include thick-border;
+
+	> li {
+		margin-bottom: nth($spacing, 4);
+	}
+}

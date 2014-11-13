@@ -1,11 +1,11 @@
 <% if @posts.any? || @links.any? %>
 	<% if @posts.any? %>
-		<section class="h-feed">
-			<header>
+		<section class="section h-feed">
+			<header class="section-header">
 				<h1 class="p-name">Posts tagged “<%= @tag.name %>”</h1>
 			</header>
 
-			<ol reversed>
+			<ol class="entries" reversed>
 				<% @posts.each do |post| %>
 					<li>
 						<%= partial 'shared/post_hentry', locals: { post: post } %>
@@ -16,12 +16,12 @@
 	<% end %>
 
 	<% if @links.any? %>
-		<section class="h-feed">
-			<header>
+		<section class="section h-feed">
+			<header class="section-header">
 				<h1 class="p-name">Links tagged “<%= @tag.name %>”</h1>
 			</header>
 
-			<ol reversed>
+			<ol class="entries" reversed>
 				<% @links.each do |link| %>
 					<li>
 						<%= partial 'shared/link_hentry', locals: { link: link } %>
@@ -33,3 +33,7 @@
 <% else %>
 	<p>No content tagged “<%= @tag.name %>” found!</p>
 <% end %>
+
+<footer class="content-footer">
+	<%= partial 'shared/author_hcard' %>
+</footer>

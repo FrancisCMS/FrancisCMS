@@ -1,0 +1,13 @@
+@mixin padding-x($n: 1) {
+	$p: nth($spacing, $n);
+
+	padding-left: $p;
+	padding-right: $p;
+}
+
+@mixin padding-y($n: 1) {
+	$p: nth($spacing, $n);
+
+	padding-bottom: $p;
+	padding-top: $p;
+}

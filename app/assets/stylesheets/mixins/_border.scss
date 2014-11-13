@@ -1,0 +1,3 @@
+@mixin thick-border($direction: bottom) {
+	border-#{$direction}: nth($spacing, 1) solid nth($darken, 1);
+}

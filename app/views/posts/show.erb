@@ -1,19 +1,31 @@
-<article class="h-entry h-as-article">
-	<header>
-		<h1 class="p-name">
+<% if logged_in? %>
+	<% content_for :admin_panel do %>
+		<menu class="local" role="menu">
+			<li role="menuitem"><%= link_to 'Edit', edit_post_path(@post) %></li>
+			<li role="menuitem">
+				<%= partial 'shared/delete_form', locals: { action: post_path(@post) } %>
+			</li>
+		</menu>
+	<% end %>
+<% end %>
+
+<article class="single h-entry h-as-article">
+	<header class="single-header">
+		<h1 class="single-title p-name">
 			<%= link_to @post.title, post_path(@post), class: 'u-url' %>
 			<%= '(Draft)' unless @post.published_at? %>
 		</h1>
+
 		<% if @post.published_at? %>
 			<p>Published on <time class="dt-published" datetime="<%= @post.published_at.to_s(:iso8601) %>"><%= @post.published_at.to_s(:display) %></time>.</p>
 		<% end %>
 	</header>
 
-	<div class="e-content">
+	<div class="single-content e-content">
 		<%= @post.to_html %>
 	</div>
 
-	<aside role="complementary">
+	<aside class="responses" id="responses" role="complementary">
 		<%= partial 'shared/webmention_form', locals: { target: post_url(@post) } %>
 
 		<% if @post.webmentions.any? %>
@@ -22,24 +34,12 @@
 	</aside>
 
 	<footer role="complementary">
-		<%= partial 'shared/author_hcard' %>
-
-		<% if @post.tags.any? %>
-			<dl>
-				<dt>Tags</dt>
-				<% @post.tags.each do |tag| %>
-					<dd><%= link_to tag.name, tag_path(tag), class: 'p-category' %></dd>
-				<% end %>
-			</dl>
-		<% end %>
-	</footer>
-
-	<% if logged_in? %>
-		<menu role="menu">
-			<li role="menuitem"><%= link_to 'Edit', edit_post_path(@post) %></li>
-			<li role="menuitem">
-				<%= partial 'shared/delete_form', locals: { action: post_path(@post) } %>
+		<ul class="single-meta">
+			<li>
+				<%= partial 'shared/tags', locals: { resource: @post } %>
 			</li>
-		</menu>
-	<% end %>
+		</ul>
+
+		<%= partial 'shared/author_hcard' %>
+	</footer>
 </article>

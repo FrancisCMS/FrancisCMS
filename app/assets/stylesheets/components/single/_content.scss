@@ -1,0 +1,104 @@
+.single-content {
+	@include thick-border;
+	margin-bottom: nth($spacing, 4);
+	padding-bottom: nth($spacing, 3);
+
+	h2,
+	h3 {
+		margin-top: nth($spacing, 3);
+	}
+
+	@include breakpoint($bp-narrow) {
+		h2 {
+			@include font-size(1);
+		}
+
+		h3 {
+			@include font-size(2);
+		}
+	}
+
+	p,
+	li {
+		@include font-size(4);
+		line-height: 1.6;
+
+		@include breakpoint($bp-wide) {
+			@include font-size(3);
+		}
+	}
+
+	li {
+		margin-bottom: nth($spacing, 1);
+	}
+
+	blockquote {
+		@include thick-border(left);
+		margin: 0;
+		@include padding-x(3);
+
+		p,
+		li {
+			@include font-size(5);
+		}
+	}
+
+	figure {
+		@include margin-x(0);
+		@include margin-y(3);
+		text-align: center;
+	}
+
+	figcaption {
+		@include color($grey, light);
+		@include font-size(5);
+		margin-top: nth($spacing, 1);
+
+		a {
+			@extend %anchor--grey;
+		}
+	}
+
+	img {
+		display: block;
+		border: 0.25rem solid nth($darken, 1);
+		@include margin-x(auto);
+		padding: 0.25rem;
+	}
+
+	code {
+		background-color: nth($darken, 1);
+		display: inline-block;
+		@include font-size(6);
+		padding: nth($spacing, 1);
+	}
+
+	pre {
+		background-color: nth($darken, 1);
+		padding: nth($spacing, 2);
+
+		code {
+			background: none;
+			padding: 0;
+		}
+	}
+
+	del {
+		@include color($grey, light);
+
+		code {
+			background: none;
+			padding: 0;
+			text-decoration: line-through;
+		}
+	}
+
+	hr {
+		background-color: nth($darken, 1);
+		height: 0.5rem;
+		border: 0;
+		display: block;
+		margin: nth($spacing, 3) auto;
+		width: 66%;
+	}
+}

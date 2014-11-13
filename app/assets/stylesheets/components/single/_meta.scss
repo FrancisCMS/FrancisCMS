@@ -1,0 +1,29 @@
+.single-meta {
+	@include color($grey, light);
+
+	&,
+	dl {
+		@extend %reset-list;
+	}
+
+	dt,
+	dd {
+		display: inline-block;
+	}
+
+	dt {
+		margin-right: nth($spacing, 1);
+	}
+
+	dd {
+		margin: 0;
+
+		&:after {
+			content: ", ";
+		}
+
+		&:last-child:after {
+			content: "";
+		}
+	}
+}

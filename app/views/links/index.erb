@@ -1,11 +1,11 @@
 <% content_for :main_classes do %>h-feed<% end %>
 
-<header>
+<header class="content-header">
 	<h1 class="p-name">Links</h1>
 </header>
 
 <% if @links.any? %>
-	<ol reversed>
+	<ol class="entries" reversed>
 		<% @links.each do |link| %>
 			<li>
 				<%= partial 'shared/link_hentry', locals: { link: link } %>
@@ -16,6 +16,6 @@
 	<p>No links found!</p>
 <% end %>
 
-<footer>
+<footer class="content-footer">
 	<%= partial 'shared/author_hcard' %>
 </footer>

@@ -1,0 +1,31 @@
+.entry-header {
+	margin-bottom: nth($spacing, 2);
+}
+
+.entry-title {
+	@include font-size(4);
+	margin: 0;
+
+	@include breakpoint($tp-medium) {
+		@include font-size(2);
+	}
+}
+
+.entry-content,
+.entry-excerpt {
+	p {
+		margin-bottom: nth($spacing, 2);
+	}
+}
+
+.entry-footer {
+	p {
+		@include color($grey, light);
+		@include font-size(6);
+		margin: 0;
+	}
+
+	a {
+		@extend %anchor--grey;
+	}
+}

@@ -1,0 +1,13 @@
+%ui-hidden--focusable {
+	@extend %ui-hidden;
+
+	&:active,
+	&:focus {
+		clip: auto;
+		height: auto;
+		margin: 0;
+		overflow: visible;
+		position: static;
+		width: auto;
+	}
+}

@@ -1,0 +1,44 @@
+%button {
+	-webkit-appearance: none;
+	border: 1px solid transparent;
+	border-radius: 0.25rem;
+	cursor: pointer;
+	display: inline-block;
+	height: auto;
+	line-height: 1.125;
+	padding: nth($spacing, 1) nth($spacing, 2);
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+%button--blue {
+	@extend %button;
+	@include bg-color($blue);
+	color: #fff;
+
+	&:focus,
+	&:hover {
+		@include bg-color($blue, dark);
+	}
+}
+
+%button--grey {
+	@extend %button;
+	background: nth($darken, 1);
+
+	&:focus,
+	&:hover {
+		background: nth($darken, 2);
+	}
+}
+
+%button--red {
+	@extend %button;
+	@include bg-color($red);
+	color: #fff;
+
+	&:focus,
+	&:hover {
+		@include bg-color($red, dark);
+	}
+}

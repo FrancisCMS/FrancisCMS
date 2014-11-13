@@ -1,16 +1,6 @@
-<article class="h-entry h-event">
-	<h1 class="p-name"><%= link_to "Webmention ##{@webmention.id}", webmention_url(@webmention), class: 'u-url' %></h1>
-
-	<div class="e-content p-description">
-		<p>
-			On <time class="dt-start" datetime="<%= @webmention.created_at.to_s(:iso8601) %>"><%= @webmention.created_at.to_s(:display) %></time>,
-			<%= link_to 'this URL', @webmention.source, rel: 'nofollow', title: @webmention.source %> mentioned <%= link_to 'that URL', @webmention.target, title: @webmention.target %>.
-		</p>
-		<p>This webmention is <%= @webmention.verified_at? ? 'verified' : 'unverified' %>.</p>
-	</div>
-
-	<% if logged_in? %>
-		<menu role="menu">
+<% if logged_in? %>
+	<% content_for :admin_panel do %>
+		<menu class="local" role="menu">
 			<li role="menuitem">
 				<form action="<%= webmention_path(@webmention) %>" method="post">
 					<input type="hidden" name="_method" value="put">
@@ -23,4 +13,18 @@
 			</li>
 		</menu>
 	<% end %>
+<% end %>
+
+<article class="single h-entry h-event">
+	<header class="single-header">
+		<h1 class="single-title p-name"><%= link_to "Webmention ##{@webmention.id}", webmention_url(@webmention), class: 'u-url' %></h1>
+	</header>
+
+	<div class="single-content e-content p-description">
+		<p>
+			On <time class="dt-start" datetime="<%= @webmention.created_at.to_s(:iso8601) %>"><%= @webmention.created_at.to_s(:display) %></time>,
+			<%= link_to 'this URL', @webmention.source, rel: 'nofollow', title: @webmention.source %> mentioned <%= link_to 'that URL', @webmention.target, title: @webmention.target %>.
+		</p>
+		<p>This webmention is <b><%= @webmention.verified_at? ? 'verified' : 'unverified' %></b>.</p>
+	</div>
 </article>

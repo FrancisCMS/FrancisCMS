@@ -15,47 +15,70 @@
 	<%= alternate_link_tag links_feed_path, title: "#{settings.site['title']}: Links" %>
 	<%= alternate_link_tag posts_feed_path, title: "#{settings.site['title']}: Posts" %>
 	<link rel="stylesheet" href="<%= stylesheet_path 'application' %>">
+	<%= %Q{<link rel="stylesheet" href="#{stylesheet_path 'admin'}"} if logged_in? %>
 	<link rel="webmention" href="<%= webmentions_url %>">
 </head>
 <body>
 
-	<%= link_to 'Skip to main content', '#main' %>
+	<%= link_to '<span class="container">Skip to main content</span>', '#main', class: 'skip-link' %>
 
-	<header role="banner">
-		<h1><%= link_to settings.site['title'], root_path, rel: 'home' %></h1>
+	<header class="global-header" role="banner">
+		<div class="container">
+			<h1><%= link_to settings.site['title'], root_path, rel: 'home' %></h1>
 
-		<nav role="navigation">
-			<ul>
-				<li><%= link_to 'Posts', posts_path %></li>
-				<li><%= link_to 'Links', links_path %></li>
-				<li><%= link_to 'Tags', tags_path %></li>
-				<li>
-					<% if logged_in? %>
-						<form action="<%= logout_path %>" method="post">
-							<button type="submit">Log Out</button>
-						</form>
-					<% else %>
-						<%= link_to 'Log In', login_path %>
-					<% end %>
-				</li>
-			</ul>
-		</nav>
+			<nav class="global-navigation" role="navigation">
+				<ul>
+					<li><%= link_to 'Posts', posts_path %></li>
+					<li><%= link_to 'Links', links_path %></li>
+					<li><%= link_to 'Tags', tags_path %></li>
+					<li>
+						<% if logged_in? %>
+							<form action="<%= logout_path %>" method="post">
+								<button type="submit">Log Out</button>
+							</form>
+						<% else %>
+							<%= link_to 'Log In', login_path %>
+						<% end %>
+					</li>
+				</ul>
+			</nav>
+		</div>
 	</header>
 
-	<main id="main" class="<%= yield_content :main_classes %>" role="main">
-		<%= yield %>
+	<main class="global-content <%= yield_content :main_classes %>" id="main" role="main">
+		<div class="container">
+			<%= yield %>
+		</div>
 	</main>
 
-	<footer role="contentinfo">
+	<footer class="global-footer" role="contentinfo">
 		<p>Some rights reserved. This site’s content is licensed under a <%= link_to "#{settings.license['title']} license", settings.license['url'], rel: 'license' %>. Source code available on <%= link_to settings.source['title'], settings.source['url'], rel: 'source' %>.</p>
 	</footer>
 
 	<% if logged_in? %>
-		<menu role="menu">
-			<li role="menuitem"><%= link_to 'New post', new_post_path %></li>
-			<li role="menuitem"><%= link_to 'New link', new_link_path %></li>
-		</menu>
+		<div class="admin-panel">
+			<%= yield_content :admin_panel %>
+
+			<menu class="global" role="menu">
+				<li role="menuitem"><%= link_to 'New post', new_post_path %></li>
+				<li role="menuitem"><%= link_to 'New link', new_link_path %></li>
+			</menu>
+		</div>
 	<% end %>
+
+	<script>
+		WebFontConfig = {
+			google: {
+				families: ['Open+Sans:700:latin','Source+Sans+Pro:400,400italic,700:latin']
+			}
+		};
+
+		(function(d,t) {
+			var w=d.createElement(t),s=d.getElementsByTagName(t)[0];
+			w.src='//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+			s.parentNode.insertBefore(w,s);
+		})(document,'script');
+	</script>
 
 </body>
 </html>

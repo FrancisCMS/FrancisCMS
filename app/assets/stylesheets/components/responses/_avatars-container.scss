@@ -1,0 +1,21 @@
+.avatars-container {
+	margin-bottom: nth($spacing, 3);
+
+	&:not(:last-child) {
+		float: left;
+		padding-right: nth($spacing, 2);
+		width: 50%;
+	}
+
+	& + & {
+		float: right;
+		padding-left: nth($spacing, 2);
+		width: 50%;
+	}
+
+	@include breakpoint($bp-narrow) {
+		h2 {
+			@include font-size(2);
+		}
+	}
+}
