@@ -34,3 +34,18 @@
 	}
 
 /* @end */
+
+/* @group Super-specific form styles */
+
+	.syndication-form {
+		background-color: $darken-1;
+		@include border-radius;
+		margin-top: $spacing-4;
+		padding: $spacing-1 $spacing-2;
+
+		@include breakpoint($bp-narrow) {
+			padding: $spacing-1 $spacing-3;
+		}
+	}
+
+/* @end */

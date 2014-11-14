@@ -4,6 +4,7 @@ module FrancisCMS
       include FriendlyId
       include Publishable
       include Redcarpeted
+      include Syndicatable
       include Taggable
       include Webmentionable
 

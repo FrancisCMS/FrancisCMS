@@ -3,6 +3,7 @@ module FrancisCMS
     class Link < ActiveRecord::Base
       include Publishable
       include Redcarpeted
+      include Syndicatable
       include Taggable
       include Webmentionable
 

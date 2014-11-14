@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029221400) do
+ActiveRecord::Schema.define(version: 20141113214647) do
 
   create_table "links", force: true do |t|
     t.string   "url",          null: false
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 20141029221400) do
   end
 
   add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
+
+  create_table "syndications", force: true do |t|
+    t.string  "url",               null: false
+    t.string  "name",              null: false
+    t.integer "syndicatable_id"
+    t.string  "syndicatable_type"
+  end
+
+  add_index "syndications", ["syndicatable_id", "syndicatable_type"], name: "index_syndications_on_syndicatable_id_and_syndicatable_type", using: :btree
+  add_index "syndications", ["url"], name: "index_syndications_on_url", unique: true, using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"

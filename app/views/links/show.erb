@@ -13,7 +13,7 @@
 	<header class="single-header">
 		<h1 class="single-title p-name">
 			<%= link_to @link.title, @link.url %>
-			<%= '<small class="draft">Draft</small>' unless @link.published_at? %>
+			<%= link_to 'Draft', edit_link_path(@link), class: 'draft' unless @link.published_at? %>
 		</h1>
 
 		<% if @link.published_at? %>
@@ -38,9 +38,16 @@
 	<footer role="complementary">
 		<ul class="single-meta">
 			<li>“<%= link_to @link.title, link_path(@link), class: 'u-url' %>” is also available as <%= link_to 'JSON', link_json_path(@link), rel: 'alternate', type: 'application/json' %>.</li>
-			<li>
-				<%= partial 'shared/tags', locals: { resource: @link } %>
-			</li>
+			<% if @link.tags.any? %>
+				<li>
+					<%= partial 'shared/tags', locals: { resource: @link } %>
+				</li>
+			<% end %>
+			<% if @link.syndications.any? %>
+				<li>
+					<%= partial 'shared/syndications', locals: { resource: @link } %>
+				</li>
+			<% end %>
 		</ul>
 
 		<%= partial 'shared/author_hcard' %>

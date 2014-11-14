@@ -1,8 +1,6 @@
-<% if resource.tags.any? %>
-	<dl>
-		<dt>Tagged:</dt>
-		<% resource.tags.each do |tag| %>
-			<dd><%= link_to tag.name, tag_path(tag), class: 'p-category' %></dd>
-		<% end %>
-	</dl>
-<% end %>
+<dl>
+	<dt>Tagged:</dt>
+	<% resource.tags.each do |tag| %>
+		<dd><%= link_to tag.name, tag_path(tag), class: 'p-category' %></dd>
+	<% end %>
+</dl>

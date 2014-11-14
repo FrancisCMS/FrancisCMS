@@ -1,12 +1,7 @@
 .draft {
-	@include bg-color($red);
-	border-radius: 0.25rem;
-	color: #fff;
-	display: inline-block;
+	@extend %button--red;
 	@include caps;
 	font-size: 50%;
-	font-weight: normal;
 	margin-left: $spacing-1;
-	padding: $spacing-1 $spacing-2;
 	vertical-align: middle;
 }

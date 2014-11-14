@@ -1,0 +1,6 @@
+<dl>
+	<dt>Syndicated:</dt>
+	<% resource.syndications.each do |syndication| %>
+		<dd><%= link_to syndication.name, syndication.url, class: 'u-syndication' %></dd>
+	<% end %>
+</dl>

@@ -1,4 +1,4 @@
-<header class="content-header">
+<header class="edit-content-header">
 	<h1>Editing “<%= @link.title %>”</h1>
 </header>
 
@@ -7,3 +7,5 @@
 
 	<%= partial :'links/form' %>
 </form>
+
+<%= partial :'shared/syndication_form', locals: { resource: @link, resource_type: 'link' } %>

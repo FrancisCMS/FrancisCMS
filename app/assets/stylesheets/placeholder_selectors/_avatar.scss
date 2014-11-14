@@ -1,4 +1,4 @@
 %avatar {
-	border-radius: 0.25rem;
+	@include border-radius;
 	height: 2.5rem;
 }

@@ -2,7 +2,7 @@
 	<header class="entry-header">
 		<h1 class="entry-title p-name">
 			<%= link_to link.title, link.url %>
-			<%= '<small class="draft">Draft</small>' unless link.published_at? %>
+			<%= link_to 'Draft', edit_link_path(link), class: 'draft' unless link.published_at? %>
 		</h1>
 	</header>
 
