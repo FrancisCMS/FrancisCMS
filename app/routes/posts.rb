@@ -14,7 +14,6 @@ module FrancisCMS
 
         post '' do
           require_login
-
           @post = Post.new(generate_taggable_params(params[:post]))
 
           if @post.save

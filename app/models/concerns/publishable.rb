@@ -4,7 +4,7 @@ module FrancisCMS
       extend ActiveSupport::Concern
 
       included do
-        attr_accessor :published
+        attr_accessor :is_draft
 
         before_save :set_published_at
 
@@ -26,12 +26,10 @@ module FrancisCMS
       private
 
       def set_published_at
-        if self.published.to_bool
-          if !published_at?
-            self.published_at = Time.now
-          end
-        else
+        if self.is_draft.to_bool
           self.published_at = nil
+        else
+          self.published_at ||= Time.now
         end
       end
     end

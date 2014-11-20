@@ -16,10 +16,10 @@
 		<input type="text" id="link_tag_list" name="link[tag_list]" value="<%= @link.tag_list %>">
 	</li>
 	<li>
-		<label for="link_published">
-			<input type="hidden" name="link[published]" value="0">
-			<input type="checkbox" id="link_published" name="link[published]" value="1"<%= ' checked' if @link.published_at? %>>
-			Published
+		<label for="link_is_draft">
+			<input type="hidden" name="link[is_draft]" value="0">
+			<input type="checkbox" id="link_is_draft" name="link[is_draft]" value="1"<%= ' checked' unless @link.published_at? %>>
+			Save as draft
 		</label>
 	</li>
 	<li>

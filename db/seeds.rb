@@ -2,21 +2,18 @@
 
 Link.create(
   url: 'http://google.com/',
-  title: 'Google',
-  published: true
+  title: 'Google'
 )
 
 Link.create(
   url: 'http://sixtwothree.org/',
-  title: 'sixtwothree.org',
-  published: true
+  title: 'sixtwothree.org'
 )
 
 Link.create(
   url: 'http://cnn.com/',
   title: 'CNN',
-  body: 'They call themselves a "news organization."',
-  published: true
+  body: 'They call themselves a "news organization."'
 )
 
 # ----- Posts ---------- #
@@ -40,6 +37,5 @@ EOS
 Post.create(
   title: 'A sample first post',
   body: body,
-  excerpt: 'This is a sample excerpt, which is a string with no markup.',
-  published: true
+  excerpt: 'This is a sample excerpt, which is a string with no markup.'
 )
