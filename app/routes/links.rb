@@ -6,8 +6,10 @@ module FrancisCMS
 
       namespace '/links' do
         get '' do
-          @links = Link.recent_items(include_drafts: logged_in?)
-          @page_title = 'Links'
+          page = params[:page] =~ /^\d+$/ ? params[:page].to_i : 1
+
+          @links = Link.entries_for_page({ include_drafts: logged_in?, page: page })
+          @page_title = page > 1 ? "Links – Page #{page}" : 'Links'
 
           erb :'links/index'
         end

@@ -1,6 +1,5 @@
 .entries {
 	@extend %reset-list;
-	@include thick-border;
 
 	> li {
 		margin-bottom: $spacing-4;

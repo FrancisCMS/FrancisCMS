@@ -4,17 +4,21 @@
 	<h1 class="p-name">Links</h1>
 </header>
 
-<% if @links.any? %>
-	<ol class="entries" reversed>
-		<% @links.each do |link| %>
-			<li>
-				<%= partial 'shared/link_hentry', locals: { link: link } %>
-			</li>
-		<% end %>
-	</ol>
-<% else %>
-	<p>No links found!</p>
-<% end %>
+<div class="entries-container">
+	<% if @links.any? %>
+		<ol class="entries" reversed>
+			<% @links.each do |link| %>
+				<li>
+					<%= partial 'shared/link_hentry', locals: { link: link } %>
+				</li>
+			<% end %>
+		</ol>
+
+		<%= will_paginate @links, next_label: 'Older', page_links: false, previous_label: 'Newer' %>
+	<% else %>
+		<p>No links found!</p>
+	<% end %>
+</div>
 
 <footer class="content-footer">
 	<%= partial 'shared/author_hcard' %>

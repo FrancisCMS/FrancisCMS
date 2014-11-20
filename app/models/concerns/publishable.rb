@@ -21,6 +21,16 @@ module FrancisCMS
             exclude_drafts.limit(opts[:limit]).order('published_at DESC')
           end
         end
+
+        def entries_for_page(options = {})
+          opts = { include_drafts: false, page: 1 }.merge(options)
+
+          if opts[:include_drafts]
+            page(opts['page'])
+          else
+            exclude_drafts.page(opts['page']).order('published_at DESC')
+          end
+        end
       end
 
       private

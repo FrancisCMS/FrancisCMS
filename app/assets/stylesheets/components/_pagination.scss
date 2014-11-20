@@ -1,0 +1,32 @@
+.pagination {
+	@extend %clearfix;
+	margin-bottom: $spacing-4;
+
+	a {
+		@extend %button--grey;
+	}
+
+	.disabled {
+		@extend %ui-hidden;
+	}
+
+	.next_page {
+		float: right;
+
+		&:after {
+			content: "→";
+			display: inline-block;
+			margin-left: $spacing-1;
+		}
+	}
+
+	.previous_page {
+		float: left;
+
+		&:before {
+			content: "←";
+			display: inline-block;
+			margin-right: $spacing-1;
+		}
+	}
+}

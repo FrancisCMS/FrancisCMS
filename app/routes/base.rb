@@ -24,6 +24,7 @@ module FrancisCMS
       helpers Helpers::RoutesHelper
 
       register Sinatra::AssetPipeline
+      register WillPaginate::Sinatra
 
       RailsAssets.load_paths.each do |path|
         settings.sprockets.append_path(path)

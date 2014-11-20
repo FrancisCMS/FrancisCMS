@@ -134,6 +134,7 @@ GEM
       unf_ext
     unf_ext (0.0.6)
     webrobots (0.1.1)
+    will_paginate (3.0.7)
 
 PLATFORMS
   ruby
@@ -156,3 +157,4 @@ DEPENDENCIES
   sinatra-contrib
   sinatra-partial
   tux
+  will_paginate

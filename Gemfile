@@ -23,6 +23,7 @@ gem 'friendly_id'
 gem 'mechanize'
 gem 'microformats2'
 gem 'redcarpet'
+gem 'will_paginate', require: ['will_paginate', 'will_paginate/active_record']
 
 group :development do
   gem 'pry'
