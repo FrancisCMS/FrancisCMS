@@ -12,23 +12,13 @@ module FrancisCMS
       end
 
       module ClassMethods
-        def recent_items(options = {})
-          opts = { include_drafts: false, limit: nil }.merge(options)
-
-          if opts[:include_drafts]
-            limit(opts[:limit]).order('created_at DESC')
-          else
-            exclude_drafts.limit(opts[:limit]).order('published_at DESC')
-          end
-        end
-
         def entries_for_page(options = {})
           opts = { include_drafts: false, page: 1 }.merge(options)
 
           if opts[:include_drafts]
-            page(opts['page'])
+            page(opts[:page]).order('created_at DESC')
           else
-            exclude_drafts.page(opts['page']).order('published_at DESC')
+            exclude_drafts.page(opts[:page]).order('published_at DESC')
           end
         end
       end

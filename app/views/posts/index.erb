@@ -4,17 +4,21 @@
 	<h1 class="p-name">Posts</h1>
 </header>
 
-<% if @posts.any? %>
-	<ol class="entries" reversed>
-		<% @posts.each do |post| %>
-			<li>
-				<%= partial 'shared/post_hentry', locals: { post: post } %>
-			</li>
-		<% end %>
-	</ol>
-<% else %>
-	<p>No posts found!</p>
-<% end %>
+<div class="entries-container">
+	<% if @posts.any? %>
+		<ol class="entries" reversed>
+			<% @posts.each do |post| %>
+				<li>
+					<%= partial 'shared/post_hentry', locals: { post: post } %>
+				</li>
+			<% end %>
+		</ol>
+
+		<%= will_paginate @posts, next_label: 'Older', page_links: false, previous_label: 'Newer' %>
+	<% else %>
+		<p>No posts found!</p>
+	<% end %>
+</div>
 
 <footer class="content-footer">
 	<%= partial 'shared/author_hcard' %>

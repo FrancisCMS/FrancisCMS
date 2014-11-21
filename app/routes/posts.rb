@@ -6,8 +6,10 @@ module FrancisCMS
 
       namespace '/posts' do
         get '' do
-          @posts = Post.recent_items(include_drafts: logged_in?)
-          @page_title = 'Posts'
+          page = params[:page] =~ /^\d+$/ ? params[:page].to_i : 1
+
+          @posts = Post.entries_for_page({ include_drafts: logged_in?, page: page })
+          @page_title = page > 1 ? "Posts – Page #{page}" : 'Posts'
 
           erb :'posts/index'
         end
