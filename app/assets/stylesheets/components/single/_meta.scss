@@ -1,33 +1,8 @@
 .single-meta {
 	@include color($grey, light);
-
-	&,
-	dl {
-		@extend %reset-list;
-	}
+	@extend %reset-list;
 
 	li {
 		margin-bottom: $spacing-1;
-	}
-
-	dt,
-	dd {
-		display: inline-block;
-	}
-
-	dt {
-		margin-right: $spacing-1;
-	}
-
-	dd {
-		margin: 0;
-
-		&:after {
-			content: ", ";
-		}
-
-		&:last-child:after {
-			content: "";
-		}
 	}
 }

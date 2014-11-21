@@ -19,13 +19,39 @@
 }
 
 .entry-footer {
+	@include color($grey, light);
+	@include font-size(6);
+
 	p {
-		@include color($grey, light);
-		@include font-size(6);
 		margin: 0;
 	}
 
 	a {
 		@extend %anchor--grey;
+	}
+}
+
+.entry-tags {
+	@extend %reset-list;
+
+	dt,
+	dd {
+		display: inline-block;
+	}
+
+	dt {
+		margin-right: $spacing-1;
+	}
+
+	dd {
+		margin: 0;
+
+		&:after {
+			content: ", ";
+		}
+
+		&:last-child:after {
+			content: "";
+		}
 	}
 }
