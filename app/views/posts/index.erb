@@ -14,7 +14,7 @@
 			<% end %>
 		</ol>
 
-		<%= will_paginate @posts, next_label: 'Older', page_links: false, previous_label: 'Newer' %>
+		<%= will_paginate @posts %>
 	<% else %>
 		<p>No posts found!</p>
 	<% end %>
