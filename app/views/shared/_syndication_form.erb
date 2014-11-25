@@ -1,6 +1,5 @@
 <form action="<%= send("#{resource_type}_path", resource) %>" class="syndication-form" method="post">
 	<input type="hidden" name="_method" value="put">
-	<input type="hidden" name="<%= resource_type %>[published]" value="<%= resource.published_at? %>">
 
 	<h2>Syndicated Copies</h2>
 	<p>Manually add a link to a third-party syndicated copy of this <%= resource_type %>.</p>
