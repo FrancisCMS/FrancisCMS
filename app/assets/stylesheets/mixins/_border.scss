@@ -1,7 +1,0 @@
-@mixin border-radius($value: 0.25rem) {
-	border-radius: $value;
-}
-
-@mixin thick-border($direction: bottom) {
-	border-#{$direction}: $spacing-1 solid $darken-1;
-}

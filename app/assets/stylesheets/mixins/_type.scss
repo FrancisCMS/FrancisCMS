@@ -1,8 +1,0 @@
-@mixin font-size($n: 5) {
-	font-size: nth($type-scale, $n + 1);
-}
-
-@mixin caps {
-	letter-spacing: 0.025em;
-	text-transform: uppercase;
-}

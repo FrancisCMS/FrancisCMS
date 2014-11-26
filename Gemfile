@@ -1,32 +1,25 @@
-ruby '2.1.4'
+ruby '2.1.5'
 source 'https://rubygems.org'
-source 'https://rails-assets.org'
 
-# Sinatra
-gem 'sinatra'
-gem 'sinatra-contrib'
-gem 'sinatra-partial'
-
-# Database
+gem 'rails', '4.1.8'
 gem 'mysql2'
-gem 'activerecord'
-gem 'sinatra-activerecord'
 
 # Assets
-gem 'breakpoint'
-gem 'sinatra-asset-pipeline', require: 'sinatra/asset_pipeline'
-gem 'rails-assets-normalize.css'
+gem 'sass-rails', '~> 4.0.3'
+gem 'uglifier', '>= 1.3.0'
 
-# Utilities
-gem 'activesupport', require: 'active_support/all'
-gem 'friendly_id'
-gem 'mechanize'
-gem 'microformats2'
-gem 'redcarpet'
-gem 'will_paginate', require: ['will_paginate', 'will_paginate/active_record']
+# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+gem 'spring', group: :development
 
-group :development do
-  gem 'pry'
-  gem 'shotgun'
-  gem 'tux'
-end
+# Use ActiveModel has_secure_password
+# gem 'bcrypt', '~> 3.1.7'
+
+# Use unicorn as the app server
+# gem 'unicorn'
+
+# Use Capistrano for deployment
+# gem 'capistrano-rails', group: :development
+
+# Use debugger
+# gem 'debugger', group: [:development, :test]
+
