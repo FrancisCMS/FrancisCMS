@@ -1,0 +1,33 @@
+<%- if @post.errors.any? -%>
+	<h2><%= pluralize(@post.errors.count, 'error') %> prevented this post from being saved:</h2>
+
+	<ul>
+		<%- @post.errors.full_messages.each do |msg| -%>
+			<li><%= msg %>.</li>
+		<%- end -%>
+	</ul>
+<%- end -%>
+
+<%= form_for @post do |f| %>
+	<ul>
+		<li>
+			<%= f.label :title %>
+			<%= f.text_field :title, required: true %>
+		</li>
+		<li>
+			<%= f.label :slug, 'URL' %>
+			<%= f.text_field :slug, placeholder: 'an-example-post-url', required: true %>
+		</li>
+		<li>
+			<%= f.label :body %>
+			<%= f.text_area :body, required: true %>
+		</li>
+		<li>
+			<%= f.label :excerpt %>
+			<%= f.text_field :excerpt, maxlength: 255 %>
+		</li>
+		<li>
+			<button type="submit">Submit</button>
+		</li>
+	</ul>
+<% end %>

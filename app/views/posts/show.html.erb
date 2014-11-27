@@ -1,0 +1,19 @@
+<h1><%= @post.title %></h1>
+
+<dl>
+	<dt>Slug</dt>
+	<dd><%= @post.slug %></dd>
+	<dt>Body</dt>
+	<dd><%= @post.body %></dd>
+	<dt>Excerpt</dt>
+	<dd><%= @post.excerpt %></dd>
+</dl>
+
+<menu>
+	<li><%= link_to 'Edit', edit_post_path(@post) %></li>
+	<li>
+		<%= form_tag post_path(@post), method: :delete do %>
+			<button>Delete</button>
+		<% end %>
+	</li>
+</menu>
