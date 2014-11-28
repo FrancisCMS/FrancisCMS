@@ -17,6 +17,7 @@ gem 'sass-rails', '5.0.0.beta1'
 gem 'uglifier', '>= 1.3.0'
 
 # Utilities
+gem 'friendly_id'
 gem 'redcarpet'
 
 group :development do
