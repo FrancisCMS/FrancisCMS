@@ -1,15 +1,25 @@
-<h1>Links</h1>
+<%- content_for :main_classes, 'h-feed' -%>
 
-<%- if @links.any? -%>
-	<ol reversed>
-		<%- @links.each do |link| -%>
-			<li>
-				<%= link_to link.title, link_path(link) %>
-			</li>
-		<%- end -%>
-	</ol>
-<%- else -%>
-	<p>No links!</p>
-<%- end -%>
+<header class="content-header">
+	<h1 class="p-name">Links</h1>
+</header>
 
-<%= link_to 'New Link', new_link_path %>
+<div class="entries-container">
+	<%- if @links.any? -%>
+		<ol class="entries" reversed>
+			<%- @links.each do |link| -%>
+				<li>
+					<%= render 'shared/link_hentry', link: link %>
+				</li>
+			<%- end -%>
+		</ol>
+
+		<%#= will_paginate @links %>
+	<%- else -%>
+		<p>No links found!</p>
+	<%- end -%>
+</div>
+
+<footer class="content-footer">
+	<%= render 'shared/author_hcard' %>
+</footer>

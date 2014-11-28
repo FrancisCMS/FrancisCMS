@@ -1,15 +1,25 @@
-<h1>Posts</h1>
+<%- content_for :main_classes, 'h-feed' -%>
 
-<%- if @posts.any? -%>
-	<ol reversed>
-		<%- @posts.each do |post| -%>
-			<li>
-				<%= link_to post.title, post_path(post) %>
-			</li>
-		<%- end -%>
-	</ol>
-<%- else -%>
-	<p>No posts!</p>
-<%- end -%>
+<header class="content-header">
+	<h1 class="p-name">Posts</h1>
+</header>
 
-<%= link_to 'New Post', new_post_path %>
+<div class="entries-container">
+	<%- if @posts.any? -%>
+		<ol class="entries" reversed>
+			<%- @posts.each do |post| -%>
+				<li>
+					<%= render 'shared/post_hentry', post: post %>
+				</li>
+			<%- end -%>
+		</ol>
+
+		<%#= will_paginate @posts %>
+	<%- else -%>
+		<p>No posts found!</p>
+	<%- end -%>
+</div>
+
+<footer class="content-footer">
+	<%= render 'shared/author_hcard' %>
+</footer>

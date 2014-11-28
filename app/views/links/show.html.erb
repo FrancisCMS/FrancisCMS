@@ -1,19 +1,55 @@
-<h1><%= @link.title %></h1>
+<%#- if logged_in -%>
+	<%- content_for :admin_panel do -%>
+		<menu class="local" role="menu">
+			<li role="menuitem"><%= link_to 'Edit', edit_link_path(@link) %></li>
+			<li role="menuitem">
+				<%= render 'shared/delete_form', action: link_path(@link) %>
+			</li>
+		</menu>
+	<%- end -%>
+<%#- end -%>
 
-<dl>
-	<dt>URL</dt>
-	<dd><%= @link.url %></dd>
-	<dt>Body</dt>
-	<dd><%= @link.body %></dd>
-	<dt>Published_at</dt>
-	<dd><%= @link.published_at %></dd>
-</dl>
+<article class="single h-entry h-as-article">
+	<header class="single-header">
+		<h1 class="single-title p-name">
+			<%= link_to @link.title, @link.url %>
+			<%= link_to 'Draft', edit_link_path(@link), class: 'draft' unless @link.published_at? %>
+		</h1>
 
-<menu role="menu">
-	<li><%= link_to 'Edit', edit_link_path(@link) %></li>
-	<li>
-		<%= form_tag link_path(@link), method: :delete do %>
-			<button>Delete</button>
-		<% end %>
-	</li>
-</menu>
+		<%- if @link.published_at? -%>
+			<p>Saved on <time class="dt-published" datetime="<%= @link.published_at.to_s(:iso8601) %>"><%= raw @link.published_at.to_s(:display) %></time>.</p>
+		<%- end -%>
+	</header>
+
+	<%- if @link.body? -%>
+		<div class="single-content e-content">
+			<%= raw @link.to_html %>
+		</div>
+	<%- end -%>
+
+	<aside class="responses" id="responses" role="complementary">
+		<%#= render 'shared/webmention_form', locals: { target: link_url(@link) } %>
+
+		<%# if @link.webmentions.any? %>
+			<%#= render 'shared/webmentions', locals: { resource: @link } %>
+		<%# end %>
+	</aside>
+
+	<footer role="complementary">
+		<ul class="single-meta">
+			<li>“<%= link_to @link.title, link_path(@link), class: 'u-url' %>” is also available as <%#= link_to 'JSON', link_json_path(@link), rel: 'alternate', type: 'application/json' %>.</li>
+			<%# if @link.tags.any? %>
+				<li>
+					<%#= render 'shared/tags', locals: { resource: @link } %>
+				</li>
+			<%# end %>
+			<%# if @link.syndications.any? %>
+				<li>
+					<%#= render 'shared/syndications', locals: { resource: @link } %>
+				</li>
+			<%# end %>
+		</ul>
+
+		<%= render 'shared/author_hcard' %>
+	</footer>
+</article>

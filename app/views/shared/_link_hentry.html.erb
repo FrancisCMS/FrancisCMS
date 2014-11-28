@@ -1,0 +1,23 @@
+<article class="entry h-entry">
+	<header class="entry-header">
+		<h1 class="entry-title p-name">
+			<%= link_to link.title, link.url %>
+			<%= link_to 'Draft', edit_link_path(link), class: 'draft' unless link.published_at? %>
+		</h1>
+	</header>
+
+	<%- if link.body? -%>
+		<div class="entry-content e-content">
+			<%= raw link.to_html %>
+		</div>
+	<%- end -%>
+
+	<%- if link.published_at? -%>
+		<footer class="entry-footer">
+			<p>Saved on <%= link_to raw(%Q{<time class="dt-published" datetime="#{link.published_at.to_s(:iso8601)}">#{raw link.published_at.to_s(:display)}</time>}), link_path(link), class: 'u-url' %>.</p>
+			<%#- if link.tags.any? -%>
+				<%#= partial 'shared/tags', locals: { resource: link } %>
+			<%#- end -%>
+		</footer>
+	<%- end -%>
+</article>
