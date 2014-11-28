@@ -6,5 +6,7 @@
 <h2>Profiles</h2>
 
 <ol>
-	<!--  -->
+	<%- Settings.profiles.each do |profile| -%>
+		<li><%= link_to profile.title, profile.url, rel: 'me' %></li>
+	<%- end -%>
 </ol>

@@ -1,10 +1,12 @@
 <!doctype html>
-<html itemscope itemtype="http://schema.org/WebPage">
+<html id="<%= Settings.site.url.gsub(/^https?:\/\//, '').gsub('.', '-') %>" itemscope itemtype="http://schema.org/WebPage" lang="<%= Settings.site.language %>">
 <head>
 	<meta charset="utf-8">
 
-	<title>FrancisCMS</title>
+	<title><%= Settings.site.title %></title>
 
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="<%= Settings.user.twitter %>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -12,7 +14,7 @@
 	<%= link_to 'Skip to main content', '#main' %>
 
 	<header role="banner">
-		<h1><%= link_to 'FrancisCMS', root_path, rel: 'home' %></h1>
+		<h1><%= link_to Settings.site.title, root_path, rel: 'home' %></h1>
 
 		<nav role="navigation">
 			<ul>
@@ -26,7 +28,7 @@
 	</main>
 
 	<footer role="contentinfo">
-		<p>Some rights reserved.</p>
+		<p>Some rights reserved. This site’s content is licensed under a <%= link_to "#{Settings.license.title} license", Settings.license.url, rel: 'license' %>. Source code available on <%= link_to Settings.source.title, Settings.source.url, rel: 'source' %>.</p>
 	</footer>
 
 </body>

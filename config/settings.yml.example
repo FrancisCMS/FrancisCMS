@@ -1,0 +1,25 @@
+license:
+  title: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+  url: http://creativecommons.org/licenses/by-nc-sa/4.0/
+
+profiles:
+  - title: Facebook
+    url: https://facebook.com/janedoe
+  - title: Twitter
+    url: https://twitter.com/janedoe
+
+site:
+  title: 'Your Site’s Name'
+  description: 'This is the online home to Jane Doe.'
+  url: http://example.com
+  language: en-US
+
+source:
+  title: GitHub
+  url: https://github.com/janedoe/example.com
+
+user:
+  name: Jane Doe
+  email: jane@example.com
+  url: http://example.com
+  twitter: '@janedoe'
