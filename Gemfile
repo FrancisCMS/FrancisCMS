@@ -18,6 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 
 # Utilities
 gem 'friendly_id'
+gem 'mechanize'
 gem 'redcarpet'
 
 group :development do

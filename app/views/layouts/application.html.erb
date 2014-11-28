@@ -10,7 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<%= stylesheet_link_tag 'application' %>
-	<%= stylesheet_link_tag 'admin' %>
+	<%= stylesheet_link_tag 'admin' if logged_in? %>
 </head>
 <body>
 
@@ -24,6 +24,15 @@
 				<ul>
 					<li><%= link_to 'Posts', posts_path %></li>
 					<li><%= link_to 'Links', links_path %></li>
+					<li>
+						<%- if logged_in? -%>
+							<%= form_tag logout_path, method: :delete do %>
+								<button type="submit">Log Out</button>
+							<% end %>
+						<%- else -%>
+							<%= link_to 'Log In', login_path %>
+						<%- end -%>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -39,7 +48,7 @@
 		<p>Some rights reserved. This site’s content is licensed under a <%= link_to "#{Settings.license.title} license", Settings.license.url, rel: 'license' %>. Source code available on <%= link_to Settings.source.title, Settings.source.url, rel: 'source' %>.</p>
 	</footer>
 
-	<%# if logged_in? %>
+	<%- if logged_in? -%>
 		<div class="admin-panel">
 			<%= yield :admin_panel %>
 
@@ -48,7 +57,7 @@
 				<li role="menuitem"><%= link_to 'New link', new_link_path %></li>
 			</menu>
 		</div>
-	<%# end %>
+	<%- end -%>
 
 	<script>
 		WebFontConfig = {

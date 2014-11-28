@@ -1,0 +1,15 @@
+<header class="content-header">
+	<h1>Log In</h1>
+</header>
+
+<%= form_tag 'https://indieauth.com/auth', method: 'get' do %>
+	<%= hidden_field_tag :client_id, root_url %>
+	<%= hidden_field_tag :redirect_uri, auth_url %>
+
+	<%= label_tag :me, 'URL' %>
+
+	<div class="inline-form-fields">
+		<%= url_field_tag :me, nil, placeholder: 'http://…', required: true %>
+		<button type="submit">Submit</button>
+	</div>
+<% end %>

@@ -1,4 +1,4 @@
-<%#- if logged_in -%>
+<%- if logged_in? -%>
 	<%- content_for :admin_panel do -%>
 		<menu class="local" role="menu">
 			<li role="menuitem"><%= link_to 'Edit', edit_link_path(@link) %></li>
@@ -7,7 +7,7 @@
 			</li>
 		</menu>
 	<%- end -%>
-<%#- end -%>
+<%- end -%>
 
 <article class="single h-entry h-as-article">
 	<header class="single-header">
