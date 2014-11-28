@@ -1,16 +1,33 @@
 <!doctype html>
-<html>
+<html itemscope itemtype="http://schema.org/WebPage">
 <head>
 	<meta charset="utf-8">
 
 	<title>FrancisCMS</title>
 
-	<%= csrf_meta_tags %>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
-	<%= yield %>
+	<%= link_to 'Skip to main content', '#main' %>
+
+	<header role="banner">
+		<h1><%= link_to 'FrancisCMS', root_path, rel: 'home' %></h1>
+
+		<nav role="navigation">
+			<ul>
+				<li><%= link_to 'Posts', posts_path %></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main id="main" role="main">
+		<%= yield %>
+	</main>
+
+	<footer role="contentinfo">
+		<p>Some rights reserved.</p>
+	</footer>
 
 </body>
 </html>
