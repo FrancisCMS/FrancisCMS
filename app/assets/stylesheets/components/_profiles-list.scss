@@ -1,0 +1,11 @@
+.profiles-list {
+	@extend %reset-list;
+
+	li {
+		@include margin-y(1);
+	}
+
+	a {
+		@extend %button--grey;
+	}
+}

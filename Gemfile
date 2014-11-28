@@ -1,12 +1,23 @@
 ruby '2.1.5'
-source 'https://rubygems.org'
 
-gem 'mysql2'
+source 'https://rubygems.org'
+source 'https://rails-assets.org'
+
+# Application
 gem 'rails', '4.1.8'
 gem 'rails_config'
-gem 'redcarpet'
-gem 'sass-rails', '~> 4.0.3'
+
+# Database
+gem 'mysql2'
+
+# Assets
+gem 'breakpoint'
+gem 'rails-assets-normalize.css'
+gem 'sass-rails', '5.0.0.beta1'
 gem 'uglifier', '>= 1.3.0'
+
+# Utilities
+gem 'redcarpet'
 
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

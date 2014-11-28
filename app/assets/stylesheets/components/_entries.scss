@@ -1,0 +1,7 @@
+.entries {
+	@extend %reset-list;
+
+	> li {
+		margin-bottom: $spacing-4;
+	}
+}

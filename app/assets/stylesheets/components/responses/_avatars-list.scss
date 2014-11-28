@@ -1,0 +1,13 @@
+.avatars-list {
+	@extend %clearfix;
+	@extend %reset-list;
+
+	li {
+		float: left;
+		margin: 0 $spacing-1 $spacing-1 0;
+	}
+
+	img {
+		@extend %avatar;
+	}
+}

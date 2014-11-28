@@ -1,0 +1,153 @@
+@-ms-viewport{
+	width: device-width;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+html {
+	background: #fff;
+	box-sizing: border-box;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	@include color($grey, darker);
+	font-family: "Source Sans Pro", sans-serif;
+	line-height: 1.4;
+}
+
+/* @group Links */
+
+	a {
+		@include color($blue);
+		text-decoration: underline;
+
+		&:focus,
+		&:hover {
+			@include color($blue, darker);
+		}
+	}
+
+/* @end */
+
+/* @group Text-level semantics */
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: "Open Sans", sans-serif;
+		line-height: 1.25;
+		margin-bottom: 0.5em;
+		margin-top: 1em;
+	}
+
+	@for $i from 1 through 6 {
+		h#{$i} {
+			@include font-size($i);
+		}
+	}
+
+	dl,
+	menu,
+	ol,
+	p,
+	ul {
+		margin-bottom: 1.5rem;
+		margin-top: 0;
+	}
+
+	dl,
+	menu,
+	ol,
+	ul {
+		padding-left: 2rem;
+	}
+
+	cite {
+		font-style: italic;
+	}
+
+	sup {
+		font-size: 100%;
+		top: auto;
+		vertical-align: baseline;
+	}
+
+/* @end */
+
+/* @group Embedded content */
+
+	img {
+		-ms-interpolation-mode: bicubic;
+		max-width: 100%;
+		vertical-align: middle;
+	}
+
+	svg {
+		max-height: 100%;
+	}
+
+/* @end */
+
+/* @group Grouping content */
+
+	code,
+	pre {
+		font-family: Monaco, "Courier New", Courier, monospace;
+		font-size: 1em;
+	}
+
+/* @end */
+
+/* @group Forms */
+
+	form {
+		ul {
+			@extend %reset-list;
+		}
+
+		li {
+			margin-bottom: $spacing-3;
+		}
+	}
+
+	label {
+		cursor: pointer;
+		display: block;
+		margin-bottom: $spacing-1;
+	}
+
+	input[type="text"],
+	input[type="url"],
+	button {
+		height: 2.5rem;
+	}
+
+	input[type="text"],
+	input[type="url"],
+	textarea {
+		border: 0.125rem solid $darken-1;
+		padding: $spacing-1;
+		width: 100%;
+
+		&:focus {
+			border-color: $darken-2;
+		}
+
+		@include input-placeholder {
+			@include color($grey);
+		}
+	}
+
+	button {
+		@extend %button--blue;
+	}
+
+/* @end */

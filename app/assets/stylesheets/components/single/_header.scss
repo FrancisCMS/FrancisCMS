@@ -1,0 +1,18 @@
+.single-header {
+	margin-bottom: $spacing-4;
+	text-align: center;
+
+	@include breakpoint($tp-ultra) {
+		@include margin-xn(4);
+	}
+
+	p {
+		@include color($grey, light);
+		@include font-size(6);
+		margin: 0;
+
+		@include breakpoint($bp-narrow) {
+			@include font-size;
+		}
+	}
+}

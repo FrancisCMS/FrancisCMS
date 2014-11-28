@@ -1,0 +1,30 @@
+.global-header {
+	background-color: $darken-1;
+	@include padding-y;
+
+	@include breakpoint($tp-medium) {
+		> .container {
+			@include table;
+		}
+	}
+
+	h1 {
+		@include font-size(4);
+		margin: 0;
+
+		@include breakpoint($bp-narrow) {
+			@include font-size(2);
+		}
+
+		@include breakpoint($tp-medium) {
+			@include table-cell;
+		}
+
+		a {
+			@extend %anchor--grey--dark;
+			@extend %button;
+			@include margin-xn(2);
+			text-decoration: none;
+		}
+	}
+}

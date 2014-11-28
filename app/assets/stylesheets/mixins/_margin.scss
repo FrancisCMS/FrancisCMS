@@ -1,0 +1,28 @@
+@mixin margin-x($value) {
+	$m: $value;
+
+	@if $value != "auto" and $value != 0 {
+		$m: nth($spacing, $value);
+	}
+
+	margin-left: $m;
+	margin-right: $m;
+}
+
+@mixin margin-xn($value) {
+	$m: nth($spacing, $value);
+
+	margin-left: -$m;
+	margin-right: -$m;
+}
+
+@mixin margin-y($value) {
+	$m: $value;
+
+	@if $value != 0 {
+		$m: nth($spacing, $value);
+	}
+
+	margin-bottom: $m;
+	margin-top: $m;
+}

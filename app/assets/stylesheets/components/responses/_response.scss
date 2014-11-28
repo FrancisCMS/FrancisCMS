@@ -1,0 +1,45 @@
+.response {
+	position: relative;
+}
+
+.response-content {
+	margin-bottom: $spacing-1;
+
+	@include breakpoint($bp-narrow) {
+		@include font-size(4);
+	}
+
+	p {
+		margin: 0;
+	}
+}
+
+.response-footer {
+	p {
+		@extend %clearfix;
+		@include color($grey);
+		@include font-size(6);
+		margin: 0;
+
+		@include breakpoint($bp-narrow) {
+			@include font-size;
+		}
+	}
+
+	.avatar {
+		@extend %avatar;
+		float: left;
+		margin-right: $spacing-1;
+
+		@include breakpoint($tp-wide) {
+			margin-right: $spacing-2;
+			position: absolute;
+			right: 100%;
+			top: 0.25rem;
+		}
+	}
+
+	.permalink {
+		@extend %anchor--grey;
+	}
+}

@@ -16,7 +16,12 @@
 		</li>
 		<li>
 			<%= f.label :slug, 'URL' %>
-			<%= f.text_field :slug, placeholder: 'an-example-post-url', required: true %>
+			<div class="url-field">
+				<div class="url-prefix"><%= posts_url %>/</div>
+				<div class="url-input">
+					<%= f.text_field :slug, placeholder: 'an-example-post-url', required: true %>
+				</div>
+			</div>
 		</li>
 		<li>
 			<%= f.label :body %>
@@ -28,7 +33,7 @@
 		</li>
 		<li>
 			<%= f.label :is_draft do %>
-				<%= f.check_box :is_draft, { checked: !@link.published_at? } %>
+				<%= f.check_box :is_draft, { checked: !@post.published_at? } %>
 				Save as draft
 			<% end %>
 		</li>

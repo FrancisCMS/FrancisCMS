@@ -1,0 +1,13 @@
+.responses {
+	@extend %clearfix;
+	margin-bottom: $spacing-2;
+	@include thick-border;
+}
+
+.responses-header h1 {
+	@include font-size(2);
+
+	@include breakpoint($bp-narrow) {
+		@include font-size(1);
+	}
+}

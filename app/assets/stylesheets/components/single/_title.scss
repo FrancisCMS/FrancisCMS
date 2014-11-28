@@ -1,0 +1,8 @@
+.single-title {
+	margin: 0;
+	margin-bottom: $spacing-2;
+
+	@include breakpoint($bp-narrow) {
+		@include font-size(0);
+	}
+}
