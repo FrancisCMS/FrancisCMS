@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all.order('created_at DESC')
+    posts
   end
 
   def show
-    @post = Post.friendly.find(params[:id])
+    post
   end
 
   def new
@@ -22,13 +22,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.friendly.find(params[:id])
+    post
   end
 
   def update
-    @post = Post.friendly.find(params[:id])
-
-    if @post.update_attributes(post_params)
+    if post.update_attributes(post_params)
       redirect_to @post
     else
       render 'edit'
@@ -36,8 +34,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.friendly.find(params[:id])
-    @post.destroy
+    post.destroy
 
     redirect_to posts_path
   end
@@ -47,4 +44,14 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :slug, :body, :excerpt, :is_draft)
   end
+
+  def posts
+    @posts ||= Post.all.order('created_at DESC')
+  end
+  helper_method :posts
+
+  def post
+    @post ||= Post.friendly.find(params[:id])
+  end
+  helper_method :post
 end

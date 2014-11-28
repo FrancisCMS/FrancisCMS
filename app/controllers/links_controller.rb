@@ -1,10 +1,10 @@
 class LinksController < ApplicationController
   def index
-    @links = Link.all.order('created_at DESC')
+    links
   end
 
   def show
-    @link = Link.find(params[:id])
+    link
   end
 
   def new
@@ -22,13 +22,11 @@ class LinksController < ApplicationController
   end
 
   def edit
-    @link = Link.find(params[:id])
+    link
   end
 
   def update
-    @link = Link.find(params[:id])
-
-    if @link.update_attributes(link_params)
+    if link.update_attributes(link_params)
       redirect_to @link
     else
       render 'edit'
@@ -36,8 +34,7 @@ class LinksController < ApplicationController
   end
 
   def destroy
-    @link = Link.find(params[:id])
-    @link.destroy
+    link.destroy
 
     redirect_to links_path
   end
@@ -47,4 +44,14 @@ class LinksController < ApplicationController
   def link_params
     params.require(:link).permit(:url, :title, :body, :is_draft)
   end
+
+  def links
+    @links ||= Link.all.order('created_at DESC')
+  end
+  helper_method :links
+
+  def link
+    @link ||= Link.find(params[:id])
+  end
+  helper_method :link
 end
