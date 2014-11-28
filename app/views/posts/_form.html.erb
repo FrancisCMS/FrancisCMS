@@ -27,6 +27,12 @@
 			<%= f.text_field :excerpt, maxlength: 255 %>
 		</li>
 		<li>
+			<%= f.label :is_draft do %>
+				<%= f.check_box :is_draft %>
+				Save as draft
+			<% end %>
+		</li>
+		<li>
 			<button type="submit">Submit</button>
 		</li>
 	</ul>
