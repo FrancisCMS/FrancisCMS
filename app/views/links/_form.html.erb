@@ -1,0 +1,35 @@
+<%- if @link.errors.any? -%>
+	<h2><%= pluralize(@link.errors.count, 'error') %> prevented this link from being saved:</h2>
+
+	<ul>
+		<%- @link.errors.full_messages.each do |msg| -%>
+			<li><%= msg %>.</li>
+		<%- end -%>
+	</ul>
+<%- end -%>
+
+<%= form_for @link do |f| %>
+	<ul>
+		<li>
+			<%= f.label :url %>
+			<%= f.url_field :url, required: true %>
+		</li>
+		<li>
+			<%= f.label :title %>
+			<%= f.text_field :title, required: true %>
+		</li>
+		<li>
+			<%= f.label :body %>
+			<%= f.text_area :body %>
+		</li>
+		<li>
+			<%= f.label :is_draft do %>
+				<%= f.check_box :is_draft, { checked: !@link.published_at? } %>
+				Save as draft
+			<% end %>
+		</li>
+		<li>
+			<button type="submit">Submit</button>
+		</li>
+	</ul>
+<% end %>

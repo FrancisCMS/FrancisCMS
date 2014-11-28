@@ -28,7 +28,7 @@
 		</li>
 		<li>
 			<%= f.label :is_draft do %>
-				<%= f.check_box :is_draft %>
+				<%= f.check_box :is_draft, { checked: !@link.published_at? } %>
 				Save as draft
 			<% end %>
 		</li>

@@ -1,0 +1,15 @@
+<h1>Links</h1>
+
+<%- if @links.any? -%>
+	<ol reversed>
+		<%- @links.each do |link| -%>
+			<li>
+				<%= link_to link.title, link_path(link) %>
+			</li>
+		<%- end -%>
+	</ol>
+<%- else -%>
+	<p>No links!</p>
+<%- end -%>
+
+<%= link_to 'New Link', new_link_path %>

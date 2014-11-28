@@ -10,7 +10,7 @@ module Publishable
   private
 
   def set_published_at
-    if self.is_draft.to_b
+    if self.is_draft == '1'
       self.published_at = nil
     else
       self.published_at ||= Time.now
