@@ -22,6 +22,6 @@ class TagsController < ApplicationController
   end
 
   def tag
-    @tag ||= ActsAsTaggableOn::Tag.find(params[:id])
+    @tag ||= ActsAsTaggableOn::Tag.friendly.find(params[:id])
   end
 end

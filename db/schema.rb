@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141129013115) do
+ActiveRecord::Schema.define(version: 20141129044155) do
 
   create_table "links", force: true do |t|
     t.string   "url",          null: false
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20141129013115) do
   create_table "tags", force: true do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
+    t.string  "slug",                       null: false
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
