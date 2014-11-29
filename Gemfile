@@ -14,12 +14,13 @@ gem 'mysql2'
 gem 'breakpoint'
 gem 'rails-assets-normalize.css'
 gem 'sass-rails', '5.0.0.beta1'
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 
 # Utilities
 gem 'friendly_id'
 gem 'mechanize'
 gem 'redcarpet'
+gem 'will_paginate'
 
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

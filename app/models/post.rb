@@ -7,4 +7,6 @@ class Post < ActiveRecord::Base
 
   friendly_id :title
   redcarpet :body
+
+  self.per_page = 10
 end

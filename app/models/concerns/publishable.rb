@@ -5,6 +5,20 @@ module Publishable
     attr_accessor :is_draft
 
     before_save :set_published_at
+
+    scope :exclude_drafts, lambda { where('published_at IS NOT NULL') }
+  end
+
+  module ClassMethods
+    def entries_for_page(options = {})
+      opts = { include_drafts: false, page: nil }.merge(options)
+
+      if opts[:include_drafts]
+        page(opts[:page]).order('created_at DESC')
+      else
+        exclude_drafts.page(opts[:page]).order('published_at DESC')
+      end
+    end
   end
 
   private

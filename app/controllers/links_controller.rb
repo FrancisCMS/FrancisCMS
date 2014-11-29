@@ -48,7 +48,7 @@ class LinksController < ApplicationController
   end
 
   def links
-    @links ||= Link.all.order('created_at DESC')
+    @links ||= Link.entries_for_page({ include_drafts: logged_in?, page: params['page'] })
   end
   helper_method :links
 

@@ -48,7 +48,7 @@ class PostsController < ApplicationController
   end
 
   def posts
-    @posts ||= Post.all.order('created_at DESC')
+    @posts ||= Post.entries_for_page({ include_drafts: logged_in?, page: params['page'] })
   end
   helper_method :posts
 
