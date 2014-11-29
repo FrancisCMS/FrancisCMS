@@ -37,7 +37,7 @@
 
 	<footer role="complementary">
 		<ul class="single-meta">
-			<li>“<%= link_to @link.title, link_path(@link), class: 'u-url' %>” is also available as <%#= link_to 'JSON', link_json_path(@link), rel: 'alternate', type: 'application/json' %>.</li>
+			<li>“<%= link_to @link.title, link_path(@link), class: 'u-url' %>” is also available as <%= link_to 'JSON', link_path(@link, format: :json), rel: 'alternate', type: 'application/json' %>.</li>
 			<%- if @link.tags.any? -%>
 				<li>
 					<%= render 'shared/tags', resource: @link %>

@@ -1,0 +1,17 @@
+{
+	"items": [{
+		"type": ["h-entry"],
+		"properties": {
+			"name": ["<%= @link.title %>"],
+			"content": [{
+				"html": <%= raw @link.to_html.to_json %>,
+				"markdown": <%= raw @link.body.to_json %>
+			}],
+			"published": ["<%= @link.published_at.to_s(:iso8601) %>"],
+			"updated": ["<%= @link.updated_at.to_s(:iso8601) %>"],
+			"category": <%= raw @link.tags.collect { |tag| tag.name } %>,
+			"url": ["<%= link_url(@link) %>"],
+			"uid": ["<%= link_url(@link) %>"]
+		}
+	}]
+}

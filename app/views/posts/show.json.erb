@@ -1,0 +1,18 @@
+{
+	"items": [{
+		"type": ["h-entry"],
+		"properties": {
+			"name": ["<%= @post.title %>"],
+			"summary": ["<%= @post.excerpt %>"],
+			"content": [{
+				"html": <%= raw @post.to_html.to_json %>,
+				"markdown": <%= raw @post.body.to_json %>
+			}],
+			"published": ["<%= @post.published_at.to_s(:iso8601) %>"],
+			"updated": ["<%= @post.updated_at.to_s(:iso8601) %>"],
+			"category": <%= raw @post.tags.collect { |tag| tag.name } %>,
+			"url": ["<%= post_url(@post) %>"],
+			"uid": ["<%= post_url(@post) %>"]
+		}
+	}]
+}

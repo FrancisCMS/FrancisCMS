@@ -9,6 +9,8 @@
 	<meta name="twitter:site" content="<%= Settings.user.twitter %>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<%= auto_discovery_link_tag :rss, links_path(format: :rss), title: "#{Settings.site.title}: Links" %>
+	<%= auto_discovery_link_tag :rss, posts_path(format: :rss), title: "#{Settings.site.title}: Posts" %>
 	<%= stylesheet_link_tag 'application' %>
 	<%= stylesheet_link_tag 'admin' if logged_in? %>
 </head>
