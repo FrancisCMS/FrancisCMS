@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :links, :posts
+  resources :tags, only: [:index, :show]
 
   root 'pages#homepage'
 

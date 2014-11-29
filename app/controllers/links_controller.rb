@@ -50,10 +50,8 @@ class LinksController < ApplicationController
   def links
     @links ||= Link.entries_for_page({ include_drafts: logged_in?, page: params['page'] })
   end
-  helper_method :links
 
   def link
     @link ||= Link.find(params[:id])
   end
-  helper_method :link
 end

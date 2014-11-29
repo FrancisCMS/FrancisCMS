@@ -1,0 +1,43 @@
+<%- if @posts.any? || @links.any? -%>
+	<%- if @posts.any? -%>
+		<section class="section h-feed">
+			<header class="section-header">
+				<h1 class="p-name">Posts tagged “<%= @tag.name %>”</h1>
+			</header>
+
+			<div class="entries-container">
+				<ol class="entries" reversed>
+					<%- @posts.each do |post| -%>
+						<li>
+							<%= render 'shared/post_hentry', post: post %>
+						</li>
+					<%- end -%>
+				</ol>
+			</div>
+		</section>
+	<%- end -%>
+
+	<%- if @links.any? -%>
+		<section class="section h-feed">
+			<header class="section-header">
+				<h1 class="p-name">Links tagged “<%= @tag.name %>”</h1>
+			</header>
+
+			<div class="entries-container">
+				<ol class="entries" reversed>
+					<%- @links.each do |link| -%>
+						<li>
+							<%= render 'shared/link_hentry', link: link %>
+						</li>
+					<%- end -%>
+				</ol>
+			</div>
+		</section>
+	<%- end -%>
+<%- else -%>
+	<p>No content tagged “<%= @tag.name %>” found!</p>
+<%- end -%>
+
+<footer class="content-footer">
+	<%= render 'shared/author_hcard' %>
+</footer>

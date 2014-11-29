@@ -50,10 +50,8 @@ class PostsController < ApplicationController
   def posts
     @posts ||= Post.entries_for_page({ include_drafts: logged_in?, page: params['page'] })
   end
-  helper_method :posts
 
   def post
     @post ||= Post.friendly.find(params[:id])
   end
-  helper_method :post
 end
