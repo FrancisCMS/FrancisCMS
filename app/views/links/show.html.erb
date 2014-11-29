@@ -38,11 +38,11 @@
 	<footer role="complementary">
 		<ul class="single-meta">
 			<li>“<%= link_to @link.title, link_path(@link), class: 'u-url' %>” is also available as <%#= link_to 'JSON', link_json_path(@link), rel: 'alternate', type: 'application/json' %>.</li>
-			<%# if @link.tags.any? %>
+			<%- if @link.tags.any? -%>
 				<li>
-					<%#= render 'shared/tags', locals: { resource: @link } %>
+					<%= render 'shared/tags', resource: @link %>
 				</li>
-			<%# end %>
+			<%- end -%>
 			<%# if @link.syndications.any? %>
 				<li>
 					<%#= render 'shared/syndications', locals: { resource: @link } %>

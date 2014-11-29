@@ -23,6 +23,10 @@
 			<%= f.text_area :body %>
 		</li>
 		<li>
+			<%= f.label :tag_list, 'Tags' %>
+			<%= f.text_field :tag_list %>
+		</li>
+		<li>
 			<%= f.label :is_draft do %>
 				<%= f.check_box :is_draft, { checked: !@link.published_at? } %>
 				Save as draft

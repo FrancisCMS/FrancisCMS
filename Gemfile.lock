@@ -28,6 +28,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (3.4.2)
+      activerecord (>= 3.2, < 5)
     arel (5.0.1.20140414130214)
     breakpoint (2.5.0)
       sass (~> 3.3)
@@ -124,8 +126,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  breakpoint
-  friendly_id
+  acts-as-taggable-on (~> 3.4)
+  breakpoint (~> 2.5.0)
+  friendly_id (~> 5.0.0)
   mechanize
   mysql2
   rails (= 4.1.8)
@@ -135,4 +138,4 @@ DEPENDENCIES
   sass-rails (= 5.0.0.beta1)
   spring
   uglifier
-  will_paginate
+  will_paginate (~> 3.0.6)

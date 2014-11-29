@@ -32,6 +32,10 @@
 			<%= f.text_field :excerpt, maxlength: 255 %>
 		</li>
 		<li>
+			<%= f.label :tag_list, 'Tags' %>
+			<%= f.text_field :tag_list %>
+		</li>
+		<li>
 			<%= f.label :is_draft do %>
 				<%= f.check_box :is_draft, { checked: !@post.published_at? } %>
 				Save as draft

@@ -1,6 +1,7 @@
 class Link < ActiveRecord::Base
   include Publishable
   include Redcarpeted
+  include Taggable
 
   validates :url, :title, presence: true
 
