@@ -35,6 +35,7 @@ GEM
       sass (~> 3.3)
       sassy-maps (< 1.0.0)
     builder (3.2.2)
+    colored (1.2)
     domain_name (0.5.22)
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
@@ -128,6 +129,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on (~> 3.4)
   breakpoint (~> 2.5.0)
+  colored
   friendly_id (~> 5.0.0)
   mechanize
   mysql2
