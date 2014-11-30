@@ -3,3 +3,7 @@
 		padding-bottom: $spacing-4;
 	}
 }
+
+.destroy {
+	@extend %button--red;
+}

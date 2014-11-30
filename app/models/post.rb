@@ -2,6 +2,7 @@ class Post < ActiveRecord::Base
   extend FriendlyId
   include Publishable
   include Redcarpeted
+  include Syndicatable
   include Taggable
 
   validates :title, :slug, :body, presence: true

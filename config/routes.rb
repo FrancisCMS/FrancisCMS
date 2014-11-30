@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :links, :posts
+  resources :links, :posts do
+    resources :syndications, only: [:create, :destroy]
+  end
+
   resources :tags, only: [:index, :show]
 
   root 'pages#homepage'

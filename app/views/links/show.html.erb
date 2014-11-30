@@ -45,11 +45,11 @@
 					<%= render 'shared/tags', resource: @link %>
 				</li>
 			<%- end -%>
-			<%# if @link.syndications.any? %>
+			<%- if @link.syndications.any? -%>
 				<li>
-					<%#= render 'shared/syndications', locals: { resource: @link } %>
+					<%= render 'shared/syndications', resource: @link %>
 				</li>
-			<%# end %>
+			<%- end -%>
 		</ul>
 
 		<%= render 'shared/author_hcard' %>

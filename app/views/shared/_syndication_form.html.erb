@@ -1,0 +1,42 @@
+<div class="syndications-container">
+	<h2>Syndicated Copies</h2>
+
+	<%- if resource.syndications.any? -%>
+		<table class="syndications-table">
+			<thead>
+				<th scope="col">Name</th>
+				<th scope="col">URL</th>
+				<td></td>
+			</thead>
+			<tbody>
+				<%- resource.syndications.each_with_index do |syndication, index| -%>
+					<tr>
+						<th scope="row"><%= syndication.name %></th>
+						<td><%= link_to syndication.url, syndication.url %></td>
+						<td>
+							<%= render 'shared/delete_form', action: send("#{resource.class.name.downcase}_syndication_path", resource, syndication) %>
+						</td>
+					</tr>
+				<%- end -%>
+			</tbody>
+		</table>
+	<%- end -%>
+
+	<p>Manually add a link to a third-party syndicated copy of this <%= resource.class.name.downcase %>.</p>
+
+	<%= form_for [resource, resource.syndications.build] do |f| %>
+		<ul>
+			<li>
+				<%= f.label :name %>
+				<%= f.text_field :name, required: true %>
+			</li>
+			<li>
+				<%= f.label :url, 'URL' %>
+				<%= f.url_field :url, placeholder: 'http://…', required: true %>
+			</li>
+			<li>
+				<button type="submit">Submit</button>
+			</li>
+		</ul>
+	<% end %>
+</div>

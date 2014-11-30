@@ -1,0 +1,42 @@
+.syndications-container {
+	background-color: $darken-1;
+	@include border-radius;
+	margin-top: $spacing-4;
+	padding: $spacing-1 $spacing-2;
+
+	@include breakpoint($bp-narrow) {
+		padding: $spacing-1 $spacing-3;
+	}
+}
+
+.syndications-table {
+	border-collapse: collapse;
+	margin: $spacing-1 0 $spacing-3 0;
+	width: 100%;
+
+	th {
+		padding: $spacing-1 $spacing-1 $spacing-1 0;
+		text-align: left;
+	}
+
+	tbody {
+		@include font-size(6);
+
+		tr {
+			border-top: 2px solid $darken-1;
+		}
+
+		td {
+			padding: $spacing-1 $spacing-1 $spacing-1 0;
+		}
+
+		td:last-child {
+			padding-right: 0;
+			text-align: right;
+		}
+	}
+
+	.destroy {
+		line-height: 1;
+	}
+}
