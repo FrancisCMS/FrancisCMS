@@ -14,6 +14,14 @@
 	margin: $spacing-1 0 $spacing-3 0;
 	width: 100%;
 
+	.url {
+		display: none;
+
+		@include breakpoint($tp-medium) {
+			display: table-cell;
+		}
+	}
+
 	th {
 		padding: $spacing-1 $spacing-1 $spacing-1 0;
 		text-align: left;

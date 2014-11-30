@@ -5,14 +5,14 @@
 		<table class="syndications-table">
 			<thead>
 				<th scope="col">Name</th>
-				<th scope="col">URL</th>
+				<th scope="col" class="url">URL</th>
 				<td></td>
 			</thead>
 			<tbody>
 				<%- resource.syndications.each_with_index do |syndication, index| -%>
 					<tr>
 						<th scope="row"><%= syndication.name %></th>
-						<td><%= link_to syndication.url, syndication.url %></td>
+						<td class="url"><%= link_to syndication.url, syndication.url %></td>
 						<td>
 							<%= render 'shared/delete_form', action: send("#{resource.class.name.downcase}_syndication_path", resource, syndication) %>
 						</td>
