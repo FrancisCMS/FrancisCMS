@@ -1,4 +1,5 @@
 <%- @page_title = "#{@post.title} — Posts" -%>
+<%- @page_description = @post.excerpt if @post.excerpt? -%>
 
 <%- if logged_in? -%>
 	<%- content_for :admin_panel do -%>
