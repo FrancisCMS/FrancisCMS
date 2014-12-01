@@ -7,6 +7,7 @@ module Publishable
     before_save :set_published_at
 
     scope :exclude_drafts, lambda { where('published_at IS NOT NULL') }
+    scope :recently_published, lambda { exclude_drafts.order('published_at DESC').limit(5) }
   end
 
   module ClassMethods

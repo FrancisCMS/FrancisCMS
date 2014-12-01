@@ -13,8 +13,10 @@
 		width: 50%;
 	}
 
-	@include breakpoint($bp-narrow) {
-		h2 {
+	h2 {
+		margin-top: 0;
+
+		@include breakpoint($bp-narrow) {
 			@include font-size(2);
 		}
 	}

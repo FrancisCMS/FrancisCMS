@@ -1,3 +1,5 @@
+<%- is_expanded = true if is_expanded.nil? -%>
+
 <article class="entry h-entry">
 	<header class="entry-header">
 		<h1 class="entry-title p-name">
@@ -6,7 +8,7 @@
 		</h1>
 	</header>
 
-	<%- if post.excerpt? -%>
+	<%- if post.excerpt? && is_expanded -%>
 		<div class="entry-excerpt p-summary">
 			<p><%= post.excerpt %></p>
 		</div>
