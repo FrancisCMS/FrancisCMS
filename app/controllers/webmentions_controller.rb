@@ -4,7 +4,7 @@ class WebmentionsController < ApplicationController
   protect_from_forgery except: [:create]
 
   def index
-    webmentions if logged_in?
+    webmentions
   end
 
   def show
