@@ -9,5 +9,6 @@ An [IndieWeb](http://indiewebcamp.com/)-friendly content management system writt
 1. `cp config/database.yml{.example,}`
 1. `cp config/secrets.yml{.example,}`
 1. `rake db:create`
-
+1. `rake db:migrate`
+1. `rails server`
 
