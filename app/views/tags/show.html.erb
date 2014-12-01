@@ -2,8 +2,8 @@
 
 <%- if @posts.any? || @links.any? -%>
 	<%- if @posts.any? -%>
-		<section class="section h-feed">
-			<header class="section-header">
+		<section class="h-feed">
+			<header>
 				<h1 class="p-name">Posts tagged “<%= @tag.name %>”</h1>
 			</header>
 
@@ -20,8 +20,8 @@
 	<%- end -%>
 
 	<%- if @links.any? -%>
-		<section class="section h-feed">
-			<header class="section-header">
+		<section class="h-feed">
+			<header>
 				<h1 class="p-name">Links tagged “<%= @tag.name %>”</h1>
 			</header>
 

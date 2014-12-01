@@ -1,0 +1,6 @@
+@mixin column-gap($length: normal) {
+	@each $prefix in -moz, -webkit {
+		#{$prefix}-column-gap: $length;
+	}
+	column-gap: $length;
+}
