@@ -1,11 +1,13 @@
 <%- if @link.errors.any? -%>
-	<h2><%= pluralize(@link.errors.count, 'error') %> prevented this link from being saved:</h2>
+	<div class="form-errors">
+		<h2><%= pluralize(@link.errors.count, 'error') %> prevented this link from being saved:</h2>
 
-	<ul>
-		<%- @link.errors.full_messages.each do |msg| -%>
-			<li><%= msg %>.</li>
-		<%- end -%>
-	</ul>
+		<ul>
+			<%- @link.errors.full_messages.each do |msg| -%>
+				<li><%= msg %>.</li>
+			<%- end -%>
+		</ul>
+	</div>
 <%- end -%>
 
 <%= form_for @link do |f| %>

@@ -34,3 +34,28 @@
 	}
 
 /* @end */
+
+/* @group Form errors */
+
+	.form-errors {
+		background-color: $darken-1;
+		@include color($red);
+		margin-bottom: $spacing-3;
+		padding: $spacing-2;
+
+		h2 {
+			@include font-size(4);
+			margin-bottom: $spacing-2;
+			margin-top: 0;
+		}
+
+		ul {
+			margin-bottom: 0;
+		}
+
+		li {
+			margin-bottom: $spacing-1;
+		}
+	}
+
+/* @end */
