@@ -84,6 +84,7 @@ class Webmention < ActiveRecord::Base
     case err.response_code
       when '404', '410'; delete
     end
+  rescue Mechanize::SocketError
   end
 
   def self.verify_all
