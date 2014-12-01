@@ -85,7 +85,7 @@
 		padding: $spacing-2;
 
 		code {
-			background: none;
+			background-color: transparent;
 			padding: 0;
 		}
 	}
@@ -94,7 +94,7 @@
 		@include color($grey, light);
 
 		code {
-			background: none;
+			background-color: transparent;
 			padding: 0;
 			text-decoration: line-through;
 		}

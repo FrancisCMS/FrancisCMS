@@ -25,11 +25,11 @@
 
 %button--grey {
 	@extend %button;
-	background: $darken-1;
+	background-color: $darken-1;
 
 	&:focus,
 	&:hover {
-		background: $darken-2;
+		background-color: $darken-2;
 	}
 }
 
