@@ -1,6 +1,6 @@
 # FrancisCMS
 
-An [IndieWeb](http://indiewebcamp.com/)-friendly content management system written in [Ruby](https://www.ruby-lang.org/) and ~~[Sinatra](http://www.sinatrarb.com/)~~ [Rails](http://rubyonrails.org).
+An [IndieWeb](http://indiewebcamp.com/)-friendly content management system built with [Ruby on Rails](http://rubyonrails.org).
 
 
 ## Installation
