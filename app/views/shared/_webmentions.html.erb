@@ -19,7 +19,7 @@
 		<ol class="avatars-list">
 			<%- resource.likes.each do |like| -%>
 				<li class="h-card">
-					<%= link_to image_tag(like.author_photo, alt: like.author_name, class: 'p-name u-photo'), like.author_url, class: 'u-url' %>
+					<%= link_to image_tag(like.author_photo, alt: like.author_name, class: 'p-name u-photo'), like.author_url, class: 'u-url', title: "#{like.author_name} likes this." %>
 				</li>
 			<%- end -%>
 		</ol>
@@ -33,7 +33,7 @@
 		<ol class="avatars-list">
 			<%- resource.reposts.each do |repost| -%>
 				<li class="h-card">
-					<%= link_to image_tag(repost.author_photo, alt: repost.author_name, class: 'p-name u-photo'), repost.author_url, class: 'u-url' %>
+					<%= link_to image_tag(repost.author_photo, alt: repost.author_name, class: 'p-name u-photo'), repost.author_url, class: 'u-url', title: "#{repost.author_name} shared this." %>
 				</li>
 			<%- end -%>
 		</ol>
