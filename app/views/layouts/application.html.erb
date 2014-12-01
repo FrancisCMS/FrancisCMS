@@ -14,6 +14,7 @@
 
 	<%= auto_discovery_link_tag :rss, links_path(format: :rss), title: "#{Settings.site.title}: Links" %>
 	<%= auto_discovery_link_tag :rss, posts_path(format: :rss), title: "#{Settings.site.title}: Posts" %>
+	<%= auto_discovery_link_tag :rss, webmentions_path(format: :rss), title: "#{Settings.site.title}: Webmentions" if logged_in? %>
 	<%= stylesheet_link_tag 'application' %>
 	<%= stylesheet_link_tag 'admin' if logged_in? %>
 	<link rel="webmention" href="<%= webmentions_url %>">
