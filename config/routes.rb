@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   end
 
   resources :tags, only: [:index, :show]
+  resources :webmentions, except: [:new, :edit]
 
   root 'pages#homepage'
 

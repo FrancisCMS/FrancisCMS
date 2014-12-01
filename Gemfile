@@ -21,6 +21,7 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'colored'
 gem 'friendly_id', '~> 5.0.0'
 gem 'mechanize'
+gem 'microformats2'
 gem 'redcarpet'
 gem 'will_paginate', '~> 3.0.6'
 

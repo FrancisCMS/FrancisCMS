@@ -33,6 +33,18 @@
 	}
 }
 
+%button--green {
+	@extend %button;
+	@include bg-color($green);
+	color: #fff;
+
+	&:focus,
+	&:hover {
+		@include bg-color($green, dark);
+		color: #fff;
+	}
+}
+
 %button--red {
 	@extend %button;
 	@include bg-color($red);

@@ -3,6 +3,7 @@ class Link < ActiveRecord::Base
   include Redcarpeted
   include Syndicatable
   include Taggable
+  include Webmentionable
 
   validates :url, :title, presence: true
 

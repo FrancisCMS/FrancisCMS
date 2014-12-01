@@ -1,0 +1,30 @@
+<%- @page_title = "Webmention ##{@webmention.id}" -%>
+
+<%- if logged_in? -%>
+	<%- content_for :admin_panel do -%>
+		<menu class="local" role="menu">
+			<li role="menuitem">
+				<%= form_tag webmention_path(@webmention), method: :put do %>
+					<button type="submit"><%= @webmention.verified_at? ? 'Reverify' : 'Verify' %></button>
+				<% end %>
+			</li>
+			<li role="menuitem">
+				<%= render 'shared/delete_form', action: webmention_path(@webmention) %>
+			</li>
+		</menu>
+	<%- end -%>
+<%- end -%>
+
+<article class="single h-entry h-event">
+	<header class="single-header">
+		<h1 class="single-title p-name">Webmention #<%= @webmention.id %></h1>
+	</header>
+
+	<div class="single-content e-content p-description">
+		<p>
+			On <time class="dt-start" datetime="<%= @webmention.created_at.to_s(:iso8601) %>"><%= raw @webmention.created_at.to_s(:display) %></time>,
+			<%= link_to 'this URL', @webmention.source, rel: 'nofollow', title: @webmention.source %> mentioned <%= link_to 'that URL', @webmention.target, title: @webmention.target %>.
+		</p>
+		<p>This webmention is <%= link_to raw(%Q{<span class="#{@webmention.status_string}">#{@webmention.status_string}</span>}), webmention_path(@webmention), class: 'u-url' %>.</p>
+	</div>
+</article>

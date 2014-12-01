@@ -1,0 +1,12 @@
+.unverified,
+.verified {
+	@include margin-x(1);
+}
+
+.unverified {
+	@extend %button--red;
+}
+
+.verified {
+	@extend %button--green;
+}

@@ -29,11 +29,11 @@
 	</div>
 
 	<aside class="responses" id="responses" role="complementary">
-		<%#= render 'shared/webmention_form', locals: { target: post_url(@post) } %>
+		<%= render 'shared/webmention_form', target: post_url(@post) %>
 
-		<%#- if @post.webmentions.any? -%>
-			<%#= render 'shared/webmentions', locals: { resource: @post } %>
-		<%#- end -%>
+		<%- if @post.webmentions.any? -%>
+			<%= render 'shared/webmentions', resource: @post %>
+		<%- end -%>
 	</aside>
 
 	<footer role="complementary">

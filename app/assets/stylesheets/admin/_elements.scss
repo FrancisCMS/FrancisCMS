@@ -4,6 +4,54 @@
 	}
 }
 
-.destroy {
-	@extend %button--red;
+table {
+	border-collapse: collapse;
+	margin: $spacing-1 0 $spacing-3 0;
+	width: 100%;
+
+	th {
+		padding: $spacing-1 $spacing-1 $spacing-1 0;
+		text-align: left;
+	}
+
+	tbody {
+		@include font-size(6);
+
+		tr {
+			border-top: 2px solid $darken-1;
+		}
+
+		td {
+			padding: $spacing-1 $spacing-1 $spacing-1 0;
+
+			&:last-child {
+				padding-right: 0;
+			}
+		}
+	}
+
+	[data-status="unverified"] {
+		@include color($red);
+	}
+
+	[data-status="verified"] {
+		@include color($green);
+	}
+
+	.mq-toggle {
+		display: none;
+
+		@include breakpoint($tp-medium) {
+			display: table-cell;
+		}
+	}
+
+	.actions {
+		text-align: right;
+	}
+
+	.button,
+	.destroy {
+		line-height: 1;
+	}
 }

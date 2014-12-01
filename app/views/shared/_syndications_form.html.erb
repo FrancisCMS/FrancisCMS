@@ -2,18 +2,19 @@
 	<h2>Syndicated Copies</h2>
 
 	<%- if resource.syndications.any? -%>
-		<table class="syndications-table">
+		<table>
 			<thead>
-				<th scope="col">Name</th>
-				<th scope="col" class="url">URL</th>
-				<td></td>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col" class="mq-toggle">URL</th>
+				</tr>
 			</thead>
 			<tbody>
 				<%- resource.syndications.each_with_index do |syndication, index| -%>
 					<tr>
 						<th scope="row"><%= syndication.name %></th>
-						<td class="url"><%= link_to syndication.url, syndication.url %></td>
-						<td>
+						<td class="mq-toggle"><%= link_to syndication.url, syndication.url %></td>
+						<td class="actions">
 							<%= render 'shared/delete_form', action: send("#{resource.class.name.downcase}_syndication_path", resource, syndication) %>
 						</td>
 					</tr>
