@@ -1,44 +1,24 @@
 <%- @page_title = "Content tagged “#{@tag.name}”" -%>
+<%- content_for :main_classes, 'h-feed' -%>
 
-<%- if @posts.any? || @links.any? -%>
-	<%- if @posts.any? -%>
-		<section class="h-feed">
-			<header>
-				<h1 class="p-name">Posts tagged “<%= @tag.name %>”</h1>
-			</header>
+<header class="content-header">
+	<h1 class="p-name">Content tagged  “<%= @tag.name %>”</h1>
+</header>
 
-			<div class="entries-container">
-				<ol class="entries" reversed>
-					<%- @posts.each do |post| -%>
-						<li>
-							<%= render 'shared/post_hentry', post: post %>
-						</li>
-					<%- end -%>
-				</ol>
-			</div>
-		</section>
+<div class="entries-container">
+	<%- if @results.any? -%>
+		<ol class="entries" reversed>
+			<%- @results.each do |result| -%>
+				<%- result_type = result.class.name.downcase -%>
+				<li>
+					<%= render "shared/#{result_type}_hentry", result_type.to_sym => result %>
+				</li>
+			<%- end -%>
+		</ol>
+	<%- else -%>
+		<p>No content tagged “<%= @tag.name %>” found!</p>
 	<%- end -%>
-
-	<%- if @links.any? -%>
-		<section class="h-feed">
-			<header>
-				<h1 class="p-name">Links tagged “<%= @tag.name %>”</h1>
-			</header>
-
-			<div class="entries-container">
-				<ol class="entries" reversed>
-					<%- @links.each do |link| -%>
-						<li>
-							<%= render 'shared/link_hentry', link: link %>
-						</li>
-					<%- end -%>
-				</ol>
-			</div>
-		</section>
-	<%- end -%>
-<%- else -%>
-	<p>No content tagged “<%= @tag.name %>” found!</p>
-<%- end -%>
+</div>
 
 <footer class="content-footer">
 	<%= render 'shared/author_hcard' %>
