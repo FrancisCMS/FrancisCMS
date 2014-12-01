@@ -1,7 +1,9 @@
-<h1>Welcome to FrancisCMS!</h1>
+<section class="section">
+	<h1>Welcome to FrancisCMS!</h1>
 
-<p>Feel free to modify this page—and any other pages, for that matter—to suit your needs.</p>
-<p>The list of profiles below use <code>rel="me"</code> links that can be used to log in to services that support <%= link_to 'IndieAuth', 'https://indieauth.com/' %>. To add or remove links to your various social profiles, edit the <code>/config/settings.yml</code> file you created while setting up FrancisCMS.</p>
+	<p>Feel free to modify this page—and any other pages, for that matter—to suit your needs.</p>
+	<p>The list of profiles below use <code>rel="me"</code> links that can be used to log in to services that support <%= link_to 'IndieAuth', 'https://indieauth.com/' %>. To add or remove links to your various social profiles, edit the <code>/config/settings.yml</code> file you created while setting up FrancisCMS.</p>
+</section>
 
 <%- if @posts.any? -%>
 	<section class="section h-feed">
