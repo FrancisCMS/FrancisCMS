@@ -124,10 +124,14 @@ class Webmention < ActiveRecord::Base
   end
 
   def get_webmentionable
-    matches = target.match(%r{\A#{Settings.site.url}/?(?<path>[links|posts])?/?(?<params>[A-Za-z0-9\-]+)?$})
+    matches = target.match(%r{\A#{Settings.site.url}/(?<path>[a-z]+)/(?<params>[A-Za-z0-9\-]+)\Z})
 
-    if matches && matches[:path] && matches[:params]
-      webmentionable = matches[:path].classify.constantize.find(matches[:params])
+    if matches
+      klass = matches[:path].classify.constantize
+
+      if klass < Webmentionable
+        webmentionable = klass.find(matches[:params])
+      end
     end
 
     webmentionable
