@@ -12,3 +12,11 @@ An [IndieWeb](http://indiewebcamp.com/)-friendly content management system built
 1. `rake db:migrate`
 1. `rails server`
 
+
+## Testing
+
+### Running Smoke Tests
+
+1. `RAILS_ENV=test rails s`
+1. `rspec spec`
+
