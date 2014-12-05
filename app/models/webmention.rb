@@ -6,29 +6,18 @@ class Webmention < ActiveRecord::Base
   validates :target, format: { :with => %r{\A#{Settings.site.url}/?} }
 
   def author_name
-    name = entry.try(:author).try(:format).try(:name)
-    name ||= card.try(:name)
-    name ||= URI.parse(source).host
-
-    name.to_s
+    # Microformats2 returns Microformats2::Property::Text
+    (author_name_from_entry || author_name_from_card || author_name_from_source_url).to_s
   end
 
   def author_photo
-    photo = entry.try(:author).try(:format).try(:photo)
-    photo ||= card.try(:photo)
-    photo ||= 'http://www.placecage.com/150/150'
-
-    absolutize photo.to_s
+    # Microformats2 returns Microformats2::Property::Url
+    absolutize (author_photo_from_entry || author_photo_from_card || 'http://www.placecage.com/150/150').to_s
   end
 
   def author_url
-    url_parts = URI.parse(source)
-
-    url = entry.try(:author).try(:format).try(:url)
-    url ||= card.try(:url)
-    url ||= "#{url_parts.scheme}://#{url_parts.host}"
-
-    absolutize url.to_s
+    # Microformats2 returns Microformats2::Property::Url
+    absolutize (author_url_from_entry || author_url_from_card || author_url_from_source_url).to_s
   end
 
   def entry_content
@@ -40,17 +29,13 @@ class Webmention < ActiveRecord::Base
   end
 
   def entry_url
-    url = entry.try(:url)
-    url ||= source
-
-    absolutize url.to_s
+    # Microformats2 returns Microformats2::Property::Url
+    absolutize (entry_url_from_entry || source).to_s
   end
 
   def published_at
-    date = entry.try(:published)
-    date ||= created_at
-
-    Time.parse(date.to_s)
+    # Microformats2 returns Microformats2::Property::DateTime
+    Time.parse (published_at_from_entry || created_at).to_s
   end
 
   def status_string
@@ -69,10 +54,44 @@ class Webmention < ActiveRecord::Base
 
   def absolutize(url)
     if !URI.parse(url).scheme
-      Microformats2::AbsoluteUri.new(source_domain, url)
+      Microformats2::AbsoluteUri.new(source_domain, url).absolutize
     else
       url
     end
+  end
+
+  def author_name_from_card
+    card.try(:name)
+  end
+
+  def author_name_from_entry
+    entry.try(:author).try(:format).try(:name)
+  end
+
+  def author_name_from_source_url
+    URI.parse(source).host
+  end
+
+  def author_photo_from_card
+    card.try(:photo)
+  end
+
+  def author_photo_from_entry
+    entry.try(:author).try(:format).try(:photo)
+  end
+
+  def author_url_from_card
+    card.try(:url)
+  end
+
+  def author_url_from_entry
+    entry.try(:author).try(:format).try(:url)
+  end
+
+  def author_url_from_source_url
+    uri = URI.parse(source)
+
+    "#{uri.scheme}://#{uri.host}/"
   end
 
   def card
@@ -83,8 +102,16 @@ class Webmention < ActiveRecord::Base
     parsed_html.entry
   end
 
+  def entry_url_from_entry
+    entry.try(:url)
+  end
+
   def parsed_html
     Microformats2.parse(html)
+  end
+
+  def published_at_from_entry
+    entry.try(:published)
   end
 
   def source_domain

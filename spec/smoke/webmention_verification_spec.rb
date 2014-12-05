@@ -6,7 +6,7 @@ describe 'Webmention verification' do
   end
 
   let :source_post do
-    Post.create title: 'Sample source post title', body: body
+    Post.create title: 'Sample source post title', body: source_post_body
   end
 
   let :webmention do
@@ -17,8 +17,8 @@ describe 'Webmention verification' do
     DatabaseCleaner.clean
   end
 
-  context 'with a link to target URL in the body' do
-    let :body do
+  context 'with a link to target URL in the source post body' do
+    let :source_post_body do
       %Q{Sample source post body that [links to sample post](#{post_url(target_post)}).}
     end
 
@@ -31,8 +31,8 @@ describe 'Webmention verification' do
     end
   end
 
-  context 'without a link to target URL in the body' do
-    let :body do
+  context 'without a link to target URL in the source post body' do
+    let :source_post_body do
       'Sample source post body.'
     end
 
