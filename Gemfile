@@ -28,6 +28,7 @@ gem 'will_paginate', '~> 3.0.6'
 gem 'rspec-rails', group: [:development, :test]
 
 group :test do
+  gem 'bourne', require: false
   gem 'database_cleaner'
   gem 'mocha', require: false
 end

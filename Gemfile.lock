@@ -31,6 +31,8 @@ GEM
     acts-as-taggable-on (3.4.2)
       activerecord (>= 3.2, < 5)
     arel (5.0.1.20140414130214)
+    bourne (1.6.0)
+      mocha (~> 1.1)
     breakpoint (2.5.0)
       sass (~> 3.3)
       sassy-maps (< 1.0.0)
@@ -151,6 +153,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on (~> 3.4)
+  bourne
   breakpoint (~> 2.5.0)
   database_cleaner
   friendly_id (~> 5.0.0)
