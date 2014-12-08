@@ -11,8 +11,8 @@ describe Webmention do
 
   context '#author_name' do
     context 'with an h-entry' do
-      let :entry { stub(author: stub(format: stub(name: stub(to_s: 'Foo Bar')))) }
-      let :webmention { Webmention.new }
+      let(:entry) { stub(author: stub(format: stub(name: stub(to_s: 'Foo Bar')))) }
+      let(:webmention) { Webmention.new }
 
       before :each do
         webmention.stubs(:entry).returns entry
@@ -24,8 +24,8 @@ describe Webmention do
     end
 
     context 'with an h-card' do
-      let :card { stub(name: stub(to_s: 'Foo Bar')) }
-      let :webmention { Webmention.new }
+      let(:card) { stub(name: stub(to_s: 'Foo Bar')) }
+      let(:webmention) { Webmention.new }
 
       before :each do
         webmention.stubs(:entry).returns nil
@@ -38,7 +38,7 @@ describe Webmention do
     end
 
     context 'without an h-card or h-entry' do
-      let :webmention { Webmention.new source: 'http://example.com/foo/bar' }
+      let(:webmention) { Webmention.new source: 'http://example.com/foo/bar' }
 
       before :each do
         webmention.stubs(:entry).returns nil
@@ -53,9 +53,9 @@ describe Webmention do
 
   context '#author_photo' do
     context 'with an h-entry' do
-      let :entry { stub(author: stub(format: stub(photo: stub(to_s: '/foo.png')))) }
+      let(:entry) { stub(author: stub(format: stub(photo: stub(to_s: '/foo.png')))) }
 
-      let :webmention { Webmention.new source: 'http://example.com/bar' }
+      let(:webmention) { Webmention.new source: 'http://example.com/bar' }
 
       before :each do
         webmention.stubs(:entry).returns entry
@@ -67,8 +67,8 @@ describe Webmention do
     end
 
     context 'with an h-card' do
-      let :card { stub(photo: stub(to_s: '/foo.png')) }
-      let :webmention { Webmention.new source: 'http://example.com/bar' }
+      let(:card) { stub(photo: stub(to_s: '/foo.png')) }
+      let(:webmention) { Webmention.new source: 'http://example.com/bar' }
 
       before :each do
         webmention.stubs(:entry).returns nil
@@ -81,7 +81,7 @@ describe Webmention do
     end
 
     context 'without an h-card or h-entry' do
-      let :webmention { Webmention.new source: 'http://example.com/bar' }
+      let(:webmention) { Webmention.new source: 'http://example.com/bar' }
 
       before :each do
         webmention.stubs(:entry).returns nil
@@ -96,8 +96,8 @@ describe Webmention do
 
   context '#author_url' do
     context 'with an h-entry' do
-      let :entry { stub(author: stub(format: stub(url: stub(to_s: '/')))) }
-      let :webmention { Webmention.new source: 'http://example.com/bar' }
+      let(:entry) { stub(author: stub(format: stub(url: stub(to_s: '/')))) }
+      let(:webmention) { Webmention.new source: 'http://example.com/bar' }
 
       before :each do
         webmention.stubs(:entry).returns entry
@@ -109,8 +109,8 @@ describe Webmention do
     end
 
     context 'with an h-card' do
-      let :card { stub(url: stub(to_s: '/')) }
-      let :webmention { Webmention.new source: 'http://example.com/bar' }
+      let(:card) { stub(url: stub(to_s: '/')) }
+      let(:webmention) { Webmention.new source: 'http://example.com/bar' }
 
       before :each do
         webmention.stubs(:entry).returns nil
@@ -123,7 +123,7 @@ describe Webmention do
     end
 
     context 'without an h-card or h-entry' do
-      let :webmention { Webmention.new source: 'http://example.com/bar' }
+      let(:webmention) { Webmention.new source: 'http://example.com/bar' }
 
       before :each do
         webmention.stubs(:entry).returns nil
@@ -138,8 +138,8 @@ describe Webmention do
 
   context '#entry_url' do
     context 'with an h-entry' do
-      let :entry { stub(url: stub(to_s: '/foo')) }
-      let :webmention { Webmention.new source: 'http://example.com/foo' }
+      let(:entry) { stub(url: stub(to_s: '/foo')) }
+      let(:webmention) { Webmention.new source: 'http://example.com/foo' }
 
       before :each do
         webmention.stubs(:entry).returns entry
@@ -151,7 +151,7 @@ describe Webmention do
     end
 
     context 'without an h-entry' do
-      let :webmention { Webmention.new source: 'http://example.com/foo' }
+      let(:webmention) { Webmention.new source: 'http://example.com/foo' }
 
       before :each do
         webmention.stubs(:entry).returns nil
@@ -165,8 +165,8 @@ describe Webmention do
 
   context '#published_at' do
     context 'with an h-entry' do
-      let :entry { stub(published: stub(to_s: '2000-01-01T00:00:00')) }
-      let :webmention { Webmention.new }
+      let(:entry) { stub(published: stub(to_s: '2000-01-01T00:00:00')) }
+      let(:webmention) { Webmention.new }
 
       before :each do
         webmention.stubs(:entry).returns entry
@@ -178,7 +178,7 @@ describe Webmention do
     end
 
     context 'without an h-entry' do
-      let :webmention { Webmention.new created_at: Time.parse('2000-01-01T00:00:00') }
+      let(:webmention) { Webmention.new created_at: Time.parse('2000-01-01T00:00:00') }
 
       before :each do
         webmention.stubs(:entry).returns nil
