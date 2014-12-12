@@ -5,8 +5,6 @@ class CreateWebmentions < ActiveRecord::Migration
       t.string     :target, null: false
       t.references :webmentionable, polymorphic: true
       t.string     :webmention_type
-      t.text       :html
-      t.text       :json
       t.datetime   :verified_at
 
       t.timestamps
