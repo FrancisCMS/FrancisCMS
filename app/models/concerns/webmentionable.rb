@@ -20,6 +20,6 @@ module Webmentionable
   private
 
   def verified_webmentions
-    webmentions.where('verified_at IS NOT NULL').order('created_at ASC')
+    webmentions.joins(:webmention_entry).where('verified_at IS NOT NULL').order('webmention_entries.published_at ASC')
   end
 end
