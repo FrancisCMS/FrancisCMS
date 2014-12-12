@@ -19,10 +19,10 @@ class WebmentionVerification
       @webmention.update_attributes(
         webmentionable: get_webmentionable,
         webmention_type: get_type(entry_properties),
-        html: source_page.body,
-        json: collection.to_json,
         verified_at: Time.now
       )
+
+      @webmention.add_webmention_entry(collection)
     else
       @webmention.delete
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141130202441) do
+ActiveRecord::Schema.define(version: 20141212022726) do
 
   create_table "links", force: true do |t|
     t.string   "url",          null: false
@@ -63,6 +63,17 @@ ActiveRecord::Schema.define(version: 20141130202441) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
+  create_table "webmention_entries", force: true do |t|
+    t.integer  "webmention_id"
+    t.text     "entry_name"
+    t.text     "entry_content"
+    t.text     "entry_url"
+    t.text     "author_name"
+    t.text     "author_photo"
+    t.text     "author_url"
+    t.datetime "published_at"
+  end
 
   create_table "webmentions", force: true do |t|
     t.string   "source",              null: false
