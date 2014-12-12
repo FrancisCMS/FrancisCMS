@@ -8,7 +8,7 @@ gem 'rails', '4.1.8'
 gem 'rails_config'
 
 # Database
-gem 'mysql2'
+gem 'pg'
 
 # Assets
 gem 'breakpoint', '~> 2.5.0'

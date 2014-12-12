@@ -13,9 +13,12 @@
 
 ActiveRecord::Schema.define(version: 20141212022726) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "links", force: true do |t|
-    t.string   "url",          null: false
-    t.string   "title",        null: false
+    t.text     "url",          null: false
+    t.text     "title",        null: false
     t.text     "body"
     t.datetime "published_at"
     t.datetime "created_at"
@@ -23,25 +26,24 @@ ActiveRecord::Schema.define(version: 20141212022726) do
   end
 
   create_table "posts", force: true do |t|
-    t.string   "title",        null: false
-    t.string   "slug",         null: false
+    t.text     "title",        null: false
+    t.text     "slug",         null: false
     t.text     "body",         null: false
-    t.string   "excerpt"
+    t.text     "excerpt"
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "syndications", force: true do |t|
-    t.string   "url",               null: false
-    t.string   "name",              null: false
+    t.text     "url",               null: false
+    t.text     "name",              null: false
     t.integer  "syndicatable_id"
     t.string   "syndicatable_type"
     t.datetime "created_at"
   end
 
   add_index "syndications", ["syndicatable_id", "syndicatable_type"], name: "index_syndications_on_syndicatable_id_and_syndicatable_type", using: :btree
-  add_index "syndications", ["url"], name: "index_syndications_on_url", unique: true, using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
@@ -59,7 +61,7 @@ ActiveRecord::Schema.define(version: 20141212022726) do
   create_table "tags", force: true do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
-    t.string  "slug",                       null: false
+    t.text    "slug",                       null: false
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
@@ -76,8 +78,8 @@ ActiveRecord::Schema.define(version: 20141212022726) do
   end
 
   create_table "webmentions", force: true do |t|
-    t.string   "source",              null: false
-    t.string   "target",              null: false
+    t.text     "source",              null: false
+    t.text     "target",              null: false
     t.integer  "webmentionable_id"
     t.string   "webmentionable_type"
     t.string   "webmention_type"
@@ -85,7 +87,5 @@ ActiveRecord::Schema.define(version: 20141212022726) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "webmentions", ["webmention_type"], name: "index_webmentions_on_webmention_type", using: :btree
 
 end
