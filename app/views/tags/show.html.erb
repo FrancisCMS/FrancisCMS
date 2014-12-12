@@ -5,7 +5,7 @@
 	<h1 class="p-name">Content tagged  “<%= @tag.name %>”</h1>
 </header>
 
-<div class="entries-container">
+<div class="content-container">
 	<%- if @results.any? -%>
 		<ol class="entries" reversed>
 			<%- @results.each do |result| -%>
