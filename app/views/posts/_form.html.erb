@@ -17,13 +17,8 @@
 			<%= f.text_field :title, required: true %>
 		</li>
 		<li>
-			<%= f.label :slug, 'URL' %>
-			<div class="url-field">
-				<div class="url-prefix"><%= posts_url %>/</div>
-				<div class="url-input">
-					<%= f.text_field :slug, placeholder: 'an-example-post-url', required: true %>
-				</div>
-			</div>
+			<%= f.label :slug, raw(%Q{URL <span class="hint">(#{posts_url}/…)</span>}) %>
+			<%= f.text_field :slug, placeholder: 'an-example-post-url', required: true %>
 		</li>
 		<li>
 			<%= f.label :body %>

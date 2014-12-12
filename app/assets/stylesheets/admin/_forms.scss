@@ -13,24 +13,9 @@
 
 /* @group Specific form styles */
 
-	@include breakpoint($bp-narrow) {
-		.url-field {
-			@include table;
-		}
-
-		.url-input {
-			@include table-cell;
-		}
-	}
-
-	.url-prefix {
+	.hint {
 		@include color($grey, light);
-		display: block;
-		margin-bottom: $spacing-1;
-
-		@include breakpoint($bp-narrow) {
-			@include table-cell;
-		}
+		@include font-size(6);
 	}
 
 /* @end */
