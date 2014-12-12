@@ -81,8 +81,6 @@ ActiveRecord::Schema.define(version: 20141212022726) do
     t.integer  "webmentionable_id"
     t.string   "webmentionable_type"
     t.string   "webmention_type"
-    t.text     "html"
-    t.text     "json"
     t.datetime "verified_at"
     t.datetime "created_at"
     t.datetime "updated_at"
