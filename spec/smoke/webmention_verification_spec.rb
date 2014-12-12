@@ -19,7 +19,7 @@ describe 'Webmention verification' do
 
   context 'with a link to target URL in the source post body' do
     let :source_post_body do
-      %Q{Sample source post body that [links to sample post](#{post_url(target_post)}).}
+      ERB.new(File.read(Rails.root + 'spec/fixtures/source_page_with_link_to_target_page.html.erb')).result(binding)
     end
 
     before :each do
