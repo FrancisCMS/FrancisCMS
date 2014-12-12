@@ -6,7 +6,7 @@ class WebmentionEntry < ActiveRecord::Base
   end
 
   def self.create_from_collection(webmention, collection)
-    create attributes_from_collection(webmention, collection)
+    where(webmention: webmention).first_or_create(attributes_from_collection(webmention, collection))
   end
 
   class AttributesBuilder

@@ -3,16 +3,13 @@ class WebmentionVerification
 
   def initialize(webmention)
     @webmention = webmention
+    @agent = Mechanize.new
   end
 
   def verify
-    agent = Mechanize.new
+    @agent.user_agent = "#{Settings.site.url}/ (http://webmention.org/)"
 
-    agent.user_agent = "#{Settings.site.url}/ (http://webmention.org/)"
-
-    source_page = agent.get(source)
-
-    if target_accepts_webmentions?(agent.get(target)) && source_links_to_target?(source_page)
+    if target_accepts_webmentions? && source_links_to_target?
       collection = Microformats2.parse(source_page.body)
       entry_properties = collection.entry.to_hash[:properties]
 
@@ -48,7 +45,8 @@ class WebmentionVerification
   end
 
   def get_webmentionable
-    matches = target.match(%r{\A#{Settings.site.url}/(?<path>[a-z]+)/(?<params>[A-Za-z0-9\-]+)\Z})
+    # Use canonical target URL to account for 301 redirects
+    matches = target_page.uri.to_s.match(%r{\A#{Settings.site.url}/(?<path>[a-z]+)/(?<params>[A-Za-z0-9\-]+)\Z})
 
     if matches
       begin
@@ -65,7 +63,7 @@ class WebmentionVerification
     webmentionable
   end
 
-  def source_links_to_target?(page)
+  def source_links_to_target?
     if URI.parse(source).host == URI.parse(target).host
       # If source and target are on the same domain, target should be relative
       regex = %r{#{target}|#{target.sub(Settings.site.url + '/', '/')}}
@@ -74,18 +72,26 @@ class WebmentionVerification
       regex = %r{#{target}|#{target.sub(/.*\/+?$/, '')}}
     end
 
-    page.link_with(href: regex).present?
+    source_page.link_with(href: regex).present?
   end
 
-  def target_accepts_webmentions?(page)
-    if page.header.key? 'link'
+  def source_page
+    @source_page ||= @agent.get(source)
+  end
+
+  def target_accepts_webmentions?
+    if target_page.header.key? 'link'
       # Search for endpoint in Link header
-      supported = page.header['link'].match(/<((?:https?:\/\/)?[^>]+)>; rel="(?:[^>]*\s+|\s*)(?:webmention|http:\/\/webmention.org\/?)(?:\s*|\s+[^>]*)"/i)
+      supported = target_page.header['link'].match(/<((?:https?:\/\/)?[^>]+)>; rel="(?:[^>]*\s+|\s*)(?:webmention|http:\/\/webmention.org\/?)(?:\s*|\s+[^>]*)"/i)
     else
       # Search for endpoint in <link> and <a> elements
-      supported = page.search('link[rel~="webmention"]', 'link[rel~="http://webmention.org/"]', 'a[rel~="webmention"]', 'a[rel~="http://webmention.org/"]').first
+      supported = target_page.search('link[rel~="webmention"]', 'link[rel~="http://webmention.org/"]', 'a[rel~="webmention"]', 'a[rel~="http://webmention.org/"]').first
     end
 
     supported
+  end
+
+  def target_page
+    @target_page ||= @agent.get(target)
   end
 end
