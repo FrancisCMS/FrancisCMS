@@ -1,9 +1,9 @@
 class WebmentionVerification
+  delegate :source, :target, to: :@webmention
+
   def initialize(webmention)
     @webmention = webmention
   end
-
-  delegate :source, :target, to: :@webmention
 
   def verify
     agent = Mechanize.new
