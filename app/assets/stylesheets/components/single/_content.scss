@@ -54,12 +54,19 @@
 		@include margin-x(0);
 		@include margin-y(3);
 		text-align: center;
+
+		p {
+			margin: 0;
+		}
 	}
 
 	figcaption {
-		@include color($grey, light);
-		@include font-size(5);
 		margin-top: $spacing-1;
+
+		p {
+			@include color($grey, light);
+			@include font-size(5);
+		}
 
 		a {
 			@extend %anchor--grey;
