@@ -4,7 +4,7 @@ module Redcarpeted
   module ClassMethods
     def redcarpet(field)
       define_method :to_html do
-        Redcarpeted::MarkupBuilder.new(read_attribute(field)).render
+        MarkupBuilder.new(read_attribute(field)).render
       end
     end
   end
@@ -14,7 +14,7 @@ module Redcarpeted
       full_document.gsub(/(?:\n|\A)={3,}(?:\s\[(?<precaption>.*)\])?\r?\n(?<content>.*)?\r?\n={3,}(?:\s\[(?<postcaption>.*)\])?\r?\n/m) do
         "<figure>
           #{render_caption($~[:precaption]) if $~[:precaption]}
-          #{Redcarpeted::MarkupBuilder.new($~[:content].chomp).render}
+          #{MarkupBuilder.new($~[:content].chomp).render}
           #{render_caption($~[:postcaption]) if $~[:postcaption]}
         </figure>"
       end
@@ -23,7 +23,7 @@ module Redcarpeted
     private
 
     def render_caption(markdown)
-      "<figcaption>#{Redcarpeted::MarkupBuilder.new(markdown).render}</figcaption>"
+      "<figcaption>#{MarkupBuilder.new(markdown).render}</figcaption>"
     end
   end
 
@@ -42,7 +42,7 @@ module Redcarpeted
     end
 
     def render
-      Redcarpet::Markdown.new(Redcarpeted::HTMLRenderer, extensions).render(@markdown)
+      Redcarpet::Markdown.new(HTMLRenderer, extensions).render(@markdown)
     end
   end
 end
