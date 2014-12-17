@@ -45,11 +45,11 @@ class WebmentionEntry < ActiveRecord::Base
     end
 
     def entry_content
-      entry.content.to_s
+      entry.try(:content).to_s
     end
 
     def entry_name
-      entry.name.to_s
+      entry.try(:name).to_s
     end
 
     def entry_url
@@ -107,11 +107,11 @@ class WebmentionEntry < ActiveRecord::Base
     end
 
     def card
-      @collection.card
+      @collection.try(:card)
     end
 
     def entry
-      @collection.entry
+      @collection.try(:entry)
     end
 
     def entry_url_from_entry
