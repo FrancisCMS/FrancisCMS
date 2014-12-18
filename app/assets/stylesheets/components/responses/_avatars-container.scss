@@ -1,16 +1,18 @@
 .avatars-container {
 	margin-bottom: $spacing-3;
 
-	&:not(:last-child) {
-		float: left;
-		padding-right: $spacing-2;
-		width: 50%;
-	}
+	@include breakpoint($bp-narrow) {
+		&:not(:last-child) {
+			float: left;
+			padding-right: $spacing-2;
+			width: 50%;
+		}
 
-	& + & {
-		float: right;
-		padding-left: $spacing-2;
-		width: 50%;
+		& + & {
+			float: right;
+			padding-left: $spacing-2;
+			width: 50%;
+		}
 	}
 
 	h2 {
