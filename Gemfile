@@ -13,7 +13,7 @@ gem 'pg'
 # Assets
 gem 'breakpoint', '~> 2.5.0'
 gem 'rails-assets-normalize.css'
-gem 'sass-rails', '5.0.0.beta1'
+gem 'sass-rails', '~> 5.0.0'
 gem 'uglifier'
 
 # Utilities
