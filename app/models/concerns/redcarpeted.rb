@@ -11,19 +11,23 @@ module Redcarpeted
 
   class HTMLRenderer < Redcarpet::Render::SmartyHTML
     def preprocess(full_document)
-      full_document.gsub(/(?:\n|\A)={3,}(?:\s\[(?<precaption>.*)\])?\r?\n(?<content>.*)?\r?\n={3,}(?:\s\[(?<postcaption>.*)\])?\r?\n/m) do
-        "<figure>
-          #{render_caption($~[:precaption]) if $~[:precaption]}
-          #{MarkupBuilder.new($~[:content].chomp).render}
-          #{render_caption($~[:postcaption]) if $~[:postcaption]}
-        </figure>"
-      end
+      render_figure(full_document)
     end
 
     private
 
-    def render_caption(markdown)
+    def render_figcaption(markdown)
       "<figcaption>#{MarkupBuilder.new(markdown).render}</figcaption>"
+    end
+
+    def render_figure(markdown)
+      markdown.gsub(/(?:\n|\A)={3,}(?:\s\[(?<precaption>.*)\])?\r?\n(?<content>.*)?\r?\n={3,}(?:\s\[(?<postcaption>.*)\])?\r?\n/m) do
+        "<figure>
+          #{render_figcaption($~[:precaption]) if $~[:precaption]}
+          #{MarkupBuilder.new($~[:content].chomp).render}
+          #{render_figcaption($~[:postcaption]) if $~[:postcaption]}
+        </figure>"
+      end
     end
   end
 
