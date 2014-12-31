@@ -8,7 +8,7 @@ class Webmention < ActiveRecord::Base
 
   delegate :author_name, :author_photo, :author_url,
            :entry_content, :entry_name, :entry_url,
-           :published_at, to: :webmention_entry
+           :entry_url_host, :published_at, to: :webmention_entry
 
   def add_webmention_entry(collection)
     WebmentionEntry.create_from_collection(self, collection)

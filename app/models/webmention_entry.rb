@@ -1,6 +1,10 @@
 class WebmentionEntry < ActiveRecord::Base
   belongs_to :webmention
 
+  def entry_url_host
+    URI.parse(entry_url).host
+  end
+
   def self.attributes_from_collection(webmention, collection)
     WebmentionEntry::AttributesBuilder.new(webmention, collection).attributes
   end
