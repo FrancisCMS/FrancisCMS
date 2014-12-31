@@ -26,7 +26,7 @@
 		}
 	}
 
-	.avatar {
+	img {
 		@extend %avatar;
 		float: left;
 		margin-right: $spacing-1;

@@ -13,13 +13,13 @@
 <%- end -%>
 
 <%- if resource.likes.any? -%>
-	<div class="avatars-container">
+	<div class="facepile-container" id="likes">
 		<h2>Likes</h2>
 
-		<ol class="avatars-list">
+		<ol class="facepile">
 			<%- resource.likes.each do |like| -%>
 				<li class="h-card">
-					<%= link_to image_tag(like.author_photo, alt: like.author_name, class: 'p-name u-photo'), like.author_url, class: 'u-url', title: "#{like.author_name} likes this." %>
+					<%= link_to image_tag(like.author_photo, alt: like.author_name, class: 'p-name u-photo'), like.author_url, class: "#{like.entry_url_host.parameterize} u-url", title: "#{like.author_name} liked this on #{like.entry_url_host}." %>
 				</li>
 			<%- end -%>
 		</ol>
@@ -27,13 +27,13 @@
 <%- end -%>
 
 <%- if resource.reposts.any? -%>
-	<div class="avatars-container">
+	<div class="facepile-container" id="shares">
 		<h2>Shares</h2>
 
-		<ol class="avatars-list">
+		<ol class="facepile">
 			<%- resource.reposts.each do |repost| -%>
 				<li class="h-card">
-					<%= link_to image_tag(repost.author_photo, alt: repost.author_name, class: 'p-name u-photo'), repost.author_url, class: 'u-url', title: "#{repost.author_name} shared this." %>
+					<%= link_to image_tag(repost.author_photo, alt: repost.author_name, class: 'p-name u-photo'), repost.author_url, class: "#{repost.entry_url_host.parameterize} u-url", title: "#{repost.author_name} shared this on #{repost.entry_url_host}." %>
 				</li>
 			<%- end -%>
 		</ol>
