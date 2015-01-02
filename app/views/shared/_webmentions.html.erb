@@ -6,7 +6,7 @@
 	<ol class="responses-list">
 		<%- resource.responses.each do |response| -%>
 			<li>
-				<%= render "shared/#{response.webmention_type}_hcite", webmention: response %>
+				<%= render "shared/webmentions/#{response.webmention_type}", webmention: response %>
 			</li>
 		<%- end -%>
 	</ol>
@@ -18,9 +18,7 @@
 
 		<ol class="facepile">
 			<%- resource.likes.each do |like| -%>
-				<li class="h-card">
-					<%= link_to image_tag(like.author_photo, alt: like.author_name, class: 'p-name u-photo'), like.author_url, class: "#{like.entry_url_host.parameterize} avatar u-url", title: "#{like.author_name} liked this on #{like.entry_url_host}." %>
-				</li>
+				<%= render 'shared/webmentions/like', like: like %>
 			<%- end -%>
 		</ol>
 	</div>
@@ -32,9 +30,7 @@
 
 		<ol class="facepile">
 			<%- resource.reposts.each do |repost| -%>
-				<li class="h-card">
-					<%= link_to image_tag(repost.author_photo, alt: repost.author_name, class: 'p-name u-photo'), repost.author_url, class: "#{repost.entry_url_host.parameterize} avatar u-url", title: "#{repost.author_name} shared this on #{repost.entry_url_host}." %>
-				</li>
+				<%= render 'shared/webmentions/repost', repost: repost %>
 			<%- end -%>
 		</ol>
 	</div>
