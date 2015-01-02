@@ -23,6 +23,7 @@
 
 	img {
 		@include border-radius;
+		display: block;
 		height: 2.5rem;
 		max-width: none;
 	}
