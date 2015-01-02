@@ -6,32 +6,4 @@
 		float: left;
 		margin: 0 $spacing-1 $spacing-1 0;
 	}
-
-	a {
-		display: block;
-		position: relative;
-
-		&:after {
-			border-radius: 0 0 0.125rem 0.125rem;
-			bottom: 0;
-			content: "";
-			display: block;
-			height: 0.25rem;
-			left: 0;
-			position: absolute;
-			right: 0;
-		}
-
-		&.facebook-com:after {
-			background: #3b5998;
-		}
-
-		&.twitter-com:after {
-			background: #4099ff;
-		}
-	}
-
-	img {
-		@extend %avatar;
-	}
 }
