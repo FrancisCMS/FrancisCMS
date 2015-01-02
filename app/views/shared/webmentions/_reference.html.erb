@@ -1,6 +1,6 @@
 <article class="response p-comment h-cite" id="response-<%= webmention.id %>">
 	<div class="response-content e-content">
-		<p><%= link_to webmention.entry_name, webmention.entry_url, class: 'u-url p-name' %> references this post.</p>
+		<p><%= link_to truncate(webmention.entry_name, length: 128, omission: '…'), webmention.entry_url, class: 'u-url p-name' %> references this post.</p>
 	</div>
 
 	<footer class="response-footer">
