@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 source 'https://rails-assets.org'
 
 # Application
-gem 'rails', '4.1.8'
+gem 'rails', '4.2'
 gem 'rails_config'
 
 # Database
@@ -18,10 +18,11 @@ gem 'uglifier'
 
 # Utilities
 gem 'acts-as-taggable-on', '~> 3.4'
-gem 'friendly_id', '~> 5.0.0'
+gem 'friendly_id', '5.1.0.beta.1'
 gem 'mechanize'
 gem 'microformats2'
 gem 'redcarpet'
+gem 'web-console', '~> 2.0', group: :development
 gem 'will_paginate', '~> 3.0.6'
 
 # Testing
@@ -32,16 +33,4 @@ group :test do
   gem 'database_cleaner'
   gem 'mocha', require: false
 end
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
 

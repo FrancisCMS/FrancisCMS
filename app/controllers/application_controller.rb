@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
 
   def not_found
-    render 'public/404', status: 404, layout: false
+    render file: 'public/404', status: 404, layout: false
   end
 
   def require_login
