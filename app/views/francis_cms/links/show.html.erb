@@ -14,7 +14,7 @@
 <article class="single h-entry h-as-article">
 	<header class="single-header">
 		<h1 class="single-title p-name">
-			<%= link_to @link.title, @link.url %>
+			<%= @link.title %>
 			<%= link_to 'Draft', edit_link_path(@link), class: 'draft' unless @link.published_at? %>
 		</h1>
 
@@ -23,11 +23,10 @@
 		<%- end -%>
 	</header>
 
-	<%- if @link.body? -%>
-		<div class="single-content e-content">
-			<%= raw @link.to_html %>
-		</div>
-	<%- end -%>
+	<div class="single-content e-content">
+		<%= raw @link.to_html if @link.body? %>
+		<p><%= link_to "Visit “#{@link.title}” →", @link.url %></p>
+	</div>
 
 	<aside class="responses" id="responses" role="complementary">
 		<%= render 'francis_cms/shared/webmention_form', target: link_url(@link) %>
