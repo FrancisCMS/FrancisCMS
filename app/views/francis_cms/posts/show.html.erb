@@ -1,0 +1,56 @@
+<%- @page_title = "#{@post.title} — Posts" -%>
+<%- @page_description = @post.excerpt if @post.excerpt? -%>
+
+<%- if __logged_in__ -%>
+	<%- content_for :admin_panel_extras do -%>
+		<menu class="local" role="menu">
+			<li role="menuitem"><%= link_to 'Edit', edit_post_path(@post) %></li>
+			<li role="menuitem">
+				<%= render 'francis_cms/shared/delete_form', action: post_path(@post) %>
+			</li>
+		</menu>
+	<%- end -%>
+<%- end -%>
+
+<article class="single h-entry h-as-article">
+	<header class="single-header">
+		<h1 class="single-title p-name">
+			<%= @post.title %>
+			<%= link_to 'Draft', edit_post_path(@post), class: 'draft' unless @post.published_at? %>
+		</h1>
+
+		<%- if @post.published_at? -%>
+			<p>Published on <time class="dt-published" datetime="<%= @post.published_at.to_s(:iso8601) %>"><%= raw @post.published_at.to_s(:display) %></time>.</p>
+		<%- end -%>
+	</header>
+
+	<div class="single-content e-content">
+		<%= raw @post.to_html %>
+	</div>
+
+	<aside class="responses" id="responses" role="complementary">
+		<%= render 'francis_cms/shared/webmention_form', target: post_url(@post) %>
+
+		<%- if @post.webmentions.any? -%>
+			<%= render 'francis_cms/shared/webmentions', resource: @post %>
+		<%- end -%>
+	</aside>
+
+	<footer role="complementary">
+		<ul class="single-meta">
+			<li>“<%= link_to @post.title, post_path(@post), class: 'u-url' %>” is also available as <%= link_to 'JSON', post_path(@post, format: :json), rel: 'alternate', type: 'application/json' %>.</li>
+			<%- if @post.tags.any? -%>
+				<li>
+					<%= render 'francis_cms/shared/tags', resource: @post %>
+				</li>
+			<%- end -%>
+			<%- if @post.syndications.any? -%>
+				<li>
+					<%= render 'francis_cms/shared/syndications', resource: @post %>
+				</li>
+			<%- end -%>
+		</ul>
+
+		<%= render 'francis_cms/shared/author_hcard' %>
+	</footer>
+</article>

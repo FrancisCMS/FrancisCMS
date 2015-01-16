@@ -1,6 +1,0 @@
-@mixin column-count($number: auto) {
-	@each $prefix in -moz, -webkit {
-		#{$prefix}-column-count: $number;
-	}
-	column-count: $number;
-}

@@ -1,0 +1,11 @@
+<%= form_tag webmentions_path, class: 'webmention-form' do %>
+	<%= hidden_field_tag :referer, francis_cms_config.site_url %>
+	<%= hidden_field_tag :target, target %>
+
+	<%= label_tag :source, 'Have you written a response to this? Let me know the URL:' %>
+
+	<div class="inline-form-fields">
+		<%= url_field_tag :source, nil, placeholder: 'http://…', required: true %>
+		<button type="submit">Submit</button>
+	</div>
+<% end %>

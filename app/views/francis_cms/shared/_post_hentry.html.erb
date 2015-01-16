@@ -1,0 +1,22 @@
+<%- is_expanded = true if is_expanded.nil? -%>
+
+<article class="entry h-entry">
+	<header class="entry-header">
+		<h1 class="entry-title p-name">
+			<%= link_to post.title, francis_cms.post_path(post), class: 'u-url' %>
+			<%= link_to 'Draft', francis_cms.edit_post_path(post), class: 'draft' unless post.published_at? %>
+		</h1>
+	</header>
+
+	<%- if post.excerpt? && is_expanded -%>
+		<div class="entry-excerpt p-summary">
+			<p><%= post.excerpt %></p>
+		</div>
+	<%- end -%>
+
+	<%- if post.published_at? -%>
+		<footer class="entry-footer">
+			<p>Published on <time class="dt-published" datetime="<%= post.published_at.to_s(:iso8601) %>"><%= raw post.published_at.to_s(:display) %></time>.</p>
+		</footer>
+	<%- end -%>
+</article>

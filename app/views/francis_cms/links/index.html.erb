@@ -1,0 +1,27 @@
+<%- @page_title = "Links#{' – Page ' + params[:page] if params[:page].to_i > 1}" -%>
+
+<div class="h-feed">
+	<header class="content-header">
+		<h1 class="p-name">Links</h1>
+	</header>
+
+	<div class="content-container">
+		<%- if @links.any? -%>
+			<ol class="entries" reversed>
+				<%- @links.each do |link| -%>
+					<li>
+						<%= render 'francis_cms/shared/link_hentry', link: link %>
+					</li>
+				<%- end -%>
+			</ol>
+
+			<%= will_paginate @links %>
+		<%- else -%>
+			<p>No links found!</p>
+		<%- end -%>
+	</div>
+
+	<footer class="content-footer">
+		<%= render 'francis_cms/shared/author_hcard' %>
+	</footer>
+</div>

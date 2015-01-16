@@ -1,0 +1,43 @@
+<div class="syndications-container">
+	<h2>Syndicated Copies</h2>
+
+	<%- if resource.syndications.any? -%>
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col" class="mq-toggle">URL</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%- resource.syndications.each_with_index do |syndication, index| -%>
+					<tr>
+						<th scope="row"><%= syndication.name %></th>
+						<td class="mq-toggle"><%= link_to truncate(syndication.url.gsub(%r{^https?://}, ''), length: 64, omission: '…'), syndication.url %></td>
+						<td class="actions">
+							<%= render 'francis_cms/shared/delete_form', action: send("#{resource.class.name.demodulize.downcase}_syndication_path", resource, syndication) %>
+						</td>
+					</tr>
+				<%- end -%>
+			</tbody>
+		</table>
+	<%- end -%>
+
+	<p>Manually add a link to a third-party syndicated copy of this <%= resource.class.name.demodulize.downcase %>.</p>
+
+	<%= form_for [resource, resource.syndications.build] do |f| %>
+		<ul>
+			<li>
+				<%= f.label :name %>
+				<%= f.text_field :name, required: true %>
+			</li>
+			<li>
+				<%= f.label :url, 'URL' %>
+				<%= f.url_field :url, placeholder: 'http://…', required: true %>
+			</li>
+			<li>
+				<button type="submit">Submit</button>
+			</li>
+		</ul>
+	<% end %>
+</div>

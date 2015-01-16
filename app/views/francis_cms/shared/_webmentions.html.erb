@@ -1,0 +1,37 @@
+<%- if resource.responses.any? -%>
+	<header class="responses-header">
+		<h1>Responses</h1>
+	</header>
+
+	<ol class="responses-list">
+		<%- resource.responses.each do |response| -%>
+			<li>
+				<%= render "francis_cms/shared/webmentions/#{response.webmention_type}", webmention: response %>
+			</li>
+		<%- end -%>
+	</ol>
+<%- end -%>
+
+<%- if resource.likes.any? -%>
+	<div class="facepile-container" id="likes">
+		<h2>Likes</h2>
+
+		<ol class="facepile">
+			<%- resource.likes.each do |like| -%>
+				<%= render 'francis_cms/shared/webmentions/like', like: like %>
+			<%- end -%>
+		</ol>
+	</div>
+<%- end -%>
+
+<%- if resource.reposts.any? -%>
+	<div class="facepile-container" id="shares">
+		<h2>Shares</h2>
+
+		<ol class="facepile">
+			<%- resource.reposts.each do |repost| -%>
+				<%= render 'francis_cms/shared/webmentions/repost', repost: repost %>
+			<%- end -%>
+		</ol>
+	</div>
+<%- end -%>

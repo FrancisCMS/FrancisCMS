@@ -1,9 +1,0 @@
-<%- @page_title = "Editing “#{@link.title}”" -%>
-
-<header class="edit-content-header">
-	<h1>Editing “<%= @link.title %>”</h1>
-</header>
-
-<%= render 'form' %>
-
-<%= render 'shared/syndications_form', resource: @link %>

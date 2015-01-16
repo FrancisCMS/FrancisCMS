@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title><%= francis_cms_config.site_title %>: Webmentions</title>
+		<atom:link rel="self" href="<%= webmentions_url(format: :rss) %>" />
+		<link><%= webmentions_url %></link>
+		<description>Recent webmentions from <%= francis_cms_config.site_title %> — <%= francis_cms_config.site_description %></description>
+		<pubDate><%= @webmentions.first.created_at.to_s(:rfc822) if @webmentions.any? %></pubDate>
+		<managingEditor><%= francis_cms_config.user_email %> (<%= francis_cms_config.user_name %>)</managingEditor>
+		<webMaster><%= francis_cms_config.user_email %> (<%= francis_cms_config.user_name %>)</webMaster>
+		<language><%= francis_cms_config.site_language %></language>
+		<copyright><%= francis_cms_config.license_title %></copyright>
+
+		<%- @webmentions.each do |webmention| -%>
+			<item>
+				<guid><%= webmention_url(webmention) %></guid>
+				<title>Webmention #<%= webmention.id %></title>
+				<link><%= webmention_url(webmention) %></link>
+				<pubDate><%= webmention.created_at.to_s(:rfc822) %></pubDate>
+				<description>
+					<![CDATA[
+						<p>
+							On <time datetime="<%= webmention.created_at.to_s(:iso8601) %>"><%= raw webmention.created_at.to_s(:display) %></time>,
+							<%= link_to 'this URL', webmention.source, title: webmention.source %> mentioned <%= link_to 'that URL', webmention.target, title: webmention.target %>.
+						</p>
+						<p>This webmention is <b><%= webmention.status_string %></b>.</p>
+					]]>
+				</description>
+			</item>
+		<%- end -%>
+	</channel>
+</rss>

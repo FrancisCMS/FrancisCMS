@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title><%= francis_cms_config.site_title %>: Links</title>
+		<atom:link rel="self" href="<%= links_url(format: :rss) %>" />
+		<link><%= links_url %></link>
+		<description>Recent links from <%= francis_cms_config.site_title %> — <%= francis_cms_config.site_description %></description>
+		<pubDate><%= @links.first.published_at.to_s(:rfc822) if @links.any? %></pubDate>
+		<managingEditor><%= francis_cms_config.user_email %> (<%= francis_cms_config.user_name %>)</managingEditor>
+		<webMaster><%= francis_cms_config.user_email %> (<%= francis_cms_config.user_name %>)</webMaster>
+		<language><%= francis_cms_config.site_language %></language>
+		<copyright><%= francis_cms_config.license_title %></copyright>
+
+		<%- @links.each do |link| -%>
+			<item>
+				<guid><%= link_url(link) %></guid>
+				<title><%= link.title %></title>
+				<link><%= link_url(link) %></link>
+				<pubDate><%= link.published_at.to_s(:rfc822) %></pubDate>
+				<%- if link.body? -%>
+					<description>
+						<![CDATA[
+							<%= raw link.to_html %>
+						]]>
+					</description>
+				<%- end -%>
+				<%- if link.tags.any? -%>
+					<%- link.tags.each do |tag| -%>
+						<category><%= tag.name %></category>
+					<%- end -%>
+				<%- end -%>
+			</item>
+		<%- end -%>
+	</channel>
+</rss>
