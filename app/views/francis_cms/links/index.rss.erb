@@ -15,7 +15,7 @@
 			<item>
 				<guid><%= link_url(link) %></guid>
 				<title><%= link.title %></title>
-				<link><%= link_url(link) %></link>
+				<link><%= link.url %></link>
 				<pubDate><%= link.published_at.to_s(:rfc822) %></pubDate>
 				<%- if link.body? -%>
 					<description>

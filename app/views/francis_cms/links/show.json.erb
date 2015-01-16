@@ -10,7 +10,7 @@
 			"published": ["<%= @link.published_at.to_s(:iso8601) %>"],
 			"updated": ["<%= @link.updated_at.to_s(:iso8601) %>"],
 			"category": <%= raw @link.tags.collect { |tag| tag.name } %>,
-			"url": ["<%= link_url(@link) %>"],
+			"url": ["<%= @link.url %>"],
 			"uid": ["<%= link_url(@link) %>"]
 		}
 	}]

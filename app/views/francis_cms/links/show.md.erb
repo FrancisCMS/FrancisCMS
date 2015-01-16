@@ -1,0 +1,10 @@
+---
+title: <%= @link.title %>
+url: <%= @link.url %>
+permalink: <%= link_url(@link) %>
+published: <%= @link.published_at.to_s(:iso8601) %>
+updated: <%= @link.updated_at.to_s(:iso8601) %>
+<%= "tags: #{@link.tags.collect { |tag| tag.name }.join(' ')}" if @link.tags.any? %>
+---
+
+<%= @link.body %>
