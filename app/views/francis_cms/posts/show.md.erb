@@ -1,10 +1,10 @@
 ---
-title: <%= @post.title %>
+title: <%= raw @post.title %>
 permalink: <%= post_url(@post) %>
 published: <%= @post.published_at.to_s(:iso8601) %>
 updated: <%= @post.updated_at.to_s(:iso8601) %>
-<%= "excerpt: #{@post.excerpt}" if @post.excerpt? %>
+<%= "excerpt: #{raw @post.excerpt}" if @post.excerpt? %>
 <%= "tags: #{@post.tags.collect { |tag| tag.name }.join(' ')}" if @post.tags.any? %>
 ---
 
-<%= @post.body %>
+<%= raw @post.body %>
