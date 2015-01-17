@@ -1,6 +1,6 @@
 class AddSlugToTags < ActiveRecord::Migration
   def up
-    add_column :tags, :slug, :text, null: false
+    add_column :tags, :slug, :text
   end
 
   def down
