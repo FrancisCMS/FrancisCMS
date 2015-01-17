@@ -2,6 +2,10 @@ module FrancisCms
   class Engine < ::Rails::Engine
     isolate_namespace FrancisCms
 
+    config.generators do |g|
+      g.test_framework :rspec
+    end
+
     config.autoload_paths << File.expand_path('../../', __FILE__)
 
     config.before_initialize do
