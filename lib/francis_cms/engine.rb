@@ -23,6 +23,7 @@ module FrancisCms
 
       app.config.francis_cms.user_name        = 'Jane Doe'
       app.config.francis_cms.user_email       = 'jane@example.com'
+      app.config.francis_cms.user_avatar      = 'http://www.placecage.com/180/180'
 
       app.config.francis_cms.license_title    = 'Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International'
       app.config.francis_cms.license_url      = 'http://creativecommons.org/licenses/by-nc-sa/4.0/'

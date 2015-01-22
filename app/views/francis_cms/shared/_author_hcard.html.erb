@@ -1,3 +1,7 @@
 <div class="bio p-author h-card">
-	<p class="p-note">Hi! I’m <span class="p-name"><%= francis_cms_config.user_name %></span>. You’re reading <%= link_to francis_cms_config.site_title, main_app.root_path, class: 'u-url' %>.</p>
+	<%= link_to main_app.root_path, class: 'avatar u-url', rel: 'home' do %>
+		<%= image_tag francis_cms_config.user_avatar, alt: '', class: 'u-photo' %>
+	<% end %>
+
+	<p class="p-note">Hi! I’m <span class="p-name"><%= francis_cms_config.user_name %></span>. You’re reading <%= link_to francis_cms_config.site_title, main_app.root_path, rel: 'home' %>.</p>
 </div>
