@@ -1,10 +1,10 @@
-<%- @page_title = "Posts#{' – Page ' + params[:page] if params[:page].to_i > 1}" -%>
+<%- @page_title = "Posts#{' – Page ' + @posts.current_page.to_s if @posts.current_page > 1}" -%>
 
 <div class="h-feed">
 	<header class="content-header">
 		<h1 class="p-name">Posts</h1>
-		<%- if params[:page].to_i > 1 -%>
-			<small>Page <%= params[:page] %></small>
+		<%- if @posts.current_page > 1 -%>
+			<small>Page <%= @posts.current_page %> of <%= @posts.total_pages %></small>
 		<%- end -%>
 	</header>
 
