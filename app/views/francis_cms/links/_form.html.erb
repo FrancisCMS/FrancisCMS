@@ -29,7 +29,7 @@
 			<%= f.text_field :tag_list %>
 		</li>
 		<li>
-			<%= f.label :is_draft do %>
+			<%= f.label :is_draft, class: 'for-checkbox' do %>
 				<%= f.check_box :is_draft, { checked: !@link.published_at? } %>
 				Save as draft
 			<% end %>
