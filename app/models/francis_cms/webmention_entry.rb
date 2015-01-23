@@ -3,7 +3,7 @@ module FrancisCms
     belongs_to :webmention
 
     def entry_url_host
-      URI.parse(entry_url).host
+      URI.parse(entry_url).host.gsub(/^www\./, '')
     end
 
     def self.attributes_from_collection(webmention, collection)
