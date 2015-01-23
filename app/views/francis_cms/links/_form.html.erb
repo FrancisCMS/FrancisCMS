@@ -25,8 +25,8 @@
 			<%= f.text_area :body %>
 		</li>
 		<li>
-			<%= f.label :tag_list, 'Tags' %>
-			<%= f.text_field :tag_list %>
+			<%= f.label :tag_list, raw(%Q{Tags <span class="hint">(Comma-separated, please.)</span>}) %>
+			<%= f.text_field :tag_list, value: @link.tag_list.to_s %>
 		</li>
 		<li>
 			<%= f.label :is_draft, class: 'for-checkbox' do %>
