@@ -2,18 +2,31 @@
 	"items": [{
 		"type": ["h-entry"],
 		"properties": {
-			"name": ["<%= @link.title %>"],
-			"content": [{
-				"html": <%= raw @link.to_html.to_json %>,
-				"markdown": <%= raw @link.body.to_json %>
+			"author": [{
+				"type": ["h-card"],
+				"properties": {
+					"name": ["<%= francis_cms_config.user_name %>"],
+					"url": ["<%= francis_cms_config.site_url %>"],
+					"photo": ["<%= francis_cms_config.user_avatar %>"]
+				}
 			}],
+			"name": ["<%= @link.title %>"],
+			<%- if @link.tags.any? -%>
+				"category": <%= raw @link.tags.collect { |tag| tag.name } %>,
+			<%- end -%>
+			"url": ["<%= @link.url %>"],
+			"uid": ["<%= link_url(@link) %>"],
+			<%- if @link.syndications.any? -%>
+				"syndication": <%= raw @link.syndications.collect { |syndication| syndication.url } %>,
+			<%- end -%>
 			<%- if @link.published_at? -%>
 				"published": ["<%= @link.published_at.to_s(:iso8601) %>"],
 			<%- end -%>
 			"updated": ["<%= @link.updated_at.to_s(:iso8601) %>"],
-			"category": <%= raw @link.tags.collect { |tag| tag.name } %>,
-			"url": ["<%= @link.url %>"],
-			"uid": ["<%= link_url(@link) %>"]
+			"content": [{
+				"html": <%= raw @link.to_html.to_json %>,
+				"markdown": <%= raw @link.body.to_json %>
+			}]
 		}
 	}]
 }

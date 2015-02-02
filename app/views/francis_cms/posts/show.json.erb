@@ -1,20 +1,38 @@
 {
 	"items": [{
-		"type": ["h-entry"],
+		"type": [
+			"h-entry",
+			"h-as-article"
+		],
 		"properties": {
-			"name": ["<%= @post.title %>"],
-			"summary": ["<%= @post.excerpt %>"],
-			"content": [{
-				"html": <%= raw @post.to_html.to_json %>,
-				"markdown": <%= raw @post.body.to_json %>
+			"author": [{
+				"type": ["h-card"],
+				"properties": {
+					"name": ["<%= francis_cms_config.user_name %>"],
+					"url": ["<%= francis_cms_config.site_url %>"],
+					"photo": ["<%= francis_cms_config.user_avatar %>"]
+				}
 			}],
+			"name": ["<%= @post.title %>"],
+			<%- if @post.tags.any? -%>
+				"category": <%= raw @post.tags.collect { |tag| tag.name } %>,
+			<%- end -%>
+			"url": ["<%= post_url(@post) %>"],
+			"uid": ["<%= post_url(@post) %>"],
+			<%- if @post.syndications.any? -%>
+				"syndication": <%= raw @post.syndications.collect { |syndication| syndication.url } %>,
+			<%- end -%>
 			<%- if @post.published_at? -%>
 				"published": ["<%= @post.published_at.to_s(:iso8601) %>"],
 			<%- end -%>
 			"updated": ["<%= @post.updated_at.to_s(:iso8601) %>"],
-			"category": <%= raw @post.tags.collect { |tag| tag.name } %>,
-			"url": ["<%= post_url(@post) %>"],
-			"uid": ["<%= post_url(@post) %>"]
+			<%- if @post.excerpt? -%>
+				"summary": ["<%= @post.excerpt %>"],
+			<%- end -%>
+			"content": [{
+				"html": <%= raw @post.to_html.to_json %>,
+				"markdown": <%= raw @post.body.to_json %>
+			}]
 		}
 	}]
 }
