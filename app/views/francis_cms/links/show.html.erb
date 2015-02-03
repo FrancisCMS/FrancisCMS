@@ -51,6 +51,13 @@
 			<%- end -%>
 		</ul>
 
+		<%- if @link.prev || @link.next -%>
+			<div class="pagination">
+				<%= link_to 'Older', link_path(@link.prev), class: 'previous_page', rel: 'prev' if @link.prev %>
+				<%= link_to 'Newer', link_path(@link.next), class: 'next_page', rel: 'next' if @link.next %>
+			</div>
+		<%- end -%>
+
 		<%= render 'francis_cms/shared/author_hcard' %>
 	</footer>
 </article>

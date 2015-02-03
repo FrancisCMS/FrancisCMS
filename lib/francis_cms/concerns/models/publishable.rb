@@ -24,6 +24,14 @@ module FrancisCms::Concerns::Models::Publishable
     end
   end
 
+  def next
+    self.class.exclude_drafts.where('id > ?', id).first
+  end
+
+  def prev
+    self.class.exclude_drafts.where('id < ?', id).last
+  end
+
   private
 
   def set_published_at
