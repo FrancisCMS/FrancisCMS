@@ -15,5 +15,7 @@ The bulk of the test suite can be run using `rspec spec` (aliased to the default
 
 ### Running Smoke Tests
 
-1. `RAILS_ENV=test spec/dummy/bin/rails s`
-1. `rspec spec`
+1. `cd spec/dummy`
+1. `bin/rake db:migrate db:test:prepare`
+1. `RAILS_ENV=test bin/rails s`
+1. In a different tab and inside `spec/dummy`, `rspec spec`
