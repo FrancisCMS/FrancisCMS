@@ -25,7 +25,7 @@
 
 	<p>Manually add a link to a third-party syndicated copy of this <%= resource.class.name.demodulize.downcase %>.</p>
 
-	<%= form_for [resource, resource.syndications.build] do |f| %>
+	<%= form_for [resource, resource.syndications.build], html: { class: 'syndication-form' } do |f| %>
 		<ul>
 			<li>
 				<%= f.label :name %>
