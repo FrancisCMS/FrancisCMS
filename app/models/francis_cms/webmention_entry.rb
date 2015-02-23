@@ -54,7 +54,7 @@ module FrancisCms
       end
 
       def entry_name
-        entry.try(:name).to_s
+        (entry.try(:name) || entry_url.gsub(%r{^https?://(www.)?}, '')).to_s
       end
 
       def entry_url
