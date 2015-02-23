@@ -12,7 +12,12 @@ module FrancisCms
 
       if target_accepts_webmentions? && source_links_to_target?
         collection = Microformats2.parse(source_page.body)
-        entry_properties = collection.entry.to_hash[:properties]
+
+        entry_properties = if collection.respond_to?(:entry)
+          collection.entry.to_hash[:properties]
+        else
+          {}
+        end
 
         @webmention.update_attributes(
           webmentionable: get_webmentionable,
