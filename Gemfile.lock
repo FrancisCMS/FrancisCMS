@@ -3,7 +3,7 @@ PATH
   specs:
     francis_cms (0.0.1)
       acts-as-taggable-on (~> 3.5)
-      friendly_id (= 5.1.0.beta.1)
+      friendly_id (= 5.1.0)
       mechanize
       microformats2
       pg
@@ -60,7 +60,7 @@ GEM
     domain_name (0.5.23)
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
-    friendly_id (5.1.0.beta.1)
+    friendly_id (5.1.0)
       activerecord (>= 4.0.0)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
