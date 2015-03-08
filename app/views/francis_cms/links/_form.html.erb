@@ -10,7 +10,7 @@
 	</div>
 <%- end -%>
 
-<%= form_for @link do |f| %>
+<%= form_for @link, html: { class: 'link-form' } do |f| %>
 	<ul>
 		<li>
 			<%= f.label :url, 'URL' %>
