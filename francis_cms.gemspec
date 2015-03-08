@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'pg'
 
   # Utilities
-  s.add_dependency 'acts-as-taggable-on', '~> 3.4'
+  s.add_dependency 'acts-as-taggable-on', '~> 3.5'
   s.add_dependency 'friendly_id', '5.1.0.beta.1'
   s.add_dependency 'mechanize'
   s.add_dependency 'microformats2'
