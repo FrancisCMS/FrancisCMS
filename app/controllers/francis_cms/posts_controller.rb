@@ -20,6 +20,10 @@ module FrancisCms
     def create
       @post = Post.new(post_params)
 
+      if (Post.where(slug: @post.slug).first)
+        @post.slug = nil;
+      end
+
       if @post.save
         redirect_to @post
       else
