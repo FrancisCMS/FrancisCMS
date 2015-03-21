@@ -16,7 +16,7 @@
 			<tbody>
 				<%- @webmentions.each do |webmention| -%>
 					<tr>
-						<th data-status="<%= webmention.status_string %>" scope="row" title="This webmention is <%= webmention.status_string %>."><%= webmention.id %></th>
+						<th data-webmention-status="<%= webmention.status_string %>" scope="row" title="This webmention is <%= webmention.status_string %>."><%= webmention.id %></th>
 						<td><%= link_to truncate(webmention.source.gsub(%r{^https?://}, ''), length: 64, omission: '…'), webmention.source, title: webmention.source %></td>
 						<td class="actions">
 							<%= link_to 'View', webmention_path(webmention), class: 'button' %>
