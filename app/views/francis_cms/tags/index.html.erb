@@ -6,11 +6,19 @@
 
 <div class="content-container">
 	<%- if @tags.any? -%>
-		<ol class="tags">
-			<%- @tags.each do |tag| -%>
-				<li><%= link_to tag.name, tag_path(tag) %></li>
+		<dl class="tags-list">
+			<%- @tags.each do |letter, tags| -%>
+				<dt><%= letter.upcase %></dt>
+				<dd>
+					<ol>
+						<%- tags.each do |tag| -%>
+							<li><%= link_to tag.name, tag_path(tag) %></li>
+						<%- end -%>
+					</ol>
+				</dd>
 			<%- end -%>
-		</ol>
+		</dl>
+
 	<%- else -%>
 		<p>No tags found!</p>
 	<%- end -%>
