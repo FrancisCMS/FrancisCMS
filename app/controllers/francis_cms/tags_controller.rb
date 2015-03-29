@@ -23,7 +23,7 @@ module FrancisCms
     private
 
     def tags
-      @tags ||= ActsAsTaggableOn::Tag.all.order('name ASC').group_by { |tag| tag.name[0] }
+      @tags ||= ActsAsTaggableOn::Tag.all.order('name ASC').group_by { |tag| tag.name.downcase[0] }
     end
 
     def tag

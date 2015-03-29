@@ -8,7 +8,7 @@
 	<%- if @tags.any? -%>
 		<dl class="tags-list">
 			<%- @tags.each do |letter, tags| -%>
-				<dt><%= letter.upcase %></dt>
+				<dt><%= letter %></dt>
 				<dd>
 					<ol>
 						<%- tags.each do |tag| -%>
