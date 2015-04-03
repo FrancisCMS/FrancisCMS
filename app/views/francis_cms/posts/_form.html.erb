@@ -17,7 +17,7 @@
 			<%= f.text_field :title, required: true %>
 		</li>
 		<li>
-			<%= f.label :slug, raw(%Q{URL <span class="hint">(#{posts_url}/…)</span>}) %>
+			<%= f.label :slug, raw(%{URL <span class="hint">(#{posts_url}/…)</span>}) %>
 			<%= f.text_field :slug, placeholder: 'an-example-post-url', required: true %>
 		</li>
 		<li>
@@ -29,7 +29,7 @@
 			<%= f.text_field :excerpt, maxlength: 255 %>
 		</li>
 		<li>
-			<%= f.label :tag_list, raw(%Q{Tags <span class="hint">(Comma-separated, please.)</span>}) %>
+			<%= f.label :tag_list, raw(%{Tags <span class="hint">(Comma-separated, please.)</span>}) %>
 			<%= f.text_field :tag_list, value: @post.tag_list.to_s %>
 		</li>
 		<li>

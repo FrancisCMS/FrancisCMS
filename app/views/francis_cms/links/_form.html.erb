@@ -25,7 +25,7 @@
 			<%= f.text_area :body %>
 		</li>
 		<li>
-			<%= f.label :tag_list, raw(%Q{Tags <span class="hint">(Comma-separated, please.)</span>}) %>
+			<%= f.label :tag_list, raw(%{Tags <span class="hint">(Comma-separated, please.)</span>}) %>
 			<%= f.text_field :tag_list, value: @link.tag_list.to_s %>
 		</li>
 		<li>

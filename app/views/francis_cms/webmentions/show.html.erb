@@ -25,6 +25,6 @@
 			On <time class="dt-start" datetime="<%= @webmention.created_at.to_s(:iso8601) %>"><%= raw @webmention.created_at.to_s(:display) %></time>,
 			<%= link_to 'this URL', @webmention.source, rel: 'nofollow', title: @webmention.source %> mentioned <%= link_to 'that URL', @webmention.target, title: @webmention.target %>.
 		</p>
-		<p>This webmention is <%= link_to raw(%Q{<span class="#{@webmention.status_string}">#{@webmention.status_string}</span>}), webmention_path(@webmention), class: 'u-url' %>.</p>
+		<p>This webmention is <%= link_to raw(%{<span class="#{@webmention.status_string}">#{@webmention.status_string}</span>}), webmention_path(@webmention), class: 'u-url' %>.</p>
 	</div>
 </article>
