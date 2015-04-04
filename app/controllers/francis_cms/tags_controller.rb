@@ -3,7 +3,9 @@ require_dependency 'francis_cms/francis_cms_controller'
 module FrancisCms
   class TagsController < FrancisCmsController
     def index
-      tags
+      grouped_tags
+
+      @total_tags = tags.length
     end
 
     def show
@@ -22,8 +24,12 @@ module FrancisCms
 
     private
 
+    def grouped_tags
+      @grouped_tags ||= tags.group_by { |tag| tag.name.downcase[0] }
+    end
+
     def tags
-      @tags ||= ActsAsTaggableOn::Tag.all.order('lower(name) ASC').group_by { |tag| tag.name.downcase[0] }
+      @tags ||= ActsAsTaggableOn::Tag.all.order('lower(name) ASC')
     end
 
     def tag

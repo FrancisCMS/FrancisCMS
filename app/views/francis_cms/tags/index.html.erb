@@ -2,12 +2,13 @@
 
 <header class="content-header">
 	<h1>Tags</h1>
+	<small>All <%= pluralize @total_tags, 'tag' %></small>
 </header>
 
 <div class="content-container">
-	<%- if @tags.any? -%>
+	<%- if @grouped_tags.any? -%>
 		<dl class="tags-list">
-			<%- @tags.each do |letter, tags| -%>
+			<%- @grouped_tags.each do |letter, tags| -%>
 				<dt><%= letter %></dt>
 				<dd>
 					<ol>
