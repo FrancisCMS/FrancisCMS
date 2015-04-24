@@ -24,7 +24,7 @@
 			<%- end -%>
 			"updated": ["<%= @link.updated_at.to_s(:iso8601) %>"],
 			"content": [{
-				"html": <%= raw @link.to_html.to_json %>,
+				"html": <%= raw @link.body? ? @link.to_html.to_json : 'null' %>,
 				"markdown": <%= raw @link.body.to_json %>
 			}]
 		}

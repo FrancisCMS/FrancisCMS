@@ -38,7 +38,11 @@
 
 	<footer role="complementary">
 		<ul class="single-meta">
-			<li>“<%= link_to @post.title, post_path(@post), class: 'u-url' %>” is also available as <%= link_to 'Markdown', post_path(@post, format: :md), rel: 'alternate', type: 'text/x-markdown' %> and <%= link_to 'JSON', post_path(@post, format: :json), rel: 'alternate', type: 'application/json' %>.</li>
+			<li>
+				“<%= link_to @post.title, post_path(@post), class: 'u-url' %>” is also available as
+				<%= link_to 'Markdown', post_path(@post, format: :md), download: %{#{@post.title}.md}, rel: 'alternate', type: 'text/x-markdown' %> and
+				<%= link_to 'JSON', post_path(@post, format: :json), download: %{#{@post.title}.json}, rel: 'alternate', type: 'application/json' %>.
+			</li>
 			<%- if @post.tags.any? -%>
 				<li>
 					<%= render 'francis_cms/shared/tags', resource: @post %>
