@@ -1,0 +1,13 @@
+<%- klass = obj.class.name.demodulize.downcase -%>
+
+<%- if obj.errors.any? -%>
+	<div class="form-errors" role="alert">
+		<h2><%= pluralize(obj.errors.count, 'error') %> prevented this <%= klass %> from being saved:</h2>
+
+		<ul>
+			<%- obj.errors.messages.each do |field, message| -%>
+				<li id="<%= field %>-errors"><%= link_to field.capitalize, %{##{klass}_#{field}} %> <%= message.join(', ') %>.</li>
+			<%- end -%>
+		</ul>
+	</div>
+<%- end -%>

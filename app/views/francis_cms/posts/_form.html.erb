@@ -1,13 +1,5 @@
 <%- if @post.errors.any? -%>
-	<div class="form-errors">
-		<h2><%= pluralize(@post.errors.count, 'error') %> prevented this post from being saved:</h2>
-
-		<ul>
-			<%- @post.errors.full_messages.each do |msg| -%>
-				<li><%= msg %>.</li>
-			<%- end -%>
-		</ul>
-	</div>
+	<%= render 'francis_cms/shared/form_errors', obj: @post %>
 <%- end -%>
 
 <%= form_for @post, html: { class: 'post-form' } do |f| %>
