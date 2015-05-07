@@ -2,7 +2,7 @@
 	<%= render 'francis_cms/shared/form_errors', obj: @link %>
 <%- end -%>
 
-<%= form_for @link, html: { class: 'link-form' } do |f| %>
+<%= form_for @link, builder: FrancisCmsFormBuilder, html: { class: 'link-form' } do |f| %>
 	<ul>
 		<li>
 			<%= f.label :url, 'URL' %>

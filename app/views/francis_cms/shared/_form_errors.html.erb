@@ -6,7 +6,7 @@
 
 		<ul>
 			<%- obj.errors.messages.each do |field, message| -%>
-				<li id="<%= field %>-errors"><%= link_to field.capitalize, %{##{klass}_#{field}} %> <%= message.to_sentence %>.</li>
+				<li id="<%= klass %>_<%= field %>_errors"><%= link_to field.capitalize, %{##{klass}_#{field}} %> <%= message.to_sentence %>.</li>
 			<%- end -%>
 		</ul>
 	</div>

@@ -2,7 +2,7 @@
 	<%= render 'francis_cms/shared/form_errors', obj: @post %>
 <%- end -%>
 
-<%= form_for @post, html: { class: 'post-form' } do |f| %>
+<%= form_for @post, builder: FrancisCmsFormBuilder, html: { class: 'post-form' } do |f| %>
 	<ul>
 		<li>
 			<%= f.label :title %>
