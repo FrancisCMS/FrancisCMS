@@ -10,7 +10,7 @@
 		</li>
 		<li>
 			<%= f.label :slug, raw(%{URL <span class="hint">(#{posts_url}/…)</span>}) %>
-			<%= f.text_field :slug, placeholder: 'an-example-post-url', required: true %>
+			<%= f.text_field :slug, pattern: '[a-z0-9\-]+', placeholder: 'an-example-post-url', required: true %>
 		</li>
 		<li>
 			<%= f.label :body %>
