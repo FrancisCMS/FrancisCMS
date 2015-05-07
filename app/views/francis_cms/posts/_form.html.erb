@@ -1,20 +1,22 @@
 <%- if @post.errors.any? -%>
 	<%= render 'francis_cms/shared/form_errors', obj: @post %>
+<%- else -%>
+	<p class="highlight">Fields marked with an * are required.</p>
 <%- end -%>
 
 <%= form_for @post, builder: FrancisCmsFormBuilder, html: { class: 'post-form' } do |f| %>
 	<ul>
 		<li>
-			<%= f.label :title %>
-			<%= f.text_field :title, required: true %>
+			<%= f.label :title, raw(%{Title <abbr title="Required">*</abbr>}) %>
+			<%= f.text_field :title %>
 		</li>
 		<li>
-			<%= f.label :slug, raw(%{URL <span class="hint">(#{posts_url}/…)</span>}) %>
-			<%= f.text_field :slug, pattern: '[a-z0-9\-]+', placeholder: 'an-example-post-url', required: true %>
+			<%= f.label :slug, raw(%{URL <abbr title="Required">*</abbr> <span class="hint">(#{posts_url}/…)</span>}) %>
+			<%= f.text_field :slug, pattern: '[a-z0-9\-]+', placeholder: 'an-example-post-url' %>
 		</li>
 		<li>
-			<%= f.label :body %>
-			<%= f.text_area :body, required: true %>
+			<%= f.label :body, raw(%{Body <abbr title="Required">*</abbr>}) %>
+			<%= f.text_area :body %>
 		</li>
 		<li>
 			<%= f.label :excerpt %>

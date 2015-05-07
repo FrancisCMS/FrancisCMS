@@ -1,15 +1,17 @@
 <%- if @link.errors.any? -%>
 	<%= render 'francis_cms/shared/form_errors', obj: @link %>
+<%- else -%>
+	<p class="highlight">Fields marked with an * are required.</p>
 <%- end -%>
 
 <%= form_for @link, builder: FrancisCmsFormBuilder, html: { class: 'link-form' } do |f| %>
 	<ul>
 		<li>
-			<%= f.label :url, 'URL' %>
+			<%= f.label :url, raw(%{URL <abbr title="Required">*</abbr>}) %>
 			<%= f.url_field :url, placeholder: 'http://…', required: true %>
 		</li>
 		<li>
-			<%= f.label :title %>
+			<%= f.label :title, raw(%{Title  <abbr title="Required">*</abbr>}) %>
 			<%= f.text_field :title, required: true %>
 		</li>
 		<li>
