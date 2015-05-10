@@ -5,7 +5,7 @@
 
 	<footer class="response-footer">
 		<p>
-			<%= link_to raw(%{<span class="#{webmention.entry_url_host.parameterize} avatar">#{image_tag(webmention.author_photo, class: 'u-photo')}</span> <span class="p-name">#{webmention.author_name}</span>}), webmention.author_url, class: 'p-author h-card' %>
+			<%= link_to raw(%{<span class="#{webmention.entry_url_host.parameterize} avatar">#{image_tag(webmention.author_photo_url, class: 'u-photo')}</span> <span class="p-name">#{webmention.author_name}</span>}), webmention.author_url, class: 'p-author h-card' %>
 			responded via <%= link_to webmention.entry_url_host, webmention.entry_url, class: 'permalink u-url' %> on
 			<time class="dt-published" datetime="<%= webmention.published_at.to_s(:iso8601) %>"><%= raw webmention.published_at.to_s(:display) %></time>.
 		</p>

@@ -24,7 +24,7 @@ module FrancisCms
       def attributes
         {
           author_name: author_name,
-          author_photo: author_photo,
+          author_photo_url: author_photo_url,
           author_url: author_url,
           entry_content: entry_content,
           entry_name: entry_name,
@@ -39,9 +39,9 @@ module FrancisCms
         (author_name_from_entry || author_name_from_card || author_name_from_source_url).to_s
       end
 
-      def author_photo
+      def author_photo_url
         # Microformats2 returns Microformats2::Property::Url
-        absolutize (author_photo_from_entry || author_photo_from_card || 'http://www.placecage.com/150/150').to_s
+        absolutize (author_photo_from_entry || author_photo_from_card).to_s
       end
 
       def author_url

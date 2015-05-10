@@ -25,7 +25,7 @@ module FrancisCms
     it 'returns attributes from a collection.' do
       attributes = {
         author_name: 'Foo Bar',
-        author_photo: 'http://www.placecage.com/150/150',
+        author_photo_url: 'http://www.placecage.com/150/150',
         author_url: 'http://example.com/',
         entry_content: '<p>Sample source post body.</p>',
         entry_name: 'Sample source page title',
@@ -80,7 +80,7 @@ module FrancisCms
         end
       end
 
-      context '#author_photo' do
+      context '#author_photo_url' do
         context 'with an h-entry' do
           let(:entry) { stub(author: stub(format: stub(photo: stub(to_s: '/foo.png')))) }
           let(:webmention) { Webmention.new source: 'http://example.com/bar' }
@@ -90,7 +90,7 @@ module FrancisCms
           end
 
           it 'returns the author photo.' do
-            expect(webmention_entry.author_photo).to eql('http://example.com/foo.png')
+            expect(webmention_entry.author_photo_url).to eql('http://example.com/foo.png')
           end
         end
 
@@ -104,7 +104,7 @@ module FrancisCms
           end
 
           it 'returns the author photo.' do
-            expect(webmention_entry.author_photo).to eql('http://example.com/foo.png')
+            expect(webmention_entry.author_photo_url).to eql('http://example.com/foo.png')
           end
         end
 
@@ -117,7 +117,7 @@ module FrancisCms
           end
 
           it 'returns the default photo in place of the author photo.' do
-            expect(webmention_entry.author_photo).to eql('http://www.placecage.com/150/150')
+            expect(webmention_entry.author_photo_url).to eql('http://www.placecage.com/150/150')
           end
         end
       end

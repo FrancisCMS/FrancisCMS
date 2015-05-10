@@ -1,7 +1,7 @@
 <li class="p-like h-cite">
 	<span class="p-author h-card">
 		<%= link_to like.author_url, class: "#{like.entry_url_host.parameterize} avatar u-url", title: "#{like.author_name} liked this on #{like.entry_url_host}." do %>
-			<%= image_tag like.author_photo, alt: like.author_name, class: 'p-name u-photo' %>
+			<%= image_tag like.author_photo_url, alt: like.author_name, class: 'p-name u-photo' %>
 		<% end %>
 	</span>
 	<%= link_to '', like.entry_url, class: 'u-url' %>

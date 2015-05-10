@@ -1,7 +1,7 @@
 <li class="p-repost h-cite">
 	<span class="p-author h-card">
 		<%= link_to repost.author_url, class: "#{repost.entry_url_host.parameterize} avatar u-url", title: "#{repost.author_name} shared this on #{repost.entry_url_host}." do %>
-			<%= image_tag repost.author_photo, alt: repost.author_name, class: 'p-name u-photo' %>
+			<%= image_tag repost.author_photo_url, alt: repost.author_name, class: 'p-name u-photo' %>
 		<% end %>
 	</span>
 	<%= link_to '', repost.entry_url, class: 'u-url' %>
