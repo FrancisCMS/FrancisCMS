@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
 
   # Utilities
   s.add_dependency 'acts-as-taggable-on', '~> 3.5'
+  s.add_dependency 'dragonfly', '~> 1.0.8'
   s.add_dependency 'friendly_id', '5.1.0'
   s.add_dependency 'mechanize'
   s.add_dependency 'microformats2'
