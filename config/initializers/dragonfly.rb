@@ -4,7 +4,7 @@ require 'dragonfly'
 Dragonfly.app.configure do
   plugin :imagemagick
 
-  secret "1ca6fd2cd07ad0218e2161bee97d7adb28879411d831178d63372cdc14f7e217"
+  secret Rails.application.secrets.dragonfly_secret
 
   url_format "/assets/:job"
 
