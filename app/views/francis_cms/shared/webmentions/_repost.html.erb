@@ -4,5 +4,5 @@
 			<%= author_avatar_image_tag repost, alt: repost.author_name, class: 'p-name u-photo' %>
 		<% end %>
 	</span>
-	<%= link_to '', repost.entry_url, class: 'u-url' %>
+	<%= link_to "View on #{repost.entry_url_host}.", repost.entry_url, :'aria-hidden' => true, class: 'u-url' %>
 </li>
