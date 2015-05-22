@@ -116,8 +116,8 @@ module FrancisCms
             webmention_entry.stubs(:card).returns nil
           end
 
-          it 'returns the default photo in place of the author photo.' do
-            expect(webmention_entry.author_photo_url).to eql('http://www.placecage.com/150/150')
+          it 'returns nil in place of the author photo.' do
+            expect(webmention_entry.author_photo_url).to eql(nil)
           end
         end
       end
