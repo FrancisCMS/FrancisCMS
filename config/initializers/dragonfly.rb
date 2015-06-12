@@ -6,7 +6,9 @@ Dragonfly.app.configure do
 
   secret Rails.application.secrets.dragonfly_secret
 
-  url_format "/assets/:job"
+  url_format "/media/:job"
+
+  processor :jpg, FrancisCms::Dragonfly::Processors::Jpg.new
 
   datastore :file,
     root_path: Rails.root.join('public/system/dragonfly', Rails.env),
