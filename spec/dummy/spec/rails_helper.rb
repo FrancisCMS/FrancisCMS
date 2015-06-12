@@ -56,4 +56,4 @@ RSpec.configure do |config|
   config.mock_with :mocha
 end
 
-FrancisCms::Engine.config.francis_cms.site_url = 'http://localhost:3000'
+FrancisCms::Engine.config.francis_cms.site_url = 'http://localhost:3000/'

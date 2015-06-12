@@ -5,7 +5,7 @@ module FrancisCms
 
     validates :source, :target, presence: true
     validates :source, format: { :with => URI::regexp(%w(http https)) }
-    validates :target, format: { :with => %r{\A#{FrancisCms.configuration.site_url}/?} }
+    validates :target, format: { :with => %r{\A#{FrancisCms.configuration.site_url}?} }
 
     delegate :author_avatar, :author_name, :author_photo_url, :author_url,
              :entry_content, :entry_name, :entry_url,

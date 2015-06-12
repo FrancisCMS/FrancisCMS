@@ -8,7 +8,7 @@ module FrancisCms
     end
 
     def verify
-      @agent.user_agent = "#{FrancisCms.configuration.site_url}/ (http://webmention.org/)"
+      @agent.user_agent = "#{FrancisCms.configuration.site_url} (http://webmention.org/)"
 
       if target_accepts_webmentions? && source_links_to_target?
         collection = Microformats2.parse(source_page.body)
@@ -48,7 +48,7 @@ module FrancisCms
 
     def get_webmentionable
       # Use canonical target URL to account for 301 redirects
-      matches = target_page.uri.to_s.match(%r{\A#{FrancisCms.configuration.site_url}/(?<path>[a-z]+)/(?<params>[A-Za-z0-9\-]+)\Z})
+      matches = target_page.uri.to_s.match(%r{\A#{FrancisCms.configuration.site_url}(?<path>[a-z]+)/(?<params>[A-Za-z0-9\-]+)\Z})
 
       if matches
         begin
@@ -68,7 +68,7 @@ module FrancisCms
     def source_links_to_target?
       if URI.parse(source).host == URI.parse(target).host
         # If source and target are on the same domain, target should be relative
-        regex = %r{#{target}|#{target.sub(FrancisCms.configuration.site_url + '/', '/')}}
+        regex = %r{#{target}|#{target.sub(FrancisCms.configuration.site_url, '/')}}
       else
         # Check for links to target (with or without trailing slash)
         regex = %r{#{target}|#{target.sub(/.*\/+?$/, '')}}

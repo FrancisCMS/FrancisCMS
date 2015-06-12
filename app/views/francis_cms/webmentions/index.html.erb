@@ -33,7 +33,7 @@
 	<div class="single-content">
 		<p>This is the <%= link_to 'webmention', 'http://indiewebcamp.com/webmention' %> endpoint for <%= link_to francis_cms_config.site_title, francis_cms_config.site_url %>.</p>
 		<p>If you’ve written something that references a page on <%= francis_cms_config.site_title %>, you can manually send a webmention with the following command:</p>
-		<pre><code>curl -i -d 'source=http://example.com/path/to/your/post&amp;target=<%= francis_cms_config.site_url %>/path/to/my/post' <%= webmentions_url %></code></pre>
+		<pre><code>curl -i -d 'source=http://example.com/path/to/your/post&amp;target=<%= francis_cms_config.site_url %>path/to/my/post' <%= webmentions_url %></code></pre>
 		<p>There’s also a variety of <%= link_to 'plugins', 'http://indiewebcamp.com/webmention#Publishing_Software' %> and <%= link_to 'services', 'http://indiewebcamp.com/webmention#Services' %> available for sending and receiving webmentions. See <%= link_to 'indiewebcamp.com/webmention', 'http://indiewebcamp.com/webmention' %> for more details.</p>
 	</div>
 <%- end -%>
