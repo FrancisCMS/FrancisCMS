@@ -24,11 +24,11 @@ module FrancisCms::Concerns::Models::Publishable
     end
   end
 
-  def next
+  def newer
     self.class.exclude_drafts.where('id > ?', id).first
   end
 
-  def prev
+  def older
     self.class.exclude_drafts.where('id < ?', id).last
   end
 

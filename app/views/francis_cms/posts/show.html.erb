@@ -55,10 +55,10 @@
 			<%- end -%>
 		</ul>
 
-		<%- if @post.prev || @post.next -%>
+		<%- if @post.newer || @post.older -%>
 			<div class="pagination">
-				<%= link_to 'Older', post_path(@post.prev), class: 'previous_page', rel: 'prev' if @post.prev %>
-				<%= link_to 'Newer', post_path(@post.next), class: 'next_page', rel: 'next' if @post.next %>
+				<%= link_to 'Newer', post_path(@post.newer), class: 'previous_page', rel: 'prev' if @post.newer %>
+				<%= link_to 'Older', post_path(@post.older), class: 'next_page', rel: 'next' if @post.older %>
 			</div>
 		<%- end -%>
 
