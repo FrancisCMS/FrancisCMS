@@ -1,4 +1,5 @@
 require 'acts-as-taggable-on'
+require 'dragonfly'
 require 'friendly_id'
 require 'mechanize'
 require 'microformats2'
