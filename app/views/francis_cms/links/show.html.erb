@@ -2,9 +2,9 @@
 
 <%- if __logged_in__ -%>
 	<%- content_for :admin_panel_extras do -%>
-		<menu class="local" role="menu">
-			<li role="menuitem"><%= link_to 'Edit', edit_link_path(@link) %></li>
-			<li role="menuitem">
+		<menu class="local">
+			<li><%= link_to 'Edit', edit_link_path(@link) %></li>
+			<li>
 				<%= render 'francis_cms/shared/delete_form', action: link_path(@link) %>
 			</li>
 		</menu>

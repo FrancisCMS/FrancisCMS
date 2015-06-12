@@ -2,13 +2,13 @@
 
 <%- if __logged_in__ -%>
 	<%- content_for :admin_panel_extras do -%>
-		<menu class="local" role="menu">
-			<li role="menuitem">
+		<menu class="local">
+			<li>
 				<%= form_tag webmention_path(@webmention), method: :put do %>
 					<button type="submit"><%= @webmention.verified_at? ? 'Reverify' : 'Verify' %></button>
 				<% end %>
 			</li>
-			<li role="menuitem">
+			<li>
 				<%= render 'francis_cms/shared/delete_form', action: webmention_path(@webmention) %>
 			</li>
 		</menu>
