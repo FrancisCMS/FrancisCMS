@@ -22,6 +22,14 @@ module FrancisCms::Concerns::Models::Publishable
         exclude_drafts.page(opts[:page]).order('published_at DESC')
       end
     end
+
+    def for_year(year)
+      exclude_drafts.where('published_at >= ? AND published_at <= ?', "#{year}0101", "#{year}1231")
+    end
+
+    def years
+      select('extract(year from published_at)::integer as year').distinct.map(&:year).sort
+    end
   end
 
   def newer

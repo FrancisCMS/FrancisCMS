@@ -19,6 +19,8 @@
 			</ol>
 
 			<%= will_paginate @posts %>
+
+			<p class="highlight"><b>Paginated lists of content not your style?</b> <%= link_to 'Browse the Posts Archives by year', archives_posts_path %>.</p>
 		<%- else -%>
 			<p>No posts found!</p>
 		<%- end -%>

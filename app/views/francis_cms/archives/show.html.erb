@@ -1,0 +1,26 @@
+<%- @page_title = "#{@content_type} Archives: #{@year}" -%>
+
+<div class="h-feed">
+	<header class="content-header">
+		<h1 class="p-name"><%= @content_type %> Archives: <%= @year %></h1>
+	</header>
+
+	<div class="content-container">
+		<%- if @results.any? -%>
+			<ol class="entries">
+				<%- @results.each do |result| -%>
+					<%- result_type = result.class.name.demodulize.downcase -%>
+					<li>
+						<%= render "francis_cms/shared/#{result_type}_hentry", result_type.to_sym => result %>
+					</li>
+				<%- end -%>
+			</ol>
+		<%- else -%>
+			<p>No <%= @content_type.downcase %> found!</p>
+		<%- end -%>
+	</div>
+
+	<footer class="content-footer">
+		<%= render 'francis_cms/shared/author_hcard' %>
+	</footer>
+</div>

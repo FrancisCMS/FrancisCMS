@@ -1,0 +1,17 @@
+<%- @page_title = "#{@content_type} Archives" -%>
+
+<header class="content-header">
+	<h1><%= @content_type %> Archives</h1>
+</header>
+
+<div class="content-container">
+	<%- if @years.any? -%>
+		<ol class="years-list">
+			<%- @years.each do |year| -%>
+				<li><%= link_to year, send("archives_yearly_#{@content_type.downcase}_path", year) %></li>
+			<%- end -%>
+		</ol>
+	<%- else -%>
+		<p>No <%= @content_type.downcase %> found!</p>
+	<%- end -%>
+</div>

@@ -16,7 +16,7 @@ FriendlyId.defaults do |config|
   # undesirable to allow as slugs. Edit this list as needed for your app.
   config.use :reserved
 
-  config.reserved_words = %w(admin assets create destroy edit images index javascripts login logout new rss session show stylesheets update users)
+  config.reserved_words = %w(admin archives assets create destroy edit images index javascripts login logout new rss session show stylesheets update users)
 
   #  ## Friendly Finders
   #
