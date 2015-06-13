@@ -8,7 +8,7 @@
 	<%- if @years.any? -%>
 		<ol class="years-list">
 			<%- @years.each do |year| -%>
-				<li><%= link_to year, send("archives_yearly_#{@content_type.downcase}_path", year) %></li>
+				<li><%= link_to year, send("archives_yearly_#{@content_type.downcase}_path", year), rel: 'archives' %></li>
 			<%- end -%>
 		</ol>
 	<%- else -%>

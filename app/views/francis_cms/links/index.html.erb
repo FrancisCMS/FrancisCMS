@@ -20,7 +20,7 @@
 
 			<%= will_paginate @links %>
 
-			<p class="highlight"><b>Paginated lists of content not your style?</b> <%= link_to 'Browse the Links Archives by year', archives_links_path %>.</p>
+			<%= render 'francis_cms/shared/archives_promo', resource_type: 'links', url: archives_links_path %>
 		<%- else -%>
 			<p>No links found!</p>
 		<%- end -%>
