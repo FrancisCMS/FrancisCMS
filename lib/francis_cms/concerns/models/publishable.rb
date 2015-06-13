@@ -28,7 +28,7 @@ module FrancisCms::Concerns::Models::Publishable
     end
 
     def years
-      select('extract(year from published_at)::integer as year').distinct.map(&:year).sort
+      exclude_drafts.select('extract(year from published_at)::integer as year').distinct.map(&:year).sort
     end
   end
 
