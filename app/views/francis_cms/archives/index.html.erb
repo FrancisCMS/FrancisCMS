@@ -1,17 +1,17 @@
-<%- @page_title = "#{@content_type} Archives" -%>
+<%- @page_title = "#{@resource_type} Archives" -%>
 
 <header class="content-header">
-	<h1><%= @content_type %> Archives</h1>
+	<h1><%= @resource_type %> Archives</h1>
 </header>
 
 <div class="content-container">
 	<%- if @years.any? -%>
 		<ol class="years-list">
 			<%- @years.each do |year| -%>
-				<li><%= link_to year, send("archives_yearly_#{@content_type.downcase}_path", year), rel: 'archives' %></li>
+				<li><%= link_to year, send("archives_yearly_#{@resource_type.downcase}_path", year), rel: 'archives' %></li>
 			<%- end -%>
 		</ol>
 	<%- else -%>
-		<p>No <%= @content_type.downcase %> found!</p>
+		<p>No <%= @resource_type.downcase %> found!</p>
 	<%- end -%>
 </div>

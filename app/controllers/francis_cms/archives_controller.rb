@@ -3,13 +3,13 @@ require_dependency 'francis_cms/francis_cms_controller'
 module FrancisCms
   class ArchivesController < FrancisCmsController
     def index
-      content_type
+      resource_type
 
       @years = parent_class.years
     end
 
     def show
-      content_type
+      resource_type
       year
 
       @results = parent_class.for_year(@year)
@@ -17,8 +17,8 @@ module FrancisCms
 
     private
 
-    def content_type
-      @content_type ||= parent.capitalize.pluralize
+    def resource_type
+      @resource_type ||= parent.capitalize.pluralize
     end
 
     def parent
