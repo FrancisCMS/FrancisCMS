@@ -3,7 +3,6 @@ require_dependency 'francis_cms/francis_cms_controller'
 module FrancisCms
   class LinksController < FrancisCmsController
     before_action :require_login, except: [:index, :show]
-    before_action :require_login, only: [:show], if: '!link.published_at?'
 
     def index
       links
@@ -11,6 +10,8 @@ module FrancisCms
 
     def show
       link
+
+      require_login unless link.published_at?
     end
 
     def new
