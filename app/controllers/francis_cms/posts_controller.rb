@@ -9,8 +9,6 @@ module FrancisCms
     end
 
     def show
-      post
-
       require_login unless post.published_at?
     end
 
