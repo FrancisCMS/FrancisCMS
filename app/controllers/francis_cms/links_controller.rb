@@ -13,7 +13,7 @@ module FrancisCms
     end
 
     def new
-      @link = Link.new
+      @link = Link.new(new_link_params)
     end
 
     def create
@@ -56,6 +56,10 @@ module FrancisCms
 
     def link
       @link ||= Link.find(params[:id])
+    end
+
+    def new_link_params
+      params.fetch(:link, {}).permit(:url, :title, :body, :tag_list)
     end
   end
 end
