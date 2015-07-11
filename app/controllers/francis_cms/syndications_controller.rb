@@ -5,7 +5,7 @@ module FrancisCms
     before_action :require_login
 
     def create
-      @syndication = syndicatable.syndications.new(syndication_params)
+      @syndication = syndicatable.syndications.new(SyndicationInput.new(params).to_h)
 
       @syndication.save
 
@@ -19,10 +19,6 @@ module FrancisCms
     end
 
     private
-
-    def syndication_params
-      params.require(:syndication).permit(:name, :url)
-    end
 
     def parent
       @parent ||= %w(posts links).find { |p| request.path.split('/').include? p }.singularize

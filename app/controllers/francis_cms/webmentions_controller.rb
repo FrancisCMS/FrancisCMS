@@ -47,10 +47,6 @@ module FrancisCms
 
     private
 
-    def webmention_params
-      params.permit(:source, :target, :referer)
-    end
-
     def webmentions
       @webmentions ||= Webmention.all.order('created_at DESC')
     end
