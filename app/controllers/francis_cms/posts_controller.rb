@@ -17,7 +17,7 @@ module FrancisCms
     end
 
     def create
-      @post = Post.new(post_params)
+      @post = Post.new(PostInput.new(params).to_h)
 
       if (Post.where(slug: @post.slug).first)
         @post.slug = nil;
@@ -35,7 +35,7 @@ module FrancisCms
     end
 
     def update
-      if post.update_attributes(post_params)
+      if post.update_attributes(PostInput.new(params).to_h)
         redirect_to @post
       else
         render 'edit'
@@ -49,10 +49,6 @@ module FrancisCms
     end
 
     private
-
-    def post_params
-      params.require(:post).permit(:title, :slug, :body, :excerpt, :tag_list, :is_draft)
-    end
 
     def posts
       @posts ||= Post.entries_for_page({ include_drafts: __logged_in__, page: params['page'] })
