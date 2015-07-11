@@ -8,7 +8,7 @@ module FrancisCms
       [:title, :slug, :body, :excerpt, :tag_list, :is_draft]
     end
 
-    def type_key
+    def resource_type_key
       :post
     end
   end

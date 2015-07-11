@@ -8,7 +8,7 @@ module FrancisCms
       [:name, :url]
     end
 
-    def type_key
+    def resource_type_key
       :syndication
     end
   end

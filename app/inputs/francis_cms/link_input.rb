@@ -8,7 +8,7 @@ module FrancisCms
       [:url, :title, :body, :tag_list, :is_draft]
     end
 
-    def type_key
+    def resource_type_key
       :link
     end
   end
