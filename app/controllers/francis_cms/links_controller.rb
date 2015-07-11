@@ -13,11 +13,11 @@ module FrancisCms
     end
 
     def new
-      @link = Link.new(new_link_params)
+      @link = Link.new(LinkInput.new(params).to_h)
     end
 
     def create
-      @link = Link.new(link_params)
+      @link = Link.new(LinkInput.new(params).to_h)
 
       if @link.save
         redirect_to @link
@@ -46,20 +46,12 @@ module FrancisCms
 
     private
 
-    def link_params
-      params.require(:link).permit(:url, :title, :body, :tag_list, :is_draft)
-    end
-
     def links
       @links ||= Link.entries_for_page({ include_drafts: __logged_in__, page: params['page'] })
     end
 
     def link
       @link ||= Link.find(params[:id])
-    end
-
-    def new_link_params
-      params.fetch(:link, {}).permit(:url, :title, :body, :tag_list)
     end
   end
 end
