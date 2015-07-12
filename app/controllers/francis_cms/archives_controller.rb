@@ -7,8 +7,7 @@ module FrancisCms
     end
 
     def show
-      year
-
+      @year = params[:year]
       @results = parent_class.for_year(@year)
     end
 
@@ -16,10 +15,6 @@ module FrancisCms
 
     def parent_class
       @parent_class ||= "FrancisCms::#{resource_type.classify}".constantize
-    end
-
-    def year
-      @year ||= params[:year]
     end
   end
 end
