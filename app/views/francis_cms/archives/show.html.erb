@@ -9,9 +9,9 @@
 		<%- if @results.any? -%>
 			<ol class="entries">
 				<%- @results.each do |result| -%>
-					<%- result_type = result.class.name.demodulize.downcase -%>
+					<%- result_resource_type = resource_type.singularize -%>
 					<li>
-						<%= render "francis_cms/shared/#{result_type}_hentry", result_type.to_sym => result %>
+						<%= render "francis_cms/shared/#{result_resource_type}_hentry", result_resource_type.to_sym => result %>
 					</li>
 				<%- end -%>
 			</ol>
