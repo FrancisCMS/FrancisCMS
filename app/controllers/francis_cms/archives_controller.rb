@@ -2,14 +2,13 @@ require_dependency 'francis_cms/francis_cms_controller'
 
 module FrancisCms
   class ArchivesController < FrancisCmsController
-    def index
-      resource_type
+    include FrancisCms::ApplicationHelper
 
+    def index
       @years = parent_class.years
     end
 
     def show
-      resource_type
       year
 
       @results = parent_class.for_year(@year)
@@ -17,16 +16,8 @@ module FrancisCms
 
     private
 
-    def resource_type
-      @resource_type ||= parent.capitalize.pluralize
-    end
-
-    def parent
-      @parent ||= %w(posts links).find { |p| request.path.split('/').include? p }.singularize
-    end
-
     def parent_class
-      @parent_class ||= "FrancisCms::#{parent.classify}".constantize
+      @parent_class ||= "FrancisCms::#{resource_type.classify}".constantize
     end
 
     def year

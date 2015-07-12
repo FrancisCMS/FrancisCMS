@@ -1,8 +1,8 @@
-<%- @page_title = "#{@resource_type} Archives: #{@year}" -%>
+<%- @page_title = "#{resource_type.capitalize} Archives: #{@year}" -%>
 
 <div class="h-feed">
 	<header class="content-header">
-		<h1 class="p-name"><%= @resource_type %> Archives: <%= @year %></h1>
+		<h1 class="p-name"><%= resource_type.capitalize %> Archives: <%= @year %></h1>
 	</header>
 
 	<div class="content-container">
@@ -16,7 +16,7 @@
 				<%- end -%>
 			</ol>
 		<%- else -%>
-			<p>No <%= @resource_type.downcase %> found!</p>
+			<p>No <%= resource_type %> found!</p>
 		<%- end -%>
 	</div>
 

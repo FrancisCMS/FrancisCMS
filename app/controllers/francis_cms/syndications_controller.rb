@@ -2,6 +2,8 @@ require_dependency 'francis_cms/francis_cms_controller'
 
 module FrancisCms
   class SyndicationsController < FrancisCmsController
+    include FrancisCms::ApplicationHelper
+
     before_action :require_login
 
     def create
@@ -9,27 +11,23 @@ module FrancisCms
 
       @syndication.save
 
-      redirect_to send("edit_#{parent}_path", syndicatable)
+      redirect_to send("edit_#{resource_type.singularize}_path", syndicatable)
     end
 
     def destroy
       syndication.destroy
 
-      redirect_to send("edit_#{parent}_path", syndicatable)
+      redirect_to send("edit_#{resource_type.singularize}_path", syndicatable)
     end
 
     private
 
-    def parent
-      @parent ||= %w(posts links).find { |p| request.path.split('/').include? p }.singularize
-    end
-
     def parent_class
-      @parent_class ||= "FrancisCms::#{parent.classify}".constantize
+      @parent_class ||= "FrancisCms::#{resource_type.classify}".constantize
     end
 
     def syndicatable
-      @syndicatable ||= parent_class.find(params["#{parent}_id"])
+      @syndicatable ||= parent_class.find(params["#{resource_type.singularize}_id"])
     end
 
     def syndication

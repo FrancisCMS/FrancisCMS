@@ -6,4 +6,8 @@ module FrancisCms::ApplicationHelper
       raw image_tag(%{data:image/png;base64,#{Base64.encode64 Rails.application.assets['avatar.png'].to_s}}, html_options)
     end
   end
+
+  def resource_type
+    %w(posts links).find { |p| request.path.split('/').include? p }
+  end
 end
