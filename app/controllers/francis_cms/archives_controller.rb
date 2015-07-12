@@ -2,8 +2,6 @@ require_dependency 'francis_cms/francis_cms_controller'
 
 module FrancisCms
   class ArchivesController < FrancisCmsController
-    include FrancisCms::ApplicationHelper
-
     def index
       @years = parent_class.years
     end

@@ -2,8 +2,6 @@ require_dependency 'francis_cms/francis_cms_controller'
 
 module FrancisCms
   class SyndicationsController < FrancisCmsController
-    include FrancisCms::ApplicationHelper
-
     before_action :require_login
 
     def create
