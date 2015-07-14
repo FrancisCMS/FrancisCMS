@@ -7,7 +7,11 @@ module FrancisCms
     def create
       @syndication = syndicatable.syndications.new(SyndicationInput.new(params).to_h)
 
-      @syndication.save
+      if @syndication.save
+        flash[:notice] = 'Syndication added successfully!'
+      else
+        flash[:error] = 'There was a problem saving that syndication. Mind trying again?'
+      end
 
       redirect_to send("edit_#{resource_type.singularize}_path", syndicatable)
     end
@@ -15,7 +19,7 @@ module FrancisCms
     def destroy
       syndication.destroy
 
-      redirect_to send("edit_#{resource_type.singularize}_path", syndicatable)
+      redirect_to send("edit_#{resource_type.singularize}_path", syndicatable), notice: 'You’ve successfully deleted that syndication. It’s gone for good!'
     end
 
     private

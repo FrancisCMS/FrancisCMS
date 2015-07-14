@@ -20,7 +20,7 @@ module FrancisCms
       @link = Link.new(LinkInput.new(params).to_h)
 
       if @link.save
-        redirect_to @link
+        redirect_to @link, notice: 'Successfully saved your new link! Here’s what it looks like.'
       else
         render 'new'
       end
@@ -32,7 +32,7 @@ module FrancisCms
 
     def update
       if link.update_attributes(LinkInput.new(params).to_h)
-        redirect_to @link
+        redirect_to @link, notice: 'Success! Here’s what your updated link looks like.'
       else
         render 'edit'
       end
@@ -41,7 +41,7 @@ module FrancisCms
     def destroy
       link.destroy
 
-      redirect_to links_path
+      redirect_to links_path, notice: 'You’ve successfully deleted that link. It’s gone for good!'
     end
 
     private

@@ -6,7 +6,7 @@ module FrancisCms
     helper_method :__logged_in__
 
     def require_login
-      redirect_to FrancisCms.configuration.login_path unless __logged_in__
+      redirect_to FrancisCms.configuration.login_path, alert: 'You’ll need to log in before doing that!' unless __logged_in__
     end
 
     def resource_type

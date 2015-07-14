@@ -22,7 +22,7 @@ module FrancisCms
 
       if @webmention.save
         if params[:referer] == FrancisCms.configuration.site_url
-          redirect_to webmention_path(@webmention)
+          redirect_to webmention_path(@webmention), notice: 'Thanks for submitting a webmention! It’s been placed in the queue for verification.'
         else
           render text: webmention_url(@webmention), status: :accepted
         end
@@ -33,16 +33,16 @@ module FrancisCms
 
     def update
       if webmention.verify
-        redirect_to @webmention
+        redirect_to @webmention, notice: 'This webmention was successfully verified!'
       else
-        redirect_to webmentions_path
+        redirect_to webmentions_path, notice: 'That webmention appeared to be invalid and was deleted.'
       end
     end
 
     def destroy
       webmention.destroy
 
-      redirect_to webmentions_path
+      redirect_to webmentions_path, notice: 'You’ve successfully deleted that webmention. It’s gone for good!'
     end
 
     private
