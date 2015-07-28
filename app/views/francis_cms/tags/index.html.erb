@@ -2,7 +2,9 @@
 
 <header class="content-header">
 	<h1>Tags</h1>
-	<small>All <%= pluralize @total_tags, 'tag' %></small>
+	<%- if @total_tags > 0 -%>
+		<small>All <%= pluralize @total_tags, 'tag' %></small>
+	<%- end -%>
 </header>
 
 <div class="content-container">
