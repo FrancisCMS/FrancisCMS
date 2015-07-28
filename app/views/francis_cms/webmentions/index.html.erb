@@ -5,29 +5,33 @@
 		<h1>Webmentions</h1>
 	</header>
 
-	<div class="single-content">
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">ID</th>
-					<th scope="col">Source URL</th>
-				</tr>
-			</thead>
-			<tbody>
-				<%- @webmentions.each do |webmention| -%>
+	<div class="content-container">
+		<%- if @webmentions.any? -%>
+			<table>
+				<thead>
 					<tr>
-						<th data-webmention-status="<%= webmention.status_string %>" scope="row" title="This webmention is <%= webmention.status_string %>."><%= webmention.id %></th>
-						<td><%= link_to truncate(webmention.source.gsub(%r{^https?://}, ''), length: 64, omission: '…'), webmention.source, title: webmention.source %></td>
-						<td class="actions">
-							<%= link_to 'View', webmention_path(webmention), class: 'button' %>
-						</td>
-						<td class="actions mq-toggle">
-							<%= render 'francis_cms/shared/delete_form', action: webmention_path(webmention) %>
-						</td>
+						<th scope="col">ID</th>
+						<th scope="col">Source URL</th>
 					</tr>
-				<%- end -%>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<%- @webmentions.each do |webmention| -%>
+						<tr>
+							<th data-webmention-status="<%= webmention.status_string %>" scope="row" title="This webmention is <%= webmention.status_string %>."><%= webmention.id %></th>
+							<td><%= link_to truncate(webmention.source.gsub(%r{^https?://}, ''), length: 64, omission: '…'), webmention.source, title: webmention.source %></td>
+							<td class="actions">
+								<%= link_to 'View', webmention_path(webmention), class: 'button' %>
+							</td>
+							<td class="actions mq-toggle">
+								<%= render 'francis_cms/shared/delete_form', action: webmention_path(webmention) %>
+							</td>
+						</tr>
+					<%- end -%>
+				</tbody>
+			</table>
+		<%- else -%>
+			<p>No webmentions found!</p>
+		<%- end -%>
 	</div>
 <%- else -%>
 	<div class="single-content">
