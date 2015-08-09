@@ -48,11 +48,11 @@ module FrancisCms
 
     def get_webmentionable
       # Use canonical target URL to account for 301 redirects
-      matches = target_page.uri.to_s.match(%r{\A#{FrancisCms.configuration.site_url}(?<path>[a-z]+)/(?<params>[A-Za-z0-9\-]+)\Z})
+      matches = target_page.uri.path.match(%r{(?<klass>[a-z]+)/(?<params>[A-Za-z0-9\-/]+)})
 
       if matches
         begin
-          klass = "FrancisCms::#{matches[:path].classify}".constantize
+          klass = "FrancisCms::#{matches[:klass].classify}".constantize
 
           # If klass includes Webmentionable concern
           if klass < FrancisCms::Concerns::Models::Webmentionable
@@ -66,12 +66,18 @@ module FrancisCms
     end
 
     def source_links_to_target?
-      if URI.parse(source).host == URI.parse(target).host
-        # If source and target are on the same domain, target should be relative
-        regex = %r{#{target}|#{target.sub(FrancisCms.configuration.site_url, '/')}}
+      # Account for blank spaces in target URLs stored in database
+      target.gsub!(' ', '%20')
+
+      site_url_regex_string = FrancisCms.configuration.site_url.sub('http://', 'https?://')
+      relative_target_regex_string = target.sub(FrancisCms.configuration.site_url, %{(?:#{site_url_regex_string.chomp('/')})?/})
+
+      if source.match(%r{^#{site_url_regex_string}})
+        # If source matches configured site URL (protocol-agnostic), target could be relative
+        regex = %r{^#{relative_target_regex_string}$}
       else
-        # Check for links to target (with or without trailing slash)
-        regex = %r{#{target}|#{target.sub(/.*\/+?$/, '')}}
+        # Check source for link to target (protocol-agnostic)
+        regex = %r{^#{target.sub('http://', 'https?://')}$}
       end
 
       source_page.link_with(href: regex).present?
