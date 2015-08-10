@@ -3,7 +3,7 @@
 <div class="h-feed">
 	<header class="content-header">
 		<h1 class="p-name">Links</h1>
-		<%- if @links.current_page > 1 -%>
+		<%- if @links.total_pages > 1 -%>
 			<small>Page <%= @links.current_page %> of <%= @links.total_pages %></small>
 		<%- end -%>
 	</header>
