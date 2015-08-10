@@ -1,0 +1,4 @@
+<div class="pagination">
+	<%= link_to 'Newer', send("#{resource.class.name.demodulize.downcase}_path", resource.newer), class: 'previous_page', rel: 'prev' if resource.newer %>
+	<%= link_to 'Older', send("#{resource.class.name.demodulize.downcase}_path", resource.older), class: 'next_page', rel: 'next' if resource.older %>
+</div>

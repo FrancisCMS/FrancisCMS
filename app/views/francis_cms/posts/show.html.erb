@@ -56,10 +56,7 @@
 		</ul>
 
 		<%- if @post.newer || @post.older -%>
-			<div class="pagination">
-				<%= link_to 'Newer', post_path(@post.newer), class: 'previous_page', rel: 'prev' if @post.newer %>
-				<%= link_to 'Older', post_path(@post.older), class: 'next_page', rel: 'next' if @post.older %>
-			</div>
+			<%= render 'francis_cms/shared/pagination', resource: @post %>
 		<%- end -%>
 
 		<%= render 'francis_cms/shared/author_hcard' %>
