@@ -18,6 +18,7 @@ module FrancisCms
         @webmention.update_attributes(
           webmentionable: get_webmentionable,
           webmention_type: get_type(entry_properties),
+          fragmention: get_fragmention,
           verified_at: Time.now
         )
 
@@ -33,6 +34,14 @@ module FrancisCms
     end
 
     private
+
+    def get_fragmention
+      fragment = target_page.uri.fragment
+
+      if fragment
+        URI.decode(fragment)
+      end
+    end
 
     def get_type(properties)
       if properties.has_key?(:like_of)
