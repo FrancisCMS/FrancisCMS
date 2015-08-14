@@ -9,7 +9,7 @@ Dragonfly.app.configure do
   processor :jpg, FrancisCms::Dragonfly::Processors::Jpg.new
 
   datastore :file,
-    root_path: Rails.root.join('public/system/dragonfly', Rails.env),
+    root_path: Rails.root.join('public/uploads', Rails.env),
     server_root: Rails.root.join('public')
 end
 

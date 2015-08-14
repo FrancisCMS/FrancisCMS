@@ -36,16 +36,16 @@ module FrancisCms
         }
       end
 
-      def author_name
-        # Microformats2 returns Microformats2::Property::Text
-        (author_name_from_entry || author_name_from_card || author_name_from_source_url).to_s
-      end
-
       def author_avatar_uid
         begin
           ::Dragonfly.app.fetch_url(author_photo_url).store
         rescue ::Dragonfly::Job::FetchUrl::ErrorResponse, ::Dragonfly::Job::FetchUrl::BadURI
         end
+      end
+
+      def author_name
+        # Microformats2 returns Microformats2::Property::Text
+        (author_name_from_entry || author_name_from_card || author_name_from_source_url).to_s
       end
 
       def author_photo_url
