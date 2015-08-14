@@ -39,7 +39,7 @@ module FrancisCms
       def author_avatar_uid
         begin
           ::Dragonfly.app.fetch_url(author_photo_url).store
-        rescue ::Dragonfly::Job::FetchUrl::ErrorResponse, ::Dragonfly::Job::FetchUrl::BadURI
+        rescue
         end
       end
 
