@@ -2,6 +2,8 @@ module FrancisCms
   class WebmentionEntry < ActiveRecord::Base
     belongs_to :webmention
 
+    mount_uploader :author_avatar, AuthorAvatarUploader
+
     def entry_url_host
       URI.parse(entry_url).host.gsub(/^www\./, '')
     end
@@ -30,6 +32,7 @@ module FrancisCms
           entry_name: entry_name,
           entry_url: entry_url,
           published_at: published_at,
+          remote_author_avatar_url: author_photo_url,
           webmention: @webmention
         }
       end

@@ -24,9 +24,11 @@ Gem::Specification.new do |s|
 
   # Utilities
   s.add_dependency 'acts-as-taggable-on', '~> 3.5'
+  s.add_dependency 'carrierwave'
   s.add_dependency 'friendly_id', '5.1.0'
   s.add_dependency 'mechanize'
   s.add_dependency 'microformats2'
+  s.add_dependency 'mini_magick'
   s.add_dependency 'redcarpet'
   s.add_dependency 'will_paginate', '~> 3.0.6'
 

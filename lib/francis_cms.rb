@@ -1,7 +1,9 @@
 require 'acts-as-taggable-on'
+require 'carrierwave'
 require 'friendly_id'
 require 'mechanize'
 require 'microformats2'
+require 'mini_magick'
 require 'redcarpet'
 require 'will_paginate'
 

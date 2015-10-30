@@ -3,6 +3,7 @@ PATH
   specs:
     francis_cms (0.0.1)
       acts-as-taggable-on (~> 3.5)
+      carrierwave
       friendly_id (= 5.1.0)
       mechanize
       microformats2
@@ -55,6 +56,11 @@ GEM
     bourne (1.6.0)
       mocha (~> 1.1)
     builder (3.2.2)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     database_cleaner (1.4.1)
     diff-lcs (1.2.5)
     domain_name (0.5.25)
