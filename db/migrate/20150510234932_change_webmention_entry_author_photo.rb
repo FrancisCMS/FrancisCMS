@@ -1,4 +1,4 @@
-class ChangeWebmentionEntryAuthorName < ActiveRecord::Migration
+class ChangeWebmentionEntryAuthorPhoto < ActiveRecord::Migration
   def up
     rename_column :francis_cms_webmention_entries, :author_photo, :author_photo_url
   end
