@@ -1,7 +1,6 @@
 module FrancisCms
   class WebmentionEntry < ActiveRecord::Base
     belongs_to :webmention
-    dragonfly_accessor :author_avatar
 
     def entry_url_host
       URI.parse(entry_url).host.gsub(/^www\./, '')
@@ -24,7 +23,6 @@ module FrancisCms
 
       def attributes
         {
-          author_avatar_uid: author_avatar_uid,
           author_name: author_name,
           author_photo_url: author_photo_url,
           author_url: author_url,
@@ -34,13 +32,6 @@ module FrancisCms
           published_at: published_at,
           webmention: @webmention
         }
-      end
-
-      def author_avatar_uid
-        begin
-          ::Dragonfly.app.fetch_url(author_photo_url).store
-        rescue
-        end
       end
 
       def author_name
