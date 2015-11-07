@@ -80,17 +80,16 @@ module FrancisCms
       target.gsub!(' ', '%20')
 
       site_url_regex_string = FrancisCms.configuration.site_url.sub('http://', 'https?://')
-      relative_target_regex_string = target.sub(FrancisCms.configuration.site_url, %{(?:#{site_url_regex_string.chomp('/')})?/})
 
       if source.match(%r{^#{site_url_regex_string}})
         # If source matches configured site URL (protocol-agnostic), target could be relative
-        regex = %r{^#{relative_target_regex_string}$}
+        regex_string = target.sub(FrancisCms.configuration.site_url, %{(?:#{site_url_regex_string.chomp('/')})?/})
       else
         # Check source for link to target (protocol-agnostic)
-        regex = %r{^#{target.sub('http://', 'https?://')}$}
+        regex_string = target.sub('http://', 'https?://')
       end
 
-      source_page.link_with(href: regex).present?
+      source_page.link_with(href: %r{^#{regex_string.chomp('/')}/?$}).present?
     end
 
     def source_page
