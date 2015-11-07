@@ -5,6 +5,8 @@ require 'mechanize'
 require 'microformats2'
 require 'mini_magick'
 require 'redcarpet'
+require 'rouge'
+require 'rouge/plugins/redcarpet'
 require 'will_paginate'
 
 module FrancisCms

@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'microformats2'
   s.add_dependency 'mini_magick'
   s.add_dependency 'redcarpet'
+  s.add_dependency 'rouge'
   s.add_dependency 'will_paginate', '~> 3.0.6'
 
   # Testing

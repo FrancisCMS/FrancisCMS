@@ -10,6 +10,8 @@ module FrancisCms::Concerns::Models::Redcarpeted
   end
 
   class HTMLRenderer < Redcarpet::Render::SmartyHTML
+    include Rouge::Plugins::Redcarpet
+
     def preprocess(full_document)
       render_figure(full_document)
     end
