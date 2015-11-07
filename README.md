@@ -2,6 +2,8 @@
 
 An [IndieWeb](http://indiewebcamp.com/)-friendly content management system built with [Ruby on Rails](http://rubyonrails.org).
 
+[![Build Status](https://travis-ci.org/jgarber623/FrancisCMS.svg?branch=master)](https://travis-ci.org/jgarber623/FrancisCMS)
+
 
 ## Installation
 
