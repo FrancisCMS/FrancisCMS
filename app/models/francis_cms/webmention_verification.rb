@@ -24,11 +24,12 @@ module FrancisCms
 
         @webmention.add_webmention_entry(collection)
       else
-        @webmention.delete
+        # @webmention.delete
       end
     rescue Mechanize::ResponseCodeError => err
       case err.response_code
-        when '404', '410'; @webmention.delete
+        when '404', '410'
+          # @webmention.delete
       end
     rescue Mechanize::SocketError
     end
