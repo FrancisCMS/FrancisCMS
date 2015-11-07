@@ -35,7 +35,7 @@ module FrancisCms
       if webmention.verify
         redirect_to @webmention, notice: 'This webmention was successfully verified!'
       else
-        redirect_to webmentions_path, notice: 'That webmention appeared to be invalid and was deleted.'
+        redirect_to webmentions_path, alert: 'That webmention appears to be invalid.'
       end
     end
 
