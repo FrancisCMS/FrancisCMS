@@ -7,9 +7,9 @@ module FrancisCms
     validates :source, format: { :with => URI::regexp(%w(http https)) }
     validates :target, format: { :with => %r{\A#{FrancisCms.configuration.site_url}?} }
 
-    delegate :author_name, :author_photo_url, :author_url,
-             :entry_content, :entry_name, :entry_url,
-             :entry_url_host, :published_at, to: :webmention_entry
+    delegate :author_avatar, :author_avatar_url, :author_name, :author_photo_url,
+             :author_url, :entry_content, :entry_name, :entry_url, :entry_url_host,
+             :published_at, to: :webmention_entry
 
     def add_webmention_entry(collection)
       WebmentionEntry.create_from_collection(self, collection)
