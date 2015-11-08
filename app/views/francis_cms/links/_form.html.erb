@@ -1,7 +1,7 @@
 <%- if @link.errors.any? -%>
 	<%= render 'francis_cms/shared/form_errors', obj: @link %>
 <%- else -%>
-	<p class="highlight">Fields marked with an * are required.</p>
+	<p class="callout">Fields marked with an * are required.</p>
 <%- end -%>
 
 <%= form_for @link, builder: FrancisCmsFormBuilder, html: { class: 'link-form' } do |f| %>
