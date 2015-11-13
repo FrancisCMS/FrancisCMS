@@ -10,7 +10,7 @@ module FrancisCms
     end
 
     def resource_type
-      %w(posts links).find { |p| request.path.split('/').include? p }
+      %w(posts photos links).find { |p| request.path.split('/').include? p }
     end
     helper_method :resource_type
   end

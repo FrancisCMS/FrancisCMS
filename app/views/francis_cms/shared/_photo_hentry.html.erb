@@ -1,0 +1,25 @@
+<%- is_expanded = true if is_expanded.nil? -%>
+
+<article class="entry h-entry" data-entry-type="photo">
+	<%- if is_expanded -%>
+		<header class="entry-header">
+			<h1 class="entry-title p-name">
+				<%= link_to photo.title, francis_cms.photo_path(photo) %>
+			</h1>
+		</header>
+	<%- end -%>
+
+	<div class="entry-content e-content">
+		<%= link_to francis_cms.photo_path(photo), class: 'u-url' do %>
+			<%= image_tag photo.photo.url(:small), alt: photo.title, class: 'u-photo' %>
+		<% end %>
+
+		<%= link_to 'Draft', edit_photo_path(photo), class: 'draft' unless photo.published_at? %>
+	</div>
+
+	<%- if photo.published_at? && is_expanded -%>
+		<footer class="entry-footer">
+			<p>Posted on <time class="dt-published" datetime="<%= photo.published_at.to_s(:iso8601) %>"><%= raw photo.published_at.to_s(:display) %></time>.</p>
+		</footer>
+	<%- end -%>
+</article>

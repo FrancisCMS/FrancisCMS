@@ -1,0 +1,37 @@
+<%- if @photo.errors.any? -%>
+	<%= render 'francis_cms/shared/form_errors', obj: @photo %>
+<%- else -%>
+	<p class="callout">Fields marked with an * are required.</p>
+<%- end -%>
+
+<%= form_for @photo, builder: FrancisCmsFormBuilder, html: { class: 'photo-form' } do |f| %>
+	<%= f.hidden_field :photo_cache %>
+
+	<ul>
+		<li>
+			<%- if @photo.photo? -%>
+				<%= image_tag @photo.photo.url(:small), alt: '' %>
+			<%- else -%>
+				<%= f.label :photo, raw(%{Photo <abbr title="Required">*</abbr>}) %>
+				<%= f.file_field :photo, required: true %>
+			<%- end -%>
+		</li>
+		<li>
+			<%= f.label :body %>
+			<%= f.text_area :body %>
+		</li>
+		<li>
+			<%= f.label :tag_list, raw(%{Tags <span class="hint">(Comma-separated, please.)</span>}) %>
+			<%= f.text_field :tag_list, value: @photo.tag_list.to_s %>
+		</li>
+		<li>
+			<%= f.label :is_draft, class: 'for-checkbox' do %>
+				<%= f.check_box :is_draft, { checked: !@photo.published_at? } %>
+				Save as draft
+			<% end %>
+		</li>
+		<li>
+			<button type="submit">Submit</button>
+		</li>
+	</ul>
+<% end %>

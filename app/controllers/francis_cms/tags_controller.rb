@@ -11,14 +11,16 @@ module FrancisCms
     def show
       tag
 
-      posts = Post.tagged_with(@tag).exclude_drafts
       links = Link.tagged_with(@tag).exclude_drafts
-      @results = (posts + links).sort_by { |result| result[:published_at] }.reverse
+      photos = Photo.tagged_with(@tag).exclude_drafts
+      posts = Post.tagged_with(@tag).exclude_drafts
+      @results = (links + photos + posts).sort_by { |result| result[:published_at] }.reverse
 
       if __logged_in__
-        posts = Post.tagged_with(@tag)
         links = Link.tagged_with(@tag)
-        @results = (posts + links).sort_by { |result| result[:created_at] }.reverse
+        photos = Photo.tagged_with(@tag)
+        posts = Post.tagged_with(@tag)
+        @results = (links + photos + posts).sort_by { |result| result[:created_at] }.reverse
       end
     end
 

@@ -1,5 +1,5 @@
 FrancisCms::Engine.routes.draw do
-  resources :links, :posts do
+  resources :links, :photos, :posts do
     resources :syndications, only: [:create, :destroy]
 
     get 'archives',       on: :collection, to: 'archives#index'

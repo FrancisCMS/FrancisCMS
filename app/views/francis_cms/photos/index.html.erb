@@ -1,0 +1,32 @@
+<%- @page_title = "Photos#{' – Page ' + @photos.current_page.to_s if @photos.current_page > 1}" -%>
+
+<div class="h-feed">
+	<header class="content-header">
+		<h1 class="p-name">Photos</h1>
+		<%- if @photos.total_pages > 1 -%>
+			<small>Page <%= @photos.current_page %> of <%= @photos.total_pages %></small>
+		<%- end -%>
+	</header>
+
+	<div class="content-container">
+		<%- if @photos.any? -%>
+			<ol class="photos" reversed>
+				<%- @photos.each do |photo| -%>
+					<li>
+						<%= render 'francis_cms/shared/photo_hentry', photo: photo, is_expanded: false %>
+					</li>
+				<%- end -%>
+			</ol>
+
+			<%= will_paginate @photos %>
+
+			<%= render 'francis_cms/shared/archives_promo', url: archives_photos_path %>
+		<%- else -%>
+			<p>No photos found!</p>
+		<%- end -%>
+	</div>
+
+	<footer class="content-footer">
+		<%= render 'francis_cms/shared/author_hcard' %>
+	</footer>
+</div>
