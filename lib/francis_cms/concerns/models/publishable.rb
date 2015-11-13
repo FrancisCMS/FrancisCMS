@@ -24,7 +24,7 @@ module FrancisCms::Concerns::Models::Publishable
     end
 
     def for_year(year)
-      exclude_drafts.where('extract(year from published_at)::integer = ?', year)
+      exclude_drafts.where('extract(year from published_at)::integer = ?', year).order('published_at ASC')
     end
 
     def years

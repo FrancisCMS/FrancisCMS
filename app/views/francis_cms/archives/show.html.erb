@@ -3,6 +3,9 @@
 <div class="h-feed">
 	<header class="content-header">
 		<h1 class="p-name"><%= resource_type.capitalize %> Archives: <%= @year %></h1>
+		<%- if @results.length > 0 -%>
+			<small>All <%= pluralize @results.length, resource_type %></small>
+		<%- end -%>
 	</header>
 
 	<div class="content-container">
