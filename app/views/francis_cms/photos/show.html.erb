@@ -46,6 +46,15 @@
 					<time class="dt-published" datetime="<%= @photo.published_at.to_s(:iso8601) %>"><%= raw @photo.published_at.to_s(:display) %></time>.
 				</li>
 			<%- end -%>
+			<li>
+				<dl class="entry-meta-list">
+					<dt>Sizes:</dt>
+					<dd><%= link_to 'Small', @photo.photo.url(:small), download: %{#{@photo.title} (small).#{@photo.photo.file.extension}} %></dd>
+					<dd><%= link_to 'Medium', @photo.photo.url(:medium), download: %{#{@photo.title} (medium).#{@photo.photo.file.extension}} %></dd>
+					<dd><%= link_to 'Large', @photo.photo.url(:large), download: %{#{@photo.title} (large).#{@photo.photo.file.extension}} %></dd>
+					<dd><%= link_to 'Original', @photo.photo.url, download: %{#{@photo.title} (original).#{@photo.photo.file.extension}} %></dd>
+				</dl>
+			</li>
 			<%- if @photo.tags.any? -%>
 				<li>
 					<%= render 'francis_cms/shared/tags', resource: @photo %>
