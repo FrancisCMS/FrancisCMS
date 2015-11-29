@@ -20,13 +20,6 @@ module FrancisCms
       @title ||= body? ? body.lines.first.chomp : 'Untitled'
     end
 
-    def extract_exif_data
-      img = MiniMagick::Image.open(photo.path)
-
-      self.latitude = convert_coords_to_decimal(img.exif['GPSLatitude'], img.exif['GPSLatitudeRef'])
-      self.longitude = convert_coords_to_decimal(img.exif['GPSLongitude'], img.exif['GPSLongitudeRef'])
-    end
-
     private
 
     def convert_coords_to_decimal(str, ref)
@@ -41,6 +34,13 @@ module FrancisCms
 
         out
       end
+    end
+
+    def extract_exif_data
+      img = MiniMagick::Image.open(photo.path)
+
+      self.latitude = convert_coords_to_decimal(img.exif['GPSLatitude'], img.exif['GPSLatitudeRef'])
+      self.longitude = convert_coords_to_decimal(img.exif['GPSLongitude'], img.exif['GPSLongitudeRef'])
     end
 
     def to_fraction(str)
