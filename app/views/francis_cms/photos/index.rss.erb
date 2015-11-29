@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title><%= francis_cms_config.site_title %>: Photos</title>
+		<atom:link rel="self" href="<%= photos_url(format: :rss) %>" />
+		<link><%= photos_url %></link>
+		<description>Recent photos from <%= francis_cms_config.site_title %> — <%= francis_cms_config.site_description %></description>
+		<pubDate><%= @photos.first.published_at.to_s(:rfc822) if @photos.any? %></pubDate>
+		<managingEditor><%= francis_cms_config.user_email %> (<%= francis_cms_config.user_name %>)</managingEditor>
+		<webMaster><%= francis_cms_config.user_email %> (<%= francis_cms_config.user_name %>)</webMaster>
+		<language><%= francis_cms_config.site_language %></language>
+		<copyright><%= francis_cms_config.license_title %></copyright>
+
+		<%- @photos.each do |photo| -%>
+			<item>
+				<guid><%= photo_url(photo) %></guid>
+				<title><%= photo.title %></title>
+				<link><%= photo_url(photo) %></link>
+				<pubDate><%= photo.published_at.to_s(:rfc822) %></pubDate>
+				<description>
+					<![CDATA[
+						<%= image_tag photo.photo.url(:medium), alt: '', srcset: %{
+							#{asset_path photo.photo.url(:small)} 500w,
+							#{asset_path photo.photo.url(:medium)} 750w,
+							#{asset_path photo.photo.url(:large)} 1000w
+						} %>
+
+						<%= raw photo.to_html %>
+					]]>
+				</description>
+				<%- if photo.tags.any? -%>
+					<%- photo.tags.each do |tag| -%>
+						<category><%= tag.name %></category>
+					<%- end -%>
+				<%- end -%>
+			</item>
+		<%- end -%>
+	</channel>
+</rss>
