@@ -15,9 +15,9 @@
 	<div class="single-content e-content p-name">
 		<div class="single-photo">
 			<%= image_tag @photo.photo.url(:medium), alt: '', class: 'u-photo', srcset: %{
-				#{asset_path @photo.photo.url(:small)} 600w,
-				#{asset_path @photo.photo.url(:medium)} 900w,
-				#{asset_path @photo.photo.url(:large)} 1200w
+				#{asset_path @photo.photo.url(:small)} 500w,
+				#{asset_path @photo.photo.url(:medium)} 750w,
+				#{asset_path @photo.photo.url(:large)} 1000w
 			} %>
 
 			<%= link_to 'Draft', edit_photo_path(@photo), class: 'draft' unless @photo.published_at? %>
