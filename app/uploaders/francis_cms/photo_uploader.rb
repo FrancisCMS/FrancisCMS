@@ -13,15 +13,15 @@ module FrancisCms
     end
 
     version :small do
-      process :manipulate_photo => '600x600'
+      process :manipulate_photo => '500x500'
     end
 
     version :medium do
-      process :manipulate_photo => '900x900'
+      process :manipulate_photo => '750x750'
     end
 
     version :large do
-      process :manipulate_photo => '1200x1200'
+      process :manipulate_photo => '1000x1000'
     end
 
     private
