@@ -9,7 +9,7 @@ module FrancisCms
     end
 
     def extension_white_list
-      %w(jpg jpeg gif png)
+      %w(gif jpeg jpg png)
     end
 
     version :small do
