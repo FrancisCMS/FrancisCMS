@@ -45,6 +45,10 @@ module FrancisCms
 
       self.latitude = convert_coords_to_decimal(img.exif['GPSLatitude'], img.exif['GPSLatitudeRef'])
       self.longitude = convert_coords_to_decimal(img.exif['GPSLongitude'], img.exif['GPSLongitudeRef'])
+
+      if taken_at = img.exif['DateTimeOriginal']
+        self.taken_at = DateTime.strptime(taken_at, '%Y:%m:%d %H:%M:%S')
+      end
     end
 
     def reverse_geocode

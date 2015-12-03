@@ -41,9 +41,10 @@
 	<footer role="complementary">
 		<ul class="single-meta">
 			<%- if @photo.published_at? -%>
+				<%- datetime = @photo.taken_at? ? @photo.taken_at : @photo.published_at -%>
 				<li>
-					“<%= link_to @photo.title, photo_path(@photo), class: 'u-url' %>” was posted on
-					<time class="dt-published" datetime="<%= @photo.published_at.to_s(:iso8601) %>"><%= raw @photo.published_at.to_s(:display) %></time>.
+					“<%= link_to @photo.title, photo_path(@photo), class: 'u-url' %>” was
+					<%= @photo.taken_at? ? 'taken' : 'posted' %> on <time class="dt-published" datetime="<%= datetime.to_s(:iso8601) %>"><%= raw datetime.to_s(:display) %></time>.
 				</li>
 			<%- end -%>
 			<%- if @photo.geolocated? -%>
