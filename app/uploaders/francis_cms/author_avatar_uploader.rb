@@ -20,11 +20,14 @@ module FrancisCms
 
     def manipulate_author_avatar(geometry)
       manipulate! do |img|
-        img.interlace('Plane')
-        img.quality(72)
-        img.resize(geometry)
         img.strip
-        img.unsharp(1)
+
+        img.combine_options do |c|
+          c.interlace 'plane'
+          c.quality 72
+          c.resize geometry
+          c.unsharp 1
+        end
 
         img = yield(img) if block_given?
         img
