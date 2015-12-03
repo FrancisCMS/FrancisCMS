@@ -46,6 +46,14 @@
 					<time class="dt-published" datetime="<%= @photo.published_at.to_s(:iso8601) %>"><%= raw @photo.published_at.to_s(:display) %></time>.
 				</li>
 			<%- end -%>
+			<%- if @photo.geolocated? -%>
+				<li>
+					<dl class="entry-meta-list">
+						<dt>Location:</dt>
+						<dd><%= link_to_openstreetmap @photo, class: 'p-location h-adr' %></dd>
+					</dl>
+				</li>
+			<%- end -%>
 			<li>
 				<dl class="entry-meta-list">
 					<dt>Sizes:</dt>

@@ -1,6 +1,7 @@
 require 'acts-as-taggable-on'
 require 'carrierwave'
 require 'friendly_id'
+require 'geocoder'
 require 'mechanize'
 require 'microformats2'
 require 'mini_magick'

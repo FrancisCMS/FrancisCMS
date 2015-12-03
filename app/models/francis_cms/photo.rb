@@ -10,11 +10,15 @@ module FrancisCms
 
     mount_uploader :photo, PhotoUploader
 
-    before_save :extract_exif_data
+    before_save :extract_exif_data, :reverse_geocode
 
     redcarpet :body
 
     self.per_page = 20
+
+    def geolocated?
+      street_address? && city? && state? && country?
+    end
 
     def title
       @title ||= body? ? body.lines.first.chomp : 'Untitled'
@@ -41,6 +45,18 @@ module FrancisCms
 
       self.latitude = convert_coords_to_decimal(img.exif['GPSLatitude'], img.exif['GPSLatitudeRef'])
       self.longitude = convert_coords_to_decimal(img.exif['GPSLongitude'], img.exif['GPSLongitudeRef'])
+    end
+
+    def reverse_geocode
+      if geo = Geocoder.search(%{#{self.latitude},#{self.longitude}}).first
+        self.street_address = geo.street_address
+        self.city = geo.city
+        self.state = geo.state
+        self.state_code = geo.state_code
+        self.postal_code = geo.postal_code
+        self.country = geo.country
+        self.country_code = geo.country_code
+      end
     end
 
     def to_fraction(str)
