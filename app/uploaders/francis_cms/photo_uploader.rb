@@ -28,10 +28,13 @@ module FrancisCms
 
     def manipulate_photo(geometry)
       manipulate! do |img|
-        img.interlace('Plane')
-        img.quality(80)
-        img.resize(%{#{geometry}>})
         img.strip
+
+        img.combine_options do |c|
+          c.interlace 'plane'
+          c.quality 80
+          c.resize %{#{geometry}>}
+        end
 
         img = yield(img) if block_given?
         img
