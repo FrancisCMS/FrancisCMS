@@ -17,7 +17,7 @@ module FrancisCms
     self.per_page = 20
 
     def geolocated?
-      street_address? && city? && state? && country?
+      latitude? && longitude?
     end
 
     def title
@@ -43,11 +43,31 @@ module FrancisCms
     def extract_exif_data
       img = MiniMagick::Image.open(photo.path)
 
-      self.latitude = convert_coords_to_decimal(img.exif['GPSLatitude'], img.exif['GPSLatitudeRef'])
-      self.longitude = convert_coords_to_decimal(img.exif['GPSLongitude'], img.exif['GPSLongitudeRef'])
+      self.latitude = extract_latitude(img.exif)
+      self.longitude = extract_longitude(img.exif)
 
-      if taken_at = img.exif['DateTimeOriginal']
-        self.taken_at = DateTime.strptime(taken_at, '%Y:%m:%d %H:%M:%S')
+      self.taken_at = extract_taken_at(img.exif)
+    end
+
+    def extract_latitude(exif)
+      convert_coords_to_decimal(exif['GPSLatitude'], exif['GPSLatitudeRef'])
+    end
+
+    def extract_longitude(exif)
+      convert_coords_to_decimal(exif['GPSLongitude'], exif['GPSLongitudeRef'])
+    end
+
+    def extract_taken_at(exif)
+      gps_date_stamp = exif['GPSDateStamp']
+      gps_time_stamp = exif['GPSTimeStamp']
+      date_time_original = exif['DateTimeOriginal']
+
+      if gps_date_stamp && gps_time_stamp
+        matches = gps_time_stamp.match(%r{^(?<hours>\d+)\/\d+, (?<minutes>\d+)\/\d+, (?<seconds>\d+)\/\d+$})
+
+        %{#{gps_date_stamp.gsub(':', '-')} #{matches[:hours]}:#{matches[:minutes]}:#{matches[:seconds]}}.to_datetime
+      elsif date_time_original
+        DateTime.strptime(date_time_original, '%Y:%m:%d %H:%M:%S')
       end
     end
 
