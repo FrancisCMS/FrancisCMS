@@ -1,0 +1,31 @@
+---
+title: <%= raw @photo.title %>
+permalink: <%= photo_url(@photo) %>
+<%- if @photo.published_at? -%>
+published: <%= @photo.taken_at? ? @photo.taken_at.to_s(:iso8601) : @photo.published_at.to_s(:iso8601)  %>
+<%- end -%>
+updated: <%= @photo.updated_at.to_s(:iso8601) %>
+<%- if @photo.tags.any? -%>
+tags:
+<%- @photo.tags.each do |tag| -%>
+  - <%= tag.name %>
+<%- end -%>
+<%- end -%>
+<%- if @photo.geolocated? -%>
+location:
+<%- if @photo.city -%>
+  city: <%= @photo.city %>
+<%- end -%>
+<%- if @photo.state -%>
+  state: <%= @photo.state %>
+<%- end -%>
+<%- if @photo.country -%>
+  country: <%= @photo.country %>
+<%- end -%>
+  url: https://www.openstreetmap.org/#map=15/<%= @photo.latitude %>/<%= @photo.longitude %>
+<%- end -%>
+---
+
+<%= photo_image_tag @photo, alt: '' %>
+
+<%= raw @photo.body %>

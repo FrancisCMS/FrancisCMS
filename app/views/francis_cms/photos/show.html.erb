@@ -14,14 +14,14 @@
 <article class="single h-entry h-as-photo">
 	<div class="single-content e-content p-name">
 		<div class="single-photo">
-			<%= image_tag @photo.photo.url(:medium), alt: '', class: 'u-photo', srcset: %{
-				#{asset_path @photo.photo.url(:small)} 500w,
-				#{asset_path @photo.photo.url(:medium)} 750w,
-				#{asset_path @photo.photo.url(:large)} 1000w
-			} %>
-
+			<%= photo_image_tag @photo, alt: '', class: 'u-photo' %>
 			<%= link_to 'Draft', edit_photo_path(@photo), class: 'draft' unless @photo.published_at? %>
 		</div>
+
+		<%- if @photo.published_at? -%>
+			<%- datetime = @photo.taken_at? ? @photo.taken_at : @photo.published_at -%>
+			<small><%= @photo.taken_at? ? 'Taken' : 'Posted' %> on <time class="dt-published" datetime="<%= datetime.to_s(:iso8601) %>"><%= raw datetime.to_s(:display) %></time>.</small>
+		<%- end -%>
 
 		<%- if @photo.body? -%>
 			<%= raw @photo.to_html %>
@@ -40,13 +40,11 @@
 
 	<footer role="complementary">
 		<ul class="single-meta">
-			<%- if @photo.published_at? -%>
-				<%- datetime = @photo.taken_at? ? @photo.taken_at : @photo.published_at -%>
-				<li>
-					“<%= link_to @photo.title, photo_path(@photo), class: 'u-url' %>” was
-					<%= @photo.taken_at? ? 'taken' : 'posted' %> on <time class="dt-published" datetime="<%= datetime.to_s(:iso8601) %>"><%= raw datetime.to_s(:display) %></time>.
-				</li>
-			<%- end -%>
+			<li>
+				“<%= link_to @photo.title, photo_path(@photo), class: 'u-url' %>” is also available as
+				<%= link_to 'Markdown', photo_path(@photo, format: :md), download: %{#{@photo.title}.md}, rel: 'alternate', type: 'text/x-markdown' %> and
+				<%= link_to 'JSON', photo_path(@photo, format: :json), download: %{#{@photo.title}.json}, rel: 'alternate', type: 'application/json' %>.
+			</li>
 			<%- if @photo.geolocated? -%>
 				<li>
 					<dl class="entry-meta-list">

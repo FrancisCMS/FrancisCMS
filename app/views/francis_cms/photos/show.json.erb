@@ -1,0 +1,54 @@
+{
+	"items": [{
+		"type": [
+			"h-entry",
+			"h-as-photo"
+		],
+		"properties": {
+			<%- if @photo.geolocated? -%>
+				"location": [{
+					"type": ["h-adr"],
+					"properties": {
+						<%- if @photo.city -%>
+							"locality": ["<%= @photo.city %>"],
+						<%- end -%>
+						<%- if @photo.state -%>
+							"region": ["<%= @photo.state %>"],
+						<%- end -%>
+						<%- if @photo.country -%>
+							"country-name": ["<%= @photo.country %>"],
+						<%- end -%>
+						"url": ["https://www.openstreetmap.org/#map=15/<%= @photo.latitude %>/<%= @photo.longitude %>"]
+					}
+				}],
+			<%- end -%>
+			"author": [{
+				"type": ["h-card"],
+				"properties": {
+					"name": ["<%= francis_cms_config.user_name %>"],
+					"url": ["<%= francis_cms_config.site_url %>"],
+					"photo": ["<%= francis_cms_config.user_avatar %>"]
+				}
+			}],
+			"name": ["<%= @photo.title %>"],
+			<%- if @photo.tags.any? -%>
+				"category": <%= raw @photo.tags.collect { |tag| tag.name } %>,
+			<%- end -%>
+			"photo": ["<%= @photo.photo.url(:medium) %>"],
+			"url": ["<%= photo_url(@photo) %>"],
+			"uid": ["<%= photo_url(@photo) %>"],
+			<%- if @photo.syndications.any? -%>
+				"syndication": <%= raw @photo.syndications.collect { |syndication| syndication.url } %>,
+			<%- end -%>
+			<%- if @photo.published_at? -%>
+				<%- datetime = @photo.taken_at? ? @photo.taken_at : @photo.published_at -%>
+				"published": ["<%= datetime.to_s(:iso8601) %>"],
+			<%- end -%>
+			"updated": ["<%= @photo.updated_at.to_s(:iso8601) %>"],
+			"content": [{
+				"html": <%= raw @photo.to_html.to_json %>,
+				"markdown": <%= raw @photo.body.to_json %>
+			}]
+		}
+	}]
+}
