@@ -20,7 +20,7 @@
 		</h1>
 
 		<%- if @post.published_at? -%>
-			<p>Published on <time class="dt-published" datetime="<%= @post.published_at.to_s(:iso8601) %>"><%= raw @post.published_at.to_s(:display) %></time>.</p>
+			<small>Published on <time class="dt-published" datetime="<%= @post.published_at.to_s(:iso8601) %>"><%= raw @post.published_at.to_s(:display) %></time>.</small>
 		<%- end -%>
 	</header>
 

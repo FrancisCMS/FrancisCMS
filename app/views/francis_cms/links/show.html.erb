@@ -19,7 +19,7 @@
 		</h1>
 
 		<%- if @link.published_at? -%>
-			<p>Saved on <time class="dt-published" datetime="<%= @link.published_at.to_s(:iso8601) %>"><%= raw @link.published_at.to_s(:display) %></time>.</p>
+			<small>Saved on <time class="dt-published" datetime="<%= @link.published_at.to_s(:iso8601) %>"><%= raw @link.published_at.to_s(:display) %></time>.</small>
 		<%- end -%>
 	</header>
 
