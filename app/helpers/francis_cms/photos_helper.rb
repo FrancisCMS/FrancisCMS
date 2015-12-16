@@ -18,4 +18,8 @@ module FrancisCms::PhotosHelper
       raw out
     end
   end
+
+  def photo_image_tag(photo, html_options = {})
+    raw image_tag(photo.photo.url(:medium), html_options.merge({srcset: %{#{asset_path photo.photo.url(:small)} 500w, #{asset_path photo.photo.url(:medium)} 750w, #{asset_path photo.photo.url(:large)} 1000w}}))
+  end
 end
