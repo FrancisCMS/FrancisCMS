@@ -12,31 +12,84 @@ module FrancisCms
       %w(gif jpeg jpg png)
     end
 
-    version :small do
-      process :manipulate_photo => '500x500'
+    version :small_jpg do
+      process :mogrify => [{
+        format: 'jpg',
+        resolution: '500x500'
+      }]
+
+      def full_filename(for_file = model.photo.file)
+        %{#{File.basename(for_file, '.*')}_small.jpg}
+      end
     end
 
-    version :medium do
-      process :manipulate_photo => '750x750'
+    version :small_webp do
+      process :mogrify => [{
+        format: 'webp',
+        resolution: '500x500'
+      }]
+
+      def full_filename(for_file = model.photo.file)
+        %{#{File.basename(for_file, '.*')}_small.webp}
+      end
     end
 
-    version :large do
-      process :manipulate_photo => '1000x1000'
+    version :medium_jpg do
+      process :mogrify => [{
+        format: 'jpg',
+        resolution: '750x750'
+      }]
+
+      def full_filename(for_file = model.photo.file)
+        %{#{File.basename(for_file, '.*')}_medium.jpg}
+      end
+    end
+
+    version :medium_webp do
+      process :mogrify => [{
+        format: 'webp',
+        resolution: '750x750'
+      }]
+
+      def full_filename(for_file = model.photo.file)
+        %{#{File.basename(for_file, '.*')}_medium.webp}
+      end
+    end
+
+    version :large_jpg do
+      process :mogrify => [{
+        format: 'jpg',
+        resolution: '1000x1000'
+      }]
+
+      def full_filename(for_file = model.photo.file)
+        %{#{File.basename(for_file, '.*')}_large.jpg}
+      end
+    end
+
+    version :large_webp do
+      process :mogrify => [{
+        format: 'webp',
+        resolution: '1000x1000'
+      }]
+
+      def full_filename(for_file = model.photo.file)
+        %{#{File.basename(for_file, '.*')}_large.webp}
+      end
     end
 
     private
 
-    def manipulate_photo(geometry)
+    def mogrify(options = {})
       manipulate! do |img|
         img.strip
 
-        img.combine_options do |c|
+        img.format(options[:format]) do |c|
           c.interlace 'plane'
           c.quality 80
-          c.resize %{#{geometry}>}
+          c.resize %{#{options[:resolution]}>}
         end
 
-        img = yield(img) if block_given?
         img
       end
     end

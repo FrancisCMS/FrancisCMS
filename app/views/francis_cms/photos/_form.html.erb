@@ -10,7 +10,7 @@
 	<ul>
 		<li>
 			<%- if @photo.photo? -%>
-				<%= image_tag @photo.photo.url(:small), alt: '' %>
+				<%= image_tag @photo.photo.url(:small_jpg), alt: '' %>
 			<%- else -%>
 				<%= f.label :photo, raw(%{Photo <abbr title="Required">*</abbr>}) %>
 				<%= f.file_field :photo, accept: '.gif, .jpeg, .jpg, .png', required: true %>

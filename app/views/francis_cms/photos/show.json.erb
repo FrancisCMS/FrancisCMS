@@ -34,7 +34,7 @@
 			<%- if @photo.tags.any? -%>
 				"category": <%= raw @photo.tags.collect { |tag| tag.name } %>,
 			<%- end -%>
-			"photo": ["<%= @photo.photo.url(:medium) %>"],
+			"photo": ["<%= @photo.photo.url(:medium_jpg) %>"],
 			"url": ["<%= photo_url(@photo) %>"],
 			"uid": ["<%= photo_url(@photo) %>"],
 			<%- if @photo.syndications.any? -%>
