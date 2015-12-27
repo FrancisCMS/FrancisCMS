@@ -11,6 +11,8 @@ module FrancisCms
              :author_url, :entry_content, :entry_name, :entry_url, :entry_url_host,
              :published_at, to: :webmention_entry
 
+    self.per_page = 100
+
     def add_webmention_entry(collection)
       WebmentionEntry.create_from_collection(self, collection)
     end

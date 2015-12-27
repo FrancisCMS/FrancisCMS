@@ -48,7 +48,7 @@ module FrancisCms
     private
 
     def webmentions
-      @webmentions ||= Webmention.all.order('created_at DESC')
+      @webmentions ||= Webmention.page(params['page']).order('created_at DESC')
     end
 
     def webmention

@@ -1,8 +1,11 @@
-<%- @page_title = 'Webmentions' -%>
+<%- @page_title = "Webmentions#{' — Page ' + @webmentions.current_page.to_s if @webmentions.current_page > 1}" -%>
 
 <%- if __logged_in__ -%>
 	<header class="content-header">
 		<h1>Webmentions</h1>
+		<%- if @webmentions.total_pages > 1 -%>
+			<small>Page <%= @webmentions.current_page %> of <%= @webmentions.total_pages %></small>
+		<%- end -%>
 	</header>
 
 	<div class="content-container">
@@ -29,6 +32,8 @@
 					<%- end -%>
 				</tbody>
 			</table>
+
+			<%= will_paginate @webmentions %>
 		<%- else -%>
 			<p>No webmentions found!</p>
 		<%- end -%>
