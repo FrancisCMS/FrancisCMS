@@ -34,7 +34,7 @@ An [IndieWeb](http://indiewebcamp.com/)-friendly content management system built
 
 Most of this wouldn't have been possible without [Tony Pitale](http://tpitale.com/)'s mentorship, encouragement, and patience. Thanks, buddy!
 
-The default user avatar image (`app/assets/images/avatar.png`) was derived from [Brent Jackson's](http://jxnblk.com/)'s [Geomicons Open](https://github.com/jxnblk/geomicons-open) icon set.
+The default user avatar image (`app/assets/images/avatar.png`) was derived from [Brent Jackson](http://jxnblk.com/)'s [Geomicons Open](https://github.com/jxnblk/geomicons-open) icon set.
 
 FrancisCMS is written and maintained by [Jason Garber](http://sixtwothree.org/).
 
