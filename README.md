@@ -13,13 +13,16 @@ An [IndieWeb](http://indiewebcamp.com/)-friendly content management system built
 ## Usage
 
 
-## Testing
+## Developing
 
-The bulk of the test suite can be run using `rspec spec` (aliased to the default `rake` task).
 
-### Running Smoke Tests
+### Contributing
 
-1. `cd spec/dummy`
-1. `bin/rake db:migrate db:test:prepare`
-1. `RAILS_ENV=test bin/rails s`
-1. In a different tab and inside `spec/dummy`, `rspec spec`
+
+### Testing
+
+
+## Acknowledgements
+
+
+## License
