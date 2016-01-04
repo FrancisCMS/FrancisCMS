@@ -233,7 +233,7 @@ A post has the following attributes:
 
 - Title _(required)_
 - URL slug (e.g. `an-example-post-url`) _(required)_
-- Body _(required)_
+- Body (Markdown-formatted) _(required)_
 - Excerpt
 - Tags
 - Save as draft
@@ -246,7 +246,7 @@ A link has the following attributes:
 
 - URL _(required)_
 - Title _(required)_
-- Body
+- Body (Markdown-formatted)
 - Tags
 - Save as draft
 
@@ -257,7 +257,7 @@ Photos are a type of post consisting primarily of a photograph or image and map 
 A photo has the following attributes:
 
 - Photo (an image file of type GIF, JPG, or PNG) _(required)_
-- Body
+- Body (Markdown-formatted)
 - Tags
 - Save as draft
 
