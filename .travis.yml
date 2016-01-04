@@ -3,3 +3,4 @@ rvm:
   - 2.2.4
 notifications:
   email: false
+  slack: sixtwothree:yATLmjTW15443qR7jbCWr3RO
