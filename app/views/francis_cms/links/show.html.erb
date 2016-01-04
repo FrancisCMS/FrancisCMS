@@ -25,7 +25,7 @@
 
 	<div class="single-content e-content">
 		<%= raw @link.to_html if @link.body? %>
-		<p><%= link_to "Visit “#{@link.title}” →", @link.url %></p>
+		<p><%= link_to "Visit “#{@link.title}” →", @link.url, class: 'u-bookmark-of' %></p>
 	</div>
 
 	<aside class="responses" id="responses" role="complementary">
