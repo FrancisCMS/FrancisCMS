@@ -34,9 +34,10 @@ At present, FrancisCMS is a white label Rails engine meant to be included in an 
 	- [Photos](#photos)
 - [Theming](#theming)
 	- [Markup Conventions](#markup-conventions)
-- [Developing](#developing)
+- [Improving FrancisCMS](#improving-franciscms)
 	- [Contributing](#contributing)
 	- [Testing](#testing)
+	- [Donations](#donations)
 - [Acknowledgements](#acknowledgements)
 - [License](#license)
 
@@ -277,7 +278,7 @@ FrancisCMS is built on [IndieWeb principles](http://indiewebcamp.com/principles)
 
 Care has been taken to craft FrancisCMS' markup in a way that is lightweight, accessible, and flexible. Rather than wed FrancisCMS to a particular CSS framework or convention (e.g. [BassCSS](http://www.basscss.com/), [SMACSS](https://smacss.com/), or [OOCSS](https://github.com/stubbornella/oocss/wiki)), I've instead tried to use descriptive `class` attribute values and allowed for considered use of the cascade (the "C" in "CSS").
 
-## Developing
+## Improving FrancisCMS
 
 TODO
 
@@ -288,6 +289,13 @@ TODO
 ### Testing
 
 TODO
+
+### Donations
+
+If diving into Ruby isn't your thing, but you'd still like to support FrancisCMS, consider making a donation! Any amount—large or small—is greatly appreciated. As a token of my gratitude, I'll add your name to the [Acknowledgements](#acknowledgements) below.
+
+[![Donate via Square Cash](https://img.shields.io/badge/square%20cash-$jgarber-28c101.svg)](https://cash.me/$jgarber)
+[![Donate via Paypal](https://img.shields.io/badge/paypal-jgarber-009cde.svg)](https://www.paypal.me/jgarber)
 
 ## Acknowledgements
 
