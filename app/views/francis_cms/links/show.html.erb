@@ -1,7 +1,7 @@
 <%- @page_title = "#{@link.title} — Links" -%>
 
 <%- if __logged_in__ -%>
-	<%- content_for :admin_panel_extras do -%>
+	<%- provide :admin_panel_extras do -%>
 		<menu class="local">
 			<li><%= link_to 'Edit', edit_link_path(@link) %></li>
 			<li>
