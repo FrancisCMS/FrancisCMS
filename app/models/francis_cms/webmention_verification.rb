@@ -79,14 +79,14 @@ module FrancisCms
       # Account for blank spaces in target URLs stored in database
       target.gsub!(' ', '%20')
 
-      site_url_regex_string = FrancisCms.configuration.site_url.sub('http://', 'https?://')
+      site_url_regex_string = FrancisCms.configuration.site_url.sub(/^https?:/, 'https?:')
 
       if source.match(%r{^#{site_url_regex_string}})
         # If source matches configured site URL (protocol-agnostic), target could be relative
-        regex_string = target.sub(FrancisCms.configuration.site_url, %{(?:#{site_url_regex_string.chomp('/')})?/})
+        regex_string = target.sub(/^#{site_url_regex_string}/, %{(?:#{site_url_regex_string.chomp('/')})?/})
       else
         # Check source for link to target (protocol-agnostic)
-        regex_string = target.sub('http://', 'https?://')
+        regex_string = target.sub(/^https?:/, 'https?:')
       end
 
       source_page.link_with(href: %r{^#{regex_string.chomp('/')}/?$}).present?
