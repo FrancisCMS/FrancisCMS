@@ -23,17 +23,6 @@ module FrancisCms
       end
     end
 
-    version :small_webp do
-      process :mogrify => [{
-        format: 'webp',
-        resolution: '500x500'
-      }]
-
-      def full_filename(for_file = model.photo.file)
-        %{#{File.basename(for_file, '.*')}_small.webp}
-      end
-    end
-
     version :medium_jpg do
       process :mogrify => [{
         format: 'jpg',
@@ -45,17 +34,6 @@ module FrancisCms
       end
     end
 
-    version :medium_webp do
-      process :mogrify => [{
-        format: 'webp',
-        resolution: '750x750'
-      }]
-
-      def full_filename(for_file = model.photo.file)
-        %{#{File.basename(for_file, '.*')}_medium.webp}
-      end
-    end
-
     version :large_jpg do
       process :mogrify => [{
         format: 'jpg',
@@ -64,17 +42,6 @@ module FrancisCms
 
       def full_filename(for_file = model.photo.file)
         %{#{File.basename(for_file, '.*')}_large.jpg}
-      end
-    end
-
-    version :large_webp do
-      process :mogrify => [{
-        format: 'webp',
-        resolution: '1000x1000'
-      }]
-
-      def full_filename(for_file = model.photo.file)
-        %{#{File.basename(for_file, '.*')}_large.webp}
       end
     end
 

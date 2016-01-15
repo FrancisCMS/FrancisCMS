@@ -11,10 +11,7 @@
 
 	<div class="entry-content e-content">
 		<%= link_to francis_cms.photo_path(photo), class: 'u-url' do %>
-			<picture>
-				<source srcset="<%= photo.photo.url(:small_webp) %>" type="image/webp">
-				<%= image_tag photo.photo.url(:small_jpg), alt: photo.title, class: 'u-photo' %>
-			</picture>
+			<%= image_tag photo.photo.url(:small_jpg), alt: photo.title, class: 'u-photo' %>
 		<% end %>
 
 		<%= link_to 'Draft', edit_photo_path(photo), class: 'draft' unless photo.published_at? %>

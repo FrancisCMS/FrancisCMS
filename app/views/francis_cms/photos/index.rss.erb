@@ -19,7 +19,7 @@
 				<pubDate><%= photo.published_at.to_s(:rfc822) %></pubDate>
 				<description>
 					<![CDATA[
-						<%= photo_picture_tag photo, alt: '' %>
+						<%= photo_image_tag photo, alt: '' %>
 						<%= raw photo.to_html %>
 					]]>
 				</description>

@@ -51,7 +51,6 @@ I manage Ruby versions with [rbenv](https://github.com/rbenv/rbenv). I'd recomme
 - [Bundler](http://bundler.io/) (`gem install bundler`)
 - [PostgreSQL](http://www.postgresql.org/) (`brew install postgresql`)
 - [ImageMagick](http://www.imagemagick.org/) (`brew install imagemagick`)
-- [WebP](https://developers.google.com/speed/webp/) (`brew install webp`)
 
 ### General Knowledge
 
@@ -264,7 +263,7 @@ A photo has the following attributes:
 
 Photos also have a `title` virtual attribute (e.g. `@photo.title`) that will return the first line from the photo's body attribute or `Untitled`.
 
-Photos are uploaded using [CarrierWave](https://github.com/carrierwaveuploader/carrierwave) and processed with [MiniMagick](https://github.com/minimagick/minimagick) and [ImageMagick](http://www.imagemagick.org/). Photos are converted to JPG and [WebP](https://developers.google.com/speed/webp/) and resized with the longest side being no greater than 500px, 750px, and 1000px.
+Photos are uploaded using [CarrierWave](https://github.com/carrierwaveuploader/carrierwave) and processed with [MiniMagick](https://github.com/minimagick/minimagick) and [ImageMagick](http://www.imagemagick.org/). Photos are converted to JPG and resized with the longest side being no greater than 500px, 750px, and 1000px.
 
 ## Theming
 

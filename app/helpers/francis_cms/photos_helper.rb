@@ -19,11 +19,9 @@ module FrancisCms::PhotosHelper
     end
   end
 
-  def photo_picture_tag(photo, html_options = {})
-    raw '<picture>'.tap { |out|
-      out << %{<source srcset="#{asset_path photo.photo.url(:small_webp)} 500w, #{asset_path photo.photo.url(:medium_webp)} 750w, #{asset_path photo.photo.url(:large_webp)} 1000w" type="image/webp">}
-      out << image_tag(photo.photo.url(:medium_jpg), html_options.merge({srcset: %{#{asset_path photo.photo.url(:small_jpg)} 500w, #{asset_path photo.photo.url(:medium_jpg)} 750w, #{asset_path photo.photo.url(:large_jpg)} 1000w}}))
-      out << '</picture>'
-    }
+  def photo_image_tag(photo, html_options = {})
+    image_tag photo.photo.url(:medium_jpg), html_options.merge({
+      srcset: %{#{asset_path photo.photo.url(:small_jpg)} 500w, #{asset_path photo.photo.url(:medium_jpg)} 750w, #{asset_path photo.photo.url(:large_jpg)} 1000w}
+    })
   end
 end
