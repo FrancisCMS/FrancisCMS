@@ -26,6 +26,6 @@ location:
 <%- end -%>
 ---
 
-<%= photo_image_tag @photo, alt: '' %>
+<%= image_tag @photo.photo.url(:medium_jpg), alt: '', srcset: %{#{asset_path @photo.photo.url(:small_jpg)} 500w, #{asset_path @photo.photo.url(:medium_jpg)} 750w, #{asset_path @photo.photo.url(:large_jpg)} 1000w} %>
 
 <%= raw @photo.body %>

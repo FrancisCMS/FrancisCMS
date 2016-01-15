@@ -19,7 +19,7 @@
 				<pubDate><%= photo.published_at.to_s(:rfc822) %></pubDate>
 				<description>
 					<![CDATA[
-						<%= photo_image_tag photo, alt: '' %>
+						<%= image_tag asset_url(photo.photo.url(:medium_jpg)), alt: '', srcset: %{#{asset_url photo.photo.url(:small_jpg)} 500w, #{asset_url photo.photo.url(:medium_jpg)} 750w, #{asset_url photo.photo.url(:large_jpg)} 1000w} %>
 						<%= raw photo.to_html %>
 					]]>
 				</description>
