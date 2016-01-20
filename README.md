@@ -2,9 +2,9 @@
 
 An [IndieWeb](http://indiewebcamp.com/)-friendly content management system built with [Ruby on Rails](http://rubyonrails.org/).
 
-[![Build Status](https://travis-ci.org/jgarber623/FrancisCMS.svg?branch=master)](https://travis-ci.org/jgarber623/FrancisCMS)
-[![Code Climate](https://codeclimate.com/github/jgarber623/FrancisCMS/badges/gpa.svg)](https://codeclimate.com/github/jgarber623/FrancisCMS)
-[![Test Coverage](https://codeclimate.com/github/jgarber623/FrancisCMS/badges/coverage.svg)](https://codeclimate.com/github/jgarber623/FrancisCMS/coverage)
+[![Build Status](https://travis-ci.org/FrancisCMS/FrancisCMS.svg?branch=master)](https://travis-ci.org/FrancisCMS/FrancisCMS)
+[![Code Climate](https://codeclimate.com/github/FrancisCMS/FrancisCMS/badges/gpa.svg)](https://codeclimate.com/github/FrancisCMS/FrancisCMS)
+[![Test Coverage](https://codeclimate.com/github/FrancisCMS/FrancisCMS/badges/coverage.svg)](https://codeclimate.com/github/FrancisCMS/FrancisCMS/coverage)
 
 FrancisCMS began life in October 2014 as a [Sinatra](http://www.sinatrarb.com/) application (hence [the name](https://en.wikipedia.org/wiki/Frank_Sinatra)) before becoming a Rails application before becoming a mountable [Rails engine](http://guides.rubyonrails.org/engines.html).
 
@@ -61,7 +61,7 @@ I'll do my best to keep this documentation digestible and will avoid making assu
 Include the FrancisCMS engine in your project's Gemfile:
 
 ```rb
-gem 'francis_cms', git: 'https://github.com/jgarber623/FrancisCMS.git'
+gem 'francis_cms', git: 'https://github.com/FrancisCMS/FrancisCMS.git'
 ```
 
 Run `bundle install` to install FrancisCMS and its dependencies.
@@ -73,7 +73,7 @@ ruby '2.2.4'
 
 source 'https://rubygems.org' do
   gem 'rails', '~> 4.2'
-  gem 'francis_cms', git: 'https://github.com/jgarber623/FrancisCMS.git'
+  gem 'francis_cms', git: 'https://github.com/FrancisCMS/FrancisCMS.git'
 end
 ```
 

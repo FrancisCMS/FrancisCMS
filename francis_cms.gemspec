@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = FrancisCms::VERSION
   s.authors     = ['Jason Garber']
   s.email       = ['jason@sixtwothree.org']
-  s.homepage    = 'https://github.com/jgarber623/FrancisCMS'
+  s.homepage    = 'https://github.com/FrancisCMS/FrancisCMS'
   s.summary     = 'An IndieWeb-friendly content management system.'
   s.description = "#{s.summary} FrancisCMS is a mountable engine for use in Rails applications."
 
