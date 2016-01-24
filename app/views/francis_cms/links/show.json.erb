@@ -1,32 +1,26 @@
 {
-	"items": [{
-		"type": ["h-entry"],
-		"properties": {
-			"author": [{
-				"type": ["h-card"],
-				"properties": {
-					"name": ["<%= francis_cms_config.user_name %>"],
-					"url": ["<%= francis_cms_config.site_url %>"],
-					"photo": ["<%= francis_cms_config.user_avatar %>"]
-				}
-			}],
-			"name": ["<%= @link.title %>"],
-			<%- if @link.tags.any? -%>
-				"category": <%= raw @link.sorted_tags.collect { |tag| tag.name } %>,
-			<%- end -%>
-			"url": ["<%= @link.url %>"],
-			"uid": ["<%= link_url(@link) %>"],
-			<%- if @link.syndications.any? -%>
-				"syndication": <%= raw @link.syndications.collect { |syndication| syndication.url } %>,
-			<%- end -%>
-			<%- if @link.published_at? -%>
-				"published": ["<%= @link.published_at.to_s(:iso8601) %>"],
-			<%- end -%>
-			"updated": ["<%= @link.updated_at.to_s(:iso8601) %>"],
-			"content": [{
-				"html": <%= raw @link.body? ? @link.to_html.to_json : 'null' %>,
-				"markdown": <%= raw @link.body.to_json %>
-			}]
-		}
-	}]
+	"type": "entry",
+	"author": {
+		"type": "card",
+		"name": "<%= francis_cms_config.user_name %>",
+		"url": "<%= francis_cms_config.site_url %>",
+		"photo": "<%= asset_url francis_cms_config.user_avatar %>"
+	},
+	"name": "<%= @link.title %>",
+	"url": "<%= link_url @link %>",
+	"bookmark-of": "<%= @link.url %>",
+	<%- if @link.published_at? -%>
+		"published": "<%= @link.published_at.to_s(:iso8601) %>",
+	<%- end -%>
+	"updated": "<%= @link.updated_at.to_s(:iso8601) %>",
+	<%- if @link.tags.any? -%>
+		"category": <%= raw @link.sorted_tags.collect { |tag| tag.name } %>,
+	<%- end -%>
+	<%- if @link.syndications.any? -%>
+		"syndication": <%= raw @link.syndications.collect { |syndication| syndication.url } %>,
+	<%- end -%>
+	"content": {
+		"value": <%= raw @link.to_html.to_json %>,
+		"content-type": "text/html"
+	}
 }
