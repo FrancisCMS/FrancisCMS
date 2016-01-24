@@ -17,13 +17,14 @@
 				<title><%= link.title %></title>
 				<link><%= link.url %></link>
 				<pubDate><%= link.published_at.to_s(:rfc822) %></pubDate>
-				<%- if link.body? -%>
-					<description>
-						<![CDATA[
+				<description>
+					<![CDATA[
+						<%- if link.body? -%>
 							<%= raw link.to_html %>
-						]]>
-					</description>
-				<%- end -%>
+						<%- end -%>
+						<p><%= link_to "View on #{francis_cms_config.site_title} →", link_url(link) %></p>
+					]]>
+				</description>
 				<%- if link.tags.any? -%>
 					<%- link.sorted_tags.each do |tag| -%>
 						<category><%= tag.name %></category>
