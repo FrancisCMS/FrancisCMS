@@ -12,7 +12,7 @@
 			}],
 			"name": ["<%= @link.title %>"],
 			<%- if @link.tags.any? -%>
-				"category": <%= raw @link.tags.collect { |tag| tag.name } %>,
+				"category": <%= raw @link.sorted_tags.collect { |tag| tag.name } %>,
 			<%- end -%>
 			"url": ["<%= @link.url %>"],
 			"uid": ["<%= link_url(@link) %>"],

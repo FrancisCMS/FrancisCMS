@@ -15,7 +15,7 @@
 			}],
 			"name": ["<%= @post.title %>"],
 			<%- if @post.tags.any? -%>
-				"category": <%= raw @post.tags.collect { |tag| tag.name } %>,
+				"category": <%= raw @post.sorted_tags.collect { |tag| tag.name } %>,
 			<%- end -%>
 			"url": ["<%= post_url(@post) %>"],
 			"uid": ["<%= post_url(@post) %>"],

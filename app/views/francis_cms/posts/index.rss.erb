@@ -25,7 +25,7 @@
 					</description>
 				<%- end -%>
 				<%- if post.tags.any? -%>
-					<%- post.tags.each do |tag| -%>
+					<%- post.sorted_tags.each do |tag| -%>
 						<category><%= tag.name %></category>
 					<%- end -%>
 				<%- end -%>

@@ -10,7 +10,7 @@ excerpt: <%= raw @post.excerpt %>
 <%- end -%>
 <%- if @post.tags.any? -%>
 tags:
-<%- @post.tags.each do |tag| -%>
+<%- @post.sorted_tags.each do |tag| -%>
   - <%= tag.name %>
 <%- end -%>
 <%- end -%>

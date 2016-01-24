@@ -24,7 +24,7 @@
 					]]>
 				</description>
 				<%- if photo.tags.any? -%>
-					<%- photo.tags.each do |tag| -%>
+					<%- photo.sorted_tags.each do |tag| -%>
 						<category><%= tag.name %></category>
 					<%- end -%>
 				<%- end -%>
