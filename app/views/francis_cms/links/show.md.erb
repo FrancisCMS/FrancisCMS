@@ -1,7 +1,7 @@
 ---
 title: <%= raw @link.title %>
-url: <%= @link.url %>
-permalink: <%= link_url(@link) %>
+permalink: <%= link_url @link %>
+bookmark: <%= @link.url %>
 <%- if @link.published_at? -%>
 published: <%= @link.published_at.to_s(:iso8601) %>
 <%- end -%>
@@ -12,6 +12,15 @@ tags:
   - <%= tag.name %>
 <%- end -%>
 <%- end -%>
+<%- if @link.syndications.any? -%>
+syndications:
+<%- @link.syndications.each do |syndication| -%>
+  - name: <%= syndication.name %>
+    url: <%= syndication.url %>
+<%- end -%>
+<%- end -%>
 ---
 
 <%= raw @link.body %>
+
+[Visit “<%= @link.title %>” →](<%= @link.url %>)

@@ -1,6 +1,6 @@
 ---
 title: <%= raw @photo.title %>
-permalink: <%= photo_url(@photo) %>
+permalink: <%= photo_url @photo %>
 <%- if @photo.published_at? -%>
 published: <%= @photo.taken_at? ? @photo.taken_at.to_s(:iso8601) : @photo.published_at.to_s(:iso8601)  %>
 <%- end -%>
@@ -11,6 +11,20 @@ tags:
   - <%= tag.name %>
 <%- end -%>
 <%- end -%>
+<%- if @photo.syndications.any? -%>
+syndications:
+<%- @photo.syndications.each do |syndication| -%>
+  - name: <%= syndication.name %>
+    url: <%= syndication.url %>
+<%- end -%>
+<%- end -%>
+photos:
+  - type: image/jpeg
+    url: <%= @photo.photo.url(:small_jpg) %>
+  - type: image/jpeg
+    url: <%= @photo.photo.url(:medium_jpg) %>
+  - type: image/jpeg
+    url: <%= @photo.photo.url(:large_jpg) %>
 <%- if @photo.geolocated? -%>
 location:
 <%- if @photo.city -%>
@@ -22,10 +36,9 @@ location:
 <%- if @photo.country -%>
   country: <%= @photo.country %>
 <%- end -%>
-  url: https://www.openstreetmap.org/#map=15/<%= @photo.latitude %>/<%= @photo.longitude %>
+  longitude: <%= @photo.longitude %>
+  latitude: <%= @photo.latitude %>
 <%- end -%>
 ---
-
-<%= image_tag @photo.photo.url(:medium_jpg), alt: '', srcset: %{#{asset_path @photo.photo.url(:small_jpg)} 500w, #{asset_path @photo.photo.url(:medium_jpg)} 750w, #{asset_path @photo.photo.url(:large_jpg)} 1000w} %>
 
 <%= raw @photo.body %>

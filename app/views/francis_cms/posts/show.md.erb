@@ -1,6 +1,6 @@
 ---
 title: <%= raw @post.title %>
-permalink: <%= post_url(@post) %>
+permalink: <%= post_url @post %>
 <%- if @post.published_at? -%>
 published: <%= @post.published_at.to_s(:iso8601) %>
 <%- end -%>
@@ -12,6 +12,13 @@ excerpt: <%= raw @post.excerpt %>
 tags:
 <%- @post.sorted_tags.each do |tag| -%>
   - <%= tag.name %>
+<%- end -%>
+<%- end -%>
+<%- if @post.syndications.any? -%>
+syndications:
+<%- @post.syndications.each do |syndication| -%>
+  - name: <%= syndication.name %>
+    url: <%= syndication.url %>
 <%- end -%>
 <%- end -%>
 ---
