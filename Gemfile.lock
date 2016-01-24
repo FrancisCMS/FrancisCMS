@@ -3,16 +3,16 @@ PATH
   specs:
     francis_cms (0.1.0)
       acts-as-taggable-on (~> 3.5)
-      carrierwave
+      carrierwave (~> 0.10.0)
       friendly_id (= 5.1.0)
-      geocoder
-      mechanize
-      microformats2
-      mini_magick
-      pg
-      rails (~> 4.2.0)
-      redcarpet
-      rouge
+      geocoder (~> 1.2)
+      mechanize (~> 2.7)
+      microformats2 (~> 2.0)
+      mini_magick (~> 4.3)
+      pg (~> 0.18.4)
+      rails (~> 4.2)
+      redcarpet (~> 3.3)
+      rouge (~> 1.10)
       will_paginate (~> 3.0.6)
 
 GEM
@@ -95,10 +95,10 @@ GEM
     mime-types (2.99)
     mini_magick (4.3.6)
     mini_portile2 (2.0.0)
-    minitest (5.8.3)
+    minitest (5.8.4)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
-    nokogiri (1.6.7.1)
+    nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     ntlm-http (0.1.1)
     pg (0.18.4)

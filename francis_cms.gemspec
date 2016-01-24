@@ -16,20 +16,20 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", 'Rakefile', 'README.md']
 
   # Application
-  s.add_dependency 'rails', '~> 4.2.0'
+  s.add_dependency 'rails', '~> 4.2'
 
   # Database
-  s.add_dependency 'pg'
+  s.add_dependency 'pg', '~> 0.18.4'
 
   # Utilities
   s.add_dependency 'acts-as-taggable-on', '~> 3.5'
-  s.add_dependency 'carrierwave'
+  s.add_dependency 'carrierwave', '~> 0.10.0'
   s.add_dependency 'friendly_id', '5.1.0'
-  s.add_dependency 'geocoder'
-  s.add_dependency 'mechanize'
-  s.add_dependency 'microformats2'
-  s.add_dependency 'mini_magick'
-  s.add_dependency 'redcarpet'
-  s.add_dependency 'rouge'
+  s.add_dependency 'geocoder', '~> 1.2'
+  s.add_dependency 'mechanize', '~> 2.7'
+  s.add_dependency 'microformats2', '~> 2.0'
+  s.add_dependency 'mini_magick', '~> 4.3'
+  s.add_dependency 'redcarpet', '~> 3.3'
+  s.add_dependency 'rouge', '~> 1.10'
   s.add_dependency 'will_paginate', '~> 3.0.6'
 end
