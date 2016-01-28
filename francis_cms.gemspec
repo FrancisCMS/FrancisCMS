@@ -31,5 +31,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'mini_magick', '~> 4.3'
   s.add_dependency 'redcarpet', '~> 3.3'
   s.add_dependency 'rouge', '~> 1.10'
-  s.add_dependency 'will_paginate', '~> 3.0.6'
+  s.add_dependency 'will_paginate', '~> 3.1'
 end
