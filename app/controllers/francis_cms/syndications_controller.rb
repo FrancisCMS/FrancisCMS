@@ -33,6 +33,37 @@ module FrancisCms
       redirect_to send("edit_#{resource_type.singularize}_path", syndicatable)
     end
 
+    def twitter
+      begin
+        url = syndicatable.is_link? ? syndicatable.url : send("#{resource_type.singularize}_url", syndicatable)
+        options = {}
+
+        if syndicatable.try(:latitude) && syndicatable.try(:longitude)
+          places = TwitterClient.reverse_geocode({ lat: syndicatable.latitude, long: syndicatable.longitude })
+
+          if places.any?
+            options[:place] = places.first
+          end
+        end
+
+        if syndicatable.is_photo?
+          status = syndicatable.title.truncate(90, omission: '…', separator: ' ')
+          tweet = TwitterClient.update_with_media("#{status} – #{url}", File.new(syndicatable.photo.path), options)
+        else
+          status = syndicatable.title.truncate(114, omission: '…', separator: ' ')
+          tweet = TwitterClient.update("#{status} – #{url}", options)
+        end
+
+        tweet_url = "https://twitter.com/#{tweet.user.screen_name}/status/#{tweet.id}"
+
+        save_syndication({ name: 'Twitter', url: tweet_url })
+      rescue
+        flash[:alert] = 'There was a problem posting to Twitter. Mind trying again?'
+      end
+
+      redirect_to send("edit_#{resource_type.singularize}_path", syndicatable)
+    end
+
     private
 
     def parent_class

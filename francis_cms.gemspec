@@ -36,4 +36,5 @@ Gem::Specification.new do |s|
 
   # POSSE
   s.add_dependency 'flickr-objects', '~> 0.6.1'
+  s.add_dependency 'twitter', '~> 5.16'
 end

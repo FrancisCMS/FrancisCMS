@@ -34,6 +34,7 @@ At present, FrancisCMS is a white label Rails engine meant to be included in an 
 	- [Photos](#photos)
 - [Syndicating Content](#syndicating-content)
 	- [Flickr](#flickr)
+	- [Twitter](#twitter)
 	- [Manual Syndication](#manual-syndication)
 - [Theming](#theming)
 	- [Markup Conventions](#markup-conventions)
@@ -277,7 +278,21 @@ FrancisCMS supports automated and manual syndication of content to [silos](https
 1. Apply for [a new Flickr API key](https://www.flickr.com/services/apps/create/apply/). Keep the supplied `key` and `secret` handy, you'll need them in subsequent steps.
 1. From the root of your Rails application, run `bundle exec rake francis_cms:configure_flickr`.
 1. Follow the prompts to obtain the necessary OAuth keys and secrets from Flickr.
-1. Copy and paste your Flickr syndication configuration into `app/secrets.yml`.
+1. Copy and paste your Flickr syndication configuration into your application's `config/secrets.yml`.
+
+### Twitter
+
+1. Visit [apps.twitter.com](https://apps.twitter.com/) and click the "Create New App" button.
+1. Enter the required Application Details and agree to the Developer Agreement.
+1. On the Keys and Access Tokens tab, click the "Create my access token" button.
+1. Add the following to your application's `config/secrets.yml`, replacing the uppercased strings with the appropriate values from Twitter:
+
+```yml
+twitter_consumer_key: YOUR_TWITTER_CONSUMER_KEY
+twitter_consumer_secret: YOUR_TWITTER_CONSUMER_SECRET
+twitter_access_token: YOUR_TWITTER_ACCESS_TOKEN
+twitter_access_token_secret: YOUR_TWITTER_ACCESS_TOKEN_SECRET
+```
 
 ### Manual Syndication
 
