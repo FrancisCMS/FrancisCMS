@@ -12,9 +12,10 @@ At present, FrancisCMS is a white label Rails engine meant to be included in an 
 
 ## Features
 
-- Supports multiple content types (posts, links, and photos) with drafts, tags, and RSS feeds.
-- Supports syndicating content types to several third-party silos.
+- Supports multiple content types ([posts](https://indiewebcamp.com/posts), [links](https://indiewebcamp.com/links), and [photos](https://indiewebcamp.com/photos)) with [drafts](https://indiewebcamp.com/drafts), [tags](https://indiewebcamp.com/tags), and [RSS](https://indiewebcamp.com/RSS) feeds.
+- Supports syndicating content types to several third-party [silos](https://indiewebcamp.com/silo).
 - Receives and verifies [webmentions](https://indiewebcamp.com/Webmention), displaying verified webmentions on content pages.
+- Provides alternative representations of content types as [Markdown](https://indiewebcamp.com/Markdown) and [jf2](https://indiewebcamp.com/jf2)-formatted [JSON](https://indiewebcamp.com/JSON).
 - Inherits styling (CSS) and scripting (JavaScript) from the host Rails application.
 - Delegates authentication to the host Rails application.
 
@@ -272,7 +273,7 @@ Photos are uploaded using [CarrierWave](https://github.com/carrierwaveuploader/c
 
 ## Syndicating Content
 
-FrancisCMS supports automated and manual syndication of content to [silos](https://indiewebcamp.com/silo). In IndieWeb terminology, this is known as [POSSE](https://indiewebcamp.com/POSSE): _Publish (on your) Own Site, Syndicate Elsewhere_.
+FrancisCMS supports automated and manual syndication of content to third-party silos. In IndieWeb terminology, this is known as [POSSE](https://indiewebcamp.com/POSSE): _Publish (on your) Own Site, Syndicate Elsewhere_.
 
 ### Flickr
 
