@@ -38,7 +38,7 @@ module FrancisCms
         url = syndicatable.is_link? ? syndicatable.url : send("#{resource_type.singularize}_url", syndicatable)
         options = {}
 
-        if syndicatable.try(:latitude) && syndicatable.try(:longitude)
+        if syndicatable.try(:geolocated?) && syndicatable.geolocated?
           places = TwitterClient.reverse_geocode({ lat: syndicatable.latitude, long: syndicatable.longitude })
 
           if places.any?
