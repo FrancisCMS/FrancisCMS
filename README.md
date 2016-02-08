@@ -271,7 +271,7 @@ Photos are uploaded using [CarrierWave](https://github.com/carrierwaveuploader/c
 
 ## Syndicating Content
 
-FrancisCMS supports automated and manual syndication of content to [silos](https://indiewebcamp.com/silo). This is known as [POSSEing](https://indiewebcamp.com/POSSE)—Publish (on your) Own Site, Syndicate Elsewhere—in IndieWeb terminology.
+FrancisCMS supports automated and manual syndication of content to [silos](https://indiewebcamp.com/silo). In IndieWeb terminology, this is known as [POSSE](https://indiewebcamp.com/POSSE): _Publish (on your) Own Site, Syndicate Elsewhere_.
 
 ### Flickr
 
