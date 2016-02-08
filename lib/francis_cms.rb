@@ -1,5 +1,6 @@
 require 'acts-as-taggable-on'
 require 'carrierwave'
+require 'flickr-objects'
 require 'friendly_id'
 require 'geocoder'
 require 'mechanize'

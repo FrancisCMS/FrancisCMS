@@ -15,7 +15,7 @@
 						<th scope="row"><%= syndication.name %></th>
 						<td class="mq-toggle"><%= link_to truncate(syndication.url.gsub(%r{^https?://}, ''), length: 64, omission: '…'), syndication.url %></td>
 						<td class="actions">
-							<%= render 'francis_cms/shared/delete_form', action: send("#{resource.class.name.demodulize.downcase}_syndication_path", resource, syndication) %>
+							<%= render 'francis_cms/shared/delete_form', action: send("#{resource_type.singularize}_syndication_path", resource, syndication) %>
 						</td>
 					</tr>
 				<%- end -%>
@@ -23,21 +23,35 @@
 		</table>
 	<%- end -%>
 
-	<p>Manually add a link to a third-party syndicated copy of this <%= resource.class.name.demodulize.downcase %>.</p>
+	<%- if resource.can_automatically_syndicate? -%>
+		<div class="automated-syndications-container">
+			<p>Automatically publish a syndicated copy of this <%= resource_type.singularize %>.</p>
 
-	<%= form_for [resource, resource.syndications.build], html: { class: 'syndication-form' } do |f| %>
-		<ul>
-			<li>
-				<%= f.label :name %>
-				<%= f.text_field :name, required: true %>
-			</li>
-			<li>
-				<%= f.label :url, 'URL' %>
-				<%= f.url_field :url, placeholder: 'http://…', required: true %>
-			</li>
-			<li>
-				<button type="submit">Submit</button>
-			</li>
-		</ul>
-	<% end %>
+			<%- if resource.can_syndicate_to_flickr? -%>
+				<%= form_tag send("#{resource_type.singularize}_flickr_syndications_path", resource), class: 'flickr-syndication-form' do |f| %>
+					<button type="submit">Post to Flickr</button>
+				<% end %>
+			<%- end -%>
+		</div>
+	<%- end -%>
+
+	<div class="manual-syndications-container">
+		<p>Manually add a link to a syndicated copy of this <%= resource_type.singularize %>.</p>
+
+		<%= form_for [resource, resource.syndications.build], html: { class: 'syndication-form' } do |f| %>
+			<ul>
+				<li>
+					<%= f.label :name %>
+					<%= f.text_field :name, required: true %>
+				</li>
+				<li>
+					<%= f.label :url, 'URL' %>
+					<%= f.url_field :url, placeholder: 'http://…', required: true %>
+				</li>
+				<li>
+					<button type="submit">Submit</button>
+				</li>
+			</ul>
+		<% end %>
+	</div>
 </div>

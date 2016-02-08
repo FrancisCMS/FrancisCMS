@@ -1,6 +1,6 @@
 # FrancisCMS
 
-An [IndieWeb](http://indiewebcamp.com/)-friendly content management system built with [Ruby on Rails](http://rubyonrails.org/).
+An [IndieWeb](https://indiewebcamp.com/)-friendly content management system built with [Ruby on Rails](http://rubyonrails.org/).
 
 [![Build Status](https://travis-ci.org/FrancisCMS/FrancisCMS.svg?branch=master)](https://travis-ci.org/FrancisCMS/FrancisCMS)
 [![Code Climate](https://codeclimate.com/github/FrancisCMS/FrancisCMS/badges/gpa.svg)](https://codeclimate.com/github/FrancisCMS/FrancisCMS)
@@ -13,7 +13,7 @@ At present, FrancisCMS is a white label Rails engine meant to be included in an 
 ## Features
 
 - Supports multiple content types (posts, links, and photos) with drafts, tags, and RSS feeds.
-- Receives and verifies [webmentions](http://indiewebcamp.com/Webmention), displaying verified webmentions on content pages.
+- Receives and verifies [webmentions](https://indiewebcamp.com/Webmention), displaying verified webmentions on content pages.
 - Inherits styling (CSS) and scripting (JavaScript) from the host Rails application.
 - Delegates authentication to the host Rails application.
 
@@ -32,6 +32,9 @@ At present, FrancisCMS is a white label Rails engine meant to be included in an 
 	- [Posts](#posts)
 	- [Links](#links)
 	- [Photos](#photos)
+- [Syndicating Content](#syndicating-content)
+	- [Flickr](#flickr)
+	- [Manual Syndication](#manual-syndication)
 - [Theming](#theming)
 	- [Markup Conventions](#markup-conventions)
 - [Improving FrancisCMS](#improving-franciscms)
@@ -227,7 +230,7 @@ FrancisCMS currently supports three primary content types: posts, links, and pho
 
 ### Posts
 
-Posts are textual content of any length and map to the general IndieWeb [post](http://indiewebcamp.com/posts) construct. FrancisCMS doesn't currently distinguish between [articles](http://indiewebcamp.com/article) (akin to blog posts) and [notes](http://indiewebcamp.com/note) (akin to tweets). This may change in the future, though.
+Posts are textual content of any length and map to the general IndieWeb [post](https://indiewebcamp.com/posts) construct. FrancisCMS doesn't currently distinguish between [articles](https://indiewebcamp.com/article) (akin to blog posts) and [notes](https://indiewebcamp.com/note) (akin to tweets). This may change in the future, though.
 
 A post has the following attributes:
 
@@ -240,7 +243,7 @@ A post has the following attributes:
 
 ### Links
 
-Links are a type of post consisting primarily of a URL to a third-party website and map to the IndieWeb [bookmark](http://indiewebcamp.com/bookmark) construct.
+Links are a type of post consisting primarily of a URL to a third-party website and map to the IndieWeb [bookmark](https://indiewebcamp.com/bookmark) construct.
 
 A link has the following attributes:
 
@@ -265,6 +268,21 @@ Photos also have a `title` virtual attribute (e.g. `@photo.title`) that will ret
 
 Photos are uploaded using [CarrierWave](https://github.com/carrierwaveuploader/carrierwave) and processed with [MiniMagick](https://github.com/minimagick/minimagick) and [ImageMagick](http://www.imagemagick.org/). Photos are converted to JPG and resized with the longest side being no greater than 500px, 750px, and 1000px.
 
+## Syndicating Content
+
+FrancisCMS supports automated and manual syndication of content to [silos](https://indiewebcamp.com/silo). This is known as [POSSEing](https://indiewebcamp.com/POSSE)—Publish (on your) Own Site, Syndicate Elsewhere—in IndieWeb terminology.
+
+### Flickr
+
+1. Apply for [a new Flickr API key](https://www.flickr.com/services/apps/create/apply/). Keep the supplied `key` and `secret` handy, you'll need them in subsequent steps.
+1. From the root of your Rails application, run `bundle exec rake francis_cms:configure_flickr`.
+1. Follow the prompts to obtain the necessary OAuth keys and secrets from Flickr.
+1. Copy and paste your Flickr syndication configuration into `app/secrets.yml`.
+
+### Manual Syndication
+
+For networks that either don't allow for automated syndication (e.g. Instagram) or that aren't currently supported in FrancisCMS, you can manually add syndicated copies to each content type. After publishing a piece of content, and when editing that piece of content, you'll see a form for adding links to syndicated copies.
+
 ## Theming
 
 FrancisCMS supplies views for CRUD-ing all supported content types. The host Rails application is responsible for providing the primary layout (e.g. `app/views/layouts/application.html.erb`) as well as CSS, JavaScript, and other assets. It's your choice as to how you create and serve those assets. A typical Rails application uses the [Asset Pipeline](http://guides.rubyonrails.org/asset_pipeline.html) which makes avaialble to you pre-processing technologies like [Sass](http://sass-lang.com/).
@@ -273,7 +291,7 @@ FrancisCMS' views are lightweight, accessible, and flexible which means you can 
 
 ### Markup Conventions
 
-FrancisCMS is built on [IndieWeb principles](http://indiewebcamp.com/principles) and [building blocks](http://indiewebcamp.com/Category:building-blocks). Among those are the inclusion of [microformats2](http://microformats.org/wiki/microformats2) which enable technologies like [webmention](http://indiewebcamp.com/Webmention). As such, you'll see sprinkled throughout the markup `class` attribute values begining with `h-`, `p-`, and `u-`.
+FrancisCMS is built on [IndieWeb principles](https://indiewebcamp.com/principles) and [building blocks](https://indiewebcamp.com/Category:building-blocks). Among those are the inclusion of [microformats2](http://microformats.org/wiki/microformats2) which enable technologies like [webmention](https://indiewebcamp.com/Webmention). As such, you'll see sprinkled throughout the markup `class` attribute values begining with `h-`, `p-`, and `u-`.
 
 Care has been taken to craft FrancisCMS' markup in a way that is lightweight, accessible, and flexible. Rather than wed FrancisCMS to a particular CSS framework or convention (e.g. [BassCSS](http://www.basscss.com/), [SMACSS](https://smacss.com/), or [OOCSS](https://github.com/stubbornella/oocss/wiki)), I've instead tried to use descriptive `class` attribute values and allowed for considered use of the cascade (the "C" in "CSS").
 

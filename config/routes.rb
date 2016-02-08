@@ -6,6 +6,10 @@ FrancisCms::Engine.routes.draw do
     get 'archives/:year', on: :collection, to: 'archives#show', constraints: { year: /\d{4}/ }, as: 'archives_yearly'
   end
 
+  resources :photos do
+    post 'syndications/flickr', to: 'syndications#flickr', as: 'flickr_syndications'
+  end
+
   resources :tags, only: [:index, :show]
   resources :webmentions, except: [:new, :edit]
 end

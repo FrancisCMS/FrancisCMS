@@ -5,13 +5,7 @@ module FrancisCms
     before_action :require_login
 
     def create
-      @syndication = syndicatable.syndications.new(SyndicationInput.new(params).to_h)
-
-      if @syndication.save
-        flash[:notice] = 'Syndication added successfully!'
-      else
-        flash[:error] = 'There was a problem saving that syndication. Mind trying again?'
-      end
+      save_syndication(SyndicationInput.new(params).to_h)
 
       redirect_to send("edit_#{resource_type.singularize}_path", syndicatable)
     end
@@ -22,10 +16,37 @@ module FrancisCms
       redirect_to send("edit_#{resource_type.singularize}_path", syndicatable), notice: 'You’ve successfully deleted that syndication. It’s gone for good!'
     end
 
+    def flickr
+      begin
+        photo_title = syndicatable.title
+        photo_description = "#{syndicatable.to_html.lines[1..-1].join.chomp}\n\nOriginally published at #{photo_url(syndicatable)}."
+        photo_tags = syndicatable.tags.collect { |tag| %{"#{tag}"} }.join(' ')
+
+        flickr_photo_id = Flickr.upload(syndicatable.photo.path, title: photo_title, description: photo_description, tags: photo_tags)
+        flickr_photo_url = "https://www.flickr.com/photos/#{Flickr.photos.find(flickr_photo_id).get_info!.owner.username}/#{flickr_photo_id}/"
+
+        save_syndication({ name: 'Flickr', url: flickr_photo_url })
+      rescue
+        flash[:alert] = 'There was a problem posting to Flickr. Mind trying again?'
+      end
+
+      redirect_to send("edit_#{resource_type.singularize}_path", syndicatable)
+    end
+
     private
 
     def parent_class
       @parent_class ||= "FrancisCms::#{resource_type.classify}".constantize
+    end
+
+    def save_syndication(params)
+      @syndication = syndicatable.syndications.new(params)
+
+      if @syndication.save
+        flash[:notice] = 'Syndication added successfully!'
+      else
+        flash[:alert] = 'There was a problem saving that syndication. Mind trying again?'
+      end
     end
 
     def syndicatable

@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
   # Utilities
   s.add_dependency 'acts-as-taggable-on', '~> 3.5'
   s.add_dependency 'carrierwave', '~> 0.10.0'
+  s.add_dependency 'colored', '~> 1.2'
   s.add_dependency 'friendly_id', '5.1.0'
   s.add_dependency 'geocoder', '~> 1.2'
   s.add_dependency 'mechanize', '~> 2.7'
@@ -32,4 +33,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'redcarpet', '~> 3.3'
   s.add_dependency 'rouge', '~> 1.10'
   s.add_dependency 'will_paginate', '~> 3.1'
+
+  # POSSE
+  s.add_dependency 'flickr-objects', '~> 0.6.1'
 end
