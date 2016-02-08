@@ -13,6 +13,7 @@ At present, FrancisCMS is a white label Rails engine meant to be included in an 
 ## Features
 
 - Supports multiple content types (posts, links, and photos) with drafts, tags, and RSS feeds.
+- Supports syndicating content types to several third-party silos.
 - Receives and verifies [webmentions](https://indiewebcamp.com/Webmention), displaying verified webmentions on content pages.
 - Inherits styling (CSS) and scripting (JavaScript) from the host Rails application.
 - Delegates authentication to the host Rails application.
