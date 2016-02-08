@@ -30,14 +30,14 @@
 			<ul>
 				<%- if resource.can_syndicate_to_flickr? -%>
 					<li>
-						<%= form_tag send("#{resource_type.singularize}_flickr_syndications_path", resource), class: 'flickr-syndication-form' do |f| %>
+						<%= form_tag send("#{resource_type.singularize}_flickr_syndications_path", resource), class: 'automated-syndication-form', 'data-syndicate-to': 'flickr' do |f| %>
 							<button type="submit">Post to Flickr</button>
 						<% end %>
 					</li>
 				<%- end -%>
 				<%- if resource.can_syndicate_to_twitter? -%>
 					<li>
-						<%= form_tag send("#{resource_type.singularize}_twitter_syndications_path", resource), class: 'twitter-syndication-form' do |f| %>
+						<%= form_tag send("#{resource_type.singularize}_twitter_syndications_path", resource), class: 'automated-syndication-form', 'data-syndicate-to': 'twitter' do |f| %>
 							<button type="submit">Post to Twitter</button>
 						<% end %>
 					</li>
@@ -49,7 +49,7 @@
 	<div class="manual-syndications-container">
 		<p>Manually add a link to a syndicated copy of this <%= resource_type.singularize %>.</p>
 
-		<%= form_for [resource, resource.syndications.build], html: { class: 'syndication-form' } do |f| %>
+		<%= form_for [resource, resource.syndications.build], html: { class: 'manual-syndication-form' } do |f| %>
 			<ul>
 				<li>
 					<%= f.label :name %>
