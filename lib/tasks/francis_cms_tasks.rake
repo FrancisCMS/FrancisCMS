@@ -24,11 +24,10 @@ namespace :francis_cms do
 
       notify 'Success! Here\'s your Flickr syndication configuration. Copy and paste this into `config/secrets.yml`...'
 
-      puts 'flickr:'
-      puts "  api_key: #{api_key}"
-      puts "  shared_secret: #{shared_secret}"
-      puts "  access_token_key: #{access_token.key}"
-      puts "  access_token_secret: #{access_token.secret}"
+      puts "flickr_api_key: #{api_key}"
+      puts "flickr_shared_secret: #{shared_secret}"
+      puts "flickr_access_token_key: #{access_token.key}"
+      puts "flickr_access_token_secret: #{access_token.secret}"
     rescue
       alert('! Ack, there was a problem generating Flickr syndication configuration. Please try again.')
     end
