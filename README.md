@@ -42,7 +42,7 @@ At present, FrancisCMS is a white label Rails engine meant to be included in an 
 	- [Contributing](#contributing)
 	- [Testing](#testing)
 	- [Donations](#donations)
-- [Acknowledgements](#acknowledgements)
+- [Acknowledgments](#acknowledgments)
 - [License](#license)
 
 ## Prerequisites
@@ -223,7 +223,7 @@ And in `config/routes.rb`:
 post 'links/fetch_json', to: 'links#fetch_json'
 ```
 
-The above example would add a route (`/links/fetch_json`) that responds to `POST` requests and a controller action that returns a block of [JSON](http://json.org/). Extnding FrancisCMS' functionality in your application can be helpful, but proceed with caution.
+The above example would add a route (`/links/fetch_json`) that responds to `POST` requests and a controller action that returns a block of [JSON](http://json.org/). Extending FrancisCMS' functionality in your application can be helpful, but proceed with caution.
 
 ## Content Types
 
@@ -300,7 +300,7 @@ For networks that either don't allow for automated syndication (e.g. Instagram) 
 
 ## Theming
 
-FrancisCMS supplies views for CRUD-ing all supported content types. The host Rails application is responsible for providing the primary layout (e.g. `app/views/layouts/application.html.erb`) as well as CSS, JavaScript, and other assets. It's your choice as to how you create and serve those assets. A typical Rails application uses the [Asset Pipeline](http://guides.rubyonrails.org/asset_pipeline.html) which makes avaialble to you pre-processing technologies like [Sass](http://sass-lang.com/).
+FrancisCMS supplies views for CRUD-ing all supported content types. The host Rails application is responsible for providing the primary layout (e.g. `app/views/layouts/application.html.erb`) as well as CSS, JavaScript, and other assets. It's your choice as to how you create and serve those assets. A typical Rails application uses the [Asset Pipeline](http://guides.rubyonrails.org/asset_pipeline.html) which makes available to you pre-processing technologies like [Sass](http://sass-lang.com/).
 
 FrancisCMS' views are lightweight, accessible, and flexible which means you can easily use a technique like [progressive enhancement](https://en.wikipedia.org/wiki/Progressive_enhancement) to build a beautiful and richly interactive website with the provided base markup. The sky's the limit, really!
 
@@ -324,12 +324,12 @@ TODO
 
 ### Donations
 
-If diving into Ruby isn't your thing, but you'd still like to support FrancisCMS, consider making a donation! Any amount—large or small—is greatly appreciated. As a token of my gratitude, I'll add your name to the [Acknowledgements](#acknowledgements) below.
+If diving into Ruby isn't your thing, but you'd still like to support FrancisCMS, consider making a donation! Any amount—large or small—is greatly appreciated. As a token of my gratitude, I'll add your name to the [Acknowledgments](#acknowledgments) below.
 
 [![Donate via Square Cash](https://img.shields.io/badge/square%20cash-$jgarber-28c101.svg)](https://cash.me/$jgarber)
 [![Donate via Paypal](https://img.shields.io/badge/paypal-jgarber-009cde.svg)](https://www.paypal.me/jgarber)
 
-## Acknowledgements
+## Acknowledgments
 
 Most of this wouldn't have been possible without [Tony Pitale](http://tpitale.com/)'s mentorship, encouragement, and patience. Thanks, buddy!
 
