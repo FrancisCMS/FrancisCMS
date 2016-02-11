@@ -4,7 +4,6 @@
 	<header class="entry-header">
 		<h1 class="entry-title p-name">
 			<%= link_to link.title, link.url, class: 'u-bookmark-of' %>
-			<%= link_to 'Draft', francis_cms.edit_link_path(link), class: 'draft' unless link.published_at? %>
 		</h1>
 	</header>
 
@@ -21,5 +20,7 @@
 				<%= render 'francis_cms/shared/tags', resource: link %>
 			<%- end -%>
 		</footer>
+	<%- else -%>
+		<%= link_to 'Draft', francis_cms.edit_link_path(link), class: 'draft' %>
 	<%- end -%>
 </article>

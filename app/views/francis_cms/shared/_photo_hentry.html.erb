@@ -13,14 +13,14 @@
 		<%= link_to francis_cms.photo_path(photo), class: 'u-url' do %>
 			<%= image_tag photo.photo.url(:small_jpg), alt: photo.title, class: 'u-photo' %>
 		<% end %>
-
-		<%= link_to 'Draft', edit_photo_path(photo), class: 'draft' unless photo.published_at? %>
 	</div>
 
-	<%- if photo.published_at? && is_expanded -%>
+	<%- if photo.published_at? -%>
 		<%- datetime = photo.taken_at? ? photo.taken_at : photo.published_at -%>
 		<footer class="entry-footer">
 			<p><%= photo.taken_at? ? 'Taken' : 'Posted' %> on <time class="dt-published" datetime="<%= datetime.to_s(:iso8601) %>"><%= raw datetime.to_s(:display) %></time>.</p>
 		</footer>
+	<%- else -%>
+		<%= link_to 'Draft', francis_cms.edit_photo_path(photo), class: 'draft' %>
 	<%- end -%>
 </article>
