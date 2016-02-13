@@ -22,7 +22,7 @@
 		</li>
 		<li>
 			<%= f.label :tag_list, raw(%{Tags <span class="hint">(Comma-separated, please.)</span>}) %>
-			<%= f.text_field :tag_list, value: @photo.tag_list.to_s %>
+			<%= f.text_field :tag_list, autocapitalize: 'none', value: @photo.tag_list.to_s %>
 		</li>
 		<li>
 			<%= f.label :is_draft, class: 'for-checkbox' do %>
