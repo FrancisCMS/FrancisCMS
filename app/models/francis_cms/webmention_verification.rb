@@ -22,9 +22,15 @@ module FrancisCms
           verified_at: Time.now
         )
 
-        @webmention.add_webmention_entry(collection)
+        @webmention.create_webmention_entry(collection)
       else
-        # @webmention.delete
+        @webmention.update_attributes(
+          webmentionable: nil,
+          webmention_type: nil,
+          verified_at: nil
+        )
+
+        @webmention.destroy_webmention_entry
       end
     rescue Mechanize::ResponseCodeError => err
       case err.response_code

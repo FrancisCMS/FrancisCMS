@@ -1,5 +1,5 @@
 <%= form_tag webmentions_path, class: 'webmention-form' do %>
-	<%= hidden_field_tag :referer, francis_cms_config.site_url %>
+	<%= hidden_field_tag :referer, target %>
 	<%= hidden_field_tag :target, target %>
 
 	<%= label_tag :source, 'Have you posted a response to this? Let me know the URL:' %>

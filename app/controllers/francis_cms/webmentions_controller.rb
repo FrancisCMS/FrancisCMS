@@ -21,18 +21,22 @@ module FrancisCms
       @webmention = Webmention.where(source: source, target: target).first_or_create(source: source, target: target)
 
       if @webmention.save
-        if params[:referer] == FrancisCms.configuration.site_url
+        if params[:referer]
           redirect_to webmention_path(@webmention), notice: 'Thanks for submitting a webmention! It’s been placed in the queue for verification.'
         else
           render text: webmention_url(@webmention), status: :accepted
         end
       else
-        head :bad_request
+        if params[:referer]
+          redirect_to params[:referer], alert: 'There was a problem submitting that webmention. Mind trying again?'
+        else
+          head :bad_request
+        end
       end
     end
 
     def update
-      if webmention.verify
+      if webmention.verify && webmention.verified_at?
         redirect_to @webmention, notice: 'This webmention was successfully verified!'
       else
         redirect_to webmentions_path, alert: 'That webmention appears to be invalid.'
