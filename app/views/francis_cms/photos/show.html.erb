@@ -30,7 +30,7 @@
 		<%- end -%>
 	</div>
 
-	<aside class="responses" id="responses" role="complementary">
+	<aside class="responses" id="responses">
 		<%= render 'francis_cms/shared/webmention_form', target: photo_url(@photo) %>
 
 		<%- if @photo.webmentions.any? -%>

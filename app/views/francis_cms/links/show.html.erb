@@ -30,7 +30,7 @@
 		<p><%= link_to "Visit “#{@link.title}” →", @link.url, class: 'u-bookmark-of' %></p>
 	</div>
 
-	<aside class="responses" id="responses" role="complementary">
+	<aside class="responses" id="responses">
 		<%= render 'francis_cms/shared/webmention_form', target: link_url(@link) %>
 
 		<%- if @link.webmentions.any? -%>

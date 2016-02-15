@@ -28,7 +28,7 @@
 		<%= raw @post.to_html %>
 	</div>
 
-	<aside class="responses" id="responses" role="complementary">
+	<aside class="responses" id="responses">
 		<%= render 'francis_cms/shared/webmention_form', target: post_url(@post) %>
 
 		<%- if @post.webmentions.any? -%>
