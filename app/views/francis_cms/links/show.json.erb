@@ -20,7 +20,7 @@
 		"syndication": <%= raw @link.syndications.collect { |syndication| syndication.url } %>,
 	<%- end -%>
 	"content": {
-		"value": <%= raw @link.to_html.to_json %>,
+		"value": <%= raw (@link.body? ? @link.to_html : '').to_json %>,
 		"content-type": "text/html"
 	}
 }
