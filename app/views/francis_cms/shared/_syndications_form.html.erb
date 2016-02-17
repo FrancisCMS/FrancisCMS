@@ -30,14 +30,14 @@
 			<ul>
 				<%- if resource.can_syndicate_to_flickr? -%>
 					<li>
-						<%= form_tag send("#{resource_type.singularize}_flickr_syndications_path", resource), class: 'automated-syndication-form', 'data-syndicate-to': 'flickr' do |f| %>
+						<%= form_tag send("#{resource_type.singularize}_flickr_syndications_path", resource), class: 'automated-syndication-form', 'data-confirm': "Are you sure you want to syndicate this #{resource_type.singularize} to Flickr?", 'data-syndicate-to': 'flickr' do |f| %>
 							<button type="submit">Post to Flickr</button>
 						<% end %>
 					</li>
 				<%- end -%>
 				<%- if resource.can_syndicate_to_twitter? -%>
 					<li>
-						<%= form_tag send("#{resource_type.singularize}_twitter_syndications_path", resource), class: 'automated-syndication-form', 'data-syndicate-to': 'twitter' do |f| %>
+						<%= form_tag send("#{resource_type.singularize}_twitter_syndications_path", resource), class: 'automated-syndication-form', 'data-confirm': "Are you sure you want to syndicate this #{resource_type.singularize} to Twitter?", 'data-syndicate-to': 'twitter' do |f| %>
 							<button type="submit">Post to Twitter</button>
 						<% end %>
 					</li>
