@@ -1,0 +1,4 @@
+en:
+  will_paginate:
+    next_label: 'Older'
+    previous_label: 'Newer'
