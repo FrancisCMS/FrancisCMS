@@ -24,9 +24,18 @@
 	</header>
 
 	<div class="single-content e-content">
+		<%- if @link.embeddable? -%>
+			<figure>
+				<div class="embed-container">
+					<%= raw @link.embed_code %>
+				</div>
+			</figure>
+		<%- end -%>
+
 		<%- if @link.body? -%>
 			<%= raw @link.to_html %>
 		<%- end -%>
+
 		<p><%= link_to "Visit “#{@link.title}” →", @link.url, class: 'u-bookmark-of' %></p>
 	</div>
 

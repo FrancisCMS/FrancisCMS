@@ -19,9 +19,16 @@
 				<pubDate><%= link.published_at.to_s(:rfc822) %></pubDate>
 				<description>
 					<![CDATA[
+						<%- if link.embeddable? -%>
+							<figure>
+								<%= raw link.embed_code %>
+							</figure>
+						<%- end -%>
+
 						<%- if link.body? -%>
 							<%= raw link.to_html %>
 						<%- end -%>
+
 						<p><%= link_to "View on #{francis_cms_config.site_title} →", link_url(link) %></p>
 					]]>
 				</description>

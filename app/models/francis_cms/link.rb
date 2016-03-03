@@ -11,5 +11,31 @@ module FrancisCms
     redcarpet :body
 
     self.per_page = 20
+
+    def embeddable?
+      embed_host
+    end
+
+    def embed_code
+      %{<iframe src="#{embed_url}" allowfullscreen></iframe>}
+    end
+
+    private
+
+    def embed_host
+      @embed_host ||= parsed_url.host.gsub(/^www\./, '').match(%r{^(?:vimeo|youtube)\.com})
+    end
+
+    def embed_url
+      if embed_host[0] == 'youtube.com'
+        %{https://www.youtube.com/embed/#{CGI::parse(parsed_url.query)['v'][0]}}
+      else
+        %{https://player.vimeo.com/video/#{parsed_url.path.gsub('/', '')}}
+      end
+    end
+
+    def parsed_url
+      @parsed_url ||= URI.parse(url)
+    end
   end
 end
