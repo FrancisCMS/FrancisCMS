@@ -24,7 +24,7 @@ module FrancisCms
       end
 
       if @post.save
-        redirect_to @post, notice: 'Successfully saved your new post! Here’s what it looks like.'
+        redirect_to @post, notice: t('flashes.posts.create_notice')
       else
         render 'new'
       end
@@ -36,7 +36,7 @@ module FrancisCms
 
     def update
       if post.update_attributes(PostInput.new(params).to_h)
-        redirect_to @post, notice: 'Success! Here’s what your updated post looks like.'
+        redirect_to @post, notice: t('flashes.posts.update_notice')
       else
         render 'edit'
       end
@@ -45,7 +45,7 @@ module FrancisCms
     def destroy
       post.destroy
 
-      redirect_to posts_path, notice: 'You’ve successfully deleted that post. It’s gone for good!'
+      redirect_to posts_path, notice: t('flashes.posts.destroy_notice')
     end
 
     private

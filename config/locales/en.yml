@@ -1,4 +1,27 @@
 en:
+  flashes:
+    require_login: 'You’ll need to log in before doing that!'
+    links:
+      create_notice: 'Successfully saved your new link! Here’s what it looks like.'
+      update_notice: 'Success! Here’s what your updated link looks like.'
+      destroy_notice: 'You’ve successfully deleted that link. It’s gone for good!'
+    photos:
+      create_notice: 'Successfully saved your new photo! Here’s what it looks like.'
+      update_notice: 'Success! Here’s what your updated photo looks like.'
+      destroy_notice: 'You’ve successfully deleted that photo. It’s gone for good!'
+    posts:
+      create_notice: 'Successfully saved your new post! Here’s what it looks like.'
+      update_notice: 'Success! Here’s what your updated post looks like.'
+      destroy_notice: 'You’ve successfully deleted that post. It’s gone for good!'
+    syndications:
+      create_notice: 'Successfully added that syndication.'
+      destroy_notice: 'You’ve successfully deleted that syndication. It’s gone for good!'
+    webmentions:
+      create_notice: 'Thanks for submitting a webmention! It’s been placed in the queue for verification.'
+      create_alert: 'There was a problem submitting that webmention. Mind trying again?'
+      update_notice: 'This webmention was successfully verified!'
+      update_alert: 'That webmention appears to be invalid.'
+      destroy_notice: 'You’ve successfully deleted that webmention. It’s gone for good!'
   will_paginate:
     next_label: 'Older'
     previous_label: 'Newer'

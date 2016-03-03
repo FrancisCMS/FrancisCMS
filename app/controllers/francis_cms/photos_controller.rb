@@ -20,7 +20,7 @@ module FrancisCms
       @photo = Photo.new(PhotoInput.new(params).to_h)
 
       if @photo.save
-        redirect_to @photo, notice: 'Successfully saved your new photo! Here’s what it looks like.'
+        redirect_to @photo, notice: t('flashes.photos.create_notice')
       else
         render 'new'
       end
@@ -32,7 +32,7 @@ module FrancisCms
 
     def update
       if photo.update_attributes(PhotoInput.new(params).to_h)
-        redirect_to @photo, notice: 'Success! Here’s what your updated photo looks like.'
+        redirect_to @photo, notice: t('flashes.photos.update_notice')
       else
         render 'edit'
       end
@@ -41,7 +41,7 @@ module FrancisCms
     def destroy
       photo.destroy
 
-      redirect_to photos_path, notice: 'You’ve successfully deleted that photo. It’s gone for good!'
+      redirect_to photos_path, notice: t('flashes.photos.destroy_notice')
     end
 
     private

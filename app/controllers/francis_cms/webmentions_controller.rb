@@ -22,13 +22,13 @@ module FrancisCms
 
       if @webmention.save
         if params[:referer]
-          redirect_to webmention_path(@webmention), notice: 'Thanks for submitting a webmention! It’s been placed in the queue for verification.'
+          redirect_to webmention_path(@webmention), notice: t('flashes.webmentions.create_notice')
         else
           render text: webmention_url(@webmention), status: :accepted
         end
       else
         if params[:referer]
-          redirect_to params[:referer], alert: 'There was a problem submitting that webmention. Mind trying again?'
+          redirect_to params[:referer], alert: t('flashes.webmentions.create_alert')
         else
           head :bad_request
         end
@@ -37,16 +37,16 @@ module FrancisCms
 
     def update
       if webmention.verify && webmention.verified_at?
-        redirect_to @webmention, notice: 'This webmention was successfully verified!'
+        redirect_to @webmention, notice: t('flashes.webmentions.update_notice')
       else
-        redirect_to webmentions_path, alert: 'That webmention appears to be invalid.'
+        redirect_to webmentions_path, alert: t('flashes.webmentions.update_alert')
       end
     end
 
     def destroy
       webmention.destroy
 
-      redirect_to webmentions_path, notice: 'You’ve successfully deleted that webmention. It’s gone for good!'
+      redirect_to webmentions_path, notice: t('flashes.webmentions.destroy_notice')
     end
 
     private

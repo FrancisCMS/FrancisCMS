@@ -7,13 +7,13 @@ module FrancisCms
     def create
       save_syndication(SyndicationInput.new(params).to_h)
 
-      redirect_to send("edit_#{resource_type.singularize}_path", syndicatable)
+      redirect_to send("edit_#{resource_type.singularize}_path", syndicatable), notice: t('flashes.syndications.create_notice')
     end
 
     def destroy
       syndication.destroy
 
-      redirect_to send("edit_#{resource_type.singularize}_path", syndicatable), notice: 'You’ve successfully deleted that syndication. It’s gone for good!'
+      redirect_to send("edit_#{resource_type.singularize}_path", syndicatable), notice: t('flashes.syndications.destroy_notice')
     end
 
     def flickr
