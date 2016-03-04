@@ -13,7 +13,7 @@ module FrancisCms
     self.per_page = 20
 
     def embeddable?
-      embed_host
+      embed_host[0] == 'vimeo.com' || (embed_host[0] == 'youtube.com' && parsed_url.query)
     end
 
     def embed_code
@@ -27,10 +27,10 @@ module FrancisCms
     end
 
     def embed_url
-      if embed_host[0] == 'youtube.com'
-        %{https://www.youtube.com/embed/#{CGI::parse(parsed_url.query)['v'][0]}}
-      else
+      if embed_host[0] == 'vimeo.com'
         %{https://player.vimeo.com/video/#{parsed_url.path.gsub('/', '')}}
+      else
+        %{https://www.youtube.com/embed/#{CGI::parse(parsed_url.query)['v'][0]}}
       end
     end
 
