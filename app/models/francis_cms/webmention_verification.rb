@@ -30,7 +30,9 @@ module FrancisCms
           verified_at: nil
         )
 
-        @webmention.destroy_webmention_entry
+        if @webmention.webmention_entry
+          @webmention.destroy_webmention_entry
+        end
       end
     rescue Mechanize::ResponseCodeError => err
       case err.response_code
