@@ -17,10 +17,18 @@ module FrancisCms
     end
 
     def embed_code
-      %{<iframe src="#{embed_url}" allowfullscreen></iframe>}
+      %{<iframe src="#{embed_url}" allowfullscreen title="#{embed_title}"></iframe>}
     end
 
     private
+
+    def embed_title
+      if vimeo?
+        'Vimeo video player'
+      elsif youtube?
+        'YouTube video player'
+      end
+    end
 
     def embed_url
       if vimeo?
