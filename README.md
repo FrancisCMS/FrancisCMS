@@ -30,6 +30,7 @@ At present, FrancisCMS is a white label Rails engine meant to be included in an 
 	- [Routes](#routes)
 	- [RSS Feeds](#rss-feeds)
 	- [Extending Controllers](#extending-controllers)
+	- [Internationalization](#internationalization)
 - [Content Types](#content-types)
 	- [Posts](#posts)
 	- [Links](#links)
@@ -114,7 +115,7 @@ See the [Routes section](#routes) below for more on how to create navigational l
 
 ### Configuration
 
-FrancisCMS has a number of configuration options that you can set in your app by creating an initializer file called `config/initializers/francis_cms.rb`. This file might look something like:
+FrancisCMS has a number of configuration options that you can set in your application by creating an initializer file called `config/initializers/francis_cms.rb`. This file might look something like:
 
 ```rb
 Rails.application.config.tap do |config|
@@ -226,6 +227,10 @@ post 'links/fetch_json', to: 'links#fetch_json'
 ```
 
 The above example would add a route (`/links/fetch_json`) that responds to `POST` requests and a controller action that returns a block of [JSON](http://json.org/). Extending FrancisCMS' functionality in your application can be helpful, but proceed with caution.
+
+### Internationalization
+
+FrancisCMS takes advantage of the [Rails Internationalization API](http://guides.rubyonrails.org/i18n.html). Internationalization support is incomplete, but some strings are easily translatable. Default values are set in `config/locales/en.yml` and may be overridden in your host Rails application by adding the appropriate language files to `config/locales`. See [the official documentation](http://guides.rubyonrails.org/i18n.html) for more on this topic.
 
 ## Content Types
 
