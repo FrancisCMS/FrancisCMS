@@ -11,7 +11,7 @@
 	<%- end -%>
 <%- end -%>
 
-<article class="single h-entry h-as-article">
+<article class="single h-entry h-as-article" data-entry-type="link">
 	<header class="single-header">
 		<h1 class="single-title p-name">
 			<%= @link.title %>
@@ -36,7 +36,7 @@
 			<%= raw @link.to_html %>
 		<%- end -%>
 
-		<p><%= link_to "Visit “#{@link.title}” →", @link.url, class: 'u-bookmark-of' %></p>
+		<p><%= link_to "Visit “#{@link.title}”", @link.url, class: 'u-bookmark-of' %></p>
 	</div>
 
 	<aside class="responses" id="responses">

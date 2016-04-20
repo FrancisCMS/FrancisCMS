@@ -11,7 +11,7 @@
 	<%- end -%>
 <%- end -%>
 
-<article class="single h-entry h-as-photo">
+<article class="single h-entry h-as-photo" data-entry-type="photo">
 	<div class="single-content e-content p-name">
 		<div class="single-photo">
 			<%= image_tag @photo.photo.url(:medium_jpg), alt: '', class: 'u-photo', sizes: '100vw', srcset: %{#{asset_path @photo.photo.url(:small_jpg)} 500w, #{asset_path @photo.photo.url(:medium_jpg)} 750w, #{asset_path @photo.photo.url(:large_jpg)} 1000w} %>
