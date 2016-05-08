@@ -51,7 +51,7 @@
 		<ul class="single-meta">
 			<li>
 				“<%= link_to @link.title, link_path(@link), class: 'u-url' %>” is also available as
-				<%= link_to 'Markdown', link_path(@link, format: :md), download: %{#{@link.title}.md}, rel: 'alternate', type: 'text/x-markdown' %> and
+				<%= link_to 'Markdown', link_path(@link, format: :md), download: %{#{@link.title}.md}, rel: 'alternate', type: 'text/markdown' %> and
 				<%= link_to 'JSON', link_path(@link, format: :json), download: %{#{@link.title}.json}, rel: 'alternate', type: 'application/json' %>.
 			</li>
 			<%- if @link.tags.any? -%>

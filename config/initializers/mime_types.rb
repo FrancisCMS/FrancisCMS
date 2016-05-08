@@ -5,4 +5,4 @@
 
 Mime::Type.unregister(:rss)
 Mime::Type.register 'application/xml', :rss
-Mime::Type.register 'text/x-markdown', :md
+Mime::Type.register 'text/markdown', :md

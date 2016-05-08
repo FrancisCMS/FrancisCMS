@@ -42,7 +42,7 @@
 		<ul class="single-meta">
 			<li>
 				“<%= link_to @photo.title, photo_path(@photo), class: 'u-url' %>” is also available as
-				<%= link_to 'Markdown', photo_path(@photo, format: :md), download: %{#{@photo.title}.md}, rel: 'alternate', type: 'text/x-markdown' %> and
+				<%= link_to 'Markdown', photo_path(@photo, format: :md), download: %{#{@photo.title}.md}, rel: 'alternate', type: 'text/markdown' %> and
 				<%= link_to 'JSON', photo_path(@photo, format: :json), download: %{#{@photo.title}.json}, rel: 'alternate', type: 'application/json' %>.
 			</li>
 			<%- if @photo.geolocated? -%>
