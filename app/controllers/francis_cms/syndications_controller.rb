@@ -33,6 +33,34 @@ module FrancisCms
       redirect_to send("edit_#{resource_type.singularize}_path", syndicatable)
     end
 
+    def medium
+      begin
+        canonical_url = send("#{resource_type.singularize}_url", syndicatable)
+
+        options = {
+          title: syndicatable.title,
+          content_format: 'html',
+          content: %{<h1>#{syndicatable.title}</h1>#{syndicatable.to_html}<hr><p><i>This post was originally published on <a href="#{canonical_url}" rel="canonical">my own site</a>.</i></p>},
+          canonical_url: canonical_url,
+          license: 'cc-40-by-nc-sa'
+        }
+
+        if syndicatable.tags.any?
+          options[:tags] = syndicatable.tags[0..2].collect { |tag| tag.name }
+        end
+
+        response = MediumClient.posts.create(MediumClient.users.me, options)
+
+        medium_url = JSON.parse(response.body)['data']['url']
+
+        save_syndication({ name: 'Medium', url: medium_url })
+      rescue
+        flash[:alert] = 'There was a problem posting to Medium. Mind trying again?'
+      end
+
+      redirect_to send("edit_#{resource_type.singularize}_path", syndicatable)
+    end
+
     def twitter
       begin
         url = syndicatable.is_link? ? syndicatable.url : send("#{resource_type.singularize}_url", syndicatable)

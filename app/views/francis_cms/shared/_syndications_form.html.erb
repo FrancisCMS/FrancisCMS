@@ -35,6 +35,13 @@
 						<% end %>
 					</li>
 				<%- end -%>
+				<%- if resource.can_syndicate_to_medium? -%>
+					<li>
+						<%= form_tag send("#{resource_type.singularize}_medium_syndications_path", resource), class: 'automated-syndication-form', 'data-confirm': "Are you sure you want to syndicate this #{resource_type.singularize} to Medium?", 'data-syndicate-to': 'medium' do |f| %>
+							<button type="submit">Post to Medium</button>
+						<% end %>
+					</li>
+				<%- end -%>
 				<%- if resource.can_syndicate_to_twitter? -%>
 					<li>
 						<%= form_tag send("#{resource_type.singularize}_twitter_syndications_path", resource), class: 'automated-syndication-form', 'data-confirm': "Are you sure you want to syndicate this #{resource_type.singularize} to Twitter?", 'data-syndicate-to': 'twitter' do |f| %>

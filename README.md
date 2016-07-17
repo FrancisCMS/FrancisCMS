@@ -37,6 +37,7 @@ At present, FrancisCMS is a white label Rails engine meant to be included in an 
 	- [Photos](#photos)
 - [Syndicating Content](#syndicating-content)
 	- [Flickr](#flickr)
+	- [Medium](#medium)
 	- [Twitter](#twitter)
 	- [Manual Syndication](#manual-syndication)
 - [Theming](#theming)
@@ -286,6 +287,15 @@ FrancisCMS supports automated and manual syndication of content to third-party s
 1. From the root of your Rails application, run `bundle exec rake francis_cms:configure_flickr`.
 1. Follow the prompts to obtain the necessary OAuth keys and secrets from Flickr.
 1. Copy and paste your Flickr syndication configuration into your application's `config/secrets.yml`.
+
+### Medium
+
+1. Generate [a new Medium integration token](https://medium.com/me/settings).
+1. Add the following to your application's `config/secrets.yml`, replacing the uppercased strings with your integration token from Medium:
+
+```yml
+medium_integration_token: YOUR_MEDIUM_INTEGRATION_TOKEN
+```
 
 ### Twitter
 

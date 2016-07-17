@@ -12,6 +12,10 @@ FrancisCms::Engine.routes.draw do
     post 'syndications/flickr', to: 'syndications#flickr', as: 'flickr_syndications'
   end
 
+  resources :posts do
+    post 'syndications/medium', to: 'syndications#medium', as: 'medium_syndications'
+  end
+
   resources :tags, only: [:index, :show]
   resources :webmentions, except: [:new, :edit]
 end

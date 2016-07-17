@@ -6,7 +6,7 @@ module FrancisCms::Concerns::Models::Syndicatable
   end
 
   def can_automatically_syndicate?
-    can_syndicate_to_flickr? || can_syndicate_to_twitter?
+    can_syndicate_to_flickr? || can_syndicate_to_medium? || can_syndicate_to_twitter?
   end
 
   def can_syndicate_to_flickr?
@@ -15,6 +15,11 @@ module FrancisCms::Concerns::Models::Syndicatable
     !Flickr.shared_secret.blank? &&
     !Flickr.access_token_key.blank? &&
     !Flickr.access_token_secret.blank?
+  end
+
+  def can_syndicate_to_medium?
+    self.is_post? &&
+    !Rails.application.secrets.medium_integration_token.blank?
   end
 
   def can_syndicate_to_twitter?
@@ -30,5 +35,9 @@ module FrancisCms::Concerns::Models::Syndicatable
 
   def is_photo?
     self.class.name.demodulize == 'Photo'
+  end
+
+  def is_post?
+    self.class.name.demodulize == 'Post'
   end
 end
