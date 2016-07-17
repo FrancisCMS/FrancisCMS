@@ -7,7 +7,7 @@ module FrancisCms
     def create
       save_syndication(SyndicationInput.new(params).to_h)
 
-      redirect_to send("edit_#{resource_type.singularize}_path", syndicatable), notice: t('flashes.syndications.create_notice')
+      redirect_to send("edit_#{resource_type.singularize}_path", syndicatable)
     end
 
     def destroy
@@ -27,7 +27,7 @@ module FrancisCms
 
         save_syndication({ name: 'Flickr', url: flickr_photo_url })
       rescue
-        flash[:alert] = 'There was a problem posting to Flickr. Mind trying again?'
+        flash[:alert] = t('flashes.syndications.flickr_create_alert')
       end
 
       redirect_to send("edit_#{resource_type.singularize}_path", syndicatable)
@@ -55,7 +55,7 @@ module FrancisCms
 
         save_syndication({ name: 'Medium', url: medium_url })
       rescue
-        flash[:alert] = 'There was a problem posting to Medium. Mind trying again?'
+        flash[:alert] = t('flashes.syndications.medium_create_alert')
       end
 
       redirect_to send("edit_#{resource_type.singularize}_path", syndicatable)
@@ -86,7 +86,7 @@ module FrancisCms
 
         save_syndication({ name: 'Twitter', url: tweet_url })
       rescue
-        flash[:alert] = 'There was a problem posting to Twitter. Mind trying again?'
+        flash[:alert] = t('flashes.syndications.twitter_create_alert')
       end
 
       redirect_to send("edit_#{resource_type.singularize}_path", syndicatable)
@@ -102,9 +102,9 @@ module FrancisCms
       @syndication = syndicatable.syndications.new(params)
 
       if @syndication.save
-        flash[:notice] = 'Syndication added successfully!'
+        flash[:notice] = t('flashes.syndications.create_notice')
       else
-        flash[:alert] = 'There was a problem saving that syndication. Mind trying again?'
+        flash[:alert] = t('flashes.syndications.create_alert')
       end
     end
 
