@@ -11,10 +11,10 @@ module FrancisCms::Concerns::Models::Syndicatable
 
   def can_syndicate_to_flickr?
     self.is_photo? &&
-    !Flickr.api_key.blank? &&
-    !Flickr.shared_secret.blank? &&
-    !Flickr.access_token_key.blank? &&
-    !Flickr.access_token_secret.blank?
+    !Rails.application.secrets.flickr_api_key.blank? &&
+    !Rails.application.secrets.flickr_shared_secret.blank? &&
+    !Rails.application.secrets.flickr_access_token_key.blank? &&
+    !Rails.application.secrets.flickr_access_token_secret.blank?
   end
 
   def can_syndicate_to_medium?
@@ -23,21 +23,21 @@ module FrancisCms::Concerns::Models::Syndicatable
   end
 
   def can_syndicate_to_twitter?
-    !TwitterClient.consumer_key.blank? &&
-    !TwitterClient.consumer_secret.blank? &&
-    !TwitterClient.access_token.blank? &&
-    !TwitterClient.access_token_secret.blank?
+    !Rails.application.secrets.twitter_consumer_key.blank? &&
+    !Rails.application.secrets.twitter_consumer_secret.blank? &&
+    !Rails.application.secrets.twitter_access_token.blank? &&
+    !Rails.application.secrets.twitter_access_token_secret.blank?
   end
 
   def is_link?
-    self.class.name.demodulize == 'Link'
+    self.class == FrancisCms::Link
   end
 
   def is_photo?
-    self.class.name.demodulize == 'Photo'
+    self.class == FrancisCms::Photo
   end
 
   def is_post?
-    self.class.name.demodulize == 'Post'
+    self.class == FrancisCms::Post
   end
 end
