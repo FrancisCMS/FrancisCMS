@@ -37,16 +37,14 @@ module FrancisCms
       private
 
       def options
-        if @syndicatable.try(:geolocated?) && @syndicatable.geolocated?
-          places = @client.reverse_geocode({ lat: @syndicatable.latitude, long: @syndicatable.longitude })
+        {}.tap do |opts|
+          if @syndicatable.try(:geolocated?)
+            places = @client.reverse_geocode({ lat: @syndicatable.latitude, long: @syndicatable.longitude })
 
-          if places.any?
-            { place: places.first }
-          else
-            {}
+            if places.any?
+              opts[:place] = places.first
+            end
           end
-        else
-          {}
         end
       end
     end
