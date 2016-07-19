@@ -30,21 +30,24 @@
 			<ul>
 				<%- if resource.can_syndicate_to_flickr? -%>
 					<li>
-						<%= form_tag send("#{resource_type.singularize}_flickr_syndications_path", resource), class: 'automated-syndication-form', 'data-confirm': "Are you sure you want to syndicate this #{resource_type.singularize} to Flickr?", 'data-syndicate-to': 'flickr' do |f| %>
+						<%= form_tag send("#{resource_type.singularize}_syndications_path", resource), class: 'automated-syndication-form', 'data-confirm': "Are you sure you want to syndicate this #{resource_type.singularize} to Flickr?", 'data-syndicate-to': 'flickr' do %>
+							<%= hidden_field_tag :silo, 'flickr', id: 'silo_flickr' %>
 							<button type="submit">Post to Flickr</button>
 						<% end %>
 					</li>
 				<%- end -%>
 				<%- if resource.can_syndicate_to_medium? -%>
 					<li>
-						<%= form_tag send("#{resource_type.singularize}_medium_syndications_path", resource), class: 'automated-syndication-form', 'data-confirm': "Are you sure you want to syndicate this #{resource_type.singularize} to Medium?", 'data-syndicate-to': 'medium' do |f| %>
+						<%= form_tag send("#{resource_type.singularize}_syndications_path", resource), class: 'automated-syndication-form', 'data-confirm': "Are you sure you want to syndicate this #{resource_type.singularize} to Medium?", 'data-syndicate-to': 'medium' do %>
+							<%= hidden_field_tag :silo, 'medium', id: 'silo_medium' %>
 							<button type="submit">Post to Medium</button>
 						<% end %>
 					</li>
 				<%- end -%>
 				<%- if resource.can_syndicate_to_twitter? -%>
 					<li>
-						<%= form_tag send("#{resource_type.singularize}_twitter_syndications_path", resource), class: 'automated-syndication-form', 'data-confirm': "Are you sure you want to syndicate this #{resource_type.singularize} to Twitter?", 'data-syndicate-to': 'twitter' do |f| %>
+						<%= form_tag send("#{resource_type.singularize}_syndications_path", resource), class: 'automated-syndication-form', 'data-confirm': "Are you sure you want to syndicate this #{resource_type.singularize} to Twitter?", 'data-syndicate-to': 'twitter' do %>
+							<%= hidden_field_tag :silo, 'twitter', id: 'silo_twitter' %>
 							<button type="submit">Post to Twitter</button>
 						<% end %>
 					</li>

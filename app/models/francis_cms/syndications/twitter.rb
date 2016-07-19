@@ -1,16 +1,18 @@
 module FrancisCms
   module Syndications
     class Twitter
+      CLIENT_PARAMS = {
+        consumer_key:        Rails.application.secrets.twitter_consumer_key,
+        consumer_secret:     Rails.application.secrets.twitter_consumer_secret,
+        access_token:        Rails.application.secrets.twitter_access_token,
+        access_token_secret: Rails.application.secrets.twitter_access_token_secret
+      }
+
       def initialize(syndicatable, canonical_url)
         @syndicatable = syndicatable
         @canonical_url = canonical_url
 
-        @client = ::Twitter::REST::Client.new({
-          consumer_key:        Rails.application.secrets.twitter_consumer_key,
-          consumer_secret:     Rails.application.secrets.twitter_consumer_secret,
-          access_token:        Rails.application.secrets.twitter_access_token,
-          access_token_secret: Rails.application.secrets.twitter_access_token_secret
-        })
+        @client = ::Twitter::REST::Client.new(CLIENT_PARAMS)
       end
 
       def publish

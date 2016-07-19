@@ -4,13 +4,19 @@ module FrancisCms
   class SyndicationsController < FrancisCmsController
     before_action :require_login
 
+    SILO_CLASSES = {
+      flickr:  Syndications::Flickr,
+      medium:  Syndications::Medium,
+      twitter: Syndications::Twitter
+    }
+
     def create
-      @syndication = syndicatable.syndications.new(SyndicationInput.new(params).to_h)
+      @syndication = syndicatable.syndications.new(syndication_params)
 
       if @syndication.save
-        flash[:notice] = t('flashes.syndications.create_notice')
+        flash[:notice] = t(['flashes', 'syndications', params[:silo], 'create_notice'].compact.join('.'))
       else
-        flash[:alert] = t('flashes.syndications.create_alert')
+        flash[:alert] = t(['flashes', 'syndications', params[:silo], 'create_alert'].compact.join('.'))
       end
 
       redirect_to send("edit_#{resource_type.singularize}_path", syndicatable)
@@ -20,42 +26,6 @@ module FrancisCms
       syndication.destroy
 
       redirect_to send("edit_#{resource_type.singularize}_path", syndicatable), notice: t('flashes.syndications.destroy_notice')
-    end
-
-    def flickr
-      @syndication = syndicatable.syndications.new(Syndications::Flickr.new(syndicatable, canonical_url).publish)
-
-      if @syndication.save
-        flash[:notice] = t('flashes.syndications.flickr_create_notice')
-      else
-        flash[:alert] = t('flashes.syndications.flickr_create_alert')
-      end
-
-      redirect_to send("edit_#{resource_type.singularize}_path", syndicatable)
-    end
-
-    def medium
-      @syndication = syndicatable.syndications.new(Syndications::Medium.new(syndicatable, canonical_url).publish)
-
-      if @syndication.save
-        flash[:notice] = t('flashes.syndications.medium_create_notice')
-      else
-        flash[:alert] = t('flashes.syndications.medium_create_alert')
-      end
-
-      redirect_to send("edit_#{resource_type.singularize}_path", syndicatable)
-    end
-
-    def twitter
-      @syndication = syndicatable.syndications.new(Syndications::Twitter.new(syndicatable, canonical_url).publish)
-
-      if @syndication.save
-        flash[:notice] = t('flashes.syndications.twitter_create_notice')
-      else
-        flash[:alert] = t('flashes.syndications.twitter_create_alert')
-      end
-
-      redirect_to send("edit_#{resource_type.singularize}_path", syndicatable)
     end
 
     private
@@ -68,12 +38,24 @@ module FrancisCms
       @parent_class ||= "FrancisCms::#{resource_type.classify}".constantize
     end
 
+    def silo_class
+      @silo_class ||= SILO_CLASSES[params[:silo].to_sym]
+    end
+
     def syndicatable
       @syndicatable ||= parent_class.find(params["#{resource_type.singularize}_id"])
     end
 
     def syndication
       @syndication ||= Syndication.find(params[:id])
+    end
+
+    def syndication_params
+      if silo_class
+        silo_class.new(syndicatable, canonical_url).publish
+      else
+        SyndicationInput.new(params).to_h
+      end
     end
   end
 end

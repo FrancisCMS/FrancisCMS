@@ -17,12 +17,15 @@ en:
       create_notice: 'Successfully added that syndication.'
       create_alert: 'There was a problem saving that syndication. Mind trying again?'
       destroy_notice: 'You’ve successfully deleted that syndication. It’s gone for good!'
-      flickr_create_notice: 'Successfully posted that photo to Flickr.'
-      flickr_create_alert: 'There was a problem posting to Flickr. Mind trying again?'
-      medium_create_notice: 'Successfully published that post to Medium.'
-      medium_create_alert: 'There was a problem posting to Medium. Mind trying again?'
-      twitter_create_notice: 'Successfully posted that to Twitter'
-      twitter_create_alert: 'There was a problem posting to Twitter. Mind trying again?'
+      flickr:
+        create_notice: 'Successfully posted that photo to Flickr.'
+        create_alert: 'There was a problem posting to Flickr. Mind trying again?'
+      medium:
+        create_notice: 'Successfully published that post to Medium.'
+        create_alert: 'There was a problem posting to Medium. Mind trying again?'
+      twitter:
+        create_notice: 'Successfully posted that to Twitter.'
+        create_alert: 'There was a problem posting to Twitter. Mind trying again?'
     webmentions:
       create_notice: 'Thanks for submitting a webmention! It’s been placed in the queue for verification.'
       create_alert: 'There was a problem submitting that webmention. Mind trying again?'

@@ -1,13 +1,15 @@
 module FrancisCms
   module Syndications
     class Medium
+      CLIENT_PARAMS = {
+        integration_token: Rails.application.secrets.medium_integration_token
+      }
+
       def initialize(syndicatable, canonical_url)
         @syndicatable = syndicatable
         @canonical_url = canonical_url
 
-        @client = ::Medium::Client.new({
-          integration_token: Rails.application.secrets.medium_integration_token
-        })
+        @client = ::Medium::Client.new(CLIENT_PARAMS)
       end
 
       def publish

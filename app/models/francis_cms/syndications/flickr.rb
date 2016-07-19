@@ -1,18 +1,20 @@
 module FrancisCms
   module Syndications
     class Flickr
+      CLIENT_PARAMS = {
+        api_key:             Rails.application.secrets.flickr_api_key,
+        shared_secret:       Rails.application.secrets.flickr_shared_secret,
+        access_token_key:    Rails.application.secrets.flickr_access_token_key,
+        access_token_secret: Rails.application.secrets.flickr_access_token_secret
+      }
+
       def initialize(syndicatable, canonical_url)
         @syndicatable = syndicatable
         @canonical_url = canonical_url
 
         @client = ::Flickr
 
-        @client.configure({
-          api_key:             Rails.application.secrets.flickr_api_key
-          shared_secret:       Rails.application.secrets.flickr_shared_secret
-          access_token_key:    Rails.application.secrets.flickr_access_token_key
-          access_token_secret: Rails.application.secrets.flickr_access_token_secret
-        })
+        @client.configure(CLIENT_PARAMS)
       end
 
       def publish
