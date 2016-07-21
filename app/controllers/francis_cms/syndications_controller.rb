@@ -51,7 +51,7 @@ module FrancisCms
     end
 
     def syndication_params
-      if silo_class
+      if params[:silo] && silo_class
         silo_class.new(syndicatable, canonical_url).publish
       else
         SyndicationInput.new(params).to_h
