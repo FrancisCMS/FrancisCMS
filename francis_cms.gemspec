@@ -38,4 +38,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'flickr-objects', '~> 0.6.1'
   s.add_dependency 'medium-sdk-ruby', '~> 1.0'
   s.add_dependency 'twitter', '~> 5.16'
+
+  # Development dependencies
+  s.add_development_dependency 'rubocop', '~> 0.42.0'
 end
