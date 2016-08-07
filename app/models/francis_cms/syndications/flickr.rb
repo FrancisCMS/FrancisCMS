@@ -14,7 +14,11 @@ module FrancisCms
 
         @client = ::Flickr
 
-        @client.configure(CLIENT_PARAMS)
+        @client.configure do |config|
+          CLIENT_PARAMS.each do |key, value|
+            config.public_send("#{key}=", value)
+          end
+        end
       end
 
       def publish
