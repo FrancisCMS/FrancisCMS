@@ -21,7 +21,7 @@ module FrancisCms
     end
 
     def title
-      @title ||= body? ? body.lines.first.chomp : 'Untitled'
+      @title ||= body? ? sanitizer.sanitize(body.lines.first.chomp) : 'Untitled'
     end
 
     private
@@ -81,6 +81,10 @@ module FrancisCms
         self.country = geo.country
         self.country_code = geo.country_code
       end
+    end
+
+    def sanitizer
+      @sanitizer ||= Rails::Html::FullSanitizer.new
     end
 
     def to_fraction(str)
