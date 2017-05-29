@@ -21,7 +21,7 @@ module FrancisCms
     end
 
     def title
-      @title ||= body? ? sanitizer.sanitize(body.lines.first.chomp) : 'Untitled'
+      @title ||= body? ? CGI.unescapeHTML(sanitizer.sanitize(to_html.lines.first.chomp)) : 'Untitled'
     end
 
     private
