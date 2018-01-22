@@ -343,8 +343,8 @@ TODO
 
 If diving into Ruby isn't your thing, but you'd still like to support FrancisCMS, consider making a donation! Any amount—large or small—is greatly appreciated. As a token of my gratitude, I'll add your name to the [Acknowledgments](#acknowledgments) below.
 
-[![Donate via Square Cash](https://img.shields.io/badge/square%20cash-$jgarber-28c101.svg)](https://cash.me/$jgarber)
-[![Donate via Paypal](https://img.shields.io/badge/paypal-jgarber-009cde.svg)](https://www.paypal.me/jgarber)
+[![Donate via Square Cash](https://img.shields.io/badge/square%20cash-$jgarber-28c101.svg?style=for-the-badge)](https://cash.me/$jgarber)
+[![Donate via Paypal](https://img.shields.io/badge/paypal-jgarber-009cde.svg?style=for-the-badge)](https://www.paypal.me/jgarber)
 
 ## Acknowledgments
 
