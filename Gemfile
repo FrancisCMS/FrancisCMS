@@ -1,5 +1,3 @@
-ruby '2.2.4'
-
 source 'https://rubygems.org'
 
 # Declare your gem's dependencies in francis_cms.gemspec.
