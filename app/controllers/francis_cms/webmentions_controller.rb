@@ -25,7 +25,7 @@ module FrancisCms
 
         render text: webmention_url(@webmention), status: :accepted
       else
-        return redirect_to params[:referer], alert: t('flashes.webmentions.create_alert') if params[:referer]
+        return redirect_to URI.parse(params[:referer]).path, alert: t('flashes.webmentions.create_alert') if params[:referer]
 
         head :bad_request
       end
