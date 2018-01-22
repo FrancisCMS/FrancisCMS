@@ -1,4 +1,5 @@
-$:.push File.expand_path('../lib', __FILE__)
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 # Maintain your gem's version:
 require 'francis_cms/version'
@@ -17,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.homepage    = 'https://github.com/FrancisCMS/FrancisCMS'
   spec.license     = 'MIT'
 
-  spec.files = Dir["{app,config,db,lib}/**/*", 'Rakefile', 'README.md']
+  spec.files       = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(bin|spec)/}) }
 
   # Application
   spec.add_dependency 'rails', '~> 4.2'
