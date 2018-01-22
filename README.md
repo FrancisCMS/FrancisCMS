@@ -2,9 +2,9 @@
 
 An [IndieWeb](https://indiewebcamp.com/)-friendly content management system built with [Ruby on Rails](http://rubyonrails.org/).
 
-[![Build Status](https://travis-ci.org/FrancisCMS/FrancisCMS.svg?branch=master)](https://travis-ci.org/FrancisCMS/FrancisCMS)
-[![Code Climate](https://codeclimate.com/github/FrancisCMS/FrancisCMS/badges/gpa.svg)](https://codeclimate.com/github/FrancisCMS/FrancisCMS)
-[![Test Coverage](https://codeclimate.com/github/FrancisCMS/FrancisCMS/badges/coverage.svg)](https://codeclimate.com/github/FrancisCMS/FrancisCMS/coverage)
+[![Build](https://img.shields.io/travis/FrancisCMS/FrancisCMS/master.svg?style=for-the-badge)](https://travis-ci.org/FrancisCMS/FrancisCMS)
+[![Maintainability](https://img.shields.io/codeclimate/maintainability/FrancisCMS/FrancisCMS.svg?style=for-the-badge)](https://codeclimate.com/github/FrancisCMS/FrancisCMS)
+[![Coverage](https://img.shields.io/codeclimate/c/FrancisCMS/FrancisCMS.svg?style=for-the-badge)](https://codeclimate.com/github/FrancisCMS/FrancisCMS/code)
 
 FrancisCMS began life in October 2014 as a [Sinatra](http://www.sinatrarb.com/) application (hence [the name](https://en.wikipedia.org/wiki/Frank_Sinatra)) before becoming a Rails application before becoming a mountable [Rails engine](http://guides.rubyonrails.org/engines.html).
 
