@@ -9,6 +9,9 @@ Metrics/BlockLength:
 Metrics/LineLength:
   Enabled: false
 
+Rails/ApplicationRecord:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 
