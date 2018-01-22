@@ -2,6 +2,10 @@ AllCops:
   Exclude:
     - 'db/**/*'
 
+Metrics/BlockLength:
+  Exclude:
+    - '**/francis_cms.gemspec'
+
 Metrics/LineLength:
   Enabled: false
 
@@ -9,4 +13,7 @@ Style/Documentation:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/SymbolArray:
   Enabled: false
