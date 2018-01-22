@@ -47,7 +47,7 @@ module FrancisCms
     private
 
     def links
-      @links ||= Link.entries_for_page({ include_drafts: __logged_in__, page: params['page'] })
+      @links ||= Link.entries_for_page(include_drafts: __logged_in__, page: params['page'])
     end
 
     def link

@@ -16,9 +16,9 @@ module FrancisCms
         entry_properties = collection.try(:entry) ? collection.entry.to_hash[:properties] : {}
 
         @webmention.update_attributes(
-          webmentionable: get_webmentionable,
-          webmention_type: get_type(entry_properties),
-          fragmention: get_fragmention,
+          webmentionable: webmentionable,
+          webmention_type: webmention_type(entry_properties),
+          fragmention: fragmention,
           verified_at: Time.now
         )
 
@@ -30,9 +30,7 @@ module FrancisCms
           verified_at: nil
         )
 
-        if @webmention.webmention_entry
-          @webmention.destroy_webmention_entry
-        end
+        @webmention.destroy_webmention_entry if @webmention.webmention_entry
       end
     rescue Mechanize::ResponseCodeError => err
       case err.response_code
@@ -44,58 +42,27 @@ module FrancisCms
 
     private
 
-    def get_fragmention
+    def fragmention
       fragment = target_page.uri.fragment
 
-      if fragment
-        URI.decode(fragment)
-      end
+      URI.decode(fragment) if fragment
     end
 
-    def get_type(properties)
-      if properties.has_key?(:like_of)
-        'like'
-      elsif properties.has_key?(:in_reply_to)
-        'reply'
-      elsif properties.has_key?(:repost_of)
-        'repost'
-      else
-        'reference'
-      end
-    end
-
-    def get_webmentionable
-      # Use canonical target URL to account for 301 redirects
-      matches = target_page.uri.path.match(%r{(?<klass>[a-z]+)/(?<params>[A-Za-z0-9\-/]+)})
-
-      if matches
-        begin
-          klass = "FrancisCms::#{matches[:klass].classify}".constantize
-
-          # If klass includes Webmentionable concern
-          if klass < FrancisCms::Concerns::Models::Webmentionable
-            webmentionable = klass.find(matches[:params])
-          end
-        rescue
-        end
-      end
-
-      webmentionable
+    def site_url_regex_string
+      @site_url_regex_string ||= FrancisCms.configuration.site_url.sub(/^https?:/, 'https?:')
     end
 
     def source_links_to_target?
       # Account for blank spaces in target URLs stored in database
       target.gsub!(' ', '%20')
 
-      site_url_regex_string = FrancisCms.configuration.site_url.sub(/^https?:/, 'https?:')
-
-      if source.match(%r{^#{site_url_regex_string}})
-        # If source matches configured site URL (protocol-agnostic), target could be relative
-        regex_string = target.sub(/^#{site_url_regex_string}/, %{(?:#{site_url_regex_string.chomp('/')})?/})
-      else
-        # Check source for link to target (protocol-agnostic)
-        regex_string = target.sub(/^https?:/, 'https?:')
-      end
+      regex_string = if source =~ /^#{site_url_regex_string}/
+                       # If source matches configured site URL (protocol-agnostic), target could be relative
+                       target.sub(/^#{site_url_regex_string}/, %{(?:#{site_url_regex_string.chomp('/')})?/})
+                     else
+                       # Check source for link to target (protocol-agnostic)
+                       target.sub(/^https?:/, 'https?:')
+                     end
 
       source_page.link_with(href: %r{^#{regex_string.chomp('/')}/?$}).present?
     end
@@ -105,19 +72,40 @@ module FrancisCms
     end
 
     def target_accepts_webmentions?
-      if target_page.header.key? 'link'
-        # Search for endpoint in Link header
-        supported = target_page.header['link'].match(/<((?:https?:\/\/)?[^>]+)>; rel="(?:[^>]*\s+|\s*)(?:webmention|http:\/\/webmention.org\/?)(?:\s*|\s+[^>]*)"/i)
-      else
-        # Search for endpoint in <link> and <a> elements
-        supported = target_page.search('link[rel~="webmention"]', 'link[rel~="http://webmention.org/"]', 'a[rel~="webmention"]', 'a[rel~="http://webmention.org/"]').first
-      end
+      # Search for endpoint in Link header
+      return target_page.header['link'].match(/<((?:https?:\/\/)?[^>]+)>; rel="(?:[^>]*\s+|\s*)(?:webmention|http:\/\/webmention.org\/?)(?:\s*|\s+[^>]*)"/i) if target_page.header.key?('link')
 
-      supported
+      # Search for endpoint in <link> and <a> elements
+      target_page.search('link[rel~="webmention"]', 'link[rel~="http://webmention.org/"]', 'a[rel~="webmention"]', 'a[rel~="http://webmention.org/"]').first
     end
 
     def target_page
       @target_page ||= @agent.get(target)
+    end
+
+    def webmention_type(properties)
+      return 'like' if properties.key?(:like_of)
+      return 'reply' if properties.key?(:in_reply_to)
+      return 'repost' if properties.key?(:repost_of)
+
+      'reference'
+    end
+
+    def webmentionable
+      # Use canonical target URL to account for 301 redirects
+      matches = target_page.uri.path.match(%r{(?<klass>[a-z]+)/(?<params>[A-Za-z0-9\-/]+)})
+
+      if matches
+        begin
+          klass = "FrancisCms::#{matches[:klass].classify}".constantize
+
+          # If klass includes Webmentionable concern
+          webmentionable = klass.find(matches[:params]) if klass < FrancisCms::Concerns::Models::Webmentionable
+        rescue
+        end
+      end
+
+      webmentionable
     end
   end
 end

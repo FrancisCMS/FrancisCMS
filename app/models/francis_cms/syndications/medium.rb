@@ -3,7 +3,7 @@ module FrancisCms
     class Medium
       CLIENT_PARAMS = {
         integration_token: Rails.application.secrets.medium_integration_token
-      }
+      }.freeze
 
       def initialize(syndicatable, canonical_url)
         @syndicatable = syndicatable
@@ -37,12 +37,12 @@ module FrancisCms
       end
 
       def post_content
-        %{
+        %(
           <h1>#{@syndicatable.title}</h1>
-          #{@syndicatable.to_html.gsub(/\shref="\//, %{ href="#{FrancisCms.configuration.site_url}})}
+          #{@syndicatable.to_html.gsub(%r{\shref="/}, %( href="#{FrancisCms.configuration.site_url}))}
           <hr>
           <p><i>This post was originally published on <a href="#{@canonical_url}" rel="canonical">my own site</a>.</i></p>
-        }
+        )
       end
 
       def post_tags

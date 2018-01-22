@@ -8,7 +8,7 @@ module FrancisCms
       flickr:  Syndications::Flickr,
       medium:  Syndications::Medium,
       twitter: Syndications::Twitter
-    }
+    }.freeze
 
     def create
       @syndication = syndicatable.syndications.new(syndication_params)

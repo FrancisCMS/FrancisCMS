@@ -8,21 +8,25 @@ module FrancisCms
       @total_tags = tags.length
     end
 
+    # rubocop:disable Metrics/MethodLength
     def show
-      tag
-
-      links = Link.tagged_with(@tag).exclude_drafts
-      photos = Photo.tagged_with(@tag).exclude_drafts
-      posts = Post.tagged_with(@tag).exclude_drafts
-      @results = (links + photos + posts).sort_by { |result| result[:published_at] }.reverse
-
       if __logged_in__
-        links = Link.tagged_with(@tag)
-        photos = Photo.tagged_with(@tag)
-        posts = Post.tagged_with(@tag)
-        @results = (links + photos + posts).sort_by { |result| result[:created_at] }.reverse
+        links = Link.tagged_with(tag)
+        photos = Photo.tagged_with(tag)
+        posts = Post.tagged_with(tag)
+
+        sort_by = :created_at
+      else
+        links = Link.tagged_with(tag).exclude_drafts
+        photos = Photo.tagged_with(tag).exclude_drafts
+        posts = Post.tagged_with(tag).exclude_drafts
+
+        sort_by = :published_at
       end
+
+      @results = (links + photos + posts).sort_by { |result| result[sort_by] }.reverse
     end
+    # rubocop:enable Metrics/MethodLength
 
     private
 

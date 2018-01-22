@@ -21,17 +21,13 @@ module FrancisCms
       @webmention = Webmention.where(source: source, target: target).first_or_create(source: source, target: target)
 
       if @webmention.save
-        if params[:referer]
-          redirect_to webmention_path(@webmention), notice: t('flashes.webmentions.create_notice')
-        else
-          render text: webmention_url(@webmention), status: :accepted
-        end
+        return redirect_to webmention_path(@webmention), notice: t('flashes.webmentions.create_notice') if params[:referer]
+
+        render text: webmention_url(@webmention), status: :accepted
       else
-        if params[:referer]
-          redirect_to params[:referer], alert: t('flashes.webmentions.create_alert')
-        else
-          head :bad_request
-        end
+        return redirect_to params[:referer], alert: t('flashes.webmentions.create_alert') if params[:referer]
+
+        head :bad_request
       end
     end
 

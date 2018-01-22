@@ -1,3 +1,5 @@
-module WillPaginate::ViewHelpers
-  pagination_options[:page_links] = false
+module WillPaginate
+  module ViewHelpers
+    pagination_options[:page_links] = false
+  end
 end

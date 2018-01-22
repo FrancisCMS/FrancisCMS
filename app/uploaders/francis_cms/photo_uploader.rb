@@ -5,43 +5,43 @@ module FrancisCms
     storage :file
 
     def store_dir
-      %{uploads/photos/#{model.id}}
+      "uploads/photos/#{model.id}"
     end
 
     def extension_white_list
-      %w(gif jpeg jpg png)
+      %w[gif jpeg jpg png]
     end
 
     version :small_jpg do
-      process :mogrify => [{
+      process mogrify: [{
         format: 'jpg',
         resolution: '500x500'
       }]
 
       def full_filename(for_file = model.photo.file)
-        %{#{File.basename(for_file, '.*')}_small.jpg}
+        "#{File.basename(for_file, '.*')}_small.jpg"
       end
     end
 
     version :medium_jpg do
-      process :mogrify => [{
+      process mogrify: [{
         format: 'jpg',
         resolution: '750x750'
       }]
 
       def full_filename(for_file = model.photo.file)
-        %{#{File.basename(for_file, '.*')}_medium.jpg}
+        "#{File.basename(for_file, '.*')}_medium.jpg"
       end
     end
 
     version :large_jpg do
-      process :mogrify => [{
+      process mogrify: [{
         format: 'jpg',
         resolution: '1000x1000'
       }]
 
       def full_filename(for_file = model.photo.file)
-        %{#{File.basename(for_file, '.*')}_large.jpg}
+        "#{File.basename(for_file, '.*')}_large.jpg"
       end
     end
 
@@ -54,7 +54,7 @@ module FrancisCms
         img.format(options[:format]) do |c|
           c.interlace 'plane'
           c.quality 80
-          c.resize %{#{options[:resolution]}>}
+          c.resize "#{options[:resolution]}>"
         end
 
         img

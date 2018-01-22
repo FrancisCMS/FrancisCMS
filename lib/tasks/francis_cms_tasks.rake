@@ -3,14 +3,17 @@ require 'modules/conversable'
 namespace :francis_cms do
   desc 'Configure Flickr syndication'
   task :configure_flickr do
-    include Conversable;
+    include Conversable
 
     notify 'Preparing to configure Flickr syndication...'
 
     api_key = ask?('What\'s your Flickr API key?')
     shared_secret = ask?('What\'s your Flickr API shared secret?')
 
-    Flickr.configure { |config| config.api_key = api_key; config.shared_secret = shared_secret }
+    Flickr.configure do |config|
+      config.api_key = api_key
+      config.shared_secret = shared_secret
+    end
 
     begin
       request_token = Flickr::OAuth.get_request_token
@@ -29,7 +32,7 @@ namespace :francis_cms do
       puts "flickr_access_token_key: #{access_token.key}"
       puts "flickr_access_token_secret: #{access_token.secret}"
     rescue
-      alert('! Ack, there was a problem generating Flickr syndication configuration. Please try again.')
+      alert '! Ack, there was a problem generating Flickr syndication configuration. Please try again.'
     end
   end
 end

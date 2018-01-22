@@ -5,19 +5,20 @@ module FrancisCms
     storage :file
 
     def store_dir
-      %{uploads/avatars/#{model.author_name.parameterize}}
+      "uploads/avatars/#{model.author_name.parameterize}"
     end
 
     version :small do
-      process :manipulate_author_avatar => 'x60'
+      process manipulate_author_avatar: 'x60'
     end
 
     version :large do
-      process :manipulate_author_avatar => 'x80'
+      process manipulate_author_avatar: 'x80'
     end
 
     private
 
+    # rubocop:disable Metrics/MethodLength
     def manipulate_author_avatar(geometry)
       manipulate! do |img|
         img.strip
@@ -33,5 +34,6 @@ module FrancisCms
         img
       end
     end
+    # rubocop:enable Metrics/MethodLength
   end
 end

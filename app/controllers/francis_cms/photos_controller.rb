@@ -47,7 +47,7 @@ module FrancisCms
     private
 
     def photos
-      @photos ||= Photo.entries_for_page({ include_drafts: __logged_in__, page: params['page'] })
+      @photos ||= Photo.entries_for_page(include_drafts: __logged_in__, page: params['page'])
     end
 
     def photo

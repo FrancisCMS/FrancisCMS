@@ -19,9 +19,7 @@ module FrancisCms
     def create
       @post = Post.new(PostInput.new(params).to_h)
 
-      if (Post.where(slug: @post.slug).first)
-        @post.slug = nil;
-      end
+      @post.slug = nil if Post.where(slug: @post.slug).first
 
       if @post.save
         redirect_to @post, notice: t('flashes.posts.create_notice')
@@ -51,7 +49,7 @@ module FrancisCms
     private
 
     def posts
-      @posts ||= Post.entries_for_page({ include_drafts: __logged_in__, page: params['page'] })
+      @posts ||= Post.entries_for_page(include_drafts: __logged_in__, page: params['page'])
     end
 
     def post

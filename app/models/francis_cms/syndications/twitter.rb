@@ -6,7 +6,7 @@ module FrancisCms
         consumer_secret:     Rails.application.secrets.twitter_consumer_secret,
         access_token:        Rails.application.secrets.twitter_access_token,
         access_token_secret: Rails.application.secrets.twitter_access_token_secret
-      }
+      }.freeze
 
       def initialize(syndicatable, canonical_url)
         @syndicatable = syndicatable
@@ -16,9 +16,9 @@ module FrancisCms
       end
 
       def publish
-        url = @syndicatable.is_link? ? @syndicatable.url : @canonical_url
+        url = @syndicatable.link? ? @syndicatable.url : @canonical_url
 
-        if @syndicatable.is_photo?
+        if @syndicatable.photo?
           status = @syndicatable.title.truncate(90, omission: '…', separator: ' ')
           tweet = @client.update_with_media("#{status} – #{url}", File.new(@syndicatable.photo.path), options)
         else
@@ -39,11 +39,9 @@ module FrancisCms
       def options
         {}.tap do |opts|
           if @syndicatable.try(:geolocated?)
-            places = @client.reverse_geocode({ lat: @syndicatable.latitude, long: @syndicatable.longitude })
+            places = @client.reverse_geocode(lat: @syndicatable.latitude, long: @syndicatable.longitude)
 
-            if places.any?
-              opts[:place] = places.first
-            end
+            opts[:place] = places.first if places.any?
           end
         end
       end

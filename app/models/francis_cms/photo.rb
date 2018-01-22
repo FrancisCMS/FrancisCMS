@@ -27,17 +27,15 @@ module FrancisCms
     private
 
     def convert_coords_to_decimal(str, ref)
-      if str && ref
-        parts = str.split(', ')
+      return unless str && ref
 
-        out = to_fraction(parts[0]) + (to_fraction(parts[1]) / 60) + (to_fraction(parts[2]) / 3600)
+      parts = str.split(', ')
 
-        if (ref == 'S' || ref == 'W')
-          out = out * -1
-        end
+      out = to_fraction(parts[0]) + (to_fraction(parts[1]) / 60) + (to_fraction(parts[2]) / 3600)
 
-        out
-      end
+      out = out * -1 if %w[S W].include?(ref)
+
+      out
     end
 
     def extract_exif_data
@@ -65,22 +63,24 @@ module FrancisCms
       if gps_date_stamp && gps_time_stamp
         matches = gps_time_stamp.match(%r{^(?<hours>\d+)\/\d+, (?<minutes>\d+)\/\d+, (?<seconds>\d+)\/\d+$})
 
-        %{#{gps_date_stamp.gsub(':', '-')} #{matches[:hours]}:#{matches[:minutes]}:#{matches[:seconds]}}.to_datetime
+        %(#{gps_date_stamp.tr(':', '-')} #{matches[:hours]}:#{matches[:minutes]}:#{matches[:seconds]}).to_datetime
       elsif date_time_original
         DateTime.strptime(date_time_original, '%Y:%m:%d %H:%M:%S')
       end
     end
 
     def reverse_geocode
-      if geo = Geocoder.search(%{#{self.latitude},#{self.longitude}}).first
-        self.street_address = geo.street_address
-        self.city = geo.city
-        self.state = geo.state
-        self.state_code = geo.state_code
-        self.postal_code = geo.postal_code
-        self.country = geo.country
-        self.country_code = geo.country_code
-      end
+      geo = Geocoder.search(%(#{latitude},#{longitude}))
+
+      return unless geo.first
+
+      self.street_address = geo.street_address
+      self.city = geo.city
+      self.state = geo.state
+      self.state_code = geo.state_code
+      self.postal_code = geo.postal_code
+      self.country = geo.country
+      self.country_code = geo.country_code
     end
 
     def sanitizer
