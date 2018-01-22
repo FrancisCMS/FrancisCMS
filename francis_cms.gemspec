@@ -45,5 +45,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'twitter', '~> 5.16'
 
   # Development dependencies
+  spec.add_development_dependency 'brakeman', '~> 4.1', '>= 4.1.1'
   spec.add_development_dependency 'rubocop', '~> 0.52.1'
 end
