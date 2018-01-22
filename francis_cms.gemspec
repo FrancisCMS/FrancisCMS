@@ -40,5 +40,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'twitter', '~> 5.16'
 
   # Development dependencies
-  s.add_development_dependency 'rubocop', '~> 0.42.0'
+  s.add_development_dependency 'rubocop', '~> 0.52.1'
 end
