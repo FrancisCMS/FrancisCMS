@@ -30,7 +30,7 @@ module FrancisCms
           url: "https://www.flickr.com/photos/#{username}/#{photo_id}/"
         }
       rescue => error
-        # log `error.message`
+        logger.error "!!! Flickr syndication error: #{error.message}"
       end
 
       private

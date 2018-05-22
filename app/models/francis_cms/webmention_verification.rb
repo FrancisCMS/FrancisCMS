@@ -32,12 +32,14 @@ module FrancisCms
 
         @webmention.destroy_webmention_entry if @webmention.webmention_entry
       end
-    rescue Mechanize::ResponseCodeError => err
-      case err.response_code
-        when '404', '410'
-          # @webmention.delete
+    rescue Mechanize::ResponseCodeError => error
+      case error.response_code
+      when '404', '410'
+        # @webmention.delete
+        logger.error "!!! Webmention ##{id} verification error: #{error.message}"
       end
-    rescue Mechanize::SocketError
+    rescue Mechanize::SocketError => error
+      logger.error "!!! Webmention ##{id} verification error: #{error.message}"
     end
 
     private
@@ -101,7 +103,8 @@ module FrancisCms
 
           # If klass includes Webmentionable concern
           webmentionable = klass.find(matches[:params]) if klass < FrancisCms::Concerns::Models::Webmentionable
-        rescue
+        rescue => error
+          logger.error "Webmentionable error: #{error.message}"
         end
       end
 

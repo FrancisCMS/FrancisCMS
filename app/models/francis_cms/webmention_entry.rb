@@ -46,12 +46,12 @@ module FrancisCms
 
       def author_photo_url
         # Microformats2 returns Microformats2::Property::Url
-        absolutize (author_photo_url_from_entry || author_photo_url_from_card).to_s
+        absolutize((author_photo_url_from_entry || author_photo_url_from_card).to_s)
       end
 
       def author_url
         # Microformats2 returns Microformats2::Property::Url
-        absolutize (author_url_from_entry || author_url_from_card || author_url_from_source_url).to_s
+        absolutize((author_url_from_entry || author_url_from_card || author_url_from_source_url).to_s)
       end
 
       def entry_content
@@ -64,12 +64,12 @@ module FrancisCms
 
       def entry_url
         # Microformats2 returns Microformats2::Property::Url
-        absolutize (entry_url_from_entry || @source).to_s
+        absolutize((entry_url_from_entry || @source).to_s)
       end
 
       def published_at
         # Microformats2 returns Microformats2::Property::DateTime
-        Time.parse (published_at_from_entry || @webmention.created_at).to_s
+        Time.parse((published_at_from_entry || @webmention.created_at).to_s)
       end
 
       private
