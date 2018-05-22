@@ -2,7 +2,7 @@ module FrancisCms
   class Engine < ::Rails::Engine
     isolate_namespace FrancisCms
 
-    config.autoload_paths << File.expand_path('../../', __FILE__)
+    config.autoload_paths << File.expand_path('..', __dir__)
 
     config.before_initialize do
       ActiveSupport.on_load :action_controller do
