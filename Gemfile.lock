@@ -61,8 +61,8 @@ GEM
       activerecord (>= 3.2, < 5)
     addressable (2.4.0)
     arel (6.0.3)
-    ast (2.3.0)
-    brakeman (4.1.1)
+    ast (2.4.0)
+    brakeman (4.3.0)
     buftok (0.2.0)
     builder (3.2.2)
     carrierwave (0.10.0)
@@ -139,8 +139,8 @@ GEM
       mini_portile2 (~> 2.1.0)
     ntlm-http (0.1.1)
     parallel (1.12.1)
-    parser (2.4.0.2)
-      ast (~> 2.3)
+    parser (2.5.1.0)
+      ast (~> 2.4.0)
     pg (0.18.4)
     powerpack (0.1.1)
     rack (1.6.4)
@@ -174,9 +174,9 @@ GEM
     rake (11.3.0)
     redcarpet (3.3.4)
     rouge (1.11.1)
-    rubocop (0.52.1)
+    rubocop (0.56.0)
       parallel (~> 1.10)
-      parser (>= 2.4.0.2, < 3.0)
+      parser (>= 2.5)
       powerpack (~> 0.1)
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
@@ -208,7 +208,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.2)
-    unicode-display_width (1.3.0)
+    unicode-display_width (1.3.2)
     webrobots (0.1.2)
     will_paginate (3.0.12)
 
@@ -216,9 +216,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  brakeman (~> 4.1, >= 4.1.1)
+  brakeman (~> 4.3)
   francis_cms!
-  rubocop (~> 0.52.1)
+  rubocop (~> 0.56.0)
 
 BUNDLED WITH
    1.16.1

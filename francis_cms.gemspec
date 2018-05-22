@@ -1,4 +1,4 @@
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 # Maintain your gem's version:
@@ -45,6 +45,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'twitter', '~> 5.16'
 
   # Development dependencies
-  spec.add_development_dependency 'brakeman', '~> 4.1', '>= 4.1.1'
-  spec.add_development_dependency 'rubocop', '~> 0.52.1'
+  spec.add_development_dependency 'brakeman', '~> 4.3'
+  spec.add_development_dependency 'rubocop', '~> 0.56.0'
 end
