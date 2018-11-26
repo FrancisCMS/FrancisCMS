@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'carrierwave', '~> 0.11.2'
   spec.add_dependency 'colored', '~> 1.2'
   spec.add_dependency 'friendly_id', '~> 5.2', '>= 5.2.4'
-  spec.add_dependency 'geocoder', '~> 1.4', '>= 1.4.9'
+  spec.add_dependency 'geocoder', '~> 1.5'
   spec.add_dependency 'mechanize', '~> 2.7', '>= 2.7.6'
   spec.add_dependency 'microformats2', '~> 2.9'
   spec.add_dependency 'mini_magick', '~> 4.8'
@@ -46,5 +46,5 @@ Gem::Specification.new do |spec|
 
   # Development dependencies
   spec.add_development_dependency 'brakeman', '~> 4.3', '>= 4.3.1'
-  spec.add_development_dependency 'rubocop', '~> 0.57.2'
+  spec.add_development_dependency 'rubocop', '~> 0.60.0'
 end
