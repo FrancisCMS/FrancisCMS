@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.files       = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(bin|spec)/}) }
 
   # Application
-  spec.add_dependency 'rails', '~> 4.2', '>= 4.2.10'
+  spec.add_dependency 'rails', '~> 4.2', '>= 4.2.11'
 
   # Database
   spec.add_dependency 'pg', '~> 0.21.0'
