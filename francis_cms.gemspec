@@ -50,5 +50,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'faker', '~> 1.9'
   spec.add_development_dependency 'rspec-rails', '~> 3.8'
   spec.add_development_dependency 'rubocop', '~> 0.60.0'
-  spec.add_development_dependency 'sqlite3', '~> 1.3' # For the dummy app
 end

@@ -32,8 +32,8 @@ module FrancisCms
     end
 
     def update
-      if webmention.verify && webmention.verified_at?
-        redirect_to @webmention, notice: t('flashes.webmentions.update_notice')
+      if webmention.verify && webmention.verified_at? && webmention.update(webmention_params)
+        redirect_to webmention, notice: t('flashes.webmentions.update_notice')
       else
         redirect_to webmentions_path, alert: t('flashes.webmentions.update_alert')
       end
@@ -53,6 +53,10 @@ module FrancisCms
 
     def webmention
       @webmention ||= Webmention.find(params[:id])
+    end
+
+    def webmention_params
+      params.require(:webmention).permit(:source, :target)
     end
   end
 end
