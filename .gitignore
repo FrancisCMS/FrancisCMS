@@ -9,3 +9,4 @@ spec/dummy/tmp/
 spec/dummy/public/system
 spec/dummy/spec/
 spec/dummy/public/uploads/
+coverage

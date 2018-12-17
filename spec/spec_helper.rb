@@ -1,3 +1,15 @@
+# Disable coverage by default. When bin/rspec is run (manually or by guard), it
+# produces erroneous coverage information. bin/rake produces correct coverage,
+# so we'll opt in when using that command.
+if ENV['COVERAGE'] == '1'
+  require 'simplecov'
+  SimpleCov.minimum_coverage 90
+  SimpleCov.start 'rails' do
+    add_filter '/lib/tasks/'
+    add_filter '/vendor/ruby/'
+  end
+end
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
