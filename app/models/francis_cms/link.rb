@@ -6,6 +6,8 @@ module FrancisCms
     include FrancisCms::Concerns::Models::Taggable
     include FrancisCms::Concerns::Models::Webmentionable
 
+    YOUTUBE_HOSTS = %w[youtube.com youtu.be].freeze
+
     validates :url, :title, presence: true
 
     redcarpet :body
@@ -29,7 +31,7 @@ module FrancisCms
 
     def embed_url
       return %(https://player.vimeo.com/video/#{parsed_url.path.tr('/', '')}) if vimeo?
-      return %(https://www.youtube.com/embed/#{CGI.parse(parsed_url.query)['v'][0]}) if youtube?
+      return %(https://www.youtube.com/embed/#{youtube_embed_slug}) if youtube?
     end
 
     def vimeo?
@@ -37,11 +39,19 @@ module FrancisCms
     end
 
     def youtube?
-      parsed_url.host.gsub(/^www\./, '').match(/^youtube\.com/)
+      YOUTUBE_HOSTS.include?(parsed_url.host.gsub(/^www\./, ''))
     end
 
     def parsed_url
       @parsed_url ||= URI.parse(url)
+    end
+
+    def youtube_embed_slug
+      if parsed_url.query.present?
+        CGI.parse(parsed_url.query)['v'][0]
+      else
+        parsed_url.path.gsub(/^\//, '')
+      end
     end
   end
 end
