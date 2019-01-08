@@ -20,7 +20,7 @@ module FrancisCms
           url: JSON.parse(response.body)['data']['url']
         }
       rescue => error
-        logger.error "!!! Medium syndication error: #{error.message}"
+        Rails.logger.error "!!! Medium syndication error: #{error.message}"
       end
 
       private

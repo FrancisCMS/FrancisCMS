@@ -36,10 +36,10 @@ module FrancisCms
       case error.response_code
       when '404', '410'
         # @webmention.delete
-        logger.error "!!! Webmention ##{id} verification error: #{error.message}"
+        Rails.logger.error "!!! Webmention ##{id} verification error: #{error.message}"
       end
     rescue Mechanize::SocketError => error
-      logger.error "!!! Webmention ##{id} verification error: #{error.message}"
+      Rails.logger.error "!!! Webmention ##{id} verification error: #{error.message}"
     end
 
     private
@@ -104,7 +104,7 @@ module FrancisCms
           # If klass includes Webmentionable concern
           webmentionable = klass.find(matches[:params]) if klass < FrancisCms::Concerns::Models::Webmentionable
         rescue => error
-          logger.error "Webmentionable error: #{error.message}"
+          Rails.logger.error "Webmentionable error: #{error.message}"
         end
       end
 
