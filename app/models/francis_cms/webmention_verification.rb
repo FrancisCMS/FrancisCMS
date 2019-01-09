@@ -36,10 +36,10 @@ module FrancisCms
       case error.response_code
       when '404', '410'
         # @webmention.delete
-        Rails.logger.error "!!! Webmention ##{id} verification error: #{error.message}"
+        Rails.logger.error "!!! Webmention ##{@webmention.id} verification error: #{error.message}"
       end
     rescue Mechanize::SocketError => error
-      Rails.logger.error "!!! Webmention ##{id} verification error: #{error.message}"
+      Rails.logger.error "!!! Webmention ##{@webmention.id} verification error: #{error.message}"
     end
 
     private
