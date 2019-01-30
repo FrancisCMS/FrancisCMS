@@ -337,7 +337,13 @@ TODO
 
 ### Testing
 
-TODO
+Run `bundle install` to install dependencies, then, to run the tests:
+
+```
+bundle exec rake
+```
+
+Run `COVERAGE=1 bundle exec rake` to measure test coverage.
 
 ### Donations
 
