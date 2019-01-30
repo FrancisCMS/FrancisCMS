@@ -1,11 +1,13 @@
 AllCops:
   Exclude:
     - 'db/**/*'
+    - 'spec/dummy/**/*'
     - 'vendor/**/*'
 
 Metrics/BlockLength:
   Exclude:
     - '**/francis_cms.gemspec'
+    - 'spec/**/*'
 
 Metrics/LineLength:
   Enabled: false
