@@ -6,7 +6,7 @@ require 'francis_cms/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |spec|
-  spec.required_ruby_version = ['>= 2.2.4', '< 2.6']
+  spec.required_ruby_version = ['>= 2.4', '< 2.7']
 
   spec.name        = 'francis_cms'
   spec.version     = FrancisCms::VERSION
@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.files       = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(bin|spec)/}) }
 
   # Application
-  spec.add_dependency 'rails', '~> 4.2', '>= 4.2.11'
+  spec.add_dependency 'rails', '~> 4.2', '>= 4.2.11.1'
 
   # Database
   spec.add_dependency 'pg', '~> 0.21.0'
@@ -30,11 +30,11 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'acts-as-taggable-on', '~> 3.5'
   spec.add_dependency 'carrierwave', '~> 0.11.2'
   spec.add_dependency 'colored', '~> 1.2'
-  spec.add_dependency 'friendly_id', '~> 5.2', '>= 5.2.4'
-  spec.add_dependency 'geocoder', '~> 1.5'
+  spec.add_dependency 'friendly_id', '~> 5.2', '>= 5.2.5'
+  spec.add_dependency 'geocoder', '~> 1.5', '>= 1.5.1'
   spec.add_dependency 'mechanize', '~> 2.7', '>= 2.7.6'
   spec.add_dependency 'microformats2', '~> 2.9'
-  spec.add_dependency 'mini_magick', '~> 4.8'
+  spec.add_dependency 'mini_magick', '~> 4.9', '>= 4.9.3'
   spec.add_dependency 'redcarpet', '~> 3.4'
   spec.add_dependency 'rouge', '~> 1.11', '>= 1.11.1'
   spec.add_dependency 'will_paginate', '~> 3.1', '>= 3.1.6'
