@@ -64,7 +64,7 @@ module FrancisCms
 
       def entry_url
         # Microformats2 returns Microformats2::Property::Url
-        absolutize((entry_url_from_entry || @source).to_s)
+        absolutize(entry_url_from_entry.to_s || @source)
       end
 
       def published_at
