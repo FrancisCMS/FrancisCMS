@@ -34,7 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'geocoder', '~> 1.5', '>= 1.5.1'
   spec.add_dependency 'mechanize', '~> 2.7', '>= 2.7.6'
   spec.add_dependency 'microformats2', '~> 2.9'
-  spec.add_dependency 'mini_magick', '~> 4.9', '>= 4.9.3'
+  spec.add_dependency 'mini_magick', '~> 4.9', '>= 4.9.5'
   spec.add_dependency 'redcarpet', '~> 3.4'
   spec.add_dependency 'rouge', '~> 1.11', '>= 1.11.1'
   spec.add_dependency 'will_paginate', '~> 3.1', '>= 3.1.6'
