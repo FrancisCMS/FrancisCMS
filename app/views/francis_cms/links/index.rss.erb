@@ -32,7 +32,7 @@
 						<p><%= link_to "View on #{francis_cms_config.site_title}", link_url(link) %></p>
 					]]>
 				</description>
-				<%- if link.tags.any? -%>
+				<%- if link.sorted_tags.any? -%>
 					<%- link.sorted_tags.each do |tag| -%>
 						<category><%= tag.name %></category>
 					<%- end -%>

@@ -54,7 +54,7 @@
 				<%= link_to 'Markdown', link_path(@link, format: :md), download: %{#{@link.title}.md}, rel: 'alternate', type: 'text/markdown' %> and
 				<%= link_to 'JSON', link_path(@link, format: :json), download: %{#{@link.title}.json}, rel: 'alternate', type: 'application/json' %>.
 			</li>
-			<%- if @link.tags.any? -%>
+			<%- if @link.sorted_tags.any? -%>
 				<li>
 					<%= render 'francis_cms/shared/tags', resource: @link %>
 				</li>

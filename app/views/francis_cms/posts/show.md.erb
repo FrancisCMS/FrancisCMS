@@ -8,7 +8,7 @@ updated: <%= @post.updated_at.to_s(:iso8601) %>
 <%- if @post.excerpt -%>
 excerpt: <%= raw @post.excerpt %>
 <%- end -%>
-<%- if @post.tags.any? -%>
+<%- if @post.sorted_tags.any? -%>
 tags:
 <%- @post.sorted_tags.each do |tag| -%>
   - <%= tag.name %>

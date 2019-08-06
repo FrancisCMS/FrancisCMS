@@ -16,7 +16,7 @@
 	<%- if link.published_at? -%>
 		<footer class="entry-footer">
 			<p>Saved on <%= link_to raw(%{<time class="dt-published" datetime="#{link.published_at.to_s(:iso8601)}">#{raw link.published_at.to_s(:display)}</time>}), francis_cms.link_path(link), class: 'u-url' %>.</p>
-			<%- if is_expanded && link.tags.any? -%>
+			<%- if is_expanded && link.sorted_tags.any? -%>
 				<%= render 'francis_cms/shared/tags', resource: link %>
 			<%- end -%>
 		</footer>

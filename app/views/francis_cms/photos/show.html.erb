@@ -62,7 +62,7 @@
 					<dd><%= link_to 'original', @photo.photo.url, download: %{#{@photo.title} (original).#{@photo.photo.file.extension}} %></dd>
 				</dl>
 			</li>
-			<%- if @photo.tags.any? -%>
+			<%- if @photo.sorted_tags.any? -%>
 				<li>
 					<%= render 'francis_cms/shared/tags', resource: @photo %>
 				</li>

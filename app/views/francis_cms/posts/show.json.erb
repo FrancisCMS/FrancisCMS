@@ -15,7 +15,7 @@
 	<%- if @post.excerpt? -%>
 		"summary": "<%= @post.excerpt %>",
 	<%- end -%>
-	<%- if @post.tags.any? -%>
+	<%- if @post.sorted_tags.any? -%>
 		"category": <%= raw @post.sorted_tags.collect { |tag| tag.name } %>,
 	<%- end -%>
 	<%- if @post.syndications.any? -%>

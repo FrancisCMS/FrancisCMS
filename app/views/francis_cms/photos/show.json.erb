@@ -12,7 +12,7 @@
 		"published": "<%= @photo.published_at.to_s(:iso8601) %>",
 	<%- end -%>
 	"updated": "<%= @photo.updated_at.to_s(:iso8601) %>",
-	<%- if @photo.tags.any? -%>
+	<%- if @photo.sorted_tags.any? -%>
 		"category": <%= raw @photo.sorted_tags.collect { |tag| tag.name } %>,
 	<%- end -%>
 	<%- if @photo.syndications.any? -%>

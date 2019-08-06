@@ -26,7 +26,7 @@
 						<%= raw photo.to_html %>
 					]]>
 				</description>
-				<%- if photo.tags.any? -%>
+				<%- if photo.sorted_tags.any? -%>
 					<%- photo.sorted_tags.each do |tag| -%>
 						<category><%= tag.name %></category>
 					<%- end -%>

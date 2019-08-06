@@ -43,7 +43,7 @@
 				<%= link_to 'Markdown', post_path(@post, format: :md), download: %{#{@post.title}.md}, rel: 'alternate', type: 'text/markdown' %> and
 				<%= link_to 'JSON', post_path(@post, format: :json), download: %{#{@post.title}.json}, rel: 'alternate', type: 'application/json' %>.
 			</li>
-			<%- if @post.tags.any? -%>
+			<%- if @post.sorted_tags.any? -%>
 				<li>
 					<%= render 'francis_cms/shared/tags', resource: @post %>
 				</li>
