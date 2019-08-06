@@ -7,7 +7,7 @@
 		</h1>
 	</header>
 
-	<%- if post.excerpt? && is_expanded -%>
+	<%- if is_expanded && post.excerpt? -%>
 		<div class="entry-excerpt p-summary">
 			<p><%= post.excerpt %></p>
 		</div>
