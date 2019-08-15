@@ -4,34 +4,14 @@ module FrancisCms
 
     def initialize(webmention)
       @webmention = webmention
-      @agent = Mechanize.new
+
+      agent.user_agent = "#{FrancisCms.configuration.site_url} (http://webmention.org/)"
     end
 
     def verify
-      @agent.user_agent = "#{FrancisCms.configuration.site_url} (http://webmention.org/)"
+      return create_webmention_entry if target_accepts_webmentions? && source_links_to_target?
 
-      if target_accepts_webmentions? && source_links_to_target?
-        collection = Microformats2.parse(source_page.body)
-
-        entry_properties = collection.try(:entry) ? collection.entry.to_hash[:properties] : {}
-
-        @webmention.update(
-          webmentionable:  webmentionable,
-          webmention_type: webmention_type(entry_properties),
-          fragmention:     fragmention,
-          verified_at:     Time.now
-        )
-
-        @webmention.create_webmention_entry(collection)
-      else
-        @webmention.update(
-          webmentionable:  nil,
-          webmention_type: nil,
-          verified_at:     nil
-        )
-
-        @webmention.destroy_webmention_entry if @webmention.webmention_entry
-      end
+      destroy_webmention_entry
     rescue Mechanize::ResponseCodeError => error
       case error.response_code
       when '404', '410'
@@ -44,10 +24,53 @@ module FrancisCms
 
     private
 
-    def fragmention
-      fragment = target_page.uri.fragment
+    def agent
+      @agent ||= Mechanize.new
+    end
 
+    def collection
+      @collection ||= Microformats2.parse(source_page.body)
+    end
+
+    def create_webmention_entry
+      @webmention.update(
+        webmentionable:  webmentionable,
+        webmention_type: webmention_type(entry_properties),
+        fragmention:     fragmention,
+        verified_at:     Time.now
+      )
+
+      @webmention.create_webmention_entry(collection)
+    end
+
+    def destroy_webmention_entry
+      @webmention.update(
+        webmentionable:  nil,
+        webmention_type: nil,
+        verified_at:     nil
+      )
+
+      @webmention.destroy_webmention_entry if @webmention.webmention_entry
+    end
+
+    def entry_properties
+      @entry_properties ||= collection.try(:entry) ? collection.entry.to_hash[:properties] : {}
+    end
+
+    def fragment
+      @fragment ||= target_page.uri.fragment
+    end
+
+    def fragmention
       URI.decode(fragment) if fragment
+    end
+
+    def regex_string
+      # If source matches configured site URL (protocol-agnostic), target could be relative
+      return target.sub(/^#{site_url_regex_string}/, %{(?:#{site_url_regex_string.chomp('/')})?/}) if source.match?(/^#{site_url_regex_string}/)
+
+      # Check source for link to target (protocol-agnostic)
+      target.sub(/^https?:/, 'https?:')
     end
 
     def site_url_regex_string
@@ -58,19 +81,11 @@ module FrancisCms
       # Account for blank spaces in target URLs stored in database
       target.gsub!(' ', '%20')
 
-      regex_string = if source.match?(/^#{site_url_regex_string}/)
-                       # If source matches configured site URL (protocol-agnostic), target could be relative
-                       target.sub(/^#{site_url_regex_string}/, %{(?:#{site_url_regex_string.chomp('/')})?/})
-                     else
-                       # Check source for link to target (protocol-agnostic)
-                       target.sub(/^https?:/, 'https?:')
-                     end
-
       source_page.link_with(href: %r{^#{regex_string.chomp('/')}/?$}).present?
     end
 
     def source_page
-      @source_page ||= @agent.get(source)
+      @source_page ||= agent.get(source)
     end
 
     def target_accepts_webmentions?
@@ -82,7 +97,7 @@ module FrancisCms
     end
 
     def target_page
-      @target_page ||= @agent.get(target)
+      @target_page ||= agent.get(target)
     end
 
     def webmention_type(properties)
@@ -93,6 +108,7 @@ module FrancisCms
       'reference'
     end
 
+    # rubocop:disable Style/RescueStandardError
     def webmentionable
       # Use canonical target URL to account for 301 redirects
       matches = target_page.uri.path.match(%r{(?<klass>[a-z]+)/(?<params>[A-Za-z0-9\-/]+)})
@@ -110,5 +126,6 @@ module FrancisCms
 
       webmentionable
     end
+    # rubocop:enable Style/RescueStandardError
   end
 end
