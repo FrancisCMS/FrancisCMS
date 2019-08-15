@@ -1,6 +1,7 @@
 require 'colored'
 
 module Conversable
+  # rubocop:disable Rails/Output
   def alert(msg)
     puts msg.red
   end
@@ -13,6 +14,7 @@ module Conversable
     puts msg.yellow
     STDIN.gets.chomp!
   end
+  # rubocop:enable Rails/Output
 
   def confirm?(msg)
     case ask?(msg)

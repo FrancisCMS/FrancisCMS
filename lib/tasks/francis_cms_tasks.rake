@@ -15,6 +15,7 @@ namespace :francis_cms do
       config.shared_secret = shared_secret
     end
 
+    # rubocop:disable Style/RescueStandardError
     begin
       request_token = Flickr::OAuth.get_request_token
 
@@ -34,5 +35,6 @@ namespace :francis_cms do
     rescue
       alert '! Ack, there was a problem generating Flickr syndication configuration. Please try again.'
     end
+    # rubocop:enable Style/RescueStandardError
   end
 end
