@@ -75,11 +75,9 @@ module FrancisCms
       private
 
       def absolutize(url)
-        if !URI.parse(url).scheme
-          Microformats2::AbsoluteUri.new(source_domain, url).absolutize
-        else
-          url
-        end
+        return url unless URI.parse(url).scheme
+
+        Microformats2::AbsoluteUri.new(source_domain, url).absolutize
       end
 
       def author_name_from_card
