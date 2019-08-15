@@ -8,30 +8,18 @@ module FrancisCms
       @total_tags = tags.length
     end
 
-    # rubocop:disable Metrics/MethodLength
     def show
-      if __logged_in__
-        links = Link.tagged_with(tag)
-        photos = Photo.tagged_with(tag)
-        posts = Post.tagged_with(tag)
-
-        sort_by = :created_at
-      else
-        links = Link.tagged_with(tag).exclude_drafts
-        photos = Photo.tagged_with(tag).exclude_drafts
-        posts = Post.tagged_with(tag).exclude_drafts
-
-        sort_by = :published_at
-      end
-
-      @results = (links + photos + posts).sort_by { |result| result[sort_by] }.reverse
+      @results = (tagged_links + tagged_photos + tagged_posts).sort_by { |result| result[sort_by] }.reverse
     end
-    # rubocop:enable Metrics/MethodLength
 
     private
 
     def grouped_tags
       @grouped_tags ||= tags.group_by { |tag| tag.name.downcase[0] }
+    end
+
+    def sort_by
+      __logged_in__ ? :created_at : :published_at
     end
 
     def tags
@@ -40,6 +28,24 @@ module FrancisCms
 
     def tag
       @tag ||= ActsAsTaggableOn::Tag.friendly.find(params[:id])
+    end
+
+    def tagged_links
+      return Link.tagged_with(tag) if __logged_in__
+
+      Link.tagged_with(tag).exclude_drafts
+    end
+
+    def tagged_photos
+      return Photo.tagged_with(tag) if __logged_in__
+
+      Photo.tagged_with(tag).exclude_drafts
+    end
+
+    def tagged_posts
+      return Post.tagged_with(tag) if __logged_in__
+
+      Post.tagged_with(tag).exclude_drafts
     end
   end
 end
