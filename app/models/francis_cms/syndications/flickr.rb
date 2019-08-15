@@ -21,6 +21,7 @@ module FrancisCms
         end
       end
 
+      # rubocop:disable Style/RescueStandardError
       def publish
         photo_id = @client.upload(@syndicatable.photo.path, options)
         username = @client.photos.find(photo_id).get_info!.owner.username
@@ -32,6 +33,7 @@ module FrancisCms
       rescue => error
         Rails.logger.error "!!! Flickr syndication error: #{error.message}"
       end
+      # rubocop:enable Style/RescueStandardError
 
       private
 

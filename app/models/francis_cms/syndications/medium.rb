@@ -12,6 +12,7 @@ module FrancisCms
         @client = ::Medium::Client.new(CLIENT_PARAMS)
       end
 
+      # rubocop:disable Style/RescueStandardError
       def publish
         response = @client.posts.create(@client.users.me, options)
 
@@ -22,6 +23,7 @@ module FrancisCms
       rescue => error
         Rails.logger.error "!!! Medium syndication error: #{error.message}"
       end
+      # rubocop:enable Style/RescueStandardError
 
       private
 
