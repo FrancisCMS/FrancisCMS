@@ -14,10 +14,8 @@ class FrancisCmsFormBuilder < ActionView::Helpers::FormBuilder
   private
 
   def add_aria_options(object, method, options)
-    if object.errors.include?(method)
-      { 'aria-describedby': %(#{object.class.name.demodulize.downcase}_#{method}_errors) }.merge!(options)
-    else
-      options
-    end
+    return options unless object.errors.include?(method)
+
+    { 'aria-describedby': %(#{object.class.name.demodulize.downcase}_#{method}_errors) }.merge!(options)
   end
 end
