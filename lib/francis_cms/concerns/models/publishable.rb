@@ -17,7 +17,7 @@ module FrancisCms
           def entries_for_page(options = {})
             opts = { include_drafts: false, page: nil }.merge(options)
 
-            opts[:page] = opts[:page].to_i > 0 ? opts[:page] : nil
+            opts[:page] = opts[:page].to_i.positive? ? opts[:page] : nil
 
             if opts[:include_drafts]
               page(opts[:page]).order('created_at DESC')

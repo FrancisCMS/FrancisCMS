@@ -58,7 +58,7 @@ module FrancisCms
       # Account for blank spaces in target URLs stored in database
       target.gsub!(' ', '%20')
 
-      regex_string = if source =~ /^#{site_url_regex_string}/
+      regex_string = if source.match?(/^#{site_url_regex_string}/)
                        # If source matches configured site URL (protocol-agnostic), target could be relative
                        target.sub(/^#{site_url_regex_string}/, %{(?:#{site_url_regex_string.chomp('/')})?/})
                      else
@@ -75,7 +75,7 @@ module FrancisCms
 
     def target_accepts_webmentions?
       # Search for endpoint in Link header
-      return target_page.header['link'].match(/<((?:https?:\/\/)?[^>]+)>; rel="(?:[^>]*\s+|\s*)(?:webmention|http:\/\/webmention.org\/?)(?:\s*|\s+[^>]*)"/i) if target_page.header.key?('link')
+      return target_page.header['link'].match(%r{<((?:https?://)?[^>]+)>; rel="(?:[^>]*\s+|\s*)(?:webmention|http://webmention.org/?)(?:\s*|\s+[^>]*)"}i) if target_page.header.key?('link')
 
       # Search for endpoint in <link> and <a> elements
       target_page.search('link[rel~="webmention"]', 'link[rel~="http://webmention.org/"]', 'a[rel~="webmention"]', 'a[rel~="http://webmention.org/"]').first

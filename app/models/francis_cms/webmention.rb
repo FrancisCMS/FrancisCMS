@@ -5,7 +5,7 @@ module FrancisCms
 
     validates :source, :target, presence: true
     validates :source, format: { with: URI.regexp(%w[http https]) }
-    validates :target, format: { with: %r{\A#{FrancisCms.configuration.site_url.sub(/^https?:/, 'https?:')}?} }
+    validates :target, format: { with: /\A#{FrancisCms.configuration.site_url.sub(/^https?:/, 'https?:')}?/ }
     validates_with WebmentionValidator
 
     delegate :author_avatar, :author_avatar_url, :author_name, :author_photo_url,
