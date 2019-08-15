@@ -62,7 +62,7 @@ module FrancisCms
     end
 
     def fragmention
-      URI.decode(fragment) if fragment
+      CGI.unescape(fragment) if fragment
     end
 
     def regex_string
