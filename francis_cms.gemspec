@@ -47,4 +47,6 @@ Gem::Specification.new do |spec|
   # Development dependencies
   spec.add_development_dependency 'brakeman', '~> 4.6'
   spec.add_development_dependency 'rubocop', '~> 0.74.0'
+  spec.add_development_dependency 'rubocop-performance', '~> 1.4'
+  spec.add_development_dependency 'rubocop-rails', '~> 2.3'
 end

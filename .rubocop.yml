@@ -1,16 +1,17 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+
 AllCops:
   Exclude:
-    - 'db/**/*'
-    - 'vendor/**/*'
+    - db/**/*
+    - vendor/**/*
 
 Metrics/BlockLength:
   Exclude:
-    - '**/francis_cms.gemspec'
+    - francis_cms.gemspec
 
 Metrics/LineLength:
-  Enabled: false
-
-Rails/ApplicationRecord:
   Enabled: false
 
 Style/Documentation:
