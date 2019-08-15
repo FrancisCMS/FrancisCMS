@@ -33,7 +33,7 @@ module FrancisCms
     end
 
     def update
-      if post.update_attributes(PostInput.new(params).to_h)
+      if post.update(PostInput.new(params).to_h)
         redirect_to @post, notice: t('flashes.posts.update_notice')
       else
         render 'edit'

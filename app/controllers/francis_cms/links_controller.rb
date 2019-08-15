@@ -31,7 +31,7 @@ module FrancisCms
     end
 
     def update
-      if link.update_attributes(LinkInput.new(params).to_h)
+      if link.update(LinkInput.new(params).to_h)
         redirect_to @link, notice: t('flashes.links.update_notice')
       else
         render 'edit'

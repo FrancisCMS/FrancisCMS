@@ -31,7 +31,7 @@ module FrancisCms
     end
 
     def update
-      if photo.update_attributes(PhotoInput.new(params).to_h)
+      if photo.update(PhotoInput.new(params).to_h)
         redirect_to @photo, notice: t('flashes.photos.update_notice')
       else
         render 'edit'

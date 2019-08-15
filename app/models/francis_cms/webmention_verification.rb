@@ -15,7 +15,7 @@ module FrancisCms
 
         entry_properties = collection.try(:entry) ? collection.entry.to_hash[:properties] : {}
 
-        @webmention.update_attributes(
+        @webmention.update(
           webmentionable:  webmentionable,
           webmention_type: webmention_type(entry_properties),
           fragmention:     fragmention,
@@ -24,7 +24,7 @@ module FrancisCms
 
         @webmention.create_webmention_entry(collection)
       else
-        @webmention.update_attributes(
+        @webmention.update(
           webmentionable:  nil,
           webmention_type: nil,
           verified_at:     nil
