@@ -23,21 +23,19 @@ module FrancisCms
         @collection = collection
       end
 
-      # rubocop:disable Metrics/MethodLength
       def attributes
         {
-          author_name: author_name,
-          author_photo_url: author_photo_url,
-          author_url: author_url,
-          entry_content: entry_content,
-          entry_name: entry_name,
-          entry_url: entry_url,
-          published_at: published_at,
+          author_name:              author_name,
+          author_photo_url:         author_photo_url,
+          author_url:               author_url,
+          entry_content:            entry_content,
+          entry_name:               entry_name,
+          entry_url:                entry_url,
+          published_at:             published_at,
           remote_author_avatar_url: author_photo_url,
-          webmention: @webmention
+          webmention:               @webmention
         }
       end
-      # rubocop:enable Metrics/MethodLength
 
       def author_name
         # Microformats2 returns Microformats2::Property::Text

@@ -28,7 +28,7 @@ module FrancisCms
 
         {
           name: 'Twitter',
-          url: "https://twitter.com/#{tweet.user.screen_name}/status/#{tweet.id}"
+          url:  "https://twitter.com/#{tweet.user.screen_name}/status/#{tweet.id}"
         }
       rescue => error
         Rails.logger.error "!!! Twitter syndication error: #{error.message}"

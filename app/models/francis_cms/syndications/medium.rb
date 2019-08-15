@@ -17,7 +17,7 @@ module FrancisCms
 
         {
           name: 'Medium',
-          url: JSON.parse(response.body)['data']['url']
+          url:  JSON.parse(response.body)['data']['url']
         }
       rescue => error
         Rails.logger.error "!!! Medium syndication error: #{error.message}"
@@ -27,12 +27,12 @@ module FrancisCms
 
       def options
         {
-          title: @syndicatable.title,
+          title:          @syndicatable.title,
           content_format: 'html',
-          content: post_content,
-          canonical_url: @canonical_url,
-          tags: post_tags,
-          license: 'cc-40-by-nc-sa'
+          content:        post_content,
+          canonical_url:  @canonical_url,
+          tags:           post_tags,
+          license:        'cc-40-by-nc-sa'
         }
       end
 

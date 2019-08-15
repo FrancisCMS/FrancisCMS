@@ -43,10 +43,10 @@ module FrancisCms
 
           def extensions
             {
-              fenced_code_blocks: true,
-              no_intra_emphasis: true,
+              fenced_code_blocks:  true,
+              no_intra_emphasis:   true,
               space_after_headers: true,
-              strikethrough: true
+              strikethrough:       true
             }
           end
 

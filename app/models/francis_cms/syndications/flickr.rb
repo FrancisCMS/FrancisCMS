@@ -27,7 +27,7 @@ module FrancisCms
 
         {
           name: 'Flickr',
-          url: "https://www.flickr.com/photos/#{username}/#{photo_id}/"
+          url:  "https://www.flickr.com/photos/#{username}/#{photo_id}/"
         }
       rescue => error
         Rails.logger.error "!!! Flickr syndication error: #{error.message}"
@@ -37,9 +37,9 @@ module FrancisCms
 
       def options
         {
-          title: @syndicatable.title,
+          title:       @syndicatable.title,
           description: "#{@syndicatable.to_html.lines.drop(1).join.chomp}\n\nOriginally published at #{@canonical_url}.",
-          tags: @syndicatable.tags.collect { |tag| %("#{tag}") }.join(' ')
+          tags:        @syndicatable.tags.collect { |tag| %("#{tag}") }.join(' ')
         }
       end
     end

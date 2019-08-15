@@ -7,6 +7,9 @@ AllCops:
     - db/**/*
     - vendor/**/*
 
+Layout/AlignHash:
+  EnforcedColonStyle: table
+
 Metrics/BlockLength:
   Exclude:
     - francis_cms.gemspec

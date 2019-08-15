@@ -14,7 +14,7 @@ module FrancisCms
 
     version :small_jpg do
       process mogrify: [{
-        format: 'jpg',
+        format:     'jpg',
         resolution: '500x500'
       }]
 
@@ -25,7 +25,7 @@ module FrancisCms
 
     version :medium_jpg do
       process mogrify: [{
-        format: 'jpg',
+        format:     'jpg',
         resolution: '750x750'
       }]
 
@@ -36,7 +36,7 @@ module FrancisCms
 
     version :large_jpg do
       process mogrify: [{
-        format: 'jpg',
+        format:     'jpg',
         resolution: '1000x1000'
       }]
 
