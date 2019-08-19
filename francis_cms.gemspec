@@ -37,7 +37,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'mini_magick', '~> 4.9', '>= 4.9.5'
   spec.add_dependency 'redcarpet', '~> 3.4'
   spec.add_dependency 'rouge', '~> 1.11', '>= 1.11.1'
-  spec.add_dependency 'will_paginate', '~> 3.1', '>= 3.1.6'
+  spec.add_dependency 'will_paginate', '~> 3.1'
 
   # POSSE
   spec.add_dependency 'flickr-objects', '~> 0.6.3'
