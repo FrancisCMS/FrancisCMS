@@ -35,7 +35,7 @@ module FrancisCms
       def options
         {}.tap do |opts|
           if syndicatable.try(:geolocated?)
-            places = @client.reverse_geocode(lat: syndicatable.latitude, long: syndicatable.longitude)
+            places = client.reverse_geocode(lat: syndicatable.latitude, long: syndicatable.longitude)
 
             opts[:place] = places.first if places.any?
           end
@@ -44,9 +44,9 @@ module FrancisCms
 
       def tweet
         @tweet ||= if syndicatable.photo?
-                     @client.update_with_media(tweet_body, File.new(syndicatable.photo.path), options)
+                     client.update_with_media(tweet_body, File.new(syndicatable.photo.path), options)
                    else
-                     @client.update(tweet_body, options)
+                     client.update(tweet_body, options)
                    end
       end
 
