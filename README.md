@@ -55,7 +55,7 @@ I manage Ruby versions with [rbenv](https://github.com/rbenv/rbenv). I'd recomme
 
 ### Software Dependencies
 
-- [Ruby](https://www.ruby-lang.org/) 2.2.4 (`rbenv install 2.2.4`)
+- [Ruby](https://www.ruby-lang.org/) 2.4.9 (`rbenv install 2.4.9`)
 - [Bundler](http://bundler.io/) (`gem install bundler`)
 - [PostgreSQL](http://www.postgresql.org/) (`brew install postgresql`)
 - [ImageMagick](http://www.imagemagick.org/) (`brew install imagemagick`)
@@ -77,7 +77,7 @@ Run `bundle install` to install FrancisCMS and its dependencies.
 ### Sample Gemfile
 
 ```rb
-ruby '2.2.4'
+ruby '2.4.9'
 
 source 'https://rubygems.org' do
   gem 'rails', '~> 4.2'
@@ -92,7 +92,7 @@ As mentioned above, FrancisCMS is a mountable [Rails engine](http://guides.rubyo
 ### From The Ground Up
 
 1. `mkdir example.com && cd example.com`
-1. `rbenv local 2.2.4`
+1. `rbenv local 2.4.9`
 1. Create a `Gemfile` in the root of the project and, in your editor of choice, add the contents from the [Sample Gemfile section](#sample-gemfile) above.
 1. `bundle install`
 1. `bundle exec rails new . --database=postgresql --skip-gemfile --skip-spring --skip-javascript --skip-turbolinks --skip-test-unit`
