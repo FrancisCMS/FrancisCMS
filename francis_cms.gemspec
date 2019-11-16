@@ -30,14 +30,14 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'acts-as-taggable-on', '~> 3.5'
   spec.add_dependency 'carrierwave', '~> 0.11.2'
   spec.add_dependency 'colored', '~> 1.2'
-  spec.add_dependency 'friendly_id', '~> 5.2', '>= 5.2.5'
-  spec.add_dependency 'geocoder', '~> 1.5', '>= 1.5.1'
-  spec.add_dependency 'mechanize', '~> 2.7', '>= 2.7.6'
+  spec.add_dependency 'friendly_id', '~> 5.2'
+  spec.add_dependency 'geocoder', '~> 1.5'
+  spec.add_dependency 'mechanize', '~> 2.7'
   spec.add_dependency 'microformats2', '~> 2.9'
-  spec.add_dependency 'mini_magick', '~> 4.9', '>= 4.9.5'
-  spec.add_dependency 'redcarpet', '~> 3.4'
-  spec.add_dependency 'rouge', '~> 1.11', '>= 1.11.1'
-  spec.add_dependency 'will_paginate', '~> 3.1'
+  spec.add_dependency 'mini_magick', '~> 4.9'
+  spec.add_dependency 'redcarpet', '~> 3.5'
+  spec.add_dependency 'rouge', '~> 1.11'
+  spec.add_dependency 'will_paginate', '~> 3.2'
 
   # POSSE
   spec.add_dependency 'flickr-objects', '~> 0.6.3'
@@ -45,8 +45,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'twitter', '~> 5.17'
 
   # Development dependencies
-  spec.add_development_dependency 'brakeman', '~> 4.6'
-  spec.add_development_dependency 'rubocop', '~> 0.74.0'
-  spec.add_development_dependency 'rubocop-performance', '~> 1.4'
+  spec.add_development_dependency 'brakeman', '~> 4.7'
+  spec.add_development_dependency 'rubocop', '~> 0.76.0'
+  spec.add_development_dependency 'rubocop-performance', '~> 1.5'
   spec.add_development_dependency 'rubocop-rails', '~> 2.3'
 end
