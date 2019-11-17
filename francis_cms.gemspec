@@ -41,8 +41,8 @@ Gem::Specification.new do |spec|
 
   # POSSE
   spec.add_dependency 'flickr-objects', '~> 0.6.3'
-  spec.add_dependency 'medium-sdk-ruby', '~> 1.0', '>= 1.0.2'
-  spec.add_dependency 'twitter', '~> 5.17'
+  spec.add_dependency 'medium-sdk-ruby', '~> 1.0'
+  spec.add_dependency 'twitter', '6.1'
 
   # Development dependencies
   spec.add_development_dependency 'brakeman', '~> 4.7'
