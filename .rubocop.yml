@@ -7,15 +7,15 @@ AllCops:
     - db/**/*
     - vendor/**/*
 
-Layout/AlignHash:
+Layout/HashAlignment:
   EnforcedColonStyle: table
+
+Layout/LineLength:
+  Enabled: false
 
 Metrics/BlockLength:
   Exclude:
     - francis_cms.gemspec
-
-Metrics/LineLength:
-  Enabled: false
 
 Naming/RescuedExceptionsVariableName:
   PreferredName: error
