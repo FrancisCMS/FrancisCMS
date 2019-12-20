@@ -62,7 +62,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     arel (6.0.4)
     ast (2.4.0)
-    brakeman (4.7.1)
+    brakeman (4.7.2)
     buftok (0.2.0)
     builder (3.2.3)
     carrierwave (0.11.2)
@@ -149,7 +149,7 @@ GEM
     nokogiri (1.10.5)
       mini_portile2 (~> 2.4.0)
     ntlm-http (0.1.1)
-    parallel (1.19.0)
+    parallel (1.19.1)
     parser (2.6.5.0)
       ast (~> 2.4.0)
     pg (0.21.0)
@@ -185,7 +185,7 @@ GEM
     rake (13.0.1)
     redcarpet (3.5.0)
     rouge (3.13.0)
-    rubocop (0.76.0)
+    rubocop (0.78.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
       parser (>= 2.6)
@@ -194,7 +194,7 @@ GEM
       unicode-display_width (>= 1.4.0, < 1.7)
     rubocop-performance (1.5.1)
       rubocop (>= 0.71.0)
-    rubocop-rails (2.3.2)
+    rubocop-rails (2.4.0)
       rack (>= 1.1)
       rubocop (>= 0.72.0)
     ruby-progressbar (1.10.1)
@@ -233,9 +233,9 @@ PLATFORMS
 DEPENDENCIES
   brakeman (~> 4.7)
   francis_cms!
-  rubocop (~> 0.76.0)
+  rubocop (~> 0.78.0)
   rubocop-performance (~> 1.5)
-  rubocop-rails (~> 2.3)
+  rubocop-rails (~> 2.4)
 
 BUNDLED WITH
    1.17.3
