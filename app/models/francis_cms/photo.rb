@@ -33,7 +33,7 @@ module FrancisCms
 
       out = to_fraction(parts[0]) + (to_fraction(parts[1]) / 60) + (to_fraction(parts[2]) / 3600)
 
-      out = out * -1 if %w[S W].include?(ref)
+      out *= -1 if %w[S W].include?(ref)
 
       out
     end
