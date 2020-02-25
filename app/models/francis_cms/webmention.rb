@@ -31,7 +31,7 @@ module FrancisCms
     end
 
     def self.verify_all
-      where(verified_at: nil).each(&:verify)
+      where(verified_at: nil).find_each(&:verify)
     end
   end
 end
