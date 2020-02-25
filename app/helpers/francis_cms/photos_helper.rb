@@ -1,5 +1,6 @@
 module FrancisCms
   module PhotosHelper
+    # rubocop:disable Rails/OutputSafety
     def link_to_openstreetmap(photo, html_options = {})
       link_to %(https://www.openstreetmap.org/#map=15/#{photo.latitude}/#{photo.longitude}), html_options do
         out = ''
@@ -11,5 +12,6 @@ module FrancisCms
         raw out
       end
     end
+    # rubocop:enable Rails/OutputSafety
   end
 end
