@@ -36,8 +36,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'microformats2', '~> 2.9'
   spec.add_dependency 'mini_magick', '~> 4.10'
   spec.add_dependency 'redcarpet', '~> 3.5'
-  spec.add_dependency 'rouge', '~> 3.15'
-  spec.add_dependency 'will_paginate', '~> 3.2'
+  spec.add_dependency 'rouge', '~> 3.17'
+  spec.add_dependency 'will_paginate', '~> 3.3'
 
   # POSSE
   spec.add_dependency 'flickr-objects', '~> 0.6.3'
