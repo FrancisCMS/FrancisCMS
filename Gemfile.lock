@@ -72,7 +72,7 @@ GEM
       mime-types (>= 1.16)
       mimemagic (>= 0.3.0)
     colored (1.2)
-    concurrent-ruby (1.1.5)
+    concurrent-ruby (1.1.6)
     connection_pool (2.2.2)
     crass (1.0.6)
     domain_name (0.5.20190701)
