@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.files       = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(bin|spec)/}) }
 
-  spec.add_dependency 'acts-as-taggable-on', '~> 4.0'
+  spec.add_dependency 'acts-as-taggable-on', '~> 5.0'
   spec.add_dependency 'carrierwave', '~> 0.11.2'
   spec.add_dependency 'colored', '~> 1.2'
   spec.add_dependency 'flickr-objects', '~> 0.6.3'
