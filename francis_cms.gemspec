@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'carrierwave', '~> 0.11.2'
   spec.add_dependency 'colored', '~> 1.2'
   spec.add_dependency 'flickr-objects', '~> 0.6.3'
-  spec.add_dependency 'friendly_id', '~> 5.2'
+  spec.add_dependency 'friendly_id', '~> 5.3'
   spec.add_dependency 'geocoder', '~> 1.6'
   spec.add_dependency 'mechanize', '~> 2.7'
   spec.add_dependency 'medium-sdk-ruby', '~> 1.0'

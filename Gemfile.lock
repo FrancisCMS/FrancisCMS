@@ -6,7 +6,7 @@ PATH
       carrierwave (~> 0.11.2)
       colored (~> 1.2)
       flickr-objects (~> 0.6.3)
-      friendly_id (~> 5.2)
+      friendly_id (~> 5.3)
       geocoder (~> 1.6)
       mechanize (~> 2.7)
       medium-sdk-ruby (~> 1.0)
