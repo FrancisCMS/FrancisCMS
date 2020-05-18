@@ -6,6 +6,7 @@ AllCops:
   Exclude:
     - db/**/*
     - vendor/**/*
+  NewCops: enable
 
 Layout/HashAlignment:
   EnforcedColonStyle: table
