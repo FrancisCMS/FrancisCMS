@@ -33,12 +33,12 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'pg', '~> 0.21.0'
   spec.add_dependency 'rails', '~> 4.2', '>= 4.2.11.3'
   spec.add_dependency 'redcarpet', '~> 3.5'
-  spec.add_dependency 'rouge', '~> 3.17'
+  spec.add_dependency 'rouge', '~> 3.20'
   spec.add_dependency 'twitter', '6.1'
   spec.add_dependency 'will_paginate', '~> 3.3'
 
   spec.add_development_dependency 'brakeman', '~> 4.8'
-  spec.add_development_dependency 'rubocop', '~> 0.83.0'
-  spec.add_development_dependency 'rubocop-performance', '~> 1.5'
-  spec.add_development_dependency 'rubocop-rails', '~> 2.5'
+  spec.add_development_dependency 'rubocop', '~> 0.85.1'
+  spec.add_development_dependency 'rubocop-performance', '~> 1.6'
+  spec.add_development_dependency 'rubocop-rails', '~> 2.6'
 end
