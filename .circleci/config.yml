@@ -10,6 +10,11 @@ jobs:
       tag: 2.4.9
     steps:
       - checkout
+      - run:
+          name: Install PostgreSQL development libraries
+          command: |
+            sudo apt update
+            sudo apt install -y libpq-dev
       - ruby/install-deps
       - run:
           name: Run linting Rake tasks
