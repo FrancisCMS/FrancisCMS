@@ -1,0 +1,24 @@
+version: 2.1
+
+orbs:
+  ruby: circleci/ruby@1.1.2
+
+jobs:
+  test:
+    executor:
+      name: ruby/default
+      tag: 2.4.9
+    steps:
+      - checkout
+      - ruby/install-deps
+      - run:
+          name: Run linting Rake tasks
+          command: |
+            bundle exec rubocop
+            bundle exec brakeman
+
+workflows:
+  version: 2
+  default:
+    jobs:
+      - test
