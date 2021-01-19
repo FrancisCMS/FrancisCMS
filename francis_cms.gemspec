@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'medium-sdk-ruby', '~> 1.0'
   spec.add_dependency 'microformats2', '~> 2.9'
   spec.add_dependency 'mini_magick', '~> 4.11'
-  spec.add_dependency 'pg', '~> 0.21.0'
+  spec.add_dependency 'pg', '>= 0.21', '< 1.3'
   spec.add_dependency 'rails', '~> 4.2', '>= 4.2.11.3'
   spec.add_dependency 'redcarpet', '~> 3.5'
   spec.add_dependency 'rouge', '~> 3.26'
