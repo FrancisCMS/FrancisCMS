@@ -10,7 +10,7 @@ PATH
       geocoder (~> 1.6)
       mechanize (~> 2.7)
       medium-sdk-ruby (~> 1.0)
-      microformats2 (~> 2.9)
+      microformats2 (>= 2.9, < 4.0)
       mini_magick (~> 4.11)
       pg (~> 0.21.0)
       rails (~> 4.2, >= 4.2.11.3)
@@ -108,7 +108,7 @@ GEM
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     json (2.5.1)
-    loofah (2.8.0)
+    loofah (2.9.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -127,8 +127,7 @@ GEM
       hurley-http-cache (~> 0.1)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
-    microformats2 (2.9.0)
-      activesupport
+    microformats2 (3.1.0)
       json
       nokogiri
     mime-types (3.3.1)
