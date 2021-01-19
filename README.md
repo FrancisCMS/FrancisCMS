@@ -2,9 +2,10 @@
 
 An [IndieWeb](https://indiewebcamp.com/)-friendly content management system built with [Ruby on Rails](http://rubyonrails.org/).
 
-[![Build](https://img.shields.io/travis/com/FrancisCMS/FrancisCMS/master.svg?style=for-the-badge)](https://travis-ci.com/FrancisCMS/FrancisCMS)
-[![Maintainability](https://img.shields.io/codeclimate/maintainability/FrancisCMS/FrancisCMS.svg?style=for-the-badge)](https://codeclimate.com/github/FrancisCMS/FrancisCMS)
-[![Coverage](https://img.shields.io/codeclimate/c/FrancisCMS/FrancisCMS.svg?style=for-the-badge)](https://codeclimate.com/github/FrancisCMS/FrancisCMS/code)
+[![Build](https://img.shields.io/circleci/build/github/FrancisCMS/FrancisCMS?logo=circleci&style=for-the-badge)](https://app.circleci.com/pipelines/github/FrancisCMS/FrancisCMS)
+[![Maintainability](https://img.shields.io/codeclimate/maintainability/FrancisCMS/FrancisCMS.svg?logo=code-climate&style=for-the-badge)](https://codeclimate.com/github/FrancisCMS/FrancisCMS)
+[![Coverage](https://img.shields.io/codeclimate/c/FrancisCMS/FrancisCMS.svg?logo=code-climate&style=for-the-badge)](https://codeclimate.com/github/FrancisCMS/FrancisCMS/code)
+[![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/FrancisCMS/FrancisCMS?logo=snyk&style=for-the-badge)](https://snyk.io/test/github/FrancisCMS/FrancisCMS)
 
 FrancisCMS began life in October 2014 as a [Sinatra](http://www.sinatrarb.com/) application (hence [the name](https://en.wikipedia.org/wiki/Frank_Sinatra)) before becoming a Rails application before becoming a mountable [Rails engine](http://guides.rubyonrails.org/engines.html).
 
