@@ -62,7 +62,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     arel (6.0.4)
     ast (2.4.1)
-    brakeman (4.10.1)
+    brakeman (5.0.0)
     buftok (0.2.0)
     builder (3.2.4)
     carrierwave (0.11.2)
@@ -113,7 +113,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
-    mechanize (2.7.6)
+    mechanize (2.7.7)
       domain_name (~> 0.5, >= 0.5.1)
       http-cookie (~> 1.0)
       mime-types (>= 1.17.2)
@@ -121,6 +121,7 @@ GEM
       net-http-persistent (>= 2.5.2)
       nokogiri (~> 1.6)
       ntlm-http (~> 0.1, >= 0.1.1)
+      webrick (~> 1.7)
       webrobots (>= 0.0.9, < 0.2)
     medium-sdk-ruby (1.0.2)
       hurley (~> 0.0)
@@ -231,6 +232,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.7)
     unicode-display_width (2.0.0)
+    webrick (1.7.0)
     webrobots (0.1.2)
     will_paginate (3.3.0)
 
@@ -238,7 +240,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  brakeman (~> 4.10)
+  brakeman (~> 5.0)
   francis_cms!
   rubocop (~> 1.8)
   rubocop-performance (~> 1.9)
