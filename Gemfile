@@ -16,6 +16,6 @@ gemspec
 group :development do
   gem 'brakeman', '~> 5.0'
   gem 'rubocop', '~> 1.9'
-  gem 'rubocop-performance', '~> 1.9'
+  gem 'rubocop-performance', '~> 1.10'
   gem 'rubocop-rails', '~> 2.9'
 end
