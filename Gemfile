@@ -14,8 +14,8 @@ gemspec
 # gem 'byebug', group: [:development, :test]
 
 group :development do
-  gem 'brakeman', '~> 5.0'
-  gem 'rubocop', '~> 1.10'
-  gem 'rubocop-performance', '~> 1.10'
-  gem 'rubocop-rails', '~> 2.9'
+  gem 'brakeman'
+  gem 'rubocop'
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
 end

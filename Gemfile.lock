@@ -240,11 +240,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  brakeman (~> 5.0)
+  brakeman
   francis_cms!
-  rubocop (~> 1.10)
-  rubocop-performance (~> 1.10)
-  rubocop-rails (~> 2.9)
+  rubocop
+  rubocop-performance
+  rubocop-rails
 
 BUNDLED WITH
    1.17.3
