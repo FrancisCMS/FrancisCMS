@@ -1,5 +1,6 @@
 require 'modules/conversable'
 
+# rubocop:disable Rails/RakeEnvironment
 namespace :francis_cms do
   desc 'Configure Flickr syndication'
   task :configure_flickr do
@@ -38,3 +39,4 @@ namespace :francis_cms do
     # rubocop:enable Style/RescueStandardError
   end
 end
+# rubocop:enable Rails/RakeEnvironment
