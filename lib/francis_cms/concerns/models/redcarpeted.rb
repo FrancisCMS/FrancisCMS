@@ -28,9 +28,9 @@ module FrancisCms
           def render_figure(markdown)
             markdown.gsub(/(?:\n|\A)={3,}(?:\s\[(?<precaption>.*)\])?\r?\n(?<content>.*)?\r?\n={3,}(?:\s\[(?<postcaption>.*)\])?\r?\n/m) do
               "<figure>
-                #{render_figcaption($~[:precaption]) if $~[:precaption]}
-                #{MarkupBuilder.new($~[:content].chomp).render}
-                #{render_figcaption($~[:postcaption]) if $~[:postcaption]}
+                #{render_figcaption($LAST_MATCH_INFO[:precaption]) if $LAST_MATCH_INFO[:precaption]}
+                #{MarkupBuilder.new($LAST_MATCH_INFO[:content].chomp).render}
+                #{render_figcaption($LAST_MATCH_INFO[:postcaption]) if $LAST_MATCH_INFO[:postcaption]}
               </figure>"
             end
           end
