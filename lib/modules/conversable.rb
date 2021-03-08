@@ -12,7 +12,7 @@ module Conversable
 
   def ask?(msg)
     puts msg.yellow
-    STDIN.gets.chomp!
+    $stdin.gets.chomp!
   end
   # rubocop:enable Rails/Output
 
