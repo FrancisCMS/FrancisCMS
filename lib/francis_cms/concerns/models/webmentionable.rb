@@ -23,7 +23,7 @@ module FrancisCms
         private
 
         def verified_webmentions
-          webmentions.joins(:webmention_entry).where('verified_at IS NOT NULL').order('francis_cms_webmention_entries.published_at ASC')
+          webmentions.joins(:webmention_entry).where.not(verified_at: nil).order('francis_cms_webmention_entries.published_at ASC')
         end
       end
     end

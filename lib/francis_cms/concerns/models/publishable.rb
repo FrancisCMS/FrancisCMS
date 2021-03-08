@@ -9,7 +9,7 @@ module FrancisCms
 
           before_save :set_published_at
 
-          scope :exclude_drafts, -> { where('published_at IS NOT NULL') }
+          scope :exclude_drafts, -> { where.not(published_at: nil) }
           scope :recently_published, -> { exclude_drafts.order('published_at DESC').limit(5) }
         end
 
