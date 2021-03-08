@@ -17,10 +17,8 @@ jobs:
             sudo apt install -y libpq-dev
       - ruby/install-deps
       - run:
-          name: Run linting Rake tasks
-          command: |
-            bundle exec rubocop
-            bundle exec brakeman
+          name: Run CI script
+          command: bin/ci
 
 workflows:
   version: 2
