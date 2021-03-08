@@ -10,6 +10,7 @@ module FrancisCms
       twitter: Syndications::Twitter
     }.freeze
 
+    # rubocop:disable Metrics/AbcSize
     def create
       @syndication = syndicatable.syndications.new(syndication_params)
 
@@ -21,6 +22,7 @@ module FrancisCms
 
       redirect_to send("edit_#{resource_type.singularize}_path", syndicatable)
     end
+    # rubocop:enable Metrics/AbcSize
 
     def destroy
       syndication.destroy

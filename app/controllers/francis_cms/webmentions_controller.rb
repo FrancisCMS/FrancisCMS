@@ -14,6 +14,7 @@ module FrancisCms
       webmention
     end
 
+    # rubocop:disable Metrics/AbcSize
     def create
       source = params[:source]
       target = params[:target]
@@ -30,6 +31,7 @@ module FrancisCms
         head :bad_request
       end
     end
+    # rubocop:enable Metrics/AbcSize
 
     def update
       if webmention.verify && webmention.verified_at?
