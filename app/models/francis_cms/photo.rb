@@ -61,7 +61,7 @@ module FrancisCms
       date_time_original = exif['DateTimeOriginal']
 
       if gps_date_stamp && gps_time_stamp
-        matches = gps_time_stamp.match(%r{^(?<hours>\d+)\/\d+, (?<minutes>\d+)\/\d+, (?<seconds>\d+)\/\d+$})
+        matches = gps_time_stamp.match(%r{^(?<hours>\d+)/\d+, (?<minutes>\d+)/\d+, (?<seconds>\d+)/\d+$})
 
         %(#{gps_date_stamp.tr(':', '-')} #{matches[:hours]}:#{matches[:minutes]}:#{matches[:seconds]}).to_datetime
       elsif date_time_original
