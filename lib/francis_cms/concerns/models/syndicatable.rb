@@ -14,34 +14,37 @@ module FrancisCms
 
         def can_syndicate_to_flickr?
           photo? &&
-            Rails.application.secrets.flickr_api_key.present? &&
-            Rails.application.secrets.flickr_shared_secret.present? &&
-            Rails.application.secrets.flickr_access_token_key.present? &&
-            Rails.application.secrets.flickr_access_token_secret.present?
+            [
+              :flicker_api_key,
+              :flickr_shared_secret,
+              :flickr_access_token_key,
+              :flickr_access_token_secret
+            ].map { |key| Rails.application.secrets[key].present? }.all?
         end
 
         def can_syndicate_to_medium?
-          post? &&
-            Rails.application.secrets.medium_integration_token.present?
+          post? && Rails.application.secrets.medium_integration_token.present?
         end
 
         def can_syndicate_to_twitter?
-          Rails.application.secrets.twitter_consumer_key.present? &&
-            Rails.application.secrets.twitter_consumer_secret.present? &&
-            Rails.application.secrets.twitter_access_token.present? &&
-            Rails.application.secrets.twitter_access_token_secret.present?
+          [
+            :twitter_consumer_key,
+            :twitter_consumer_secret,
+            :twitter_access_token,
+            :twitter_access_token_secret
+          ].map { |key| Rails.application.secrets[key].present? }.all?
         end
 
         def link?
-          self.class == FrancisCms::Link
+          instance_of?(FrancisCms::Link)
         end
 
         def photo?
-          self.class == FrancisCms::Photo
+          instance_of?(FrancisCms::Photo)
         end
 
         def post?
-          self.class == FrancisCms::Post
+          instance_of?(FrancisCms::Post)
         end
       end
     end
