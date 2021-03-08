@@ -4,7 +4,7 @@ module FrancisCms
     has_one :webmention_entry
 
     validates :source, :target, presence: true
-    validates :source, format: { with: URI.regexp(%w[http https]) }
+    validates :source, format: { with: URI::DEFAULT_PARSER.make_regexp(%w[http https]) }
     validates :target, format: { with: /\A#{FrancisCms.configuration.site_url.sub(/^https?:/, 'https?:')}?/ }
     validates_with WebmentionValidator
 
