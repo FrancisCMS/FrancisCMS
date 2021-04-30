@@ -190,7 +190,7 @@ GEM
     rake (13.0.3)
     redcarpet (3.5.1)
     regexp_parser (2.1.1)
-    rexml (3.2.4)
+    rexml (3.2.5)
     rouge (3.26.0)
     rubocop (1.12.1)
       parallel (~> 1.10)
