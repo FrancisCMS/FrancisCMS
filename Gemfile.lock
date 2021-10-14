@@ -65,7 +65,7 @@ GEM
     brakeman (5.1.1)
     buftok (0.2.0)
     builder (3.2.4)
-    bundler-audit (0.8.0)
+    bundler-audit (0.9.0.1)
       bundler (>= 1.2.0, < 3)
       thor (~> 1.0)
     carrierwave (0.11.2)
@@ -236,7 +236,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.7)
-    unicode-display_width (2.0.0)
+    unicode-display_width (2.1.0)
     webrick (1.7.0)
     webrobots (0.1.2)
     will_paginate (3.3.0)
