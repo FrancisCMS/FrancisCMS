@@ -2,7 +2,7 @@
 
 An [IndieWeb](https://indiewebcamp.com/)-friendly content management system built with [Ruby on Rails](http://rubyonrails.org/).
 
-[![Build](https://img.shields.io/circleci/build/github/FrancisCMS/FrancisCMS?logo=circleci&style=for-the-badge)](https://app.circleci.com/pipelines/github/FrancisCMS/FrancisCMS)
+[![Build](https://img.shields.io/github/actions/workflow/status/FrancisCMS/FrancisCMS/ci.yml?branch=main&logo=github&style=for-the-badge)](https://github.com/FrancisCMS/FrancisCMS/actions/workflows/ci.yml)
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/FrancisCMS/FrancisCMS.svg?logo=code-climate&style=for-the-badge)](https://codeclimate.com/github/FrancisCMS/FrancisCMS)
 [![Coverage](https://img.shields.io/codeclimate/c/FrancisCMS/FrancisCMS.svg?logo=code-climate&style=for-the-badge)](https://codeclimate.com/github/FrancisCMS/FrancisCMS/code)
 [![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/FrancisCMS/FrancisCMS?logo=snyk&style=for-the-badge)](https://snyk.io/test/github/FrancisCMS/FrancisCMS)

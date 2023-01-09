@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  - push
+  - pull_request
+  - workflow_dispatch
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Run Brakeman static analysis
+        run: bundle exec brakeman --no-pager --run-all-checks
+  audit:
+    name: Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Run bundler-audit
+        run: bundle exec bundle-audit check --update
+  lint:
+    name: Lint
+    permissions:
+      contents: read
+      security-events: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Run RuboCop
+        run: bundle exec rubocop
