@@ -5,7 +5,6 @@ An [IndieWeb](https://indiewebcamp.com/)-friendly content management system buil
 [![Build](https://img.shields.io/github/actions/workflow/status/FrancisCMS/FrancisCMS/ci.yml?branch=main&logo=github&style=for-the-badge)](https://github.com/FrancisCMS/FrancisCMS/actions/workflows/ci.yml)
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/FrancisCMS/FrancisCMS.svg?logo=code-climate&style=for-the-badge)](https://codeclimate.com/github/FrancisCMS/FrancisCMS)
 [![Coverage](https://img.shields.io/codeclimate/c/FrancisCMS/FrancisCMS.svg?logo=code-climate&style=for-the-badge)](https://codeclimate.com/github/FrancisCMS/FrancisCMS/code)
-[![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/FrancisCMS/FrancisCMS?logo=snyk&style=for-the-badge)](https://snyk.io/test/github/FrancisCMS/FrancisCMS)
 
 FrancisCMS began life in October 2014 as a [Sinatra](http://www.sinatrarb.com/) application (hence [the name](https://en.wikipedia.org/wiki/Frank_Sinatra)) before becoming a Rails application before becoming a mountable [Rails engine](http://guides.rubyonrails.org/engines.html).
 
